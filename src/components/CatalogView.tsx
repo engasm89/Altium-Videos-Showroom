@@ -159,7 +159,8 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
         <p className="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
           Full MD→CSV catalog — {catalogCounts.playable} oEmbed-public embeds,
           {catalogCounts.otherAdjacent} adjacent/search-tail,
-          {catalogCounts.enriched} hand-enriched outlines. CSV wins over xlsx; no invented YouTube IDs.
+          {catalogCounts.enriched} enriched overlays
+          {catalogCounts.developEnriched != null ? ` (${catalogCounts.developEnriched} Develop)` : ''}. CSV wins over xlsx; no invented YouTube IDs.
         </p>
       </div>
 

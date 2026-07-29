@@ -176,6 +176,18 @@ The app is **code-ready** for the custom host. Agents cannot finish DNS without 
 
 ---
 
+## Partner-facing story additions (Jul 29 evening)
+
+Three “strong additions” that make `/altium-develop` feel like an adoption narrative, not a video dump:
+
+1. **ESP32 case study** (`/case-studies/esp32-product`) — one product walk from requirements → PCB → sourcing → review → manufacturing, with stakeholder entry points and real catalog lesson links. Analogy: a guided museum tour of one exhibit, not a warehouse inventory.
+2. **Workflow comparison** (`/compare-workflows` + embed on the Develop landing) — disconnected practices vs Develop collaboration. Deliberately process-vs-process, never brand-vs-brand.
+3. **Content freshness chips** on tutorial detail — recorded / last verified / version / still-current **only where we have data**. Inventing “still current” for 333 videos would be the fastest way to lose Altium’s trust.
+
+**Lesson:** partner decks ask “is this accurate?” before “is this pretty?” Honesty gates beat decorative confidence.
+
+---
+
 ## Remaining Gaps (call these out, do not hide them)
 
 - Hand-enrich chapters/transcripts beyond the current overlay set.

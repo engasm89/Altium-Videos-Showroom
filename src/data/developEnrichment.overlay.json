@@ -1,0 +1,3408 @@
+{
+  "meta": {
+    "description": "Hand-authored Altium Develop enrichment overlays (strategic subset). Transcripts are pedagogical outlines unless marked verbatim.",
+    "count": 29,
+    "enrichmentStatus": "enriched"
+  },
+  "overlays": [
+    {
+      "catalogId": "cat-123",
+      "youtubeId": "DtT8gCZanM4",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-123",
+      "workflowStage": "Workspace Setup",
+      "role": "Engineering Leadership",
+      "difficulty": "Beginner",
+      "skills": [
+        "Altium Develop Overview",
+        "Cloud Collaboration",
+        "Product Positioning"
+      ],
+      "learningPathIds": [
+        "path-006",
+        "path-007"
+      ],
+      "nextRecommendedLessonId": "cat-101",
+      "shortDescription": "Orient to Altium Develop as a multidisciplinary hardware workspace—not just another CAD install.",
+      "fullSummary": "This introduction positions Altium Develop for hardware teams that need shared visibility across electrical, mechanical, procurement, and leadership. You will leave with a mental model of workspaces, projects, collaboration surfaces, and how Develop complements Altium Designer rather than replacing schematic/PCB craft.",
+      "learningOutcomes": [
+        "Explain what Altium Develop is for and who it serves on a hardware team",
+        "Distinguish Develop collaboration surfaces from desktop CAD editing",
+        "Identify the first workspace/project actions to take after watching"
+      ],
+      "prerequisites": [
+        "Basic familiarity with electronics product development roles"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Why Develop exists for modern hardware teams"
+        },
+        {
+          "timestampSeconds": 150,
+          "timestampFormatted": "2:30",
+          "title": "Workspace vs project mental model"
+        },
+        {
+          "timestampSeconds": 300,
+          "timestampFormatted": "5:00",
+          "title": "Who collaborates: ECAD, MCAD, sourcing, leadership"
+        },
+        {
+          "timestampSeconds": 450,
+          "timestampFormatted": "7:30",
+          "title": "What to do next: first workspace setup"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Altium Develop is framed as a connected hardware workspace for multidisciplinary teams—not a replacement for deep PCB layout skill."
+        },
+        {
+          "timestampSeconds": 150,
+          "timestampFormatted": "2:30",
+          "text": "[Outline] Workspaces hold people and permissions; projects hold design artifacts, history, and review threads."
+        },
+        {
+          "timestampSeconds": 300,
+          "timestampFormatted": "5:00",
+          "text": "[Outline] Non-CAD stakeholders need browser-visible status without installing Designer."
+        },
+        {
+          "timestampSeconds": 450,
+          "timestampFormatted": "7:30",
+          "text": "[Outline] Recommended next step: download/setup walkthrough, then create your first team workspace."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Map your stakeholders",
+          "detail": "List who needs view vs edit access: PCB, mechanical, firmware, procurement, manager."
+        },
+        {
+          "step": 2,
+          "title": "Decide the first project",
+          "detail": "Pick one live or training board as the pilot project inside Develop."
+        },
+        {
+          "step": 3,
+          "title": "Bookmark official getting-started",
+          "detail": "Open Altium’s Develop getting-started resource before creating accounts."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Browser",
+          "action": "Open Develop workspace home",
+          "context": "Develop"
+        },
+        {
+          "key": "Share",
+          "action": "Invite first collaborator (view-only)",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://resources.altium.com/p/getting-started-in-develop",
+      "officialDocLinks": [
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        },
+        {
+          "title": "Altium 365 documentation hub",
+          "url": "https://www.altium.com/documentation/altium-365"
+        }
+      ],
+      "altiumCtaLabel": "Start Altium Develop evaluation"
+    },
+    {
+      "catalogId": "cat-101",
+      "youtubeId": "jv-m0xkAFck",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-101",
+      "workflowStage": "Workspace Setup",
+      "role": "Hardware & PCB Engineering",
+      "difficulty": "Beginner",
+      "skills": [
+        "Workspace Setup",
+        "Download & Install",
+        "Navigation"
+      ],
+      "learningPathIds": [
+        "path-006"
+      ],
+      "nextRecommendedLessonId": "cat-119",
+      "shortDescription": "Download, sign in, and navigate Altium Develop so you can open a real team workspace without getting lost.",
+      "fullSummary": "A practical first-run guide: acquiring Develop access, signing into the cloud workspace, finding project hubs, and learning the primary navigation patterns engineers use daily. Builds the foundation for creating workspaces and inviting collaborators.",
+      "learningOutcomes": [
+        "Complete download/sign-in and land in a Develop workspace",
+        "Navigate project hubs, history entry points, and collaboration panels",
+        "Know which screens are for viewing vs directing designers back to CAD"
+      ],
+      "prerequisites": [
+        "Introduction to Altium Develop (or equivalent product awareness)"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Download, license, and first sign-in"
+        },
+        {
+          "timestampSeconds": 160,
+          "timestampFormatted": "2:40",
+          "title": "Home / workspace navigation map"
+        },
+        {
+          "timestampSeconds": 320,
+          "timestampFormatted": "5:20",
+          "title": "Opening a project hub safely"
+        },
+        {
+          "timestampSeconds": 480,
+          "timestampFormatted": "8:00",
+          "title": "Where comments, history, and BOM live"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Install/sign-in path and what a healthy first landing screen looks like."
+        },
+        {
+          "timestampSeconds": 160,
+          "timestampFormatted": "2:40",
+          "text": "[Outline] Primary nav: workspaces, projects, people, and notifications."
+        },
+        {
+          "timestampSeconds": 320,
+          "timestampFormatted": "5:20",
+          "text": "[Outline] Open a sample or empty project and identify status, documents, and activity."
+        },
+        {
+          "timestampSeconds": 480,
+          "timestampFormatted": "8:00",
+          "text": "[Outline] Locate comments, history, and supply/BOM surfaces for later lessons."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Sign in with org account",
+          "detail": "Use the company Altium identity so permissions follow your team."
+        },
+        {
+          "step": 2,
+          "title": "Confirm workspace membership",
+          "detail": "Verify you can see at least one workspace before creating projects."
+        },
+        {
+          "step": 3,
+          "title": "Tour empty vs populated project",
+          "detail": "Open both if available to learn empty-state vs live activity cues."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Ctrl/Cmd+K",
+          "action": "Quick search projects (when available)",
+          "context": "Develop"
+        },
+        {
+          "key": "?",
+          "action": "Open help / product tips",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://resources.altium.com/p/getting-started-in-develop",
+      "officialDocLinks": [
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        },
+        {
+          "title": "Altium 365 collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        }
+      ],
+      "altiumCtaLabel": "Try setup in Altium Develop"
+    },
+    {
+      "catalogId": "cat-119",
+      "youtubeId": "TnnJpUn2A_4",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-119",
+      "workflowStage": "Workspace Setup",
+      "role": "Engineering Leadership",
+      "difficulty": "Beginner",
+      "skills": [
+        "Team Workspace",
+        "Permissions",
+        "Onboarding"
+      ],
+      "learningPathIds": [
+        "path-006",
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-171",
+      "shortDescription": "Create your first team workspace with sensible roles so collaboration starts clean—not chaotic.",
+      "fullSummary": "Walks through creating a Develop team workspace, naming conventions, initial membership, and permission intent. Emphasizes starting with least-privilege invitations and a clear owner before flooding the space with projects.",
+      "learningOutcomes": [
+        "Create and name a team workspace with a clear owner",
+        "Invite members with role-appropriate access",
+        "Establish a lightweight workspace hygiene checklist"
+      ],
+      "prerequisites": [
+        "Getting Started with Altium Develop download & navigation"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Create workspace: naming and ownership"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Invite electrical + adjacent roles"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Permission intent: view vs contribute"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "First hygiene rules before projects pile up"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Workspace creation is an org decision—name for the product line or team, not a person."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Invite core ECAD first, then MCAD/procurement with narrower defaults."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Prefer view-first for external or executive observers."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Document who can create projects and who can release."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Create workspace",
+          "detail": "Use a durable name (product line / org unit)."
+        },
+        {
+          "step": 2,
+          "title": "Assign owner + backup",
+          "detail": "Two people who can recover access."
+        },
+        {
+          "step": 3,
+          "title": "Invite with intent",
+          "detail": "Start with 3–5 people; expand after first project is healthy."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Invite",
+          "action": "Add member to workspace",
+          "context": "Develop"
+        },
+        {
+          "key": "Roles",
+          "action": "Review permission summary",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/collaboration",
+      "officialDocLinks": [
+        {
+          "title": "Collaboration in Altium 365",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        },
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        }
+      ],
+      "altiumCtaLabel": "Create a Develop workspace"
+    },
+    {
+      "catalogId": "cat-171",
+      "youtubeId": "y5xCtsT5he4",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-171",
+      "workflowStage": "Workspace Setup",
+      "role": "Hardware & PCB Engineering",
+      "difficulty": "Beginner",
+      "skills": [
+        "Project Setup",
+        "Document Structure",
+        "Cloud Sync"
+      ],
+      "learningPathIds": [
+        "path-006"
+      ],
+      "nextRecommendedLessonId": "cat-092",
+      "shortDescription": "Stand up a Develop project with the right documents and ownership so the team has a single source of truth.",
+      "fullSummary": "Covers project creation inside a team workspace: linking design documents, setting expectations for local CAD vs cloud visibility, and verifying that history and collaboration hooks are alive before the first design push.",
+      "learningOutcomes": [
+        "Create a Develop-linked project with clear ownership",
+        "Confirm documents appear and sync expectations are understood",
+        "Verify history/activity surfaces before inviting the wider team"
+      ],
+      "prerequisites": [
+        "Your first team workspace in Altium Develop"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "New project in the workspace"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Attach / sync design documents"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Ownership and naming conventions"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Smoke-test history & activity"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Project setup fails when naming is ambiguous—use board + revision intent."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Ensure Designer/cloud connection so Develop is not an empty shell."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Confirm who can push revisions vs who can only comment."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Open history once to prove the audit trail is recording."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Create project",
+          "detail": "Name with product + board code."
+        },
+        {
+          "step": 2,
+          "title": "Connect CAD",
+          "detail": "Open from Designer/Develop path your org uses and push initial baseline."
+        },
+        {
+          "step": 3,
+          "title": "Baseline check",
+          "detail": "Refresh Develop and confirm documents + activity appear."
+        }
+      ],
+      "commands": [
+        {
+          "key": "New Project",
+          "action": "Create project in workspace",
+          "context": "Develop"
+        },
+        {
+          "key": "Refresh",
+          "action": "Reload project hub",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365",
+      "officialDocLinks": [
+        {
+          "title": "Altium 365 documentation",
+          "url": "https://www.altium.com/documentation/altium-365"
+        },
+        {
+          "title": "Project history",
+          "url": "https://www.altium.com/documentation/altium-365/project-history"
+        }
+      ],
+      "altiumCtaLabel": "Practice project setup in Altium"
+    },
+    {
+      "catalogId": "cat-092",
+      "youtubeId": "4Zc_TVlqyWc",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-092",
+      "workflowStage": "Multidisciplinary Collaboration",
+      "role": "Engineering Leadership",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Team Workspace",
+        "Role Separation",
+        "Hardware Collaboration"
+      ],
+      "learningPathIds": [
+        "path-006",
+        "path-007",
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-167",
+      "shortDescription": "Assemble a complete hardware team workspace where ECAD, adjacent roles, and leaders share one operating picture.",
+      "fullSummary": "Moves beyond empty workspace setup into a working team model: how electrical, mechanical, sourcing, and management coexist in one Develop environment with clear lanes. Sets up the story for multidisciplinary collaboration lessons.",
+      "learningOutcomes": [
+        "Describe a complete hardware team workspace layout",
+        "Assign lanes so roles do not collide on the same artifacts",
+        "Identify the daily surfaces each role should open first"
+      ],
+      "prerequisites": [
+        "Project setup in Altium Develop"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Complete workspace anatomy"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Role lanes in one hub"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Daily operating picture"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Handoffs without email archaeology"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] A complete workspace includes people, projects, review threads, and supply visibility—not just files."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Role lanes: who edits CAD vs who reviews vs who releases."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Managers need progress/history views without hijacking layout."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Prefer threaded comments over scattered chat for design intent."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Define role lanes",
+          "detail": "Write who edits, who comments, who releases."
+        },
+        {
+          "step": 2,
+          "title": "Pin daily hubs",
+          "detail": "Each role bookmarks their primary Develop surface."
+        },
+        {
+          "step": 3,
+          "title": "Run a dry handoff",
+          "detail": "Have MCAD or procurement open the same project and leave one comment."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Comments",
+          "action": "Open design review thread",
+          "context": "Develop"
+        },
+        {
+          "key": "People",
+          "action": "Review workspace members",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/collaboration",
+      "officialDocLinks": [
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        },
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        }
+      ],
+      "altiumCtaLabel": "Build your team workspace in Altium"
+    },
+    {
+      "catalogId": "cat-167",
+      "youtubeId": "COUmuOEVSXg",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-167",
+      "workflowStage": "Multidisciplinary Collaboration",
+      "role": "Engineering Leadership",
+      "difficulty": "Beginner",
+      "skills": [
+        "Multidisciplinary Workflows",
+        "Cross-Functional Teams",
+        "Collaboration Strategy"
+      ],
+      "learningPathIds": [
+        "path-007"
+      ],
+      "nextRecommendedLessonId": "cat-097",
+      "shortDescription": "Why siloed ECAD-only tools fail modern hardware—and how Develop makes multidisciplinary work the default.",
+      "fullSummary": "Makes the business and engineering case for multidisciplinary collaboration on hardware: failure modes of email/STEP ping-pong, late mechanical discovery, and invisible procurement risk. Positions Develop as the shared system of record for intent and status.",
+      "learningOutcomes": [
+        "Articulate failure modes of ECAD-only collaboration",
+        "Map which disciplines must share a live project hub",
+        "Define success criteria for a multidisciplinary pilot"
+      ],
+      "prerequisites": [
+        "Complete hardware team workspace overview"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "ECAD-only failure modes"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Disciplines that must share context"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "What 'done' looks like across roles"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Pilot checklist for your org"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Late mechanical or supply surprises are usually collaboration failures, not talent failures."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Firmware, MCAD, sourcing, and quality need earlier, safer access."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Shared hub ≠ everyone edits copper—permissions still matter."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Pilot one board end-to-end before rolling org-wide."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "List pain points",
+          "detail": "Collect last 3 late discoveries from MCAD/BOM/compliance."
+        },
+        {
+          "step": 2,
+          "title": "Pick pilot board",
+          "detail": "Choose a board with real cross-functional touchpoints."
+        },
+        {
+          "step": 3,
+          "title": "Define meeting replacement",
+          "detail": "Replace one status meeting with Develop history + comments."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Share link",
+          "action": "Send project hub to non-CAD stakeholder",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://resources.altium.com/p/getting-started-in-develop",
+      "officialDocLinks": [
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        },
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        }
+      ],
+      "altiumCtaLabel": "Bring your team into Altium Develop"
+    },
+    {
+      "catalogId": "cat-097",
+      "youtubeId": "JDBGNQylBg0",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-097",
+      "workflowStage": "Multidisciplinary Collaboration",
+      "role": "Hardware & PCB Engineering",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Role-Based Collaboration",
+        "Workspace Permissions",
+        "Team Workflows"
+      ],
+      "learningPathIds": [
+        "path-007"
+      ],
+      "nextRecommendedLessonId": "cat-098",
+      "shortDescription": "See how three engineering roles operate in one Develop workspace without stepping on each other’s work.",
+      "fullSummary": "Concrete role walkthrough: how a PCB engineer, an adjacent specialist (e.g., mechanical or firmware-aware reviewer), and a lead use the same project with different jobs-to-be-done—edit, review, decide—while preserving a single history.",
+      "learningOutcomes": [
+        "Differentiate edit / review / decide jobs in one workspace",
+        "Configure invitations so roles match real work",
+        "Use comments and history as the cross-role contract"
+      ],
+      "prerequisites": [
+        "Why multidisciplinary teams need Altium Develop"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Three roles, one project hub"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Editor workflow"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Reviewer workflow"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Decision / lead workflow"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Same artifact, different jobs: layout vs review vs release decision."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Editors live in CAD + push; reviewers live in comments/3D/views."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Leads use history and unresolved threads as the standup board."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Never grant edit to 'stay informed' stakeholders."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Label three people",
+          "detail": "Editor, reviewer, decision-maker for a live project."
+        },
+        {
+          "step": 2,
+          "title": "Match permissions",
+          "detail": "Adjust invites to match those jobs."
+        },
+        {
+          "step": 3,
+          "title": "Exercise each path",
+          "detail": "Each person completes one action in Develop today."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Resolve",
+          "action": "Resolve a review comment",
+          "context": "Develop"
+        },
+        {
+          "key": "History",
+          "action": "Open revision history",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/collaboration",
+      "officialDocLinks": [
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        },
+        {
+          "title": "Project history",
+          "url": "https://www.altium.com/documentation/altium-365/project-history"
+        }
+      ],
+      "altiumCtaLabel": "Align roles in Altium Develop"
+    },
+    {
+      "catalogId": "cat-098",
+      "youtubeId": "3B-cI9xEx9Q",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-098",
+      "workflowStage": "Multidisciplinary Collaboration",
+      "role": "Hardware & PCB Engineering",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Daily Collaboration",
+        "Team Rituals",
+        "Project Hub Hygiene"
+      ],
+      "learningPathIds": [
+        "path-007",
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-180",
+      "shortDescription": "Follow a realistic day-in-the-life of a hardware team workspace—standups, reviews, and handoffs inside Develop.",
+      "fullSummary": "Narrative lesson showing morning status, mid-day design push, afternoon review comments, and end-of-day visibility for leads. Turns abstract collaboration features into a repeatable daily rhythm.",
+      "learningOutcomes": [
+        "Run a Develop-centered daily rhythm for a hardware team",
+        "Know which surfaces to check morning vs afternoon",
+        "Close the day with unresolved comment hygiene"
+      ],
+      "prerequisites": [
+        "Three engineering roles, one workspace"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Morning: status & blockers"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Midday: push & notify"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Afternoon: reviews"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Close-out: unresolved threads"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Morning: history + open comments replace 'any updates?' Slack."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] After a CAD push, tag the right reviewer in-thread."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Afternoon reviews stay attached to design objects when possible."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] End day: no silent blockers—owner assigned on every open thread."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Morning scan",
+          "detail": "History + open comments before stand-up."
+        },
+        {
+          "step": 2,
+          "title": "Push with intent",
+          "detail": "Commit message / note states what reviewers should check."
+        },
+        {
+          "step": 3,
+          "title": "Close-out",
+          "detail": "Assign owners on every unresolved comment."
+        }
+      ],
+      "commands": [
+        {
+          "key": "@mention",
+          "action": "Notify reviewer in comment",
+          "context": "Develop"
+        },
+        {
+          "key": "Filter",
+          "action": "Show unresolved comments",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/collaboration",
+      "officialDocLinks": [
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        },
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        }
+      ],
+      "altiumCtaLabel": "Run tomorrow’s standup in Develop"
+    },
+    {
+      "catalogId": "cat-180",
+      "youtubeId": "BO50EfxPMMc",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-180",
+      "workflowStage": "Multidisciplinary Collaboration",
+      "role": "Engineering Leadership",
+      "difficulty": "Intermediate",
+      "skills": [
+        "External Collaboration",
+        "Secure Sharing",
+        "Partner Access"
+      ],
+      "learningPathIds": [
+        "path-007"
+      ],
+      "nextRecommendedLessonId": "cat-090",
+      "shortDescription": "Invite external stakeholders safely—CM, consultants, customers—without opening the entire company vault.",
+      "fullSummary": "Focuses on controlled external access: least privilege, project-scoped invites, what outsiders should see (views/comments vs edit), and how to revoke access when a partnership ends. Bridges internal team work to partner ecosystems.",
+      "learningOutcomes": [
+        "Invite external parties with least-privilege defaults",
+        "Scope access to the right project—not the whole workspace",
+        "Define a revoke checklist for ended partnerships"
+      ],
+      "prerequisites": [
+        "One day in a hardware team workspace"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Why external access goes wrong"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Project-scoped invites"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "View vs edit for partners"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Revoke & audit habits"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Unlimited invites still need intentional scopes."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Prefer project-level access over workspace-wide for vendors."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Most partners need view + comment, not layout edit."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Schedule access reviews when contracts end."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Choose scope",
+          "detail": "Project-only invite for the partner."
+        },
+        {
+          "step": 2,
+          "title": "Set view-first",
+          "detail": "Grant comment if needed; withhold edit by default."
+        },
+        {
+          "step": 3,
+          "title": "Log the invite",
+          "detail": "Record who invited whom and why for audits."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Invite external",
+          "action": "Add partner with limited role",
+          "context": "Develop"
+        },
+        {
+          "key": "Remove",
+          "action": "Revoke partner access",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/collaboration",
+      "officialDocLinks": [
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        },
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        }
+      ],
+      "altiumCtaLabel": "Invite a partner safely in Altium"
+    },
+    {
+      "catalogId": "cat-090",
+      "youtubeId": "Noxk9jw-3rs",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-090",
+      "workflowStage": "Requirements",
+      "role": "Compliance & Sustainability",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Requirements Engineering",
+        "AI Assistance",
+        "Verification & Traceability"
+      ],
+      "learningPathIds": [
+        "path-007",
+        "path-009"
+      ],
+      "nextRecommendedLessonId": "cat-190",
+      "shortDescription": "Turn product requirements into linked, verifiable hardware constraints with AI-assisted capture in Develop.",
+      "fullSummary": "Shows how requirements move from documents into a living system: extract constraints, attach them to design objects, and prepare for verification. Emphasizes human review of AI extractions text—never silent trust.",
+      "learningOutcomes": [
+        "Capture or import requirements into the Develop requirements flow",
+        "Link critical requirements to design objects",
+        "Prepare a verification-minded requirements set (not a wiki dump)"
+      ],
+      "prerequisites": [
+        "Team workspace with at least one active project"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Requirements pain in hardware"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "AI-assisted capture & human review"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Linking to design objects"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Ready for verification trail"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Missed requirements are often process failures, not CAD skill gaps."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] AI can draft extractions constraints—engineers must validate."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Link only requirements that must be proven on the board."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Next lesson: requirement → test point trail."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Import/paste source requirements",
+          "detail": "Start from PRD or system spec excerpts."
+        },
+        {
+          "step": 2,
+          "title": "Human-review AI drafts",
+          "detail": "Reject vague or duplicated constraints."
+        },
+        {
+          "step": 3,
+          "title": "Link top 5 critical requirements",
+          "detail": "Attach to schematic/PCB objects that implement them."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Requirements",
+          "action": "Open requirements portal",
+          "context": "Develop"
+        },
+        {
+          "key": "Link",
+          "action": "Attach requirement to object",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/requirements-and-systems-portal",
+      "officialDocLinks": [
+        {
+          "title": "Requirements & Systems Portal",
+          "url": "https://www.altium.com/documentation/altium-365/requirements-and-systems-portal"
+        },
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        }
+      ],
+      "altiumCtaLabel": "Capture requirements in Altium Develop"
+    },
+    {
+      "catalogId": "cat-190",
+      "youtubeId": "-9-n8f1kxX8",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-190",
+      "workflowStage": "Requirements",
+      "role": "Compliance & Sustainability",
+      "difficulty": "Advanced",
+      "skills": [
+        "Requirements Traceability",
+        "Test Points",
+        "Verification Planning"
+      ],
+      "learningPathIds": [
+        "path-009"
+      ],
+      "nextRecommendedLessonId": "cat-096",
+      "shortDescription": "Build a complete trail from a requirement to a testable point on the hardware—ready for verification.",
+      "fullSummary": "Closes the requirements loop: each critical requirement should map to implementation and to a verification method (test point, measurement, inspection). Demonstrates how Develop keeps that trail auditable for reviews and compliance conversations.",
+      "learningOutcomes": [
+        "Map a requirement to implementation and a verification method",
+        "Identify missing test points / unproven constraints",
+        "Produce a review-ready requirements↔test trail"
+      ],
+      "prerequisites": [
+        "AI-assisted requirements to verified hardware"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Requirement → implementation"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Choosing verification methods"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Test points & evidence"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Review package for auditors/leads"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] A requirement without a verification method is a wish."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Prefer measurable checks over vague 'looks good' reviews."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Capture evidence location (lab procedure, test point, inspection)."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Hand the trail to traceability/history lessons next."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Pick one critical requirement",
+          "detail": "Voltage, isolation, temperature, etc."
+        },
+        {
+          "step": 2,
+          "title": "Name the proof",
+          "detail": "Test point, measurement, or inspection step."
+        },
+        {
+          "step": 3,
+          "title": "Record the link",
+          "detail": "Ensure Develop/project notes show requirement↔proof."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Trace",
+          "action": "Open requirement links",
+          "context": "Develop"
+        },
+        {
+          "key": "Comment",
+          "action": "Note verification method on object",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/requirements-and-systems-portal",
+      "officialDocLinks": [
+        {
+          "title": "Requirements & Systems Portal",
+          "url": "https://www.altium.com/documentation/altium-365/requirements-and-systems-portal"
+        },
+        {
+          "title": "Project history",
+          "url": "https://www.altium.com/documentation/altium-365/project-history"
+        }
+      ],
+      "altiumCtaLabel": "Prove requirements in Altium Develop"
+    },
+    {
+      "catalogId": "cat-096",
+      "youtubeId": "Xm-WgUOWOlE",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-096",
+      "workflowStage": "Traceability",
+      "role": "Compliance & Sustainability",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Change Traceability",
+        "Audit Trails",
+        "Design History"
+      ],
+      "learningPathIds": [
+        "path-009",
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-181",
+      "shortDescription": "Make every hardware change audit-ready—who changed what, when, and why—inside Altium Develop.",
+      "fullSummary": "Traceability beyond requirements: revision history, comment resolution, and change narratives that survive audits and customer questions. Teaches teams to treat history as a product artifact, not an accident.",
+      "learningOutcomes": [
+        "Navigate project history to answer who/what/when",
+        "Attach rationale to changes via comments or commit notes",
+        "Prepare an audit-ready change narrative for a revision"
+      ],
+      "prerequisites": [
+        "From requirement to test point"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Why audits fail on hardware teams"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Reading project history"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Annotating intent on changes"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Packaging a revision narrative"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Auditors ask for evidence; chat scrolls are not evidence."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] History views answer who changed copper/docs and when."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Pair history with resolved comment threads for 'why'."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Next: formal version control habits."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Open history for last release candidate",
+          "detail": "Identify the delta set."
+        },
+        {
+          "step": 2,
+          "title": "Fill missing 'why'",
+          "detail": "Add comment or note where rationale is absent."
+        },
+        {
+          "step": 3,
+          "title": "Export/share narrative",
+          "detail": "Give leads a short revision story with links."
+        }
+      ],
+      "commands": [
+        {
+          "key": "History",
+          "action": "Open project history",
+          "context": "Develop"
+        },
+        {
+          "key": "Compare",
+          "action": "Diff revisions visually when available",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/project-history",
+      "officialDocLinks": [
+        {
+          "title": "Project history",
+          "url": "https://www.altium.com/documentation/altium-365/project-history"
+        },
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        }
+      ],
+      "altiumCtaLabel": "Make your next revision audit-ready"
+    },
+    {
+      "catalogId": "cat-181",
+      "youtubeId": "YM8uoe5nTDM",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-181",
+      "workflowStage": "Traceability",
+      "role": "Hardware & PCB Engineering",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Hardware Version Control",
+        "Revisions",
+        "Release Discipline"
+      ],
+      "learningPathIds": [
+        "path-006",
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-041",
+      "shortDescription": "Apply real version control discipline to hardware—revisions, baselines, and safe iteration in Develop.",
+      "fullSummary": "Hardware version control is not identical to git-for-firmware, but the principles transfer: baselines, meaningful revision labels, and never silently overwriting a released state. Shows how Develop history supports that discipline.",
+      "learningOutcomes": [
+        "Define a revision labeling scheme for your team",
+        "Create baselines before risky experiments",
+        "Recover intent from version history after a bad push"
+      ],
+      "prerequisites": [
+        "Audit-ready change tracing"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Hardware VC vs software git myths"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Baselines before experiments"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Revision labels that mean something"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Recovering from a bad push"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] 'Latest file on disk' is not version control."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Baseline before major placement/routing experiments."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Revision names should encode intent (proto, EVT, DVT)."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] History lesson next deepens day-to-day use."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Agree revision scheme",
+          "detail": "Document EVT/DVT/PVT or org equivalent."
+        },
+        {
+          "step": 2,
+          "title": "Baseline current good state",
+          "detail": "Capture before a risky change."
+        },
+        {
+          "step": 3,
+          "title": "Label the next push",
+          "detail": "Message states purpose of the revision."
+        }
+      ],
+      "commands": [
+        {
+          "key": "History",
+          "action": "Browse revisions",
+          "context": "Develop"
+        },
+        {
+          "key": "Release candidate",
+          "action": "Mark candidate revision",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/project-history",
+      "officialDocLinks": [
+        {
+          "title": "Project history",
+          "url": "https://www.altium.com/documentation/altium-365/project-history"
+        },
+        {
+          "title": "Project releasing",
+          "url": "https://www.altium.com/documentation/altium-365/project-releasing"
+        }
+      ],
+      "altiumCtaLabel": "Version hardware in Altium Develop"
+    },
+    {
+      "catalogId": "cat-041",
+      "youtubeId": "5TIyURTBs-U",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-041",
+      "workflowStage": "Project Visibility",
+      "role": "Engineering Leadership",
+      "difficulty": "Beginner",
+      "skills": [
+        "Project History",
+        "Change Review",
+        "Visibility"
+      ],
+      "learningPathIds": [
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-162",
+      "shortDescription": "Use Develop history effectively so leads and peers can see progress without interrupting CAD flow.",
+      "fullSummary": "Practical history usage: scanning changes, comparing moments in time, and using history as a visibility tool for managers and reviewers. Complements formal version control with daily situational awareness.",
+      "learningOutcomes": [
+        "Scan history for meaningful deltas quickly",
+        "Use history in standups instead of status theater",
+        "Spot risky silent changes early"
+      ],
+      "prerequisites": [
+        "Hardware version control basics"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "History as a visibility tool"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Scanning deltas efficiently"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "History in standups"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Escalating silent risk"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] History is for awareness—not only for audits."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Teach the team what a 'meaningful delta' looks like."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Standup: open history, ask about unexplained changes."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Follow with tracking-progress lessons for broader dashboards."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Open history daily",
+          "detail": "Even on quiet days—build the habit."
+        },
+        {
+          "step": 2,
+          "title": "Ask one why",
+          "detail": "Every unexplained delta gets a comment."
+        },
+        {
+          "step": 3,
+          "title": "Share a link",
+          "detail": "Send history view to async stakeholders."
+        }
+      ],
+      "commands": [
+        {
+          "key": "History",
+          "action": "Open history panel",
+          "context": "Develop"
+        },
+        {
+          "key": "Share",
+          "action": "Copy project hub link",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/project-history",
+      "officialDocLinks": [
+        {
+          "title": "Project history",
+          "url": "https://www.altium.com/documentation/altium-365/project-history"
+        },
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        }
+      ],
+      "altiumCtaLabel": "Use history in Altium Develop"
+    },
+    {
+      "catalogId": "cat-162",
+      "youtubeId": "3jkBNnnJoNc",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-162",
+      "workflowStage": "Project Visibility",
+      "role": "Engineering Leadership",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Progress Tracking",
+        "History",
+        "Team Visibility"
+      ],
+      "learningPathIds": [
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-176",
+      "shortDescription": "Track progress and history together so hardware delivery status is visible without spreadsheet archaeology.",
+      "fullSummary": "Combines progress tracking patterns with history usage: milestones, open reviews, and revision state as the live status board for a hardware sprint or program.",
+      "learningOutcomes": [
+        "Build a progress view from Develop signals (history, comments, release state)",
+        "Replace status spreadsheets for at least one pilot project",
+        "Escalate stalled reviews using unresolved threads"
+      ],
+      "prerequisites": [
+        "Effective use of history"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Signals of real progress"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "History + open reviews"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Milestone hygiene"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Escalating stalls"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Progress ≠ files moved; progress = decided, reviewed, releasable."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Combine history deltas with unresolved comment counts."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Milestones should map to revision labels."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Next: broader design-progress tracking patterns."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Define 3 milestones",
+          "detail": "e.g., schematic freeze, layout freeze, release."
+        },
+        {
+          "step": 2,
+          "title": "Map signals",
+          "detail": "Which Develop views prove each milestone."
+        },
+        {
+          "step": 3,
+          "title": "Weekly review",
+          "detail": "Walk milestones using live hub—not a copied slide."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Filter comments",
+          "action": "Unresolved only",
+          "context": "Develop"
+        },
+        {
+          "key": "History",
+          "action": "Scan week’s deltas",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/project-history",
+      "officialDocLinks": [
+        {
+          "title": "Project history",
+          "url": "https://www.altium.com/documentation/altium-365/project-history"
+        },
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        }
+      ],
+      "altiumCtaLabel": "Track progress in Altium Develop"
+    },
+    {
+      "catalogId": "cat-176",
+      "youtubeId": "nfPooIm7l64",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-176",
+      "workflowStage": "Project Visibility",
+      "role": "Engineering Leadership",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Design Progress",
+        "Program Visibility",
+        "Hardware Delivery"
+      ],
+      "learningPathIds": [
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-117",
+      "shortDescription": "Make design progress visible across the program—so leadership sees reality, not optimism.",
+      "fullSummary": "Expands visibility from a single project’s history to program-level habits: what to show executives, how to avoid vanity metrics, and how Develop surfaces support honest delivery conversations.",
+      "learningOutcomes": [
+        "Select honest progress indicators for hardware programs",
+        "Present Develop-backed status to non-CAD leaders",
+        "Avoid vanity metrics that hide risk"
+      ],
+      "prerequisites": [
+        "Tracking progress and using history"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Honest vs vanity metrics"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Program-level visibility habits"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "What leaders should open"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Transition into design reviews"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Percent-complete guesses hide BOM and review risk."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Prefer: open comments, revision state, release readiness."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Leaders should open the hub—not only receive screenshots."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Visibility without reviews is incomplete—next lessons cover reviews."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Pick metrics",
+          "detail": "Open threads, release state, critical requirement coverage."
+        },
+        {
+          "step": 2,
+          "title": "Publish a weekly link",
+          "detail": "Same Develop views every week."
+        },
+        {
+          "step": 3,
+          "title": "Kill one vanity metric",
+          "detail": "Remove slide metrics you cannot prove in-hub."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Share hub",
+          "action": "Send status link to leadership",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://resources.altium.com/p/getting-started-in-develop",
+      "officialDocLinks": [
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        },
+        {
+          "title": "Project history",
+          "url": "https://www.altium.com/documentation/altium-365/project-history"
+        }
+      ],
+      "altiumCtaLabel": "Show real progress in Altium Develop"
+    },
+    {
+      "catalogId": "cat-117",
+      "youtubeId": "DvvKglYegsM",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-117",
+      "workflowStage": "Design Reviews",
+      "role": "Hardware & PCB Engineering",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Design Reviews",
+        "Comments",
+        "Design Intent"
+      ],
+      "learningPathIds": [
+        "path-007",
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-188",
+      "shortDescription": "Capture design intent with comments and reviews so feedback sticks to the design—not to Slack.",
+      "fullSummary": "Design review craft inside Develop: placing comments, preserving intent, resolving threads, and keeping decisions attached to the artifacts they affect. Sets up schematic-specific review technique next.",
+      "learningOutcomes": [
+        "Run a comment-centered design review in Develop",
+        "Write comments that capture intent and requested action",
+        "Resolve threads with an explicit decision record"
+      ],
+      "prerequisites": [
+        "Tracking design progress"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Why reviews die in chat"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Comment craft & placement"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Resolving with decisions"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Preparing schematic deep-dives"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Unthreaded chat loses design intent within a week."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Good comments state observation, risk, and ask."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Resolve means decision recorded—not just emoji reaction."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Schematic review lesson applies the same discipline to circuits."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Schedule review against a revision",
+          "detail": "Lock which history point is under review."
+        },
+        {
+          "step": 2,
+          "title": "Comment with ask",
+          "detail": "Each thread needs a clear requested action."
+        },
+        {
+          "step": 3,
+          "title": "Resolve with decision",
+          "detail": "Write the outcome before closing."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Comment",
+          "action": "Add design comment",
+          "context": "Develop"
+        },
+        {
+          "key": "Resolve",
+          "action": "Close thread with note",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/collaboration",
+      "officialDocLinks": [
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        },
+        {
+          "title": "Project history",
+          "url": "https://www.altium.com/documentation/altium-365/project-history"
+        }
+      ],
+      "altiumCtaLabel": "Run reviews in Altium Develop"
+    },
+    {
+      "catalogId": "cat-188",
+      "youtubeId": "QlxX9bAEsjo",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-188",
+      "workflowStage": "Design Reviews",
+      "role": "Hardware & PCB Engineering",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Schematic Review",
+        "Design Reviews",
+        "Electrical Intent"
+      ],
+      "learningPathIds": [
+        "path-001",
+        "path-007"
+      ],
+      "nextRecommendedLessonId": "cat-125",
+      "shortDescription": "Review schematics effectively in Develop—catch electrical intent issues before layout multiplies cost.",
+      "fullSummary": "Schematic review patterns: power architecture, resets, bootstraps, differentials, and 'what did we mean?' intent checks. Uses Develop commenting so findings become actionable tasks for the designer.",
+      "learningOutcomes": [
+        "Execute a structured schematic review checklist in Develop",
+        "Prioritize findings by risk (safety, boot, power, interfaces)",
+        "Turn findings into owned, resolvable comment threads"
+      ],
+      "prerequisites": [
+        "Comments, reviews, and design intent"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Schematic review mindset"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Power & reset first"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Interfaces & differentials"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Closing the review loop"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Review power/reset/boot before net aesthetics."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Mark assumptions that are not written on the sheet."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Interface mistakes become PCB respins—catch them here."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] After electrical intent is solid, move to BOM/supply risk."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Run power/reset pass",
+          "detail": "First comment pass is only power domains & resets."
+        },
+        {
+          "step": 2,
+          "title": "Run interface pass",
+          "detail": "Connectors, levels, differentials, ESD."
+        },
+        {
+          "step": 3,
+          "title": "Assign owners",
+          "detail": "Every finding has a designer owner and due revision."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Comment on object",
+          "action": "Attach note to schematic object",
+          "context": "Develop"
+        },
+        {
+          "key": "Filter",
+          "action": "Show open schematic review threads",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/collaboration",
+      "officialDocLinks": [
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        },
+        {
+          "title": "Altium documentation hub",
+          "url": "https://www.altium.com/documentation"
+        }
+      ],
+      "altiumCtaLabel": "Review schematics in Altium Develop"
+    },
+    {
+      "catalogId": "cat-125",
+      "youtubeId": "89igYeQXZ_o",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-125",
+      "workflowStage": "BOM & Supply Risk",
+      "role": "Procurement & Components",
+      "difficulty": "Intermediate",
+      "skills": [
+        "BOM Management",
+        "Supply Chain Risk",
+        "Supplier Feedback",
+        "Procurement"
+      ],
+      "learningPathIds": [
+        "path-007",
+        "path-008"
+      ],
+      "nextRecommendedLessonId": "cat-058",
+      "shortDescription": "Use Develop BOM and supply-chain feedback to catch lifecycle and lead-time risk before release.",
+      "fullSummary": "Procurement-facing Develop workflows: reading live BOM risk, capturing supplier feedback quickly, and looping alternates back to engineering before a manufacturing handoff. Connects ActiveBOM-style thinking to team visibility.",
+      "learningOutcomes": [
+        "Identify high-risk BOM lines (lifecycle, lead time, single source)",
+        "Route supplier feedback into the project hub",
+        "Agree alternates with engineering before release"
+      ],
+      "prerequisites": [
+        "Schematic review complete enough for a stable parts list"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "BOM risk dashboard mindset"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Lifecycle & lead-time flags"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Supplier feedback loops"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Alternates before release"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] A releasable PCB with an unbuyable BOM is not releasable."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Flag NRND/EOL and extreme lead times early."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Supplier feedback should land in-thread, not only in email."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Next: formal project release / manufacturing handoff."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Export/open live BOM risk view",
+          "detail": "Sort by lifecycle and lead time."
+        },
+        {
+          "step": 2,
+          "title": "Tag engineering on top 5 risks",
+          "detail": "Comment threads per line item."
+        },
+        {
+          "step": 3,
+          "title": "Approve alternates",
+          "detail": "Record MPN decisions before release."
+        }
+      ],
+      "commands": [
+        {
+          "key": "ActiveBOM / BOM",
+          "action": "Open BOM risk view",
+          "context": "Develop"
+        },
+        {
+          "key": "Comment",
+          "action": "Flag part risk to engineer",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-designer/activebom",
+      "officialDocLinks": [
+        {
+          "title": "ActiveBOM documentation",
+          "url": "https://www.altium.com/documentation/altium-designer/activebom"
+        },
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        }
+      ],
+      "altiumCtaLabel": "Check BOM risk in Altium"
+    },
+    {
+      "catalogId": "cat-058",
+      "youtubeId": "4rI8BLQ1PXk",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-058",
+      "workflowStage": "Manufacturing Handoff",
+      "role": "Manufacturing & Quality",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Project Release",
+        "Manufacturing Handoff",
+        "Release Packages"
+      ],
+      "learningPathIds": [
+        "path-007",
+        "path-001"
+      ],
+      "nextRecommendedLessonId": "cat-199",
+      "shortDescription": "Release a project in Develop with a clean manufacturing handoff—baselines, packages, and audience.",
+      "fullSummary": "Release discipline: what 'released' means, who can release, what artifacts travel to CM/FAB/assembly, and how Develop keeps the released state visible so the team does not keep designing against a ghost revision.",
+      "learningOutcomes": [
+        "Execute a Develop project release with clear audience",
+        "List the artifact set expected by manufacturing partners",
+        "Freeze communication around the released revision"
+      ],
+      "prerequisites": [
+        "BOM risk reviewed for release candidate"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "What release means"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Pre-release checklist"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Performing the release"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Communicating the frozen revision"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Release is a team contract, not a button vanity."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Checklist: reviews closed, BOM risks accepted, outputs ready."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Release to the right audience—internal vs CM."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Pair with ECAD–MCAD–manufacturing unification next."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Run pre-release checklist",
+          "detail": "Reviews, BOM, outputs, revision label."
+        },
+        {
+          "step": 2,
+          "title": "Release in Develop",
+          "detail": "Follow org’s release workflow."
+        },
+        {
+          "step": 3,
+          "title": "Announce frozen rev",
+          "detail": "Share hub link stating 'design against this release only'."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Release",
+          "action": "Start project release",
+          "context": "Develop"
+        },
+        {
+          "key": "History",
+          "action": "Confirm released revision",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/project-releasing",
+      "officialDocLinks": [
+        {
+          "title": "Project releasing",
+          "url": "https://www.altium.com/documentation/altium-365/project-releasing"
+        },
+        {
+          "title": "Project history",
+          "url": "https://www.altium.com/documentation/altium-365/project-history"
+        }
+      ],
+      "altiumCtaLabel": "Release a project in Altium Develop"
+    },
+    {
+      "catalogId": "cat-199",
+      "youtubeId": "YlYz2IbLMX4",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-199",
+      "workflowStage": "ECAD–MCAD",
+      "role": "Manufacturing & Quality",
+      "difficulty": "Advanced",
+      "skills": [
+        "ECAD-MCAD CoDesign",
+        "Manufacturing Collaboration",
+        "Unified Design"
+      ],
+      "learningPathIds": [
+        "path-006",
+        "path-007"
+      ],
+      "nextRecommendedLessonId": "cat-140",
+      "shortDescription": "Connect ECAD, MCAD, and manufacturing into one unified design conversation in Altium Develop.",
+      "fullSummary": "Strategic and practical view of unified design: electrical, mechanical, and manufacturing sharing geometry, constraints, and release state. Positions Develop as the collaboration plane where enclosure, board, and CM feedback meet.",
+      "learningOutcomes": [
+        "Explain the ECAD–MCAD–manufacturing feedback loop",
+        "Identify which artifacts each discipline must see live",
+        "Plan a unified review before tooling commits"
+      ],
+      "prerequisites": [
+        "Project release basics"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Why unified design matters"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "ECAD↔MCAD exchange"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Manufacturing in the loop"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Review before tooling"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] STEP ping-pong is a symptom of missing shared state."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] MCAD needs trusted board geometry and keepouts early."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Manufacturing feedback should hit the same hub as design reviews."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Mechanical collaboration deep-dive next."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "List shared artifacts",
+          "detail": "Board outline, keepouts, connectors, height maps."
+        },
+        {
+          "step": 2,
+          "title": "Schedule unified review",
+          "detail": "ECAD+MCAD+CM on one revision."
+        },
+        {
+          "step": 3,
+          "title": "Record decisions in-hub",
+          "detail": "No side-channel geometry agreements."
+        }
+      ],
+      "commands": [
+        {
+          "key": "3D view",
+          "action": "Inspect board/enclosure context",
+          "context": "Develop"
+        },
+        {
+          "key": "Comment",
+          "action": "Flag mechanical clash",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-designer/mcad-co-designer",
+      "officialDocLinks": [
+        {
+          "title": "MCAD CoDesigner",
+          "url": "https://www.altium.com/documentation/altium-designer/mcad-co-designer"
+        },
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        }
+      ],
+      "altiumCtaLabel": "Unify ECAD/MCAD in Altium"
+    },
+    {
+      "catalogId": "cat-140",
+      "youtubeId": "_s8vzgWQ_IA",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-140",
+      "workflowStage": "ECAD–MCAD",
+      "role": "Manufacturing & Quality",
+      "difficulty": "Intermediate",
+      "skills": [
+        "ECAD-MCAD CoDesign",
+        "Mechanical Collaboration",
+        "3D Review"
+      ],
+      "learningPathIds": [
+        "path-006",
+        "path-007"
+      ],
+      "nextRecommendedLessonId": "cat-183",
+      "shortDescription": "Showcasing mechanical collaboration—fit, clearances, and enclosure feedback inside the Develop workflow.",
+      "fullSummary": "Hands-on mechanical collaboration patterns: reviewing board-in-enclosure context, commenting on collisions, and closing the loop with PCB designers. Complements the broader ECAD–MCAD–manufacturing story with a mechanical-first lens.",
+      "learningOutcomes": [
+        "Review mechanical fit using Develop-accessible views",
+        "File clash comments that PCB designers can act on",
+        "Agree enclosure constraints before the next layout push"
+      ],
+      "prerequisites": [
+        "Connecting ECAD, MCAD and manufacturing overview"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Mechanical reviewer job-to-be-done"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Fit & clearance checks"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Commenting clashes"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Closing the ECAD loop"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Mechanical review should not wait for gerbers."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Check connector placement, height, and keepouts first."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Clash comments need coordinates/context, not 'fix 3D'."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] After mechanical intent is stable, strengthen verification/compliance."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Open 3D/mechanical context",
+          "detail": "Same revision ECAD is editing."
+        },
+        {
+          "step": 2,
+          "title": "Comment top clashes",
+          "detail": "Connectors, heatsinks, enclosure ribs."
+        },
+        {
+          "step": 3,
+          "title": "Confirm next layout push",
+          "detail": "ECAD acknowledges threads before routing further."
+        }
+      ],
+      "commands": [
+        {
+          "key": "3D",
+          "action": "Open 3D collaboration view",
+          "context": "Develop"
+        },
+        {
+          "key": "@pcb",
+          "action": "Mention board owner on clash",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-designer/mcad-co-designer",
+      "officialDocLinks": [
+        {
+          "title": "MCAD CoDesigner",
+          "url": "https://www.altium.com/documentation/altium-designer/mcad-co-designer"
+        },
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        }
+      ],
+      "altiumCtaLabel": "Collaborate with MCAD in Altium"
+    },
+    {
+      "catalogId": "cat-183",
+      "youtubeId": "zJj8fUTas_E",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-183",
+      "workflowStage": "Verification & Compliance",
+      "role": "Compliance & Sustainability",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Engineering Verification",
+        "Design Assurance",
+        "Traceability"
+      ],
+      "learningPathIds": [
+        "path-009"
+      ],
+      "nextRecommendedLessonId": "cat-157",
+      "shortDescription": "How Altium Develop enables engineering verification—proving the design meets intent before scale-up.",
+      "fullSummary": "Verification as a team sport: linking requirements, reviews, tests, and release gates inside Develop so 'we think it works' becomes 'we can show it works.' Prepares for compliance and sustainability threading.",
+      "learningOutcomes": [
+        "Define verification evidence for critical requirements",
+        "Use Develop artifacts as verification inputs (history, links, reviews)",
+        "Gate release on verification completeness—not optimism"
+      ],
+      "prerequisites": [
+        "Mechanical collaboration basics; requirements trail"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Verification vs validation"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Evidence in the hub"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Gating release on proof"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Hand-off to compliance threads"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Verification answers: did we build what we specified?"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Evidence lives in links, tests, and closed reviews—not slide decks alone."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Release gates should reference verification status."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Compliance/sustainability lesson extends the same discipline."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "List critical verifications",
+          "detail": "Top requirements needing proof."
+        },
+        {
+          "step": 2,
+          "title": "Attach evidence pointers",
+          "detail": "Lab report, test point, inspection note."
+        },
+        {
+          "step": 3,
+          "title": "Block release if gaps remain",
+          "detail": "Make gaps visible in the hub."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Requirements",
+          "action": "Open verification links",
+          "context": "Develop"
+        },
+        {
+          "key": "Release gate",
+          "action": "Review release readiness",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/requirements-and-systems-portal",
+      "officialDocLinks": [
+        {
+          "title": "Requirements & Systems Portal",
+          "url": "https://www.altium.com/documentation/altium-365/requirements-and-systems-portal"
+        },
+        {
+          "title": "Project releasing",
+          "url": "https://www.altium.com/documentation/altium-365/project-releasing"
+        }
+      ],
+      "altiumCtaLabel": "Verify in Altium Develop"
+    },
+    {
+      "catalogId": "cat-157",
+      "youtubeId": "n3b2QEzwst8",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-157",
+      "workflowStage": "Verification & Compliance",
+      "role": "Compliance & Sustainability",
+      "difficulty": "Advanced",
+      "skills": [
+        "Compliance",
+        "Sustainability",
+        "Regulatory Workflows"
+      ],
+      "learningPathIds": [
+        "path-009"
+      ],
+      "nextRecommendedLessonId": "cat-130",
+      "shortDescription": "Run compliance and sustainability threads in Develop so ESG/regulatory work stays attached to the design.",
+      "fullSummary": "Compliance is often a side spreadsheet—this lesson keeps RoHS/REACH/ESG and regulatory conversations threaded against the hardware project, with owners and evidence, so manufacturing and leadership see the same status.",
+      "learningOutcomes": [
+        "Create compliance/sustainability threads tied to the project",
+        "Assign owners and evidence for regulatory checks",
+        "Surface compliance status alongside design progress"
+      ],
+      "prerequisites": [
+        "Engineering verification habits in Develop"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Compliance as threaded work"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Sustainability data near the BOM"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Owners & evidence"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Visible status for leadership"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Compliance side-channels create release surprises."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Tie material/sustainability questions to BOM lines."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Every regulatory ask needs an owner and due gate."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Next: manage the broader PCB project workflow system."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Open compliance thread set",
+          "detail": "RoHS/REACH/other applicable."
+        },
+        {
+          "step": 2,
+          "title": "Link to BOM risks",
+          "detail": "Parts that block compliance."
+        },
+        {
+          "step": 3,
+          "title": "Add release gate note",
+          "detail": "Compliance green/yellow/red visible to leads."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Thread",
+          "action": "Create compliance discussion",
+          "context": "Develop"
+        },
+        {
+          "key": "BOM",
+          "action": "Cross-check restricted parts",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://resources.altium.com/p/getting-started-in-develop",
+      "officialDocLinks": [
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        },
+        {
+          "title": "ActiveBOM",
+          "url": "https://www.altium.com/documentation/altium-designer/activebom"
+        }
+      ],
+      "altiumCtaLabel": "Track compliance in Altium Develop"
+    },
+    {
+      "catalogId": "cat-130",
+      "youtubeId": "CnoEwyo-Zlw",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-130",
+      "workflowStage": "Engineering Management",
+      "role": "Engineering Leadership",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Project Workflows",
+        "Process Design",
+        "Hardware Delivery"
+      ],
+      "learningPathIds": [
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-182",
+      "shortDescription": "Manage PCB project workflows in Develop—stages, owners, and handoffs without process theater.",
+      "fullSummary": "Engineering management view of Develop: defining workflow stages (concept → release), owners per stage, and how the hub enforces the path. Sets up sprint-week execution next.",
+      "learningOutcomes": [
+        "Define a PCB project workflow with clear stage exits",
+        "Assign stage owners visible in Develop",
+        "Remove redundant status meetings using hub signals"
+      ],
+      "prerequisites": [
+        "Compliance threads understood; team workspace mature"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Workflow stages that matter"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Owners & exit criteria"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Hub signals vs meetings"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Ready for sprint execution"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Workflow charts fail when exit criteria are vague."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Each stage needs a human owner and a Develop proof."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Prefer hub review over redundant status meetings."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Sprint-week lesson applies the workflow under time pressure."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Write stage exits",
+          "detail": "Schematic freeze, layout freeze, release."
+        },
+        {
+          "step": 2,
+          "title": "Publish owners",
+          "detail": "Name owners in project description/thread."
+        },
+        {
+          "step": 3,
+          "title": "Delete one meeting",
+          "detail": "Replace with hub walkthrough."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Project settings",
+          "action": "Document workflow notes",
+          "context": "Develop"
+        },
+        {
+          "key": "Share",
+          "action": "Send workflow hub to team",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://resources.altium.com/p/getting-started-in-develop",
+      "officialDocLinks": [
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        },
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        }
+      ],
+      "altiumCtaLabel": "Manage workflows in Altium Develop"
+    },
+    {
+      "catalogId": "cat-182",
+      "youtubeId": "O5Pe1WgZFVc",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-182",
+      "workflowStage": "Engineering Management",
+      "role": "Engineering Leadership",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Hardware Sprinting",
+        "Team Cadence",
+        "Execution"
+      ],
+      "learningPathIds": [
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-187",
+      "shortDescription": "Run a sprint week in Altium Develop—cadence, review points, and honest burn-down for hardware.",
+      "fullSummary": "Applies agile-like cadence carefully to hardware: what fits (timeboxed reviews, visible WIP) and what does not (pretending copper is story points). Uses Develop as the sprint board via comments, history, and release candidates.",
+      "learningOutcomes": [
+        "Plan a hardware sprint week with Develop checkpoints",
+        "Avoid fake story-point theater on physical design",
+        "End the week with a releasable or explicitly deferred outcome"
+      ],
+      "prerequisites": [
+        "PCB project workflows defined"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Hardware sprint realities"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Week checkpoints in Develop"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "WIP limits via reviews"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Friday outcome discipline"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Hardware sprints need physical checkpoints, not only tickets."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Mid-week review against a named revision."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Limit open comment WIP so reviews finish."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Next: connect external tickets (Jira) to released PCB."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Declare week outcome",
+          "detail": "e.g., schematic freeze candidate."
+        },
+        {
+          "step": 2,
+          "title": "Mid-week revision review",
+          "detail": "History + comments on Wednesday."
+        },
+        {
+          "step": 3,
+          "title": "Friday decision",
+          "detail": "Release candidate or explicit defer with owners."
+        }
+      ],
+      "commands": [
+        {
+          "key": "History",
+          "action": "Mid-week delta review",
+          "context": "Develop"
+        },
+        {
+          "key": "Comments",
+          "action": "Triage open WIP",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://resources.altium.com/p/getting-started-in-develop",
+      "officialDocLinks": [
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        },
+        {
+          "title": "Project history",
+          "url": "https://www.altium.com/documentation/altium-365/project-history"
+        }
+      ],
+      "altiumCtaLabel": "Run your sprint in Altium Develop"
+    },
+    {
+      "catalogId": "cat-187",
+      "youtubeId": "CGnKWzMxyvg",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-187",
+      "workflowStage": "Engineering Management",
+      "role": "Engineering Leadership",
+      "difficulty": "Advanced",
+      "skills": [
+        "Jira Integration",
+        "Ticket-to-Release",
+        "Delivery Traceability"
+      ],
+      "learningPathIds": [
+        "path-010",
+        "path-007"
+      ],
+      "nextRecommendedLessonId": "cat-168",
+      "shortDescription": "Follow work from a Jira ticket to a released PCB—closing the loop between program tracking and Develop.",
+      "fullSummary": "End-to-end delivery narrative: ticket intake, design execution in the hub, reviews, BOM risk, and release—so program tools and engineering truth stay aligned. Highlights integration points and manual discipline where automation ends.",
+      "learningOutcomes": [
+        "Map a Jira (or equivalent) ticket to Develop project activity",
+        "Keep ticket status honest using hub evidence",
+        "Close tickets only against released or explicitly accepted revisions"
+      ],
+      "prerequisites": [
+        "Sprint week cadence in Develop"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Ticket intake → project hub"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Execution evidence"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Review & BOM gates"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Release closes the ticket"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Tickets without hub evidence become fiction."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Link ticket IDs in commit/release notes."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Do not mark done at 'layout finished'—wait for release gates."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Productivity practices next help sustain the system."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Link ticket ↔ project",
+          "detail": "Put ticket ID in project notes / release notes."
+        },
+        {
+          "step": 2,
+          "title": "Update ticket from hub",
+          "detail": "Status changes cite history/review links."
+        },
+        {
+          "step": 3,
+          "title": "Close on release",
+          "detail": "Only after Develop release (or accepted defer)."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Release notes",
+          "action": "Include ticket ID",
+          "context": "Develop"
+        },
+        {
+          "key": "Share",
+          "action": "Paste hub link into Jira",
+          "context": "General"
+        }
+      ],
+      "officialDocUrl": "https://www.altium.com/documentation/altium-365/project-releasing",
+      "officialDocLinks": [
+        {
+          "title": "Project releasing",
+          "url": "https://www.altium.com/documentation/altium-365/project-releasing"
+        },
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        }
+      ],
+      "altiumCtaLabel": "Connect tickets to Altium Develop"
+    },
+    {
+      "catalogId": "cat-168",
+      "youtubeId": "65iSOk6u8Oo",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-168",
+      "workflowStage": "Engineering Management",
+      "role": "Engineering Leadership",
+      "difficulty": "Intermediate",
+      "skills": [
+        "Team Productivity",
+        "Engineering Management",
+        "Operating Rhythm"
+      ],
+      "learningPathIds": [
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-114",
+      "shortDescription": "Best practices for hardware team productivity—focus, WIP limits, and Develop as the operating system.",
+      "fullSummary": "Productivity without burnout theater: fewer parallel boards, clearer owners, faster reviews, and Develop hygiene that reduces context switching. Prepares managers to coach teams at scale.",
+      "learningOutcomes": [
+        "Apply WIP limits to boards and open review threads",
+        "Identify productivity leaks (meetings, rework, unclear owners)",
+        "Install a weekly Develop operating rhythm"
+      ],
+      "prerequisites": [
+        "Ticket-to-release loop understood"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "Productivity myths in hardware"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "WIP limits that work"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Review latency kills throughput"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Weekly operating rhythm"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] More parallel PCBs often means less throughput."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Cap open review threads per designer."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] Measure review latency using unresolved comments age."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Coaching/scaling lesson generalizes these practices."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Set WIP caps",
+          "detail": "Boards in flight + open threads."
+        },
+        {
+          "step": 2,
+          "title": "Publish review SLA",
+          "detail": "e.g., 48h for critical comments."
+        },
+        {
+          "step": 3,
+          "title": "Weekly rhythm",
+          "detail": "History + comments + release candidates."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Filter",
+          "action": "Oldest unresolved comments",
+          "context": "Develop"
+        },
+        {
+          "key": "History",
+          "action": "Weekly throughput scan",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://resources.altium.com/p/getting-started-in-develop",
+      "officialDocLinks": [
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        },
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        }
+      ],
+      "altiumCtaLabel": "Improve team cadence in Altium"
+    },
+    {
+      "catalogId": "cat-114",
+      "youtubeId": "PQPA30fd1NY",
+      "enrichmentStatus": "enriched",
+      "softwareVersion": "Develop",
+      "featured": true,
+      "product": "Altium Develop",
+      "altiumTrialUrl": "https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library&utm_content=cat-114",
+      "workflowStage": "Engineering Management",
+      "role": "Engineering Leadership",
+      "difficulty": "Advanced",
+      "skills": [
+        "Coaching",
+        "Scaling Best Practices",
+        "Engineering Management"
+      ],
+      "learningPathIds": [
+        "path-010"
+      ],
+      "nextRecommendedLessonId": "cat-123",
+      "shortDescription": "Coach teams and scale Develop best practices so good habits survive growth and new hires.",
+      "fullSummary": "Leadership capstone for this Develop enrichment set: turning local pilot habits into team standards—onboarding checklists, review norms, release discipline—and using Develop itself as the training ground via past projects and visible exemplars.",
+      "learningOutcomes": [
+        "Codify Develop operating standards for your org",
+        "Coach new hires using live project history and exemplars",
+        "Scale practices without drowning teams in process docs"
+      ],
+      "prerequisites": [
+        "Team productivity practices in place"
+      ],
+      "chapters": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "title": "From pilot to standard"
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "title": "Coaching with live history"
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "title": "Onboarding checklist"
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "title": "Keep standards alive"
+        }
+      ],
+      "transcriptKind": "outline",
+      "transcript": [
+        {
+          "timestampSeconds": 0,
+          "timestampFormatted": "0:00",
+          "text": "[Outline] Scaling fails when standards live only in a manager’s head."
+        },
+        {
+          "timestampSeconds": 180,
+          "timestampFormatted": "3:00",
+          "text": "[Outline] Coach on real threads/history—not abstract slides."
+        },
+        {
+          "timestampSeconds": 360,
+          "timestampFormatted": "6:00",
+          "text": "[Outline] New-hire checklist: workspace, comments, release rules."
+        },
+        {
+          "timestampSeconds": 540,
+          "timestampFormatted": "9:00",
+          "text": "[Outline] Loop back to intro lessons when rebooting a team’s mental model."
+        }
+      ],
+      "proceduralSteps": [
+        {
+          "step": 1,
+          "title": "Write a one-page standard",
+          "detail": "Comments, history, release, permissions."
+        },
+        {
+          "step": 2,
+          "title": "Pick exemplar projects",
+          "detail": "Good and bad patterns side-by-side."
+        },
+        {
+          "step": 3,
+          "title": "Run a coaching review",
+          "detail": "Walk a real thread with a new hire."
+        }
+      ],
+      "commands": [
+        {
+          "key": "Share exemplar",
+          "action": "Open model project hub",
+          "context": "Develop"
+        },
+        {
+          "key": "History",
+          "action": "Teach from real deltas",
+          "context": "Develop"
+        }
+      ],
+      "officialDocUrl": "https://resources.altium.com/p/getting-started-in-develop",
+      "officialDocLinks": [
+        {
+          "title": "Getting started in Develop",
+          "url": "https://resources.altium.com/p/getting-started-in-develop"
+        },
+        {
+          "title": "Collaboration",
+          "url": "https://www.altium.com/documentation/altium-365/collaboration"
+        }
+      ],
+      "altiumCtaLabel": "Scale best practices with Altium Develop"
+    }
+  ]
+}

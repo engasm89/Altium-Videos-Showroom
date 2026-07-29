@@ -1,7 +1,13 @@
-import { Tutorial, YoutubeStatus, EnrichmentStatus } from '../types';
+import {
+  Tutorial,
+  YoutubeStatus,
+  EnrichmentStatus,
+  isPedagogicallyEnriched,
+} from '../types';
 import { isPlayableYoutubeId } from '../utils/youtube';
 import { CURATED_ENRICHMENT } from './curatedEnrichment';
 import generated from './catalog.generated.json';
+import developEnrichmentOverlay from './developEnrichment.overlay.json';
 
 export type CatalogGeneratedRow = {
   id: string;
@@ -49,6 +55,36 @@ const PENDING_TOPIC_TARGETS: Record<string, string> = {
   'eet_pending_015': 'cat-244', // Manufacturing outputs Arduino
 };
 
+type DevelopOverlayRow = {
+  catalogId: string;
+  youtubeId: string;
+  enrichmentStatus?: EnrichmentStatus;
+  shortDescription?: string;
+  fullSummary?: string;
+  difficulty?: Tutorial['difficulty'];
+  role?: Tutorial['role'];
+  skills?: string[];
+  learningPathIds?: string[];
+  projectId?: string;
+  chapters?: Tutorial['chapters'];
+  transcript?: Tutorial['transcript'];
+  transcriptKind?: Tutorial['transcriptKind'];
+  commands?: Tutorial['commands'];
+  proceduralSteps?: Tutorial['proceduralSteps'];
+  learningOutcomes?: string[];
+  prerequisites?: string[];
+  workflowStage?: string;
+  nextRecommendedLessonId?: string;
+  resources?: Tutorial['resources'];
+  officialDocUrl?: string;
+  officialDocLinks?: Tutorial['officialDocLinks'];
+  altiumTrialUrl?: string;
+  altiumCtaLabel?: string;
+  softwareVersion?: string;
+  featured?: boolean;
+  product?: Tutorial['product'];
+};
+
 function rowToTutorial(row: CatalogGeneratedRow): Tutorial {
   return {
     id: row.id,
@@ -83,6 +119,7 @@ function rowToTutorial(row: CatalogGeneratedRow): Tutorial {
 }
 
 function mergeEnrichment(base: Tutorial, overlay: Tutorial): Tutorial {
+  const hasPedagogy = Boolean(overlay.chapters?.length || overlay.transcript?.length);
   return {
     ...base,
     // Keep honest sheet title / ID / status; overlay pedagogical depth.
@@ -99,16 +136,64 @@ function mergeEnrichment(base: Tutorial, overlay: Tutorial): Tutorial {
       new Set([...(overlay.learningPathIds || []), ...(base.learningPathIds || [])])
     ),
     chapters: overlay.chapters?.length ? overlay.chapters : base.chapters,
-    transcript: overlay.transcript,
-    commands: overlay.commands,
-    resources: overlay.resources,
-    softwareVersion: overlay.softwareVersion,
+    transcript: overlay.transcript ?? base.transcript,
+    transcriptKind: overlay.transcriptKind ?? base.transcriptKind,
+    commands: overlay.commands ?? base.commands,
+    proceduralSteps: overlay.proceduralSteps ?? base.proceduralSteps,
+    learningOutcomes: overlay.learningOutcomes ?? base.learningOutcomes,
+    prerequisites: overlay.prerequisites ?? base.prerequisites,
+    workflowStage: overlay.workflowStage ?? base.workflowStage,
+    nextRecommendedLessonId:
+      overlay.nextRecommendedLessonId ?? base.nextRecommendedLessonId,
+    resources: overlay.resources ?? base.resources,
+    officialDocUrl: overlay.officialDocUrl || base.officialDocUrl,
+    officialDocLinks: overlay.officialDocLinks ?? base.officialDocLinks,
+    altiumTrialUrl: overlay.altiumTrialUrl || base.altiumTrialUrl,
+    altiumCtaLabel: overlay.altiumCtaLabel ?? base.altiumCtaLabel,
+    softwareVersion: overlay.softwareVersion || base.softwareVersion,
     featured: overlay.featured || base.featured,
-    enrichmentStatus:
-      overlay.chapters?.length || overlay.transcript?.length
-        ? 'hand_enriched'
-        : base.enrichmentStatus,
+    enrichmentStatus: hasPedagogy
+      ? overlay.enrichmentStatus === 'enriched'
+        ? 'enriched'
+        : 'hand_enriched'
+      : base.enrichmentStatus,
     legacyIds: Array.from(new Set([...(base.legacyIds || []), overlay.id])),
+  };
+}
+
+function mergeDevelopOverlay(base: Tutorial, overlay: DevelopOverlayRow): Tutorial {
+  const hasPedagogy = Boolean(overlay.chapters?.length || overlay.transcript?.length);
+  return {
+    ...base,
+    shortDescription: overlay.shortDescription || base.shortDescription,
+    fullSummary: overlay.fullSummary || base.fullSummary,
+    difficulty: overlay.difficulty || base.difficulty,
+    role: overlay.role || base.role,
+    skills: overlay.skills?.length ? overlay.skills : base.skills,
+    projectId: overlay.projectId || base.projectId,
+    learningPathIds: Array.from(
+      new Set([...(overlay.learningPathIds || []), ...(base.learningPathIds || [])])
+    ),
+    chapters: overlay.chapters?.length ? overlay.chapters : base.chapters,
+    transcript: overlay.transcript ?? base.transcript,
+    transcriptKind: overlay.transcriptKind ?? base.transcriptKind,
+    commands: overlay.commands ?? base.commands,
+    proceduralSteps: overlay.proceduralSteps ?? base.proceduralSteps,
+    learningOutcomes: overlay.learningOutcomes ?? base.learningOutcomes,
+    prerequisites: overlay.prerequisites ?? base.prerequisites,
+    workflowStage: overlay.workflowStage ?? base.workflowStage,
+    nextRecommendedLessonId:
+      overlay.nextRecommendedLessonId ?? base.nextRecommendedLessonId,
+    resources: overlay.resources ?? base.resources,
+    officialDocUrl: overlay.officialDocUrl || base.officialDocUrl,
+    officialDocLinks: overlay.officialDocLinks ?? base.officialDocLinks,
+    altiumTrialUrl: overlay.altiumTrialUrl || base.altiumTrialUrl,
+    altiumCtaLabel: overlay.altiumCtaLabel ?? base.altiumCtaLabel,
+    softwareVersion: overlay.softwareVersion || base.softwareVersion,
+    featured: overlay.featured || base.featured,
+    enrichmentStatus: hasPedagogy
+      ? overlay.enrichmentStatus || 'enriched'
+      : base.enrichmentStatus,
   };
 }
 
@@ -143,8 +228,25 @@ for (const overlay of CURATED_ENRICHMENT) {
   }
 }
 
+/** Strategic Altium Develop enrichment overlays (subset of Develop catalog). */
+for (const overlay of developEnrichmentOverlay.overlays as DevelopOverlayRow[]) {
+  const target =
+    byId.get(overlay.catalogId) ||
+    (isPlayableYoutubeId(overlay.youtubeId)
+      ? byYoutubeId.get(overlay.youtubeId)
+      : undefined);
+  if (!target) continue;
+
+  const merged = mergeDevelopOverlay(target, overlay);
+  byId.set(target.id, merged);
+  if (isPlayableYoutubeId(merged.youtubeId)) {
+    byYoutubeId.set(merged.youtubeId, merged);
+  }
+}
+
 export const CATALOG_ENRICHMENT_GOAL = 333;
 export const CATALOG_IMPORT_META = generated.meta;
+export const DEVELOP_ENRICHMENT_META = developEnrichmentOverlay.meta;
 
 /** Full imported catalog with enrichment overlays where available. */
 export const ALL_TUTORIALS: Tutorial[] = [...byId.values()].sort(
@@ -174,7 +276,10 @@ export const PLAYABLE_TUTORIALS = ALL_TUTORIALS.filter(isPlayableTutorial);
 
 export const catalogCounts = {
   total: ALL_TUTORIALS.length,
-  enriched: ALL_TUTORIALS.filter((t) => t.enrichmentStatus === 'hand_enriched').length,
+  enriched: ALL_TUTORIALS.filter((t) => isPedagogicallyEnriched(t.enrichmentStatus)).length,
+  developEnriched: ALL_TUTORIALS.filter(
+    (t) => t.product === 'Altium Develop' && t.enrichmentStatus === 'enriched'
+  ).length,
   playable: PLAYABLE_TUTORIALS.length,
   playableCandidates: PLAYABLE_TUTORIALS.length,
   withYoutubeId: ALL_TUTORIALS.filter((t) => isPlayableYoutubeId(t.youtubeId)).length,

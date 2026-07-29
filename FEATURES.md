@@ -651,7 +651,7 @@ Call these out so nobody confuses roadmap with shipping:
 | **Supabase / Postgres backend** | Not started — no multi-user progress or server analytics (tutorial feedback uses webhook/Resend/GitHub instead) |
 | **Custom domain `learn.eduengteam.com`** | **Code + SEO ready** (`VITE_SITE_URL` default). DNS + Cloudflare/Vercel attach still **manual (Ashraf)** — see FORAshraf.md |
 | **PostHog / GA4 keys in production** | Code stubs exist; no-op until `VITE_*` env set |
-| **Full chapter/transcript enrichment for all 333** | Only 15 hand-enriched overlays today |
+| **Full chapter/transcript enrichment for all 333** | ~39 pedagogically enriched today (incl. ~29 strategic Develop `enriched` overlays); rest still thin |
 | **Resolve the 1 unverified embed** | Done — `cat-104` re-verified (EET oEmbed author + title match); hard-demote list cleared |
 | **SSR / prerender for SEO** | SPA rewrite only — meta/sitemap help; HTML still one shell |
 | **Certificate issuance in path UX** | Component file present, not primary flow |
@@ -673,7 +673,7 @@ Call these out so nobody confuses roadmap with shipping:
 4. **SPA SEO ceiling.** Sitemap + JSON-LD help, but Google mostly sees one shell. Custom domain + SSR is the real SEO unlock, not more meta tags.
 5. **Privacy copy vs production analytics.** Shipping GA/PostHog without updating Privacy is a self-inflicted trust bug — Privacy now branches on whether keys are enabled.
 6. **Admin password is a Vite client gate.** Production **blocks** `/admin` (and `/feedback-inbox`) when `VITE_ADMIN_PASSWORD` is unset — set it on Vercel and redeploy. It is still not a server secret; do not treat it as one.
-7. **Enrichment asymmetry.** 15 hand-enriched lessons feel like a premium product; the other ~318 thin audit rows feel like a spreadsheet dump. The product story should be “honest inventory + deepening enrichment,” not “finished academy.”
+7. **Enrichment asymmetry.** ~39 pedagogically enriched lessons (including a Develop strategic set) feel premium; the other ~290 thin audit rows still feel like a spreadsheet dump. The product story should stay “honest inventory + deepening enrichment,” not “finished academy.”
 8. **CSV vs xlsx confusion.** If someone re-imports from xlsx “because the spreadsheet is familiar,” they silently shrink / reshape the live catalog. Guardrail: keep `data/videos.csv` present; document CSV-first in every ops runbook.
 
 **Stronger long-term approach:** keep the honesty gates (status, oEmbed, demote-over-fake), keep My Activity clearly browser-local while PostHog/GA4 own site-wide truth, deepen enrichment toward the 333 goal as content ops (same audit script), and keep content-report + tutorial feedback wired to `/api/feedback`.
