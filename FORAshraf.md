@@ -148,33 +148,38 @@ If you remember one sentence: **this library earns trust by refusing to pretend.
 
 ## Catalog Import Reality (Jul 29, 2026)
 
-The spreadsheet `Educational_Engineering_Team_Altium_Video_Catalog.xlsx` is now the inventory source of truth.
+**Source precedence:** `data/videos.csv` (from the channel Altium-search MD dump) **wins** over `Educational_Engineering_Team_Altium_Video_Catalog.xlsx`. Xlsx is fallback only when CSV is absent.
 
 **How to re-import**
 
 ```bash
-npm run import:catalog          # parses xlsx + oEmbed validates IDs
+npm run md:to-csv               # parse report / MD → data/videos.csv
+npm run import:catalog          # prefers CSV; oEmbed validates IDs
 npm run import:catalog:fast     # format-only (skip network)
+npm run import:videos:csv       # explicit --csv import
+npm run audit:youtube:apply     # honesty audit + rewrite catalog
 ```
 
 Outputs:
-- `src/data/catalog.generated.json` — 201 rows with `youtubeStatus` / `enrichmentStatus`
+- `src/data/catalog.generated.json` — 333 rows with `youtubeStatus` / `enrichmentStatus`
 - `scripts/import-report.json` — counts + duplicates
 - `public/sitemap.xml` — regenerated from slugs
 
-**Import stats (post Jul 29, 2026 YouTube embed audit)**
-- 201 named videos
-- 165 direct YouTube IDs / 198 with some URL
-- 163 oEmbed-`public` (author: Educational Engineering Team)
-- 2 unverified (embed withheld): oEmbed 403 + one weak title/topic mismatch
-- 33 playlist-only + 3 missing individual URLs
-- Designer 101 / Develop 100 (five “Develop Workspace” rows were actually Designer uploads)
-
-**Full embed re-audit (same day)**
-Spreadsheet URLs matched generated IDs 165/165 — no wrong-ID swaps left from the old Fireplace Ambience class of bug. What *did* remain was quieter: invoice/marketing titles that did not match the YouTube upload title, and five lessons labeled Altium Develop whose oEmbed titles clearly said Altium Designer. Fix: retitle to oEmbed, correct product tags, demote anything too weak to invent a match (`cat-104`). Re-run with `npm run audit:youtube` / `npm run audit:youtube:apply`. Report: `scripts/youtube-embed-audit-report.md`.
+**Import stats (MD→CSV + oEmbed audit)**
+- 333 named videos (332 numbered + 1 CSV-only)
+- 333 direct YouTube IDs (no invented IDs; deduped by video_id)
+- 332 oEmbed-`public` embeds; 1 demoted unverified
+- Designer ~266 / Develop ~55 / Other·Adjacent ~12 (honest search-tail tags)
+- Learning paths / projects / roles remapped to new `cat-*` via YouTube ID
 
 **Honesty rules that still apply**
 - Format-valid IDs alone are **not** playable — UI requires `youtubeStatus === 'public'`.
+- Prefer demoting a weak title/topic match over shipping the wrong lesson.
+- Prefer oEmbed title alignment over marketing titles.
+- No synthetic view counts; CSV from MD wins when it duplicates xlsx.
+
+**Full embed re-audit**
+Re-run with `npm run audit:youtube` / `npm run audit:youtube:apply`. Report: `scripts/youtube-embed-audit-report.md`.
 - Channel match is necessary but not sufficient — catalog title must also reflect the actual upload.
 - Prefer demoting a dubious embed over shipping the wrong lesson.
 - Hand-enriched chapters/transcripts from the prior 15 curated lessons overlay onto matching imported rows (by verified YouTube ID or topic fallback). Paths/roles/projects remapped to `cat-*` IDs.
