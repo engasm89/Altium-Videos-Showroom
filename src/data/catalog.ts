@@ -126,7 +126,7 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     difficulty: 'Intermediate',
     role: 'Hardware & PCB Engineering',
     skills: ['Footprint Design', 'IPC Standards', '3D STEP Models'],
-    learningPathIds: ['path-002', 'path-003'],
+    learningPathIds: ['path-001', 'path-002', 'path-003'],
     projectId: 'proj-esp32',
     featured: true,
     chapters: [

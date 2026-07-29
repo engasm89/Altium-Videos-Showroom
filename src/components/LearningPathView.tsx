@@ -65,10 +65,15 @@ export const LearningPathView: React.FC<LearningPathViewProps> = ({
   };
 
   const calculatePathProgress = (path: LearningPath) => {
-    const pathTutorials = ALL_TUTORIALS.filter(t => t.learningPathIds.includes(path.id));
-    if (pathTutorials.length === 0) return { completed: 0, total: path.tutorialCount, percentage: 0 };
-    
-    const completedCount = pathTutorials.filter(t => progress.completedTutorials.includes(t.id)).length;
+    const moduleTutorialIds = [...new Set(path.modules.flatMap((m) => m.tutorialIds))];
+    const pathTutorials = moduleTutorialIds
+      .map((id) => ALL_TUTORIALS.find((t) => t.id === id))
+      .filter((t): t is Tutorial => Boolean(t));
+    if (pathTutorials.length === 0) return { completed: 0, total: 0, percentage: 0 };
+
+    const completedCount = pathTutorials.filter((t) =>
+      progress.completedTutorials.includes(t.id)
+    ).length;
     const percentage = Math.round((completedCount / pathTutorials.length) * 100);
     return { completed: completedCount, total: pathTutorials.length, percentage };
   };
