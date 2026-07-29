@@ -170,7 +170,7 @@ export const Hero: React.FC<HeroProps> = ({
 
         <p className="mt-4 text-[11px] text-slate-500 font-mono">
           Honest status: {playable} oEmbed-public embeds · {playlistOnly} playlist-only · {missing} missing individual URLs.
-          Custom domain learn.eduengteam.com remains a manual DNS/Vercel step.
+          Canonical host: learn.eduengteam.com (Cloudflare DNS attach still required — see FORAshraf.md).
         </p>
 
         {/* Wireframe: choose your goal */}
@@ -244,15 +244,15 @@ export const Hero: React.FC<HeroProps> = ({
           </button>
           <button
             type="button"
-            onClick={() => setActiveTab('impact')}
+            onClick={() => setActiveTab('myActivity')}
             className="text-left p-5 bg-slate-900/60 border border-slate-800 rounded-xl hover:border-emerald-700 transition-colors"
           >
             <div className="text-xs font-mono text-emerald-400 uppercase mb-1 flex items-center gap-1">
-              <BarChart3 className="w-3.5 h-3.5" /> Impact teaser
+              <BarChart3 className="w-3.5 h-3.5" /> My Activity
             </div>
             <div className="text-sm font-bold text-white">{playable} playable · {total} catalog</div>
             <p className="text-xs text-slate-400 mt-1">
-              Impact dashboard uses this-browser localStorage only — no synthetic traffic metrics.
+              Your browser localStorage only — not site-wide traffic metrics.
             </p>
           </button>
         </div>

@@ -1,6 +1,6 @@
 import { Tutorial, SearchFilterState } from '../types';
 import { logSearchQuery } from './storage';
-import { trackEvent } from './analytics';
+import { trackSearch } from './analytics';
 
 const SYNONYM_MAP: Record<string, string[]> = {
   'rule check': ['drc', 'design-rule check', 'clearance'],
@@ -37,24 +37,25 @@ export function searchAndFilterTutorials(
       const shortDesc = tut.shortDescription.toLowerCase();
       const fullSum = tut.fullSummary.toLowerCase();
       const skills = tut.skills.map(s => s.toLowerCase()).join(' ');
+      const outcomes = (tut.learningOutcomes || []).map(s => s.toLowerCase()).join(' ');
+      const prereqs = (tut.prerequisites || []).map(s => s.toLowerCase()).join(' ');
+      const stage = (tut.workflowStage || '').toLowerCase();
       const product = tut.product.toLowerCase();
       const role = tut.role.toLowerCase();
       
       const chapterTitles = tut.chapters.map(c => c.title.toLowerCase()).join(' ');
       const transcriptText = (tut.transcript || []).map(t => t.text.toLowerCase()).join(' ');
       const commandText = (tut.commands || []).map(c => `${c.key} ${c.action}`).join(' ').toLowerCase();
+      const stepText = (tut.proceduralSteps || []).map(s => `${s.title} ${s.detail}`).join(' ').toLowerCase();
 
-      const searchableBlob = `${title} ${shortDesc} ${fullSum} ${skills} ${product} ${role} ${chapterTitles} ${transcriptText} ${commandText}`;
+      const searchableBlob = `${title} ${shortDesc} ${fullSum} ${skills} ${outcomes} ${prereqs} ${stage} ${product} ${role} ${chapterTitles} ${transcriptText} ${commandText} ${stepText}`;
 
       return expandedTerms.some(term => searchableBlob.includes(term));
     });
 
-    // Log query for search gap analysis
+    // Log query for search gap analysis (localStorage + production analytics when enabled)
     logSearchQuery(filters.query, filtered.length);
-    trackEvent('search', { query: filters.query, resultCount: filtered.length });
-    if (filtered.length === 0) {
-      trackEvent('search_zero_results', { query: filters.query });
-    }
+    trackSearch(filters.query, filtered.length);
   }
 
   // 2. Filter by Product
