@@ -188,10 +188,54 @@ Three “strong additions” that make `/altium-develop` feel like an adoption n
 
 ---
 
+## Ashraf must do manually (before Altium review)
+
+Code can ship without these — but the partner story is incomplete until you do them:
+
+1. **PostHog and/or GA4 keys (Vercel Production)**  
+   - Set `VITE_POSTHOG_KEY` and/or `VITE_GA_ID`  
+   - Redeploy  
+   - Confirm events in the vendor console (not on `/my-activity`)
+
+2. **`VITE_ADMIN_PASSWORD` (Vercel Production + Preview)**  
+   - Required or `/admin` and `/feedback-inbox` stay **blocked** in production builds  
+   - Redeploy after setting  
+   - **Honesty:** this is a Vite client-side gate baked into the bundle — it stops casual browsing, it is **not** real server auth. Do not treat it as a secret worth protecting like an API key.
+
+3. **Feedback delivery backends (Vercel Function secrets — server-only)**  
+   Configure at least one: `FEEDBACK_WEBHOOK_URL`, or `RESEND_API_KEY` + `FEEDBACK_TO_EMAIL`, or `GITHUB_TOKEN` + `GITHUB_FEEDBACK_REPO`  
+   Optional: `VITE_FEEDBACK_ENDPOINT`, `VITE_FEEDBACK_INBOX_URL`
+
+4. **Cloudflare DNS for `learn.eduengteam.com`**  
+   - Follow the DNS checklist above (parallel Cloudflare agent may still be running)  
+   - Attach domain in Vercel; confirm HTTPS + SPA deep links  
+   - After live: keep `VITE_SITE_URL=https://learn.eduengteam.com` (already the code default)
+
+**Share with Altium:** `https://learn.eduengteam.com/altium-develop` (or the Vercel `/altium-develop` URL until DNS resolves). Never lead with the general homepage.
+
+---
+
+## Partner launch gate snapshot
+
+| Gate | Status |
+|------|--------|
+| 1 `/altium-develop` | Pass |
+| 2 Workflow map | Pass |
+| 3 Personas | Pass |
+| 4 Analytics / My Activity | Pass code / Partial keys |
+| 5 Develop enrichment (29) | Pass |
+| 6 Central feedback | Pass code / Partial env |
+| 7 Domain + SEO | Pass code / Partial DNS |
+| 8 Security / a11y | Pass code (set admin password) |
+| Strong additions (case study / compare / freshness) | Pass |
+
+---
+
 ## Remaining Gaps (call these out, do not hide them)
 
-- Hand-enrich chapters/transcripts beyond the current overlay set.
+- Hand-enrich chapters/transcripts beyond the current ~29 Develop + prior curated overlay set.
 - Wire PostHog/GA4 keys in Vercel env (`VITE_POSTHOG_KEY` / `VITE_GA_ID`) — instrumentation is live but no-op without keys; aggregates live in those consoles, not `/my-activity`.
+- Set `VITE_ADMIN_PASSWORD` and feedback delivery secrets — see manual list above.
 - Custom domain `learn.eduengteam.com` — **Ashraf DNS steps above**; code/SEO prep is done.
 - Phase 2: Supabase/Postgres backend when partnership analytics need multi-user truth beyond PostHog/GA4.
 
@@ -238,11 +282,12 @@ Outputs:
 Re-run with `npm run audit:youtube` / `npm run audit:youtube:apply`. Report: `scripts/youtube-embed-audit-report.md`.
 - Channel match is necessary but not sufficient — catalog title must also reflect the actual upload.
 - Prefer demoting a dubious embed over shipping the wrong lesson.
-- Hand-enriched chapters/transcripts from the prior 15 curated lessons overlay onto matching imported rows (by verified YouTube ID or topic fallback). Paths/roles/projects remapped to `cat-*` IDs.
+- Hand-enriched chapters/transcripts: prior curated overlays + **29 strategic Develop** overlays (`developEnrichment.overlay.json`) merge by verified YouTube ID / topic. Paths/roles/projects remapped to `cat-*` IDs.
 - Certificates removed from primary path UX (component file may remain unused).
 - No synthetic views / fake padding.
 
 **Phase 2 (explicitly deferred)**
 - Supabase/Postgres — optional JSON schema types can mirror brief tables later; do not block Vite SPA.
-- Custom domain `learn.eduengteam.com` — DNS checklist above (Cloudflare + Vercel); code defaults already use that host.
-- Full transcript/chapter enrichment for all 333 rows (15 hand-enriched today).
+- Custom domain DNS attach — checklist above; code defaults already use `learn.eduengteam.com`.
+- Full transcript/chapter enrichment for all 333 rows (strategic Develop subset done; rest still thin).
+- User accounts, certificates-as-primary-UX, AI chat, Arabic, paid — do not block Altium review.

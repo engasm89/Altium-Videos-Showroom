@@ -29,6 +29,7 @@
 17. [Design system & UX notes](#17-design-system--ux-notes)
 18. [What is NOT built yet / Phase 2](#18-what-is-not-built-yet--phase-2)
 19. [Devil’s advocate — where trust can still break](#19-devils-advocate--where-trust-can-still-break)
+20. [Partner launch gate](#20-partner-launch-gate-jul-29-2026)
 
 ---
 
@@ -680,21 +681,46 @@ Call these out so nobody confuses roadmap with shipping:
 
 ---
 
+## 20. Partner launch gate (Jul 29, 2026)
+
+**Share URL with Altium (not the homepage):** `https://learn.eduengteam.com/altium-develop`  
+**Until Cloudflare DNS resolves:** `https://eet-electronics-product-dev-library.vercel.app/altium-develop`
+
+| # | Gate item | Status | Evidence |
+|---|-----------|--------|----------|
+| 1 | Dedicated `/altium-develop` landing | **Pass** | `6d9e107` + `100e3f3` — independence statement, Develop value prop, workflow embed, personas, tutorials, CTAs, UTMs, Develop Hub chip |
+| 2 | Interactive workflow map | **Pass** | `/workflow` + `/workflow/:stageSlug`, 8 stages, embed on landing (`WorkflowMapEmbed`) |
+| 3 | Six persona journeys | **Pass** | `/personas` + `/personas/:slug`, linked from landing |
+| 4 | Real analytics + My Activity rename | **Pass (code) / Partial (keys)** | `/my-activity` = browser-local only; `/impact` → redirect; `/insights` refuses fake KPIs; events instrumented; needs `VITE_POSTHOG_KEY` / `VITE_GA_ID` |
+| 5 | 20–30 enriched Develop tutorials | **Pass** | 29 overlays in `developEnrichment.overlay.json` (`9effc07`) |
+| 6 | Central feedback collection | **Pass (code) / Partial (env)** | Tutorial Feedback → `api/feedback.ts` (webhook/Resend/GitHub); `/feedback-inbox` stub; needs server delivery env |
+| 7 | Custom domain + launch trust | **Pass (code) / Partial (DNS)** | Canonical/OG/sitemap/robots/favicons/Beta/`/changelog` (`efb6be7`); Cloudflare DNS still manual |
+| 8 | Security / a11y trust | **Pass (code)** | 333/333 playable; admin blocked without password in prod; modal a11y; ErrorBoundary; 404; report control; smoke deeplinks (`b5a2441`) — **Ashraf must set `VITE_ADMIN_PASSWORD`** |
+| — | Strong additions | **Pass** | ESP32 case study, compare-workflows, freshness chips (`92b0616`) |
+
+**Phase 2 still forbidden / deferred:** accounts, certificates as primary UX, full Supabase, AI chat, enrich all 333, Arabic, paid.
+
+**Ashraf manual before Altium review:** see FORAshraf.md → “Ashraf must do manually.”
+
+---
+
 ## Quick reference — key source files
 
 | Area | Path |
 |------|------|
 | Routes | `src/routes.ts`, `src/App.tsx` |
-| Catalog runtime | `src/data/catalog.ts`, `catalog.generated.json`, `curatedEnrichment.ts` |
+| Partner hub | `src/components/AltiumDevelopLandingView.tsx` |
+| Catalog runtime | `src/data/catalog.ts`, `catalog.generated.json`, `curatedEnrichment.ts`, `developEnrichment.overlay.json` |
 | Catalog source (primary) | `data/videos.csv` ← `npm run md:to-csv` ← `data/parsed-from-md-report.json` / MD list |
-| Paths / projects / roles / personas | `src/data/learningPaths.ts`, `projects.ts`, `roles.ts`, `personas.ts` |
+| Paths / projects / roles / personas / workflow | `learningPaths.ts`, `projects.ts`, `roles.ts`, `personas.ts`, `workflowStages.ts` |
+| Feedback API | `api/feedback.ts`, `src/utils/feedback.ts` |
 | Storage | `src/utils/storage.ts` |
 | Search | `src/utils/search.ts` |
-| Analytics / UTM / JSON-LD | `src/utils/analytics.ts`, `outbound.ts`, `jsonld.ts` |
-| Import / audit | `scripts/md-to-csv.mjs`, `scripts/import-catalog.mjs`, `scripts/import-videos-csv.mjs`, `scripts/audit-youtube-embeds.mjs` |
+| Analytics / UTM / JSON-LD / site | `analytics.ts`, `outbound.ts`, `jsonld.ts`, `siteConfig.ts` |
+| Import / audit / SEO | `scripts/md-to-csv.mjs`, `import-catalog.mjs`, `audit-youtube-embeds.mjs`, `generate-seo.mjs`, `smoke-deep-links.mjs` |
 | Deploy | `vercel.json`, `.env.example` |
 | Narrative sister doc | `FORAshraf.md` |
 
 ---
 
-*Generated from the codebase as of the Jul 29, 2026 MD→CSV catalog import + YouTube embed audit (`d53e62c` lineage). When inventory numbers change, re-run `npm run md:to-csv` → `import:catalog` → `audit:youtube:apply` and update §16.*
+*Partner launch gate documented Jul 29, 2026 (`92b0616` lineage). When inventory numbers change, re-run `npm run md:to-csv` → `import:catalog` → `audit:youtube:apply` and update §16.*
