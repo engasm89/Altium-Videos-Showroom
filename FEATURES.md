@@ -695,7 +695,7 @@ Call these out so nobody confuses roadmap with shipping:
 | 5 | 20–30 enriched Develop tutorials | **Pass** | 29 overlays in `developEnrichment.overlay.json` (`9effc07`) |
 | 6 | Central feedback collection | **Pass (code) / Partial (env)** | Tutorial Feedback → `api/feedback.ts` (webhook/Resend/GitHub); `/feedback-inbox` stub; needs server delivery env |
 | 7 | Custom domain + launch trust | **Pass** | Canonical/OG/sitemap/robots/favicons/Beta/`/changelog` (`efb6be7`); `learn.eduengteam.com` DNS+SSL **LIVE** (Jul 29, 2026) |
-| 8 | Security / a11y trust | **Pass (code)** | 333/333 playable; admin blocked without password in prod; modal a11y; ErrorBoundary; 404; report control; smoke deeplinks (`b5a2441`) — **Ashraf must set `VITE_ADMIN_PASSWORD`** |
+| 8 | Security / a11y trust | **Pass** | 333/333 playable; admin blocked without password in prod; `VITE_ADMIN_PASSWORD` set on Vercel (redeploy to bake); modal a11y; ErrorBoundary; 404; report control; smoke deeplinks |
 | — | Strong additions | **Pass** | ESP32 case study, compare-workflows, freshness chips (`92b0616`) |
 
 **Phase 2 still forbidden / deferred:** accounts, certificates as primary UX, full Supabase, AI chat, enrich all 333, Arabic, paid.

@@ -178,25 +178,48 @@ Three “strong additions” that make `/altium-develop` feel like an adoption n
 
 ---
 
-## Ashraf must do manually (before Altium review)
+## Production readiness checklist (Jul 29, 2026)
 
-Code can ship without these — but the partner story is incomplete until you do them:
+| Item | Status | Notes |
+|------|--------|-------|
+| `/admin` + `/feedback-inbox` block without password in prod | **SET (code)** | `AdminView` / `FeedbackInboxView` refuse empty-password access when `import.meta.env.PROD` |
+| `VITE_ADMIN_PASSWORD` on Vercel | **SET** | Production + Preview + Development (generated strong value; see chat final summary — **not** stored in git). **Redeploy required** so Vite bakes it into the client bundle. |
+| `VITE_SITE_URL` | **SET** | Production + Preview → `https://learn.eduengteam.com` |
+| `VITE_POSTHOG_KEY` / `VITE_GA_ID` | **Ashraf must set** | No tokens existed in Vercel env. Until set, analytics helpers no-op; `/insights` shows “not configured”. |
+| `api/feedback.ts` deploys | **SET (live)** | `GET https://learn.eduengteam.com/api/feedback` → 200 (`configured: false` until delivery secrets exist) |
+| Feedback delivery secrets | **Ashraf must set** | At least one of: `FEEDBACK_WEBHOOK_URL`, or `RESEND_API_KEY` + `FEEDBACK_TO_EMAIL`, or `GITHUB_TOKEN` + `GITHUB_FEEDBACK_REPO`. Optional: `VITE_FEEDBACK_ENDPOINT`, `VITE_FEEDBACK_INBOX_URL` |
+| My Activity vs Site Insights labels | **SET** | `/my-activity` = browser localStorage only; `/insights` = PostHog/GA4 status (no fake KPIs); `/impact` redirects |
+| `npm run smoke:deeplinks` | **PASS** | 333/333 public; admin block asserted; activity/insights routes asserted |
 
-1. **PostHog and/or GA4 keys (Vercel Production)**  
-   - Set `VITE_POSTHOG_KEY` and/or `VITE_GA_ID`  
-   - Redeploy  
-   - Confirm events in the vendor console (not on `/my-activity`)
+### How to set remaining env (Vercel CLI)
 
-2. **`VITE_ADMIN_PASSWORD` (Vercel Production + Preview)**  
-   - Required or `/admin` and `/feedback-inbox` stay **blocked** in production builds  
-   - Redeploy after setting  
-   - **Honesty:** this is a Vite client-side gate baked into the bundle — it stops casual browsing, it is **not** real server auth. Do not treat it as a secret worth protecting like an API key.
+```bash
+# Analytics (pick one or both) — then redeploy
+vercel env add VITE_POSTHOG_KEY production --value 'phc_…' --yes
+vercel env add VITE_GA_ID production --value 'G-…' --yes
 
-3. **Feedback delivery backends (Vercel Function secrets — server-only)**  
-   Configure at least one: `FEEDBACK_WEBHOOK_URL`, or `RESEND_API_KEY` + `FEEDBACK_TO_EMAIL`, or `GITHUB_TOKEN` + `GITHUB_FEEDBACK_REPO`  
-   Optional: `VITE_FEEDBACK_ENDPOINT`, `VITE_FEEDBACK_INBOX_URL`
+# Feedback delivery (server-only; pick one backend)
+vercel env add FEEDBACK_WEBHOOK_URL production --value 'https://…' --yes --sensitive
+# or:
+vercel env add RESEND_API_KEY production --value 're_…' --yes --sensitive
+vercel env add FEEDBACK_TO_EMAIL production --value 'learn@eduengteam.com' --yes
+# or:
+vercel env add GITHUB_TOKEN production --value 'ghp_…' --yes --sensitive
+vercel env add GITHUB_FEEDBACK_REPO production --value 'owner/repo' --yes
 
-4. **Cloudflare DNS for `learn.eduengteam.com`** — **DONE (LIVE).** Optional follow-ups: Search Console property + sitemap submit; keep grey-cloud unless you want CF proxy.
+vercel --prod   # or push to main so Production rebuilds with new VITE_* values
+```
+
+**Devil’s advocate:** `VITE_ADMIN_PASSWORD` is an access gate, not server auth — anyone can extract it from the JS bundle after deploy. It still matters so production never ships an *open* `/admin`. Treat feedback webhooks / Resend / GitHub tokens as the real secrets.
+
+---
+
+## Ashraf must still do (before Altium review)
+
+1. **PostHog and/or GA4 keys (Vercel Production)** — set `VITE_POSTHOG_KEY` and/or `VITE_GA_ID`, redeploy, confirm events in the vendor console (not on `/my-activity`).
+2. **Confirm admin unlock after redeploy** — open `/admin` on production; should prompt for password (not “Admin blocked”). Password value was shared once in the agent final summary.
+3. **Feedback delivery backends** — configure at least one server secret above so tutorial feedback / content reports actually store somewhere.
+4. **Optional:** Search Console property + sitemap submit for `learn.eduengteam.com` (DNS already **LIVE**).
 
 ---
 
@@ -207,11 +230,11 @@ Code can ship without these — but the partner story is incomplete until you do
 | 1 `/altium-develop` | Pass |
 | 2 Workflow map | Pass |
 | 3 Personas | Pass |
-| 4 Analytics / My Activity | Pass code / Partial keys |
+| 4 Analytics / My Activity | Pass code / **Partial keys** (Ashraf sets PostHog/GA4) |
 | 5 Develop enrichment (29) | Pass |
-| 6 Central feedback | Pass code / Partial env |
+| 6 Central feedback | Pass code + API live / **Partial env** (delivery secrets) |
 | 7 Domain + SEO | **Pass (LIVE)** |
-| 8 Security / a11y | Pass code (set admin password) |
+| 8 Security / a11y | **Pass** (admin password set on Vercel; redeploy to bake in) |
 | Strong additions (case study / compare / freshness) | Pass |
 
 ---
@@ -220,7 +243,7 @@ Code can ship without these — but the partner story is incomplete until you do
 
 - Hand-enrich chapters/transcripts beyond the current ~29 Develop + prior curated overlay set.
 - Wire PostHog/GA4 keys in Vercel env (`VITE_POSTHOG_KEY` / `VITE_GA_ID`) — instrumentation is live but no-op without keys; aggregates live in those consoles, not `/my-activity`.
-- Set `VITE_ADMIN_PASSWORD` and feedback delivery secrets — see manual list above.
+- Wire feedback delivery secrets — API is live (`configured: false` until you add them).
 - Custom domain `learn.eduengteam.com` — **LIVE** (Cloudflare CNAME DNS-only + Vercel SSL).
 - Phase 2: Supabase/Postgres backend when partnership analytics need multi-user truth beyond PostHog/GA4.
 

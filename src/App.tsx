@@ -63,7 +63,7 @@ const DOCUMENT_TITLES: Record<string, string | null> = {
   altiumDevelop: 'Altium Develop Learning Hub',
   workflow: 'Product Development Workflow',
   myActivity: 'My Activity',
-  insights: 'Insights',
+  insights: 'Site Insights',
   changelog: 'Changelog',
 };
 

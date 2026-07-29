@@ -18,7 +18,7 @@ interface InsightsViewProps {
  * Does NOT invent site-wide metrics. Real aggregates live in PostHog / GA4.
  */
 export const InsightsView: React.FC<InsightsViewProps> = ({ setActiveTab }) => {
-  useDocumentTitle('Insights');
+  useDocumentTitle('Site Insights');
   const providers = getAnalyticsProviders();
   const enabled = isAnalyticsEnabled();
   const traffic = getTrafficAttribution();
