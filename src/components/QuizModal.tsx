@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { 
   HelpCircle, 
   X, 
@@ -9,6 +9,7 @@ import {
   ArrowRight,
   RotateCcw
 } from 'lucide-react';
+import { useModalA11y } from '../utils/useModalA11y';
 
 interface QuizQuestion {
   id: number;
@@ -76,6 +77,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({ onClose }) => {
   const [isAnswered, setIsAnswered] = useState(false);
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useModalA11y(true, dialogRef, onClose);
 
   const currentQ = HARDWARE_QUIZ_QUESTIONS[currentIndex];
 
@@ -108,9 +111,20 @@ export const QuizModal: React.FC<QuizModalProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl relative">
-        
+    <div
+      className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4"
+      role="presentation"
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Hardware engineering quiz"
+        className="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl relative"
+      >
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <div className="flex items-center space-x-2 text-amber-400 font-bold text-sm">

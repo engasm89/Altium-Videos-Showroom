@@ -13,8 +13,10 @@
     "import:catalog": "node scripts/import-catalog.mjs",
     "import:catalog:fast": "node scripts/import-catalog.mjs --skip-oembed",
     "import:videos:csv": "node scripts/import-videos-csv.mjs",
+    "seo:generate": "node scripts/generate-seo.mjs",
     "audit:youtube": "node scripts/audit-youtube-embeds.mjs",
-    "audit:youtube:apply": "node scripts/audit-youtube-embeds.mjs --apply"
+    "audit:youtube:apply": "node scripts/audit-youtube-embeds.mjs --apply",
+    "smoke:deeplinks": "node scripts/smoke-deep-links.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

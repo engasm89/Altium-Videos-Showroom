@@ -30,7 +30,8 @@ const STOP = new Set([
 ]);
 
 /** Titles too divergent to trust without a human watch — demote rather than invent a match. */
-const DEMOTE_IDS = new Set(['cat-104']);
+/** Hard-demote list for IDs that pass oEmbed but fail human topic review. Empty after cat-104 re-verify. */
+const DEMOTE_IDS = new Set([]);
 
 function tokens(s) {
   return String(s || '')

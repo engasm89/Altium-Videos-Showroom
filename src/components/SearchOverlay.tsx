@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import { SearchInput } from './ui';
+import { useModalA11y } from '../utils/useModalA11y';
 
 interface SearchOverlayProps {
   open: boolean;
@@ -19,6 +20,7 @@ const QUICK_SEARCHES = ['DRC', 'ESP32', 'ActiveBOM', 'SolidWorks', 'Gerber', 'St
  */
 export const SearchOverlay: React.FC<SearchOverlayProps> = ({ open, onClose, searchQuery, setSearchQuery, onSubmit }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  useModalA11y(open, containerRef, onClose);
 
   useEffect(() => {
     if (!open) return;
@@ -34,11 +36,18 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({ open, onClose, sea
   return (
     <div
       className="fixed inset-0 z-[60] flex items-start justify-center bg-slate-950/80 backdrop-blur-sm px-4 pt-24 sm:pt-32"
+      role="presentation"
       onMouseDown={(e) => {
         if (containerRef.current && !containerRef.current.contains(e.target as Node)) onClose();
       }}
     >
-      <div ref={containerRef} className="w-full max-w-2xl space-y-3">
+      <div
+        ref={containerRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search the library"
+        className="w-full max-w-2xl space-y-3"
+      >
         <div className="flex items-center justify-between">
           <span className="text-xs font-mono uppercase tracking-wider text-slate-400">Search the Library</span>
           <button
@@ -67,6 +76,7 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({ open, onClose, sea
             onClose();
           }}
         />
+        <p className="text-[10px] text-slate-500 font-mono">Tip: press Escape to close · Ctrl/⌘ K opens search</p>
       </div>
     </div>
   );
