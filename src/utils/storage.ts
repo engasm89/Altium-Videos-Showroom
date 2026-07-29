@@ -14,11 +14,11 @@ export function getInitialProgress(): UserProgress {
     console.warn('Failed to parse user progress from localStorage', e);
   }
   return {
-    completedTutorials: ['tut-001'], // mark first lesson as completed by default as seed
+    completedTutorials: [],
     bookmarkedTutorials: [],
     completedPaths: [],
     notes: {},
-    outboundClicksCount: 12
+    outboundClicksCount: 0,
   };
 }
 
@@ -114,28 +114,7 @@ export function getOutboundClickLogs(): OutboundClickLog[] {
   } catch (e) {
     //
   }
-  return [
-    {
-      id: 'click-demo-1',
-      tutorialId: 'tut-001',
-      tutorialTitle: 'Altium Designer Installation, Environment Setup & License Workspace',
-      destinationUrl: 'https://www.altium.com/yt-eet-trial-installation',
-      utmSource: 'eet_learning_hub',
-      utmMedium: 'tutorial',
-      utmCampaign: 'altium_develop_library',
-      timestamp: new Date(Date.now() - 3600000 * 2).toISOString()
-    },
-    {
-      id: 'click-demo-2',
-      tutorialId: 'tut-009',
-      tutorialTitle: 'Altium Develop Tour: Cloud Workspace, Multidisciplinary Co-Creation',
-      destinationUrl: 'https://www.altium.com/yt-eet-trial-develop-tour',
-      utmSource: 'eet_learning_hub',
-      utmMedium: 'tutorial',
-      utmCampaign: 'altium_develop_library',
-      timestamp: new Date(Date.now() - 3600000 * 5).toISOString()
-    }
-  ];
+  return [];
 }
 
 export function logSearchQuery(query: string, resultCount: number): void {
@@ -169,12 +148,5 @@ export function getSearchQueryLogs(): SearchQueryLog[] {
   } catch (e) {
     //
   }
-  return [
-    { query: 'DRC clearance rules', timestamp: new Date(Date.now() - 3600000).toISOString(), resultCount: 8 },
-    { query: 'ESP32 antenna keepout', timestamp: new Date(Date.now() - 7200000).toISOString(), resultCount: 4 },
-    { query: 'SolidWorks sync', timestamp: new Date(Date.now() - 10800000).toISOString(), resultCount: 6 },
-    { query: 'AI requirement extraction', timestamp: new Date(Date.now() - 14400000).toISOString(), resultCount: 3 },
-    { query: 'High speed DDR4 layout', timestamp: new Date(Date.now() - 1800000).toISOString(), resultCount: 0 }, // zero result search gap!
-    { query: 'Flex PCB bend radius', timestamp: new Date(Date.now() - 21600000).toISOString(), resultCount: 0 } // zero result search gap!
-  ];
+  return [];
 }

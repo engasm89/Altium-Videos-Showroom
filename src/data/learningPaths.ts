@@ -39,7 +39,7 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p1-m3',
         title: 'Project Compilation & ERC Validation',
         description: 'Run Electrical Rule Checks and resolve net warnings.',
-        tutorialIds: ['tut-015', 'tut-016']
+        tutorialIds: ['tut-015', 'tut-004']
       }
     ]
   },

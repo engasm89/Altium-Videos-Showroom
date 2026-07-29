@@ -21,6 +21,7 @@ import {
   MessageSquare
 } from 'lucide-react';
 import { Tutorial } from '../types';
+import { isPlayableYoutubeId } from '../utils/youtube';
 
 interface TutorialDetailModalProps {
   tutorial: Tutorial | null;
@@ -67,6 +68,7 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
   };
 
   const isDevelop = tutorial.product === 'Altium Develop';
+  const playable = isPlayableYoutubeId(tutorial.youtubeId);
 
   const filteredTranscript = (tutorial.transcript || []).filter(line => 
     !transcriptSearch || line.text.toLowerCase().includes(transcriptSearch.toLowerCase())
@@ -141,7 +143,7 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
           
           {/* Video Player Section */}
           <div className="bg-black relative aspect-video w-full max-h-[420px] mx-auto border-b border-slate-800">
-            {tutorial.youtubeId && !tutorial.youtubeId.startsWith('eet_rec') ? (
+            {playable ? (
               <ReactPlayer
                 ref={playerRef}
                 src={`https://www.youtube.com/watch?v=${tutorial.youtubeId}`}
@@ -151,19 +153,18 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
                 playing={true}
               />
             ) : (
-              // Enhanced simulated player for recovered tutorials
               <div className="w-full h-full bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 flex flex-col items-center justify-center p-6 text-center relative">
-                <div className="w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-xl mb-4 animate-pulse">
+                <div className="w-16 h-16 rounded-full bg-slate-700 text-slate-200 flex items-center justify-center shadow-xl mb-4">
                   <Play className="w-8 h-8 fill-current ml-1" />
                 </div>
                 <h3 className="text-lg font-bold text-white max-w-xl">{tutorial.title}</h3>
-                <p className="text-xs text-blue-300 mt-2 font-mono">EET Educational Media • Duration {tutorial.durationFormatted}</p>
-                {currentPlayTimestamp > 0 && (
-                  <p className="text-xs text-emerald-400 font-mono mt-1">Jumped to timestamp: {Math.floor(currentPlayTimestamp / 60)}m {currentPlayTimestamp % 60}s</p>
-                )}
+                <p className="text-xs text-amber-300 mt-2 font-mono">
+                  Video enrichment pending — this lesson outline is not a playable YouTube embed
+                </p>
+                <p className="text-xs text-slate-400 mt-1 font-mono">Duration estimate {tutorial.durationFormatted}</p>
                 <div className="mt-4 flex items-center space-x-2 text-xs bg-slate-900/90 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">
                   <Sparkles className="w-4 h-4 text-cyan-400" />
-                  <span>Interactive Chapter and Transcript Jump Enabled Below</span>
+                  <span>Chapters, notes, and docs below still apply</span>
                 </div>
               </div>
             )}

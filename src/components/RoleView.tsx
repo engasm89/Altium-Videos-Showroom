@@ -19,10 +19,24 @@ import { EngineeringRole, Tutorial } from '../types';
 interface RoleViewProps {
   onSelectTutorial: (tutorial: Tutorial) => void;
   onSelectPath: (pathId: string) => void;
+  initialRoleSlug?: string;
 }
 
-export const RoleView: React.FC<RoleViewProps> = ({ onSelectTutorial, onSelectPath }) => {
-  const [selectedRoleId, setSelectedRoleId] = useState<string>('role-pcb');
+export const RoleView: React.FC<RoleViewProps> = ({
+  onSelectTutorial,
+  onSelectPath,
+  initialRoleSlug,
+}) => {
+  const slugMatched = initialRoleSlug
+    ? ENGINEERING_ROLES.find((r) => r.slug === initialRoleSlug)?.id
+    : undefined;
+  const [selectedRoleId, setSelectedRoleId] = useState<string>(slugMatched || 'role-pcb');
+
+  React.useEffect(() => {
+    if (!initialRoleSlug) return;
+    const match = ENGINEERING_ROLES.find((r) => r.slug === initialRoleSlug);
+    if (match) setSelectedRoleId(match.id);
+  }, [initialRoleSlug]);
 
   const selectedRole = ENGINEERING_ROLES.find(r => r.id === selectedRoleId) || ENGINEERING_ROLES[0];
   const roleTutorials = ALL_TUTORIALS.filter(t => t.role === selectedRole.category);

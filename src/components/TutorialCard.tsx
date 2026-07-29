@@ -11,6 +11,7 @@ import {
   ChevronRight 
 } from 'lucide-react';
 import { Tutorial } from '../types';
+import { isPlayableYoutubeId } from '../utils/youtube';
 
 interface TutorialCardProps {
   tutorial: Tutorial;
@@ -30,6 +31,7 @@ export const TutorialCard: React.FC<TutorialCardProps> = ({
   onToggleCompleted
 }) => {
   const isDevelop = tutorial.product === 'Altium Develop';
+  const playable = isPlayableYoutubeId(tutorial.youtubeId);
 
   return (
     <div 
@@ -48,12 +50,14 @@ export const TutorialCard: React.FC<TutorialCardProps> = ({
           
           <div className="relative z-10 flex flex-col items-center text-center p-4">
             <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform ${
-              isDevelop ? 'bg-cyan-600 text-white' : 'bg-blue-600 text-white'
+              playable
+                ? (isDevelop ? 'bg-cyan-600 text-white' : 'bg-blue-600 text-white')
+                : 'bg-slate-700 text-slate-300'
             }`}>
               <Play className="w-5 h-5 fill-current ml-0.5" />
             </div>
             <span className="mt-2 text-xs font-mono text-slate-400 max-w-[200px] truncate">
-              {tutorial.youtubeId.startsWith('eet') ? 'EET Tutorial Video' : `YouTube: ${tutorial.youtubeId}`}
+              {playable ? 'Watchable lesson' : 'Enrichment pending — outline only'}
             </span>
           </div>
 
@@ -146,7 +150,7 @@ export const TutorialCard: React.FC<TutorialCardProps> = ({
         </button>
 
         <span className="text-blue-400 group-hover:translate-x-0.5 transition-transform flex items-center font-medium">
-          <span>Watch</span>
+          <span>{playable ? 'Open' : 'Details'}</span>
           <ChevronRight className="w-3.5 h-3.5" />
         </span>
       </div>

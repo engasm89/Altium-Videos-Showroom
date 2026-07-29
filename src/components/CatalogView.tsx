@@ -11,7 +11,7 @@ import {
   Grid,
   List as ListIcon
 } from 'lucide-react';
-import { ALL_TUTORIALS } from '../data/catalog';
+import { ALL_TUTORIALS, catalogCounts } from '../data/catalog';
 import { searchAndFilterTutorials, getAllSkillsList } from '../utils/search';
 import { Tutorial, SearchFilterState, UserProgress } from '../types';
 import { TutorialCard } from './TutorialCard';
@@ -96,13 +96,14 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       <div className="space-y-3">
         <div className="inline-flex items-center space-x-2 text-xs font-mono bg-blue-950 text-blue-300 border border-blue-800 px-3 py-1 rounded-full">
           <BookOpen className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Full Enriched Dataset Catalog</span>
+          <span>Enriched Tutorial Catalog</span>
         </div>
         <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-          201 Recovered Tutorials Library
+          {catalogCounts.enriched} Structured Tutorials
         </h2>
         <p className="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
-          Search across titles, descriptions, transcripts, keyboard commands, and component tags. Filter by product, engineering persona, or duration.
+          Search across titles, descriptions, transcripts, keyboard commands, and component tags.
+          Building toward a {catalogCounts.enrichmentGoal}-lesson library — only hand-enriched entries are listed here (no synthetic placeholders).
         </p>
       </div>
 
@@ -172,9 +173,9 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
               onChange={(e) => setFilters({ ...filters, product: e.target.value as any })}
               className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-blue-500"
             >
-              <option value="All">All Products (201)</option>
-              <option value="Altium Designer">Altium Designer (96)</option>
-              <option value="Altium Develop">Altium Develop (105)</option>
+              <option value="All">All Products ({ALL_TUTORIALS.length})</option>
+              <option value="Altium Designer">Altium Designer ({catalogCounts.designer})</option>
+              <option value="Altium Develop">Altium Develop ({catalogCounts.develop})</option>
             </select>
           </div>
 
@@ -281,7 +282,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
           <BookOpen className="w-10 h-10 text-slate-600 mx-auto" />
           <h3 className="text-lg font-bold text-white">No tutorials match your active filter criteria</h3>
           <p className="text-xs text-slate-400 max-w-md mx-auto">
-            Try adjusting your search query or clear the active product/role filters to see all 201 tutorials.
+            Try adjusting your search query or clear the active product/role filters to see all {ALL_TUTORIALS.length} tutorials.
           </p>
           <button
             onClick={resetFilters}

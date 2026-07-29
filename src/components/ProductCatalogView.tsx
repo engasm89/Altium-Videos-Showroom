@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Cpu, Cloud, CheckCircle, ArrowRight } from 'lucide-react';
 import { ALL_TUTORIALS } from '../data/catalog';
 import { Tutorial } from '../types';
@@ -6,19 +6,31 @@ import { Tutorial } from '../types';
 interface ProductCatalogViewProps {
   onSelectTutorial: (tutorial: Tutorial) => void;
   onFilterProduct: (product: string) => void;
+  initialProductSlug?: string;
 }
 
+const PRODUCT_SLUGS: Record<string, string> = {
+  'altium-designer': 'Altium Designer',
+  'altium-develop': 'Altium Develop',
+};
+
 export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
-  onSelectTutorial,
-  onFilterProduct
+  onSelectTutorial: _onSelectTutorial,
+  onFilterProduct,
+  initialProductSlug,
 }) => {
   const designerTutorials = ALL_TUTORIALS.filter(t => t.product === 'Altium Designer');
   const developTutorials = ALL_TUTORIALS.filter(t => t.product === 'Altium Develop');
 
+  useEffect(() => {
+    if (!initialProductSlug) return;
+    const product = PRODUCT_SLUGS[initialProductSlug];
+    if (product) onFilterProduct(product);
+  }, [initialProductSlug]); // intentionally omit onFilterProduct to avoid remount loops
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-slate-100">
       
-      {/* Header */}
       <div className="space-y-3">
         <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
           Product Collections & Workflow Comparison
@@ -28,10 +40,8 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
         </p>
       </div>
 
-      {/* Product Comparison Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         
-        {/* Altium Designer Card */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6 shadow-xl flex flex-col justify-between">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
@@ -41,7 +51,9 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">Altium Designer</h3>
-                  <span className="text-xs font-mono text-blue-400">96 Enriched Tutorials</span>
+                  <span className="text-xs font-mono text-blue-400">
+                    {designerTutorials.length} Enriched Tutorials
+                  </span>
                 </div>
               </div>
               <span className="text-[10px] font-mono bg-blue-950 text-blue-300 border border-blue-800 px-2 py-1 rounded">
@@ -77,12 +89,11 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
             onClick={() => onFilterProduct('Altium Designer')}
             className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition-colors shadow-lg"
           >
-            <span>Browse All 96 Altium Designer Tutorials</span>
+            <span>Browse {designerTutorials.length} Altium Designer Tutorials</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Altium Develop Card */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6 shadow-xl flex flex-col justify-between">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
@@ -92,7 +103,9 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">Altium Develop</h3>
-                  <span className="text-xs font-mono text-cyan-400">105 Enriched Tutorials</span>
+                  <span className="text-xs font-mono text-cyan-400">
+                    {developTutorials.length} Enriched Tutorials
+                  </span>
                 </div>
               </div>
               <span className="text-[10px] font-mono bg-cyan-950 text-cyan-300 border border-cyan-800 px-2 py-1 rounded">
@@ -128,7 +141,7 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
             onClick={() => onFilterProduct('Altium Develop')}
             className="w-full py-3 bg-cyan-600 hover:bg-cyan-500 text-slate-950 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition-colors shadow-lg"
           >
-            <span>Browse All 105 Altium Develop Tutorials</span>
+            <span>Browse {developTutorials.length} Altium Develop Tutorials</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

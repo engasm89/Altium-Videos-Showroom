@@ -1,4 +1,5 @@
 import { Tutorial } from '../types';
+import { isPlayableYoutubeId } from '../utils/youtube';
 
 export const TUTORIALS_CATALOG: Tutorial[] = [
   // --- ALTIUM DESIGNER FOUNDATIONS & HARDWARE DESIGN ---
@@ -499,70 +500,23 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
   }
 ];
 
-// Generate synthetic supplemental catalog entries to represent the total 201 recovered catalog
-const SUPPLEMENTAL_TOPICS = [
-  { topic: 'Hierarchical Schematic Design with Port Blocks', cat: 'Altium Designer', role: 'Hardware & PCB Engineering' as const, path: 'path-001' },
-  { topic: 'Differential Pair Routing for High-Speed USB 2.0', cat: 'Altium Designer', role: 'Hardware & PCB Engineering' as const, path: 'path-003' },
-  { topic: 'Multi-Board Assembly Design & System Level Connectivity', cat: 'Altium Designer', role: 'Hardware & PCB Engineering' as const, path: 'path-003' },
-  { topic: 'Draftsman Automated Fabrication & Assembly Drawings', cat: 'Altium Designer', role: 'Manufacturing & Quality' as const, path: 'path-004' },
-  { topic: 'RoHS, REACH & Lead-Free Material Compliance in Altium Develop', cat: 'Altium Develop', role: 'Compliance & Sustainability' as const, path: 'path-009' },
-  { topic: 'Altium 365 Version Control & Git History Comparison', cat: 'Altium Develop', role: 'Engineering Leadership' as const, path: 'path-006' },
-  { topic: 'Rigid-Flex PCB Layer Stackup & Bending Zone Definition', cat: 'Altium Designer', role: 'Hardware & PCB Engineering' as const, path: 'path-003' },
-  { topic: 'Creating Managed Components with Datasheet Scraping', cat: 'Altium Designer', role: 'Procurement & Components' as const, path: 'path-002' },
-  { topic: 'Automated DRC Rule Presets for 4-Layer & 6-Layer Boards', cat: 'Altium Designer', role: 'Hardware & PCB Engineering' as const, path: 'path-003' },
-  { topic: 'Thermal Pad & Heat Sink Copper Area Calculations', cat: 'Altium Designer', role: 'Hardware & PCB Engineering' as const, path: 'path-005' },
-  { topic: 'Supplier Integration with Mouser and DigiKey API', cat: 'Altium Develop', role: 'Procurement & Components' as const, path: 'path-008' },
-  { topic: 'Web-Based Interactive Design Review & Comment Threads', cat: 'Altium Develop', role: 'Engineering Leadership' as const, path: 'path-010' },
-  { topic: 'Design Rule Violations Resolution & Batch Waiver Approvals', cat: 'Altium Designer', role: 'Manufacturing & Quality' as const, path: 'path-003' },
-  { topic: 'Firmware Pin Mapping & Pinout Export to C Header Files', cat: 'Altium Develop', role: 'Product & Applications' as const, path: 'path-007' },
-  { topic: 'High-Density Interconnect (HDI) Microvia Stackup Rules', cat: 'Altium Designer', role: 'Hardware & PCB Engineering' as const, path: 'path-003' }
-];
+/**
+ * Long-term catalog goal from the recovered EET library outline.
+ * Do NOT synthesize fake YouTube IDs to pad toward this number in the live UX.
+ */
+export const CATALOG_ENRICHMENT_GOAL = 201;
 
-export function buildFull201Catalog(): Tutorial[] {
-  const base = [...TUTORIALS_CATALOG];
-  let currentId = base.length + 1;
+/** Curated, hand-authored tutorials currently shipped in the app. */
+export const ALL_TUTORIALS: Tutorial[] = TUTORIALS_CATALOG;
 
-  // Synthesize catalog up to ~201 entries with realistic data
-  while (base.length < 201) {
-    const topicIdx = (base.length - TUTORIALS_CATALOG.length) % SUPPLEMENTAL_TOPICS.length;
-    const topicInfo = SUPPLEMENTAL_TOPICS[topicIdx];
-    const cycle = Math.floor((base.length - TUTORIALS_CATALOG.length) / SUPPLEMENTAL_TOPICS.length) + 1;
+export const PLAYABLE_TUTORIALS = ALL_TUTORIALS.filter((t) =>
+  isPlayableYoutubeId(t.youtubeId)
+);
 
-    const formattedNum = String(currentId).padStart(3, '0');
-    const title = cycle > 1 
-      ? `${topicInfo.topic} - Advanced Part ${cycle}`
-      : `${topicInfo.topic}`;
-    
-    base.push({
-      id: `tut-${formattedNum}`,
-      youtubeId: `eet_rec_${formattedNum}`,
-      title,
-      slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
-      shortDescription: `In-depth EET practical tutorial exploring ${topicInfo.topic.toLowerCase()} with production best practices.`,
-      fullSummary: `Comprehensive tutorial by Educational Engineering Team covering ${topicInfo.topic}. Learn exact software workflows, design rules, and common hardware pitfalls to avoid.`,
-      durationSeconds: 420 + ((currentId * 37) % 900),
-      durationFormatted: `${Math.floor((420 + ((currentId * 37) % 900)) / 60)}:${String((420 + ((currentId * 37) % 900)) % 60).padStart(2, '0')}`,
-      publishedDate: `2024-0${1 + (currentId % 6)}-${10 + (currentId % 18)}`,
-      product: topicInfo.cat as any,
-      softwareVersion: topicInfo.cat === 'Altium Designer' ? 'AD24.3' : 'Develop 2025',
-      difficulty: currentId % 3 === 0 ? 'Advanced' : currentId % 2 === 0 ? 'Intermediate' : 'Beginner',
-      role: topicInfo.role,
-      skills: [topicInfo.topic.split(' ')[0], topicInfo.topic.split(' ')[1] || 'Workflow'],
-      learningPathIds: [topicInfo.path],
-      viewsCount: 8500 + ((currentId * 137) % 25000),
-      chapters: [
-        { timestampSeconds: 0, timestampFormatted: '0:00', title: 'Lesson Introduction' },
-        { timestampSeconds: 180, timestampFormatted: '3:00', title: 'Core Workflow Walkthrough' },
-        { timestampSeconds: 360, timestampFormatted: '6:00', title: 'Validation & Summary' }
-      ],
-      officialDocUrl: 'https://www.altium.com/documentation',
-      altiumTrialUrl: 'https://www.altium.com/yt-eet-trial'
-    });
-
-    currentId++;
-  }
-
-  return base;
-}
-
-export const ALL_TUTORIALS = buildFull201Catalog();
+export const catalogCounts = {
+  enriched: ALL_TUTORIALS.length,
+  playableCandidates: PLAYABLE_TUTORIALS.length,
+  enrichmentGoal: CATALOG_ENRICHMENT_GOAL,
+  designer: ALL_TUTORIALS.filter((t) => t.product === 'Altium Designer').length,
+  develop: ALL_TUTORIALS.filter((t) => t.product === 'Altium Develop').length,
+};

@@ -6,12 +6,13 @@ import {
   Cpu, 
   Cloud, 
   ArrowRight, 
-  CheckCircle, 
-  Zap,
-  Sparkles,
   Layers,
   CircuitBoard
 } from 'lucide-react';
+import { catalogCounts } from '../data/catalog';
+import { LEARNING_PATHS } from '../data/learningPaths';
+import { HARDWARE_PROJECTS } from '../data/projects';
+import { ENGINEERING_ROLES } from '../data/roles';
 
 interface HeroProps {
   setActiveTab: (tab: string) => void;
@@ -26,24 +27,25 @@ export const Hero: React.FC<HeroProps> = ({
   setSearchQuery,
   onFilterProduct
 }) => {
+  const { enriched, enrichmentGoal, designer, develop } = catalogCounts;
+
   return (
     <section className="relative overflow-hidden bg-slate-950 text-white border-b border-slate-800 pt-10 pb-16">
-      {/* Background Subtle Circuit Pattern */}
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Proof Badge */}
         <div className="inline-flex items-center space-x-2 bg-blue-950/80 border border-blue-800/80 px-3 py-1 rounded-full text-xs font-mono text-blue-300 mb-6 shadow-inner">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+          <CircuitBoard className="w-3.5 h-3.5 text-cyan-400" />
           <span>Educational Engineering Team Catalog</span>
           <span className="text-slate-400">•</span>
-          <span className="text-emerald-400 font-semibold">200+ Practical Tutorials</span>
+          <span className="text-emerald-400 font-semibold">
+            {enriched} enriched lessons · goal {enrichmentGoal}
+          </span>
         </div>
 
-        {/* Headline */}
         <div className="max-w-4xl space-y-4">
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
             Master Modern Electronics <br className="hidden sm:inline" />
@@ -57,13 +59,12 @@ export const Hero: React.FC<HeroProps> = ({
           </p>
         </div>
 
-        {/* Global Search Box in Hero */}
         <div className="mt-8 max-w-2xl">
           <div className="relative flex items-center shadow-2xl">
             <Search className="w-5 h-5 absolute left-4 text-slate-400 pointer-events-none" />
             <input
               type="text"
-              placeholder="Search 201 tutorials: DRC, ESP32, ActiveBOM, SolidWorks, Gerber..."
+              placeholder={`Search ${enriched} tutorials: DRC, ESP32, ActiveBOM, SolidWorks, Gerber...`}
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
@@ -87,7 +88,6 @@ export const Hero: React.FC<HeroProps> = ({
           </p>
         </div>
 
-        {/* Primary Action Buttons */}
         <div className="mt-8 flex flex-wrap gap-3 items-center">
           <button
             onClick={() => setActiveTab('paths')}
@@ -107,37 +107,30 @@ export const Hero: React.FC<HeroProps> = ({
           </button>
 
           <button
-            onClick={() => {
-              onFilterProduct('Altium Designer');
-              setActiveTab('catalog');
-            }}
+            onClick={() => onFilterProduct('Altium Designer')}
             className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-blue-300 border border-blue-900/80 font-mono text-xs rounded-lg flex items-center space-x-1.5 transition-colors"
           >
             <Cpu className="w-3.5 h-3.5 text-blue-400" />
-            <span>Altium Designer (96)</span>
+            <span>Altium Designer ({designer})</span>
           </button>
 
           <button
-            onClick={() => {
-              onFilterProduct('Altium Develop');
-              setActiveTab('catalog');
-            }}
+            onClick={() => onFilterProduct('Altium Develop')}
             className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-cyan-900/80 font-mono text-xs rounded-lg flex items-center space-x-1.5 transition-colors"
           >
             <Cloud className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Altium Develop (105)</span>
+            <span>Altium Develop ({develop})</span>
           </button>
         </div>
 
-        {/* Platform Proof Metrics Banner */}
         <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-slate-800/80 pt-8 text-slate-300">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-blue-950 rounded-lg text-blue-400 border border-blue-800">
               <CircuitBoard className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xl font-bold text-white font-mono">201</div>
-              <div className="text-xs text-slate-400">Recovered Tutorials</div>
+              <div className="text-xl font-bold text-white font-mono">{enriched}</div>
+              <div className="text-xs text-slate-400">Enriched Tutorials</div>
             </div>
           </div>
 
@@ -146,7 +139,7 @@ export const Hero: React.FC<HeroProps> = ({
               <Compass className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xl font-bold text-white font-mono">10</div>
+              <div className="text-xl font-bold text-white font-mono">{LEARNING_PATHS.length}</div>
               <div className="text-xs text-slate-400">Curated Learning Paths</div>
             </div>
           </div>
@@ -156,8 +149,8 @@ export const Hero: React.FC<HeroProps> = ({
               <Layers className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xl font-bold text-white font-mono">30+</div>
-              <div className="text-xs text-slate-400">Hardware Projects</div>
+              <div className="text-xl font-bold text-white font-mono">{HARDWARE_PROJECTS.length}</div>
+              <div className="text-xs text-slate-400">Hardware Project Hubs</div>
             </div>
           </div>
 
@@ -166,7 +159,7 @@ export const Hero: React.FC<HeroProps> = ({
               <Users className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xl font-bold text-white font-mono">6</div>
+              <div className="text-xl font-bold text-white font-mono">{ENGINEERING_ROLES.length}</div>
               <div className="text-xs text-slate-400">Engineering Personas</div>
             </div>
           </div>

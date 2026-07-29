@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-import { 
-  BookOpen, 
-  Search, 
-  Compass, 
-  Layers, 
-  Users, 
-  CircuitBoard, 
-  BarChart3, 
-  CheckCircle2, 
-  Bookmark, 
-  ExternalLink,
-  Keyboard,
-  FileSpreadsheet,
-  ShieldAlert,
+import {
+  BookOpen,
+  Search,
+  Compass,
+  Layers,
+  Users,
+  CircuitBoard,
+  BarChart3,
+  CheckCircle2,
+  Bookmark,
+  Cpu,
   Wrench,
   HelpCircle,
-  ChevronDown
+  ChevronDown,
+  Sparkles,
+  GraduationCap
 } from 'lucide-react';
 import { UserProgress } from '../types';
+import { SearchOverlay } from './SearchOverlay';
 
 interface NavbarProps {
   activeTab: string;
@@ -29,6 +29,24 @@ interface NavbarProps {
   onOpenQuiz: () => void;
 }
 
+interface PrimaryNavItem {
+  tab: string;
+  label: string;
+  icon: React.ReactNode;
+}
+
+const PRIMARY_NAV: PrimaryNavItem[] = [
+  { tab: 'paths', label: 'Learning Paths', icon: <Compass className="w-4 h-4 text-blue-400" /> },
+  { tab: 'projects', label: 'Projects', icon: <Layers className="w-4 h-4 text-amber-400" /> },
+  { tab: 'products', label: 'Products', icon: <Cpu className="w-4 h-4 text-cyan-400" /> },
+  { tab: 'roles', label: 'Engineering Roles', icon: <Users className="w-4 h-4 text-emerald-400" /> },
+  { tab: 'skills', label: 'Skills', icon: <GraduationCap className="w-4 h-4 text-fuchsia-300" /> },
+  { tab: 'catalog', label: 'All Tutorials', icon: <BookOpen className="w-4 h-4 text-blue-300" /> },
+  { tab: 'impact', label: 'Impact', icon: <BarChart3 className="w-4 h-4 text-cyan-400" /> },
+];
+
+const TOOLS_MENU_TABS = ['shortcuts', 'activebom', 'drc', 'stackup', 'notes', 'glossary'];
+
 export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   setActiveTab,
@@ -39,35 +57,32 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenQuiz
 }) => {
   const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const completedCount = progress.completedTutorials.length;
   const bookmarkedCount = progress.bookmarkedTutorials.length;
 
   return (
     <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur border-b border-slate-800 text-slate-100 shadow-md">
-      {/* Top Banner Domain Notice */}
-      <div className="bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 px-4 py-1.5 text-xs text-slate-300 border-b border-slate-800 flex items-center justify-between">
+      {/* Top utility strip: identity + independence notice, not a vendor ad slot */}
+      <div className="bg-slate-950 px-4 py-1.5 text-xs text-slate-400 border-b border-slate-800/80 flex items-center justify-between font-mono">
         <div className="flex items-center space-x-2">
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-mono text-slate-200 font-bold">learn.eduengteam.com</span>
-          <span className="hidden md:inline text-slate-400">| EET Hardware Design & Altium Workflows Learning Library</span>
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-slate-300 font-semibold">learn.eduengteam.com</span>
+          <span className="hidden md:inline text-slate-500">| Independent EET learning library</span>
         </div>
         <div className="flex items-center space-x-4">
-          <button 
+          <button
             onClick={onOpenQuiz}
-            className="text-cyan-300 hover:text-cyan-200 text-[11px] font-mono flex items-center space-x-1 transition-colors bg-cyan-950/80 border border-cyan-800 px-2 py-0.5 rounded"
+            className="text-brand-bright hover:text-cyan-200 text-[11px] flex items-center space-x-1 transition-colors"
           >
-            <HelpCircle className="w-3 h-3 text-cyan-400" />
+            <HelpCircle className="w-3 h-3" />
             <span>Take Skill Quiz</span>
           </button>
-
-          <span className="text-slate-400 hidden sm:inline text-[11px]">201 Recovered Tutorials Enriched</span>
-          
-          <button 
-            onClick={() => onOpenAltiumLink('Altium Evaluation Portal', 'https://www.altium.com/yt-eet-header-evaluation')}
-            className="text-amber-400 hover:text-amber-300 text-[11px] font-medium flex items-center space-x-1 transition-colors"
+          <button
+            onClick={() => setActiveTab('about')}
+            className="hidden sm:inline text-slate-500 hover:text-slate-300 text-[11px] transition-colors"
           >
-            <span>Altium Free Evaluation</span>
-            <ExternalLink className="w-3 h-3" />
+            Not affiliated with Altium LLC
           </button>
         </div>
       </div>
@@ -75,90 +90,73 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Main Navbar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
-          
+
           {/* Logo & Brand */}
-          <div 
+          <div
             onClick={() => setActiveTab('home')}
             className="flex items-center space-x-3 cursor-pointer group shrink-0"
           >
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
-              <CircuitBoard className="w-6 h-6 text-cyan-300" />
+            <div className="w-10 h-10 rounded-lg bg-brand flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
+              <CircuitBoard className="w-6 h-6 text-cyan-200" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="font-bold text-lg text-white tracking-tight">EET</span>
+                <span className="font-display font-bold text-lg text-white tracking-tight">EET</span>
                 <span className="text-xs bg-blue-900/80 text-blue-300 px-1.5 py-0.5 rounded font-mono border border-blue-700">LIBRARY</span>
               </div>
               <p className="text-xs text-slate-400 hidden sm:block">Electronics Product Development</p>
             </div>
           </div>
 
-          {/* Search Bar */}
-          <div className="flex-1 max-w-md relative hidden md:block">
+          {/* Search Bar (compact, desktop only — Search nav button covers mobile + full overlay) */}
+          <div className="flex-1 max-w-sm relative hidden md:block">
             <div className="relative">
               <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
                 type="text"
-                placeholder="Search 201 tutorials, DRC, ESP32, SolidWorks, ActiveBOM..."
+                placeholder="Search tutorials, skills, commands..."
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
                   if (activeTab !== 'catalog') setActiveTab('catalog');
                 }}
-                className="w-full bg-slate-950/80 border border-slate-700/80 rounded-lg pl-9 pr-4 py-1.5 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full bg-slate-950/80 border border-slate-700/80 rounded-lg pl-9 pr-4 py-1.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-transparent transition-all"
               />
             </div>
           </div>
 
-          {/* Navigation Items */}
-          <nav className="hidden lg:flex items-center space-x-1 text-sm font-medium">
+          {/* Primary Navigation Items */}
+          <nav className="hidden lg:flex items-center space-x-1 text-sm font-medium overflow-x-auto">
+            {PRIMARY_NAV.map((item) => (
+              <button
+                key={item.tab}
+                onClick={() => setActiveTab(item.tab)}
+                className={`px-2.5 py-2 rounded-md transition-colors flex items-center space-x-1.5 whitespace-nowrap ${
+                  activeTab === item.tab ? 'bg-brand text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                }`}
+              >
+                {item.icon}
+                <span>{item.label}</span>
+              </button>
+            ))}
+
+            {/* Search trigger (nav-level entry point per site IA; opens full overlay) */}
             <button
-              onClick={() => setActiveTab('paths')}
-              className={`px-3 py-2 rounded-md transition-colors flex items-center space-x-1.5 ${
-                activeTab === 'paths' ? 'bg-blue-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'
-              }`}
+              onClick={() => setSearchOpen(true)}
+              className="px-2.5 py-2 rounded-md transition-colors flex items-center space-x-1.5 whitespace-nowrap text-slate-300 hover:text-white hover:bg-slate-800"
+              aria-label="Open search"
             >
-              <Compass className="w-4 h-4 text-blue-400" />
-              <span>Paths</span>
+              <Search className="w-4 h-4 text-slate-400" />
+              <span>Search</span>
             </button>
 
-            <button
-              onClick={() => setActiveTab('catalog')}
-              className={`px-3 py-2 rounded-md transition-colors flex items-center space-x-1.5 ${
-                activeTab === 'catalog' ? 'bg-blue-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'
-              }`}
-            >
-              <BookOpen className="w-4 h-4 text-emerald-400" />
-              <span>201 Tutorials</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('projects')}
-              className={`px-3 py-2 rounded-md transition-colors flex items-center space-x-1.5 ${
-                activeTab === 'projects' ? 'bg-blue-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'
-              }`}
-            >
-              <Layers className="w-4 h-4 text-amber-400" />
-              <span>Projects</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('roles')}
-              className={`px-3 py-2 rounded-md transition-colors flex items-center space-x-1.5 ${
-                activeTab === 'roles' ? 'bg-blue-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'
-              }`}
-            >
-              <Users className="w-4 h-4 text-purple-400" />
-              <span>Roles</span>
-            </button>
-
-            {/* Interactive Engineering Tools Dropdown */}
+            {/* Secondary interactive tools, tucked away so the required nav set stays scannable */}
             <div className="relative">
               <button
                 onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)}
-                className={`px-3 py-2 rounded-md transition-colors flex items-center space-x-1.5 ${
-                  ['shortcuts', 'activebom', 'drc', 'stackup', 'notes', 'glossary'].includes(activeTab) 
-                    ? 'bg-blue-600 text-white' 
+                className={`px-2.5 py-2 rounded-md transition-colors flex items-center space-x-1.5 whitespace-nowrap ${
+                  TOOLS_MENU_TABS.includes(activeTab)
+                    ? 'bg-brand text-white'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800'
                 }`}
               >
@@ -168,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
 
               {toolsDropdownOpen && (
-                <div 
+                <div
                   className="absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl py-2 z-50 text-xs space-y-1"
                   onMouseLeave={() => setToolsDropdownOpen(false)}
                 >
@@ -176,26 +174,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onClick={() => { setActiveTab('shortcuts'); setToolsDropdownOpen(false); }}
                     className="w-full text-left px-4 py-2 hover:bg-slate-800 flex items-center space-x-2 text-slate-200"
                   >
-                    <Keyboard className="w-4 h-4 text-cyan-400" />
+                    <Sparkles className="w-4 h-4 text-cyan-400" />
                     <span>Hotkey Command Palette</span>
                   </button>
-
                   <button
                     onClick={() => { setActiveTab('activebom'); setToolsDropdownOpen(false); }}
                     className="w-full text-left px-4 py-2 hover:bg-slate-800 flex items-center space-x-2 text-slate-200"
                   >
-                    <FileSpreadsheet className="w-4 h-4 text-amber-400" />
+                    <Layers className="w-4 h-4 text-amber-400" />
                     <span>ActiveBOM Risk Simulator</span>
                   </button>
-
                   <button
                     onClick={() => { setActiveTab('drc'); setToolsDropdownOpen(false); }}
                     className="w-full text-left px-4 py-2 hover:bg-slate-800 flex items-center space-x-2 text-slate-200"
                   >
-                    <ShieldAlert className="w-4 h-4 text-rose-400" />
+                    <CheckCircle2 className="w-4 h-4 text-rose-400" />
                     <span>DRC Rulebook & Assistant</span>
                   </button>
-
                   <button
                     onClick={() => { setActiveTab('stackup'); setToolsDropdownOpen(false); }}
                     className="w-full text-left px-4 py-2 hover:bg-slate-800 flex items-center space-x-2 text-slate-200"
@@ -203,9 +198,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <Layers className="w-4 h-4 text-purple-400" />
                     <span>Stackup & Impedance Calculator</span>
                   </button>
-                  
                   <div className="border-t border-slate-700 my-1"></div>
-                  
                   <button
                     onClick={() => { setActiveTab('notes'); setToolsDropdownOpen(false); }}
                     className="w-full text-left px-4 py-2 hover:bg-slate-800 flex items-center space-x-2 text-slate-200"
@@ -213,7 +206,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <Bookmark className="w-4 h-4 text-emerald-400" />
                     <span>My Engineering Notes</span>
                   </button>
-
                   <button
                     onClick={() => { setActiveTab('glossary'); setToolsDropdownOpen(false); }}
                     className="w-full text-left px-4 py-2 hover:bg-slate-800 flex items-center space-x-2 text-slate-200"
@@ -224,21 +216,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
               )}
             </div>
-
-            <button
-              onClick={() => setActiveTab('impact')}
-              className={`px-3 py-2 rounded-md transition-colors flex items-center space-x-1.5 ${
-                activeTab === 'impact' ? 'bg-blue-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'
-              }`}
-            >
-              <BarChart3 className="w-4 h-4 text-cyan-400" />
-              <span>Impact</span>
-            </button>
           </nav>
 
           {/* User Progress Indicators */}
           <div className="flex items-center space-x-3 border-l border-slate-800 pl-4">
-            <div 
+            <div
               onClick={() => setActiveTab('catalog')}
               className="flex items-center space-x-1.5 text-xs text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-2.5 py-1 rounded-full cursor-pointer hover:bg-emerald-900/60 transition-colors"
               title="Completed Lessons"
@@ -249,7 +231,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {bookmarkedCount > 0 && (
-              <div 
+              <div
                 onClick={() => setActiveTab('catalog')}
                 className="flex items-center space-x-1 text-xs text-amber-400 bg-amber-950/60 border border-amber-800/80 px-2 py-1 rounded-full cursor-pointer hover:bg-amber-900/60 transition-colors"
                 title="Bookmarked Tutorials"
@@ -258,68 +240,58 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="font-semibold">{bookmarkedCount}</span>
               </div>
             )}
+
+            {/* Mobile search trigger — inline search bar above is desktop-only */}
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="md:hidden p-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+              aria-label="Open search"
+            >
+              <Search className="w-4 h-4" />
+            </button>
           </div>
 
         </div>
       </div>
 
       {/* Mobile Sub-Navigation Bar */}
-      <div className="lg:hidden border-t border-slate-800 bg-slate-950 px-2 py-2 flex items-center justify-around text-[11px] font-medium text-slate-300 overflow-x-auto space-x-1">
-        <button 
+      <div className="lg:hidden border-t border-slate-800 bg-slate-950 px-2 py-2 flex items-center overflow-x-auto text-[11px] font-medium text-slate-300 space-x-1">
+        <button
           onClick={() => setActiveTab('home')}
-          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'home' ? 'text-blue-400 bg-slate-800' : ''}`}
+          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'home' ? 'text-brand-bright bg-slate-800' : ''}`}
         >
           Home
         </button>
-        <button 
-          onClick={() => setActiveTab('paths')}
-          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'paths' ? 'text-blue-400 bg-slate-800' : ''}`}
-        >
-          Paths
-        </button>
-        <button 
-          onClick={() => setActiveTab('catalog')}
-          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'catalog' ? 'text-blue-400 bg-slate-800' : ''}`}
-        >
-          Tutorials
-        </button>
-        <button 
-          onClick={() => setActiveTab('shortcuts')}
-          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'shortcuts' ? 'text-blue-400 bg-slate-800' : ''}`}
-        >
-          Shortcuts
-        </button>
-        <button 
-          onClick={() => setActiveTab('activebom')}
-          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'activebom' ? 'text-blue-400 bg-slate-800' : ''}`}
-        >
-          ActiveBOM
-        </button>
-        <button 
-          onClick={() => setActiveTab('drc')}
-          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'drc' ? 'text-blue-400 bg-slate-800' : ''}`}
-        >
-          DRC Guide
-        </button>
-        <button 
+        {PRIMARY_NAV.map((item) => (
+          <button
+            key={item.tab}
+            onClick={() => setActiveTab(item.tab)}
+            className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === item.tab ? 'text-brand-bright bg-slate-800' : ''}`}
+          >
+            {item.label}
+          </button>
+        ))}
+        <button
           onClick={() => setActiveTab('notes')}
-          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'notes' ? 'text-blue-400 bg-slate-800' : ''}`}
+          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'notes' ? 'text-brand-bright bg-slate-800' : ''}`}
         >
           Notes
         </button>
-        <button 
+        <button
           onClick={() => setActiveTab('glossary')}
-          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'glossary' ? 'text-blue-400 bg-slate-800' : ''}`}
+          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'glossary' ? 'text-brand-bright bg-slate-800' : ''}`}
         >
           Glossary
         </button>
-        <button 
-          onClick={() => setActiveTab('impact')}
-          className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'impact' ? 'text-blue-400 bg-slate-800' : ''}`}
-        >
-          Impact
-        </button>
       </div>
+
+      <SearchOverlay
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onSubmit={() => setActiveTab('catalog')}
+      />
     </header>
   );
 };

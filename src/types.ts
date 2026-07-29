@@ -38,6 +38,7 @@ export interface DownloadResource {
 
 export interface Tutorial {
   id: string;
+  /** Real YouTube ID when known; synthetic placeholders must not be treated as playable. */
   youtubeId: string;
   title: string;
   slug: string;

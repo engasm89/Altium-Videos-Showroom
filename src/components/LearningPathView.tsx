@@ -28,14 +28,25 @@ import { CertificateModal } from './CertificateModal';
 interface LearningPathViewProps {
   progress: UserProgress;
   onSelectTutorial: (tutorial: Tutorial) => void;
+  initialPathSlug?: string;
 }
 
 export const LearningPathView: React.FC<LearningPathViewProps> = ({
   progress,
-  onSelectTutorial
+  onSelectTutorial,
+  initialPathSlug,
 }) => {
-  const [expandedPathId, setExpandedPathId] = useState<string | null>('path-001');
+  const slugMatched = initialPathSlug
+    ? LEARNING_PATHS.find((p) => p.slug === initialPathSlug)?.id
+    : undefined;
+  const [expandedPathId, setExpandedPathId] = useState<string | null>(slugMatched || 'path-001');
   const [selectedCertPath, setSelectedCertPath] = useState<LearningPath | null>(null);
+
+  React.useEffect(() => {
+    if (!initialPathSlug) return;
+    const match = LEARNING_PATHS.find((p) => p.slug === initialPathSlug);
+    if (match) setExpandedPathId(match.id);
+  }, [initialPathSlug]);
 
   const renderIcon = (iconName: string) => {
     switch (iconName) {

@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
-import { 
-  getInitialProgress, 
-  toggleCompletedTutorial, 
-  toggleBookmarkedTutorial, 
-  saveTutorialNote, 
-  logOutboundClick 
+import React, { useEffect, useState } from 'react';
+import {
+  Navigate,
+  Route,
+  Routes,
+  matchPath,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
+import {
+  getInitialProgress,
+  toggleCompletedTutorial,
+  toggleBookmarkedTutorial,
+  saveTutorialNote,
+  logOutboundClick,
 } from './utils/storage';
 import { Tutorial, UserProgress } from './types';
 import { ALL_TUTORIALS } from './data/catalog';
+import { LEARNING_PATHS } from './data/learningPaths';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
@@ -25,15 +34,52 @@ import { QuizModal } from './components/QuizModal';
 import { TutorialDetailModal } from './components/TutorialDetailModal';
 import { NotesHubView } from './components/NotesHubView';
 import { GlossaryView } from './components/GlossaryView';
-import { LEARNING_PATHS } from './data/learningPaths';
+import { AboutView } from './components/AboutView';
+import { PrivacyView } from './components/PrivacyView';
+import { SkillsIndexView } from './components/SkillsIndexView';
+import { pathForTab, tabFromPathname } from './routes';
 
-export default function App() {
-  const [activeTab, setActiveTab] = useState<string>('home');
+function AppShell() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const activeTab = tabFromPathname(location.pathname);
+
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedTutorial, setSelectedTutorial] = useState<Tutorial | null>(null);
   const [progress, setProgress] = useState<UserProgress>(getInitialProgress());
   const [productFilterOverride, setProductFilterOverride] = useState<string>('All');
   const [showQuizModal, setShowQuizModal] = useState<boolean>(false);
+  const [initialPathSlug, setInitialPathSlug] = useState<string | undefined>();
+  const [initialRoleSlug, setInitialRoleSlug] = useState<string | undefined>();
+  const [initialProductSlug, setInitialProductSlug] = useState<string | undefined>();
+
+  const setActiveTab = (tab: string) => {
+    navigate(pathForTab(tab));
+  };
+
+  // Sync deep-link params → local UI state
+  useEffect(() => {
+    const tutorialMatch = matchPath('/tutorials/:slug', location.pathname);
+    if (tutorialMatch?.params.slug) {
+      const tut = ALL_TUTORIALS.find((t) => t.slug === tutorialMatch.params.slug);
+      setSelectedTutorial(tut ?? null);
+    } else {
+      setSelectedTutorial(null);
+    }
+
+    const pathMatch = matchPath('/learning-paths/:slug', location.pathname);
+    setInitialPathSlug(pathMatch?.params.slug);
+
+    const roleMatch = matchPath('/roles/:slug', location.pathname);
+    setInitialRoleSlug(roleMatch?.params.slug);
+
+    const productMatch = matchPath('/products/:slug', location.pathname);
+    setInitialProductSlug(productMatch?.params.slug);
+
+    const params = new URLSearchParams(location.search);
+    const product = params.get('product');
+    if (product) setProductFilterOverride(product);
+  }, [location.pathname, location.search]);
 
   const handleToggleCompleted = (e?: React.MouseEvent, id?: string) => {
     if (e) e.stopPropagation();
@@ -58,38 +104,52 @@ export default function App() {
 
   const handleOpenAltiumLink = (title: string, url: string) => {
     logOutboundClick(selectedTutorial?.id || 'general-nav', title, url);
+    setProgress(getInitialProgress());
     window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleSelectTutorial = (tutorial: Tutorial) => {
+    setSelectedTutorial(tutorial);
+    navigate(`/tutorials/${tutorial.slug}`);
+  };
+
+  const handleCloseTutorial = () => {
+    setSelectedTutorial(null);
+    if (matchPath('/tutorials/:slug', location.pathname)) {
+      navigate('/tutorials');
+    }
   };
 
   const handleSelectAdjacentTutorial = (direction: 'next' | 'prev') => {
     if (!selectedTutorial) return;
-    const currentIndex = ALL_TUTORIALS.findIndex(t => t.id === selectedTutorial.id);
+    const currentIndex = ALL_TUTORIALS.findIndex((t) => t.id === selectedTutorial.id);
     if (currentIndex === -1) return;
 
     if (direction === 'next' && currentIndex < ALL_TUTORIALS.length - 1) {
-      setSelectedTutorial(ALL_TUTORIALS[currentIndex + 1]);
+      handleSelectTutorial(ALL_TUTORIALS[currentIndex + 1]);
     } else if (direction === 'prev' && currentIndex > 0) {
-      setSelectedTutorial(ALL_TUTORIALS[currentIndex - 1]);
+      handleSelectTutorial(ALL_TUTORIALS[currentIndex - 1]);
     }
   };
 
-  const currentIndex = selectedTutorial ? ALL_TUTORIALS.findIndex(t => t.id === selectedTutorial.id) : -1;
+  const currentIndex = selectedTutorial
+    ? ALL_TUTORIALS.findIndex((t) => t.id === selectedTutorial.id)
+    : -1;
   const hasPrev = currentIndex > 0;
   const hasNext = currentIndex >= 0 && currentIndex < ALL_TUTORIALS.length - 1;
 
   const handleFilterProductFromHero = (product: string) => {
     setProductFilterOverride(product);
-    setActiveTab('catalog');
+    navigate(`/tutorials?product=${encodeURIComponent(product)}`);
   };
 
   const handleSelectPathFromRole = (pathId: string) => {
-    setActiveTab('paths');
+    const path = LEARNING_PATHS.find((p) => p.id === pathId);
+    navigate(path ? `/learning-paths/${path.slug}` : '/learning-paths');
   };
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
-      
-      {/* Navigation Bar */}
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -100,163 +160,238 @@ export default function App() {
         onOpenQuiz={() => setShowQuizModal(true)}
       />
 
-      {/* Main Content Views */}
       <main className="flex-1">
-        {activeTab === 'home' && (
-          <div className="space-y-12">
-            <Hero
-              setActiveTab={setActiveTab}
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-              onFilterProduct={handleFilterProductFromHero}
-            />
-
-            {/* Home Featured Curricula Quick Highlights */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 pb-16">
-              
-              {/* Featured Learning Paths */}
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                    Featured Outcome Learning Paths
-                  </h2>
-                  <button 
-                    onClick={() => setActiveTab('paths')}
-                    className="text-xs text-blue-400 hover:underline font-mono"
-                  >
-                    View All 10 Paths →
-                  </button>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {LEARNING_PATHS.slice(0, 3).map((path) => (
-                    <div
-                      key={path.id}
-                      onClick={() => setActiveTab('paths')}
-                      className="p-5 bg-slate-900 border border-slate-800 hover:border-blue-600 rounded-2xl cursor-pointer transition-all space-y-3 group shadow-lg"
-                    >
-                      <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                        <span className="text-blue-400">{path.targetRole}</span>
-                        <span>~{path.estimatedHours} hrs</span>
-                      </div>
-                      <h3 className="text-base font-bold text-white group-hover:text-blue-300 transition-colors">
-                        {path.title}
-                      </h3>
-                      <p className="text-xs text-slate-400 line-clamp-2">
-                        {path.headline}
-                      </p>
-                      <div className="pt-2 flex items-center justify-between text-xs font-mono text-cyan-400 font-semibold">
-                        <span>{path.tutorialCount} Lessons</span>
-                        <span>Start Path →</span>
-                      </div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="space-y-12">
+                <Hero
+                  setActiveTab={setActiveTab}
+                  searchQuery={searchQuery}
+                  setSearchQuery={setSearchQuery}
+                  onFilterProduct={handleFilterProductFromHero}
+                />
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 pb-16">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                        Featured Outcome Learning Paths
+                      </h2>
+                      <button
+                        onClick={() => setActiveTab('paths')}
+                        className="text-xs text-blue-400 hover:underline font-mono"
+                      >
+                        View All {LEARNING_PATHS.length} Paths →
+                      </button>
                     </div>
-                  ))}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {LEARNING_PATHS.slice(0, 3).map((path) => (
+                        <div
+                          key={path.id}
+                          onClick={() => navigate(`/learning-paths/${path.slug}`)}
+                          className="p-5 bg-slate-900 border border-slate-800 hover:border-blue-600 rounded-2xl cursor-pointer transition-all space-y-3 group shadow-lg"
+                        >
+                          <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                            <span className="text-blue-400">{path.targetRole}</span>
+                            <span>~{path.estimatedHours} hrs</span>
+                          </div>
+                          <h3 className="text-base font-bold text-white group-hover:text-blue-300 transition-colors">
+                            {path.title}
+                          </h3>
+                          <p className="text-xs text-slate-400 line-clamp-2">{path.headline}</p>
+                          <div className="pt-2 flex items-center justify-between text-xs font-mono text-cyan-400 font-semibold">
+                            <span>{path.tutorialCount} Lessons</span>
+                            <span>Start Path →</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <CatalogView
+                    searchQuery=""
+                    setSearchQuery={setSearchQuery}
+                    progress={progress}
+                    onSelectTutorial={handleSelectTutorial}
+                    onToggleBookmark={handleToggleBookmark}
+                    onToggleCompleted={handleToggleCompleted}
+                    productFilterOverride="All"
+                  />
                 </div>
               </div>
+            }
+          />
 
-              {/* Featured Tutorials Carousel Grid */}
+          <Route
+            path="/learning-paths"
+            element={
+              <LearningPathView
+                progress={progress}
+                onSelectTutorial={handleSelectTutorial}
+                initialPathSlug={undefined}
+              />
+            }
+          />
+          <Route
+            path="/learning-paths/:slug"
+            element={
+              <LearningPathView
+                progress={progress}
+                onSelectTutorial={handleSelectTutorial}
+                initialPathSlug={initialPathSlug}
+              />
+            }
+          />
+
+          <Route
+            path="/tutorials"
+            element={
               <CatalogView
-                searchQuery=""
+                searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
                 progress={progress}
-                onSelectTutorial={setSelectedTutorial}
+                onSelectTutorial={handleSelectTutorial}
                 onToggleBookmark={handleToggleBookmark}
                 onToggleCompleted={handleToggleCompleted}
-                productFilterOverride="All"
+                productFilterOverride={productFilterOverride}
               />
-
-            </div>
-          </div>
-        )}
-
-        {activeTab === 'paths' && (
-          <LearningPathView
-            progress={progress}
-            onSelectTutorial={setSelectedTutorial}
+            }
           />
-        )}
-
-        {activeTab === 'catalog' && (
-          <CatalogView
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            progress={progress}
-            onSelectTutorial={setSelectedTutorial}
-            onToggleBookmark={handleToggleBookmark}
-            onToggleCompleted={handleToggleCompleted}
-            productFilterOverride={productFilterOverride}
+          <Route
+            path="/tutorials/:slug"
+            element={
+              <CatalogView
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                progress={progress}
+                onSelectTutorial={handleSelectTutorial}
+                onToggleBookmark={handleToggleBookmark}
+                onToggleCompleted={handleToggleCompleted}
+                productFilterOverride={productFilterOverride}
+              />
+            }
           />
-        )}
 
-        {activeTab === 'projects' && (
-          <ProjectHubView
-            onSelectTutorial={setSelectedTutorial}
+          <Route
+            path="/projects"
+            element={<ProjectHubView onSelectTutorial={handleSelectTutorial} />}
           />
-        )}
 
-        {activeTab === 'roles' && (
-          <RoleView
-            onSelectTutorial={setSelectedTutorial}
-            onSelectPath={handleSelectPathFromRole}
+          <Route
+            path="/roles"
+            element={
+              <RoleView
+                onSelectTutorial={handleSelectTutorial}
+                onSelectPath={handleSelectPathFromRole}
+                initialRoleSlug={undefined}
+              />
+            }
           />
-        )}
-
-        {activeTab === 'products' && (
-          <ProductCatalogView
-            onSelectTutorial={setSelectedTutorial}
-            onFilterProduct={handleFilterProductFromHero}
+          <Route
+            path="/roles/:slug"
+            element={
+              <RoleView
+                onSelectTutorial={handleSelectTutorial}
+                onSelectPath={handleSelectPathFromRole}
+                initialRoleSlug={initialRoleSlug}
+              />
+            }
           />
-        )}
 
-        {activeTab === 'shortcuts' && (
-          <ShortcutsView
-            onSelectTutorial={setSelectedTutorial}
+          <Route
+            path="/products"
+            element={
+              <ProductCatalogView
+                onSelectTutorial={handleSelectTutorial}
+                onFilterProduct={handleFilterProductFromHero}
+                initialProductSlug={undefined}
+              />
+            }
           />
-        )}
-
-        {activeTab === 'activebom' && (
-          <ActiveBomSimulatorView
-            onSelectTutorial={setSelectedTutorial}
+          <Route
+            path="/products/:slug"
+            element={
+              <ProductCatalogView
+                onSelectTutorial={handleSelectTutorial}
+                onFilterProduct={handleFilterProductFromHero}
+                initialProductSlug={initialProductSlug}
+              />
+            }
           />
-        )}
 
-        {activeTab === 'drc' && (
-          <DrcAssistantView
-            onSelectTutorial={setSelectedTutorial}
+          <Route
+            path="/tools/shortcuts"
+            element={<ShortcutsView onSelectTutorial={handleSelectTutorial} />}
           />
-        )}
-
-        {activeTab === 'stackup' && (
-          <StackupInspectorView
-            onSelectTutorial={setSelectedTutorial}
+          <Route
+            path="/tools/activebom"
+            element={<ActiveBomSimulatorView onSelectTutorial={handleSelectTutorial} />}
           />
-        )}
-
-        {activeTab === 'impact' && (
-          <ImpactDashboardView
-            progress={progress}
-            onOpenAltiumLink={handleOpenAltiumLink}
+          <Route
+            path="/tools/drc"
+            element={<DrcAssistantView onSelectTutorial={handleSelectTutorial} />}
           />
-        )}
-
-        {activeTab === 'notes' && (
-          <NotesHubView
-            progress={progress}
-            onSelectTutorial={setSelectedTutorial}
-            onSaveNote={handleSaveNote}
+          <Route
+            path="/tools/stackup"
+            element={<StackupInspectorView onSelectTutorial={handleSelectTutorial} />}
           />
-        )}
 
-        {activeTab === 'glossary' && (
-          <GlossaryView />
-        )}
+          <Route
+            path="/impact"
+            element={
+              <ImpactDashboardView
+                progress={progress}
+                onOpenAltiumLink={handleOpenAltiumLink}
+              />
+            }
+          />
+
+          <Route
+            path="/notes"
+            element={
+              <NotesHubView
+                progress={progress}
+                onSelectTutorial={handleSelectTutorial}
+                onSaveNote={handleSaveNote}
+              />
+            }
+          />
+
+          <Route path="/glossary" element={<GlossaryView />} />
+
+          <Route
+            path="/skills"
+            element={
+              <SkillsIndexView
+                setActiveTab={setActiveTab}
+                setSearchQuery={setSearchQuery}
+              />
+            }
+          />
+
+          <Route
+            path="/about"
+            element={
+              <AboutView
+                setActiveTab={setActiveTab}
+                onOpenAltiumLink={handleOpenAltiumLink}
+              />
+            }
+          />
+
+          <Route
+            path="/privacy"
+            element={<PrivacyView setActiveTab={setActiveTab} />}
+          />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
 
-      {/* Tutorial Detail Modal */}
       {selectedTutorial && (
         <TutorialDetailModal
           tutorial={selectedTutorial}
-          onClose={() => setSelectedTutorial(null)}
+          onClose={handleCloseTutorial}
           isCompleted={progress.completedTutorials.includes(selectedTutorial.id)}
           isBookmarked={progress.bookmarkedTutorials.includes(selectedTutorial.id)}
           onToggleBookmark={(id) => handleToggleBookmark(undefined, id)}
@@ -270,19 +405,13 @@ export default function App() {
         />
       )}
 
-      {/* Knowledge Assessment Quiz Modal */}
-      {showQuizModal && (
-        <QuizModal
-          onClose={() => setShowQuizModal(false)}
-        />
-      )}
+      {showQuizModal && <QuizModal onClose={() => setShowQuizModal(false)} />}
 
-      {/* Footer */}
-      <Footer
-        setActiveTab={setActiveTab}
-        onOpenAltiumLink={handleOpenAltiumLink}
-      />
-
+      <Footer setActiveTab={setActiveTab} onOpenAltiumLink={handleOpenAltiumLink} />
     </div>
   );
+}
+
+export default function App() {
+  return <AppShell />;
 }
