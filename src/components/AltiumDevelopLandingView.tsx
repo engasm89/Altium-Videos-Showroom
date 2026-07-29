@@ -6,8 +6,10 @@ import {
   ExternalLink,
   Layers,
   Shield,
+  Sparkles,
 } from 'lucide-react';
 import { ALL_TUTORIALS, catalogCounts } from '../data/catalog';
+import { PERSONA_JOURNEYS } from '../data/personas';
 import { Tutorial } from '../types';
 import { landingAltiumTrialUrl } from '../utils/outbound';
 import { WorkflowMapEmbed } from './WorkflowMapView';
@@ -22,6 +24,7 @@ interface AltiumDevelopLandingViewProps {
 /**
  * Partner-facing Altium Develop hub — the URL Ashraf should send to Altium.
  * Embeds the flagship interactive workflow map; full map also lives at /workflow.
+ * Persona journeys deep-link to `/personas/:slug`.
  */
 export const AltiumDevelopLandingView: React.FC<AltiumDevelopLandingViewProps> = ({
   onSelectTutorial,
@@ -58,6 +61,14 @@ export const AltiumDevelopLandingView: React.FC<AltiumDevelopLandingViewProps> =
               <ExternalLink className="w-4 h-4" />
             </button>
             <Link
+              to="/personas"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-600 text-white text-sm font-semibold transition-colors"
+            >
+              <Sparkles className="w-4 h-4" />
+              Persona journeys
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
               to="/workflow"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-600 text-white text-sm font-semibold transition-colors"
             >
@@ -87,12 +98,48 @@ export const AltiumDevelopLandingView: React.FC<AltiumDevelopLandingViewProps> =
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 pb-16">
         <WorkflowMapEmbed
           onSelectTutorial={onSelectTutorial}
           onOpenAltiumLink={onOpenAltiumLink}
           initialStageSlug="concept"
         />
+
+        <section className="space-y-6">
+          <div className="space-y-2 max-w-2xl">
+            <h2 className="text-xl sm:text-2xl font-bold text-white">I am a…</h2>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              Six audience journeys beyond catalog role hubs — Develop outcomes, starting path, tutorials,
+              one workflow example, and a relevant tool.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {PERSONA_JOURNEYS.map((persona) => (
+              <Link
+                key={persona.id}
+                to={`/personas/${persona.slug}`}
+                className="text-left bg-slate-900 border border-slate-800 hover:border-cyan-700/70 rounded-xl p-4 space-y-2 transition-colors group block"
+              >
+                <p className="text-[11px] font-mono text-cyan-400">I am a {persona.selectorLabel}</p>
+                <h3 className="text-sm font-semibold text-white group-hover:text-cyan-200 transition-colors">
+                  {persona.title}
+                </h3>
+                <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                  {persona.developOutcomes[0]}
+                </p>
+                <span className="inline-flex items-center text-[11px] font-mono text-cyan-400">
+                  Open journey <ArrowRight className="w-3 h-3 ml-1" />
+                </span>
+              </Link>
+            ))}
+          </div>
+          <Link
+            to="/personas"
+            className="text-xs font-mono text-cyan-300 hover:underline inline-flex items-center gap-1"
+          >
+            Browse all persona journeys <ArrowRight className="w-3 h-3" />
+          </Link>
+        </section>
       </div>
     </div>
   );
