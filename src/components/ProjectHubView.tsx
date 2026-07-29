@@ -114,7 +114,7 @@ export const ProjectHubView: React.FC<ProjectHubViewProps> = ({ onSelectTutorial
 
               {/* Download Project Files Footer */}
               <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
-                {proj.downloadUrl && (
+                {proj.downloadUrl ? (
                   <a
                     href={proj.downloadUrl}
                     target="_blank"
@@ -124,6 +124,10 @@ export const ProjectHubView: React.FC<ProjectHubViewProps> = ({ onSelectTutorial
                     <Download className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Download CAD Zip</span>
                   </a>
+                ) : (
+                  <span className="text-[11px] font-mono text-slate-500">
+                    CAD project zip not published yet
+                  </span>
                 )}
 
                 {proj.githubUrl && (

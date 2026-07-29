@@ -38,6 +38,7 @@ import { AboutView } from './components/AboutView';
 import { PrivacyView } from './components/PrivacyView';
 import { SkillsIndexView } from './components/SkillsIndexView';
 import { pathForTab, tabFromPathname } from './routes';
+import { withEetUtm } from './utils/outbound';
 
 function AppShell() {
   const navigate = useNavigate();
@@ -46,6 +47,7 @@ function AppShell() {
 
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedTutorial, setSelectedTutorial] = useState<Tutorial | null>(null);
+  const [missingTutorialSlug, setMissingTutorialSlug] = useState<string | null>(null);
   const [progress, setProgress] = useState<UserProgress>(getInitialProgress());
   const [productFilterOverride, setProductFilterOverride] = useState<string>(() => {
     return new URLSearchParams(location.search).get('product') || 'All';
@@ -68,8 +70,10 @@ function AppShell() {
     if (tutorialMatch?.params.slug) {
       const tut = ALL_TUTORIALS.find((t) => t.slug === tutorialMatch.params.slug);
       setSelectedTutorial(tut ?? null);
+      setMissingTutorialSlug(tut ? null : tutorialMatch.params.slug);
     } else {
       setSelectedTutorial(null);
+      setMissingTutorialSlug(null);
     }
 
     const pathMatch = matchPath('/learning-paths/:slug', location.pathname);
@@ -110,9 +114,10 @@ function AppShell() {
   };
 
   const handleOpenAltiumLink = (title: string, url: string) => {
-    logOutboundClick(selectedTutorial?.id || 'general-nav', title, url);
+    const tracked = withEetUtm(url, selectedTutorial?.slug);
+    logOutboundClick(selectedTutorial?.id || 'general-nav', title, tracked);
     setProgress(getInitialProgress());
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(tracked, '_blank', 'noopener,noreferrer');
   };
 
   const handleSelectTutorial = (tutorial: Tutorial) => {
@@ -208,7 +213,9 @@ function AppShell() {
                           </h3>
                           <p className="text-xs text-slate-400 line-clamp-2">{path.headline}</p>
                           <div className="pt-2 flex items-center justify-between text-xs font-mono text-cyan-400 font-semibold">
-                            <span>{path.tutorialCount} Lessons</span>
+                            <span>
+                              {new Set(path.modules.flatMap((m) => m.tutorialIds)).size} Lessons
+                            </span>
                             <span>Start Path →</span>
                           </div>
                         </div>
@@ -254,31 +261,67 @@ function AppShell() {
           <Route
             path="/tutorials"
             element={
-              <CatalogView
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-                progress={progress}
-                onSelectTutorial={handleSelectTutorial}
-                onToggleBookmark={handleToggleBookmark}
-                onToggleCompleted={handleToggleCompleted}
-                productFilterOverride={productFilterOverride}
-                skillFilterOverride={skillFilterOverride}
-              />
+              <>
+                {missingTutorialSlug && (
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+                    <div className="p-4 bg-amber-950/70 border border-amber-800 rounded-xl text-amber-200 text-sm">
+                      No tutorial matches <span className="font-mono">{missingTutorialSlug}</span>.
+                      Browse the enriched catalog below, or{' '}
+                      <button
+                        type="button"
+                        onClick={() => navigate('/tutorials')}
+                        className="underline hover:text-white"
+                      >
+                        clear this deep link
+                      </button>
+                      .
+                    </div>
+                  </div>
+                )}
+                <CatalogView
+                  searchQuery={searchQuery}
+                  setSearchQuery={setSearchQuery}
+                  progress={progress}
+                  onSelectTutorial={handleSelectTutorial}
+                  onToggleBookmark={handleToggleBookmark}
+                  onToggleCompleted={handleToggleCompleted}
+                  productFilterOverride={productFilterOverride}
+                  skillFilterOverride={skillFilterOverride}
+                />
+              </>
             }
           />
           <Route
             path="/tutorials/:slug"
             element={
-              <CatalogView
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-                progress={progress}
-                onSelectTutorial={handleSelectTutorial}
-                onToggleBookmark={handleToggleBookmark}
-                onToggleCompleted={handleToggleCompleted}
-                productFilterOverride={productFilterOverride}
-                skillFilterOverride={skillFilterOverride}
-              />
+              <>
+                {missingTutorialSlug && (
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+                    <div className="p-4 bg-amber-950/70 border border-amber-800 rounded-xl text-amber-200 text-sm">
+                      No tutorial matches <span className="font-mono">{missingTutorialSlug}</span>.
+                      Browse the enriched catalog below, or{' '}
+                      <button
+                        type="button"
+                        onClick={() => navigate('/tutorials')}
+                        className="underline hover:text-white"
+                      >
+                        clear this deep link
+                      </button>
+                      .
+                    </div>
+                  </div>
+                )}
+                <CatalogView
+                  searchQuery={searchQuery}
+                  setSearchQuery={setSearchQuery}
+                  progress={progress}
+                  onSelectTutorial={handleSelectTutorial}
+                  onToggleBookmark={handleToggleBookmark}
+                  onToggleCompleted={handleToggleCompleted}
+                  productFilterOverride={productFilterOverride}
+                  skillFilterOverride={skillFilterOverride}
+                />
+              </>
             }
           />
 

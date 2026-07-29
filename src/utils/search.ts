@@ -99,7 +99,12 @@ export function searchAndFilterTutorials(
   } else if (filters.sortBy === 'duration') {
     filtered.sort((a, b) => b.durationSeconds - a.durationSeconds);
   } else if (filters.sortBy === 'popular') {
-    filtered.sort((a, b) => (b.viewsCount || 0) - (a.viewsCount || 0));
+    // No invented view counts — prefer featured, then newest published.
+    filtered.sort((a, b) => {
+      const featuredDelta = Number(!!b.featured) - Number(!!a.featured);
+      if (featuredDelta !== 0) return featuredDelta;
+      return new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime();
+    });
   }
 
   return {

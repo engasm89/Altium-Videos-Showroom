@@ -14,8 +14,6 @@ export const HARDWARE_PROJECTS: HardwareProject[] = [
     pcbStatus: '100% Completed',
     bomStatus: 'ActiveBOM Verified',
     tutorialIds: ['tut-002', 'tut-005', 'tut-006', 'tut-007', 'tut-015'],
-    downloadUrl: 'https://eduengteam.com/projects/arduino-uno-altium.zip',
-    githubUrl: 'https://github.com/eduengteam/altium-arduino-uno-project'
   },
   {
     id: 'proj-esp32',
@@ -30,7 +28,6 @@ export const HARDWARE_PROJECTS: HardwareProject[] = [
     pcbStatus: '100% Completed',
     bomStatus: 'ActiveBOM Verified',
     tutorialIds: ['tut-001', 'tut-003', 'tut-004', 'tut-012', 'tut-014'],
-    downloadUrl: 'https://eduengteam.com/projects/esp32-devboard-altium.zip'
   },
   {
     id: 'proj-buck',
@@ -45,7 +42,6 @@ export const HARDWARE_PROJECTS: HardwareProject[] = [
     pcbStatus: '100% Completed',
     bomStatus: 'ActiveBOM Verified',
     tutorialIds: ['tut-008'],
-    downloadUrl: 'https://eduengteam.com/projects/buck-converter-altium.zip'
   },
   {
     id: 'proj-relay',
@@ -60,6 +56,5 @@ export const HARDWARE_PROJECTS: HardwareProject[] = [
     pcbStatus: '100% Completed',
     bomStatus: 'ActiveBOM Verified',
     tutorialIds: ['tut-001', 'tut-007'],
-    downloadUrl: 'https://eduengteam.com/projects/relay-board-altium.zip'
   }
 ];

@@ -5,7 +5,7 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
   // --- ALTIUM DESIGNER FOUNDATIONS & HARDWARE DESIGN ---
   {
     id: 'tut-001',
-    youtubeId: 'L_LUpnjgPso', // standard youtube id structure
+    youtubeId: 'eet_pending_001',
     title: 'Altium Designer Installation, Environment Setup & License Workspace',
     slug: 'altium-designer-installation-setup',
     shortDescription: 'Master initial setup, system preferences, grid configuration, and workspace customization for maximum PCB design efficiency.',
@@ -20,7 +20,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     skills: ['Workspace Setup', 'Environment Configuration', 'Grids & Units'],
     learningPathIds: ['path-001'],
     projectId: 'proj-esp32',
-    viewsCount: 14200,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'Introduction & License Setup' },
@@ -37,15 +36,13 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { key: 'TP', action: 'Open Preferences Dialog', context: 'General' },
       { key: 'G', action: 'Change Snap Grid Size', context: 'PCB' }
     ],
-    resources: [
-      { title: 'Altium Installation Checklist PDF', type: 'Guide', url: 'https://eduengteam.com/docs/altium-setup-guide.pdf' }
-    ],
+
     officialDocUrl: 'https://www.altium.com/documentation/altium-designer/system-requirements',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-installation'
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
   {
     id: 'tut-002',
-    youtubeId: 'bJ_m32I2Qwk',
+    youtubeId: 'zFOiYNcBVEY',
     title: 'Creating Your First Altium PCB Project & Document Structure',
     slug: 'creating-first-altium-pcb-project',
     shortDescription: 'Learn how to structure schematic sheets, PCB layout files, and library links inside an Altium project container.',
@@ -60,7 +57,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     skills: ['Project Management', 'Document Hierarchy', 'Schematic Capture'],
     learningPathIds: ['path-001', 'path-004'],
     projectId: 'proj-arduino',
-    viewsCount: 18500,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'Understanding .PrjPcb Container' },
@@ -76,12 +72,12 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { key: 'Ctrl + N', action: 'New Project', context: 'General' },
       { key: 'F9', action: 'Compile Project', context: 'Schematic' }
     ],
-    officialDocUrl: 'https://www.altium.com/documentation/altium-designer/creating-a-new-project',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-first-project'
+    officialDocUrl: 'https://www.altium.com/documentation',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
   {
     id: 'tut-003',
-    youtubeId: 'e82bL_xP59o',
+    youtubeId: 'GybRq75o7g8',
     title: 'Schematic Symbol Creation & Parameter Management in Altium',
     slug: 'schematic-symbol-creation-parameters',
     shortDescription: 'Step-by-step guide to drawing schematic symbols, assigning pin types, net names, and component parameters.',
@@ -96,7 +92,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     skills: ['Component Creation', 'Schematic Symbols', 'Pin Configuration'],
     learningPathIds: ['path-001', 'path-002'],
     projectId: 'proj-esp32',
-    viewsCount: 22100,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'Symbol Editor Overview' },
@@ -112,15 +107,13 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { key: 'P -> P', action: 'Place Pin', context: 'Schematic' },
       { key: 'Spacebar', action: 'Rotate Component/Pin', context: 'Schematic' }
     ],
-    resources: [
-      { title: 'ESP32 WROOM Datasheet Reference', type: 'Datasheet', url: 'https://espressif.com/esp32-datasheet.pdf' }
-    ],
-    officialDocUrl: 'https://www.altium.com/documentation/altium-designer/schematic-symbol-creation',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-symbol-creation'
+
+    officialDocUrl: 'https://www.altium.com/documentation',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
   {
     id: 'tut-004',
-    youtubeId: 'qR_w7K2_1q8',
+    youtubeId: 't6ePVpeCLxw',
     title: 'Precision PCB Footprint Creation & IPC Wizard Compliance',
     slug: 'precision-pcb-footprint-ipc-wizard',
     shortDescription: 'Create accurate SMD and Through-Hole footprints using Altium IPC Compliant Footprint Wizard and 3D STEP models.',
@@ -135,7 +128,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     skills: ['Footprint Design', 'IPC Standards', '3D STEP Models'],
     learningPathIds: ['path-002', 'path-003'],
     projectId: 'proj-esp32',
-    viewsCount: 19800,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'IPC Footprint Wizard Overview' },
@@ -151,14 +143,14 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { key: '3', action: 'Switch to 3D View', context: 'PCB' },
       { key: '2', action: 'Switch to 2D 2D View', context: 'PCB' }
     ],
-    officialDocUrl: 'https://www.altium.com/documentation/altium-designer/ipc-compliant-footprint-wizard',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-footprints'
+    officialDocUrl: 'https://www.altium.com/documentation',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
 
   // --- ARDUINO UNO HARDWARE DESIGN SERIES ---
   {
     id: 'tut-005',
-    youtubeId: 'pQ_18S4aY8g',
+    youtubeId: 'SVGqGIxXhkY',
     title: 'Arduino UNO Schematic Design: ATmega328P, USB-UART & Power Circuitry',
     slug: 'arduino-uno-schematic-design-atmega328p',
     shortDescription: 'Complete schematic capture of the Arduino UNO Rev3 board including power auto-select and crystal oscillator circuits.',
@@ -173,7 +165,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     skills: ['Schematic Capture', 'Microcontroller Circuits', 'Power Supply Design'],
     learningPathIds: ['path-001', 'path-004'],
     projectId: 'proj-arduino',
-    viewsCount: 31200,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'Arduino UNO Architectural Overview' },
@@ -186,15 +177,13 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { key: 'P -> N', action: 'Place Net Label', context: 'Schematic' },
       { key: 'T -> U', action: 'Annotate Schematics', context: 'Schematic' }
     ],
-    resources: [
-      { title: 'Arduino UNO Rev3 Schematic PDF', type: 'Schematic', url: 'https://eduengteam.com/schematics/arduino-uno-rev3.pdf' }
-    ],
-    officialDocUrl: 'https://www.altium.com/documentation/altium-designer/annotating-the-schematic',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-arduino'
+
+    officialDocUrl: 'https://www.altium.com/documentation',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
   {
     id: 'tut-006',
-    youtubeId: 'vC_99xK9110',
+    youtubeId: 'Ev50Iv42V18',
     title: 'Arduino UNO Board Layout: Component Placement & Critical Signal Paths',
     slug: 'arduino-uno-board-layout-placement',
     shortDescription: 'Import schematic changes to PCB, set physical board contours, place connectors, and group sub-circuits.',
@@ -209,7 +198,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     skills: ['Board Shape Definition', 'Component Placement', 'ECO Import'],
     learningPathIds: ['path-003', 'path-004'],
     projectId: 'proj-arduino',
-    viewsCount: 26400,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'Executing ECO (Design -> Update PCB)' },
@@ -221,12 +209,12 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { key: 'D -> U', action: 'Update PCB Document (ECO)', context: 'Schematic' },
       { key: 'D -> S -> D', action: 'Redefine Board Shape', context: 'PCB' }
     ],
-    officialDocUrl: 'https://www.altium.com/documentation/altium-designer/defining-the-board-shape',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-arduino-layout'
+    officialDocUrl: 'https://www.altium.com/documentation',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
   {
     id: 'tut-007',
-    youtubeId: 'wR_12M777Lk',
+    youtubeId: '60VRmxI2HO4',
     title: 'Interactive PCB Routing, Ground Pour & DRC Rules for Arduino',
     slug: 'interactive-pcb-routing-ground-pour-drc',
     shortDescription: 'Route power and signal traces, apply copper pours, configure Design Rule Checks (DRC), and resolve clearance errors.',
@@ -241,7 +229,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     skills: ['Interactive Routing', 'Design Rules & DRC', 'Polygon Copper Pours'],
     learningPathIds: ['path-003', 'path-004'],
     projectId: 'proj-arduino',
-    viewsCount: 28900,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'Interactive Routing Modes Overview' },
@@ -255,13 +242,13 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { key: 'T -> D', action: 'Design Rule Check', context: 'PCB' }
     ],
     officialDocUrl: 'https://www.altium.com/documentation/altium-designer/interactive-routing-pcb',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-routing'
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
 
   // --- POWER ELECTRONICS BUCK CONVERTER SERIES ---
   {
     id: 'tut-008',
-    youtubeId: 'mN_881KLLoo',
+    youtubeId: 'eet_pending_008',
     title: 'Buck Converter Circuit Design & Component Selection in Altium',
     slug: 'buck-converter-circuit-design-component-selection',
     shortDescription: 'Design a 12V to 5V 3A DC-DC Buck Switching Regulator schematic with inductor and switching diode layout consideration.',
@@ -276,7 +263,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     skills: ['Power Electronics', 'Switching Regulators', 'Thermal Management'],
     learningPathIds: ['path-005'],
     projectId: 'proj-buck',
-    viewsCount: 19400,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'Buck Converter Topologies & Formulas' },
@@ -287,17 +273,15 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     commands: [
       { key: 'P -> P', action: 'Place Thermal Via Matrix', context: 'PCB' }
     ],
-    resources: [
-      { title: 'TPS5430 Buck Regulator Datasheet', type: 'Datasheet', url: 'https://ti.com/tps5430.pdf' }
-    ],
-    officialDocUrl: 'https://www.altium.com/documentation/altium-designer/power-integrity-design-rules',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-power-design'
+
+    officialDocUrl: 'https://www.altium.com/documentation',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
 
   // --- ALTIUM DEVELOP PLATFORM & MULTIDISCIPLINARY WORKFLOWS ---
   {
     id: 'tut-009',
-    youtubeId: 'xP_989110LL',
+    youtubeId: 'jv-m0xkAFck',
     title: 'Altium Develop Tour: Cloud Workspace, Multidisciplinary Co-Creation & Project Hubs',
     slug: 'altium-develop-tour-cloud-workspace',
     shortDescription: 'Discover Altium Develop connected environment bringing together Electrical, Mechanical, Firmware, and Sourcing teams.',
@@ -311,7 +295,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     role: 'Engineering Leadership',
     skills: ['Cloud Collaboration', 'Multidisciplinary Workflows', 'Workspace Management'],
     learningPathIds: ['path-006', 'path-007', 'path-010'],
-    viewsCount: 16700,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'What is Altium Develop?' },
@@ -323,12 +306,12 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { timestampSeconds: 10, timestampFormatted: '0:10', text: 'Altium Develop is designed to bridge the gap between hardware engineering and corporate lifecycle tools.' },
       { timestampSeconds: 300, timestampFormatted: '5:00', text: 'Non-CAD stakeholders can view complete 3D designs directly in their web browser without installing Altium Designer.' }
     ],
-    officialDocUrl: 'https://www.altium.com/develop/documentation',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-develop-tour'
+    officialDocUrl: 'https://resources.altium.com/p/getting-started-in-develop',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
   {
     id: 'tut-010',
-    youtubeId: 'kL_00192837',
+    youtubeId: 'Noxk9jw-3rs',
     title: 'AI-Assisted Requirements Extraction & Traceability in Altium Develop',
     slug: 'ai-assisted-requirements-extraction-traceability',
     shortDescription: 'Convert PRDs and system specs into linked hardware requirements with automated verification rules and compliance tracking.',
@@ -342,7 +325,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     role: 'Compliance & Sustainability',
     skills: ['Requirements Engineering', 'AI Assistance', 'Verification & Traceability'],
     learningPathIds: ['path-007', 'path-009'],
-    viewsCount: 14800,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'Requirements Management Challenges' },
@@ -354,12 +336,12 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { timestampSeconds: 15, timestampFormatted: '0:15', text: 'Hardware bugs caused by missed requirement specs cost millions. Altium Develop solves this.' },
       { timestampSeconds: 350, timestampFormatted: '5:50', text: 'Watch as the AI engine extracts maximum DC voltage specifications and converts them into design rule limits.' }
     ],
-    officialDocUrl: 'https://www.altium.com/develop/requirements-management',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-requirements'
+    officialDocUrl: 'https://resources.altium.com/p/getting-started-in-develop',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
   {
     id: 'tut-011',
-    youtubeId: 'zM_81920384',
+    youtubeId: 'eet_pending_011',
     title: 'Real-Time BOM Risk, Obsolescence & Supply-Chain Insights in Altium Develop',
     slug: 'real-time-bom-risk-obsolescence-supply-chain',
     shortDescription: 'Identify lifecycle risks, lead time spikes, single-source parts, and RoHS compliance issues before releasing your PCB.',
@@ -373,7 +355,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     role: 'Procurement & Components',
     skills: ['BOM Management', 'Supply Chain Risk', 'Part Lifecycle Tracking'],
     learningPathIds: ['path-007', 'path-008'],
-    viewsCount: 20400,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'ActiveBOM Live Supply-Chain Dashboard' },
@@ -382,11 +363,11 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { timestampSeconds: 810, timestampFormatted: '13:30', title: 'Exporting Procurement Risk Report' }
     ],
     officialDocUrl: 'https://www.altium.com/documentation/altium-designer/activebom',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-bom-risk'
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
   {
     id: 'tut-012',
-    youtubeId: 'qA_88301928',
+    youtubeId: 'eet_pending_012',
     title: 'ECAD-MCAD Seamless Collaboration with SolidWorks & Fusion 360',
     slug: 'ecad-mcad-collaboration-solidworks-fusion360',
     shortDescription: 'Push and pull PCB enclosure models, mounting hole positions, and component clearances between Altium and MCAD tools.',
@@ -401,7 +382,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     skills: ['ECAD-MCAD CoDesign', 'Enclosure Fitting', '3D STEP Sync'],
     learningPathIds: ['path-006', 'path-007'],
     projectId: 'proj-esp32',
-    viewsCount: 23500,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'MCAD CoDesigner Architecture' },
@@ -409,12 +389,12 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { timestampSeconds: 680, timestampFormatted: '11:20', title: 'Pulling Changes in Altium Designer' },
       { timestampSeconds: 990, timestampFormatted: '16:30', title: 'Resolving 3D Connector Collisions' }
     ],
-    officialDocUrl: 'https://www.altium.com/documentation/altium-designer/mcad-codesigner',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-ecad-mcad'
+    officialDocUrl: 'https://www.altium.com/documentation',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
   {
     id: 'tut-013',
-    youtubeId: 'uY_90192837',
+    youtubeId: 'PQPA30fd1NY',
     title: 'Engineering Management & Hardware Sprint Planning in Altium Develop',
     slug: 'engineering-management-hardware-sprint-planning',
     shortDescription: 'Provide CTOs and Engineering Managers live visibility into hardware revision milestones, design review status, and team bottlenecks.',
@@ -428,7 +408,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     role: 'Engineering Leadership',
     skills: ['Engineering Management', 'Hardware Sprinting', 'Design Review Audits'],
     learningPathIds: ['path-010'],
-    viewsCount: 12900,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'Why Hardware Management Needs Custom Dashboards' },
@@ -436,12 +415,12 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { timestampSeconds: 510, timestampFormatted: '8:30', title: 'Revision Comparisons (V1 vs V2 Visual Diff)' },
       { timestampSeconds: 730, timestampFormatted: '12:10', title: 'Exporting Executive Status Reports' }
     ],
-    officialDocUrl: 'https://www.altium.com/develop/engineering-management',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-eng-management'
+    officialDocUrl: 'https://resources.altium.com/p/getting-started-in-develop',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
   {
     id: 'tut-014',
-    youtubeId: 'vN_90182736',
+    youtubeId: 'eet_pending_014',
     title: 'ESP32 Wi-Fi & Bluetooth Custom IoT Board Layout & Antenna Rules',
     slug: 'esp32-custom-iot-board-layout-antenna',
     shortDescription: 'Layout a complete ESP32 IoT board with 2.4GHz PCB trace antenna keepouts, RF impedance matching, and ground stitching.',
@@ -456,7 +435,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     skills: ['RF Layout', 'Antenna Design', 'Impedance Control'],
     learningPathIds: ['path-003'],
     projectId: 'proj-esp32',
-    viewsCount: 34100,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: '2.4GHz RF Layout Fundamentals' },
@@ -467,12 +445,12 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     commands: [
       { key: 'T -> V', action: 'Add Ground Stitching Vias', context: 'PCB' }
     ],
-    officialDocUrl: 'https://www.altium.com/documentation/altium-designer/controlled-impedance-routing',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-rf-esp32'
+    officialDocUrl: 'https://www.altium.com/documentation',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   },
   {
     id: 'tut-015',
-    youtubeId: 'aB_81920394',
+    youtubeId: 'eet_pending_015',
     title: 'Generating Manufacturing Outputs: Gerber X2, ODB++, Pick & Place, and Assembly Draw',
     slug: 'generating-manufacturing-outputs-gerber-odb-pick-place',
     shortDescription: 'Prepare complete manufacturing release packages with OutJob files, IPC-2581 outputs, NC drill, and Pick & Place centroids.',
@@ -487,7 +465,6 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
     skills: ['Manufacturing Release', 'Gerber X2', 'OutputJob Files'],
     learningPathIds: ['path-001', 'path-004'],
     projectId: 'proj-arduino',
-    viewsCount: 27800,
     featured: true,
     chapters: [
       { timestampSeconds: 0, timestampFormatted: '0:00', title: 'Understanding OutJob Files' },
@@ -495,8 +472,8 @@ export const TUTORIALS_CATALOG: Tutorial[] = [
       { timestampSeconds: 670, timestampFormatted: '11:10', title: 'Pick & Place Centroid File Settings' },
       { timestampSeconds: 980, timestampFormatted: '16:20', title: 'Generating Draftsman Assembly Drawings' }
     ],
-    officialDocUrl: 'https://www.altium.com/documentation/altium-designer/documentation-outputs-outjob',
-    altiumTrialUrl: 'https://www.altium.com/yt-eet-trial-gerber-outjob'
+    officialDocUrl: 'https://www.altium.com/documentation',
+    altiumTrialUrl: 'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library'
   }
 ];
 

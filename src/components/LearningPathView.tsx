@@ -137,7 +137,9 @@ export const LearningPathView: React.FC<LearningPathViewProps> = ({
                       <span>•</span>
                       <span className="flex items-center space-x-1">
                         <BookOpen className="w-3.5 h-3.5" />
-                        <span>{path.tutorialCount} Tutorials</span>
+                        <span>
+                          {new Set(path.modules.flatMap((m) => m.tutorialIds)).size} Tutorials
+                        </span>
                       </span>
                       <span>•</span>
                       <span>Target: {path.targetRole}</span>

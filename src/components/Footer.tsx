@@ -89,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAltiumLink }
                 </button>
               </li>
               <li>
-                <button onClick={() => onOpenAltiumLink('Altium Free Trial', 'https://www.altium.com/yt-eet-footer-trial')} className="hover:text-amber-400 transition-colors flex items-center space-x-1">
+                <button onClick={() => onOpenAltiumLink('Altium Free Trial', 'https://www.altium.com/free-trial')} className="hover:text-amber-400 transition-colors flex items-center space-x-1">
                   <span>Start Altium Evaluation</span>
                   <ExternalLink className="w-3 h-3" />
                 </button>

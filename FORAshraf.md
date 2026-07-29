@@ -110,10 +110,14 @@ Client routes without `vercel.json` rewrites produce 404s on refresh. Always add
 ### Seed Data Is Still a Debt
 Some curated `youtubeId` values *look* like valid 11-character YouTube IDs but may not resolve to real EET videos. Format validation is necessary but not sufficient. **Next enrichment pass:** verify each ID against the actual channel / replace with confirmed URLs or mark `enrichment-pending` explicitly.
 
+### Full QA pass (Jul 2026)
+oEmbed proved **14/15** original catalog IDs dead or wrong — including `L_LUpnjgPso` resolving to unrelated fireplace ambient video while still embedding. Synthetic regex correctly blocked tut-009–015 on `e43ebfd`, but tut-001–008 still looked “Watchable.” Fix: wire only verified Educational Engineering Team uploads where topic alignment is strong; mark the rest `eet_pending_*`. Also corrected inflated `tutorialCount` (claimed 14 vs 6 real lessons), removed invented `viewsCount`, killed 404 resource/project/trial URLs, and append UTM on Altium outbound clicks.
+
 ### How good engineers think here
 - Prefer **boring honesty** over impressive fiction.
 - Keep diffs reviewable when many agents touch one repo.
 - Document the goal number; do not fake the inventory.
+- **Never trust format-valid media IDs** — verify with oEmbed before calling a lesson playable.
 
 ---
 

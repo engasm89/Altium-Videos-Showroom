@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { Tutorial } from '../types';
 import { isPlayableYoutubeId } from '../utils/youtube';
+import { defaultAltiumTrialUrl } from '../utils/outbound';
 
 interface TutorialDetailModalProps {
   tutorial: Tutorial | null;
@@ -304,7 +305,7 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
                     </p>
                   </div>
                   <button
-                    onClick={() => onOpenAltiumLink(tutorial.title, tutorial.altiumTrialUrl || 'https://www.altium.com/yt-eet-trial')}
+                    onClick={() => onOpenAltiumLink(tutorial.title, tutorial.altiumTrialUrl || defaultAltiumTrialUrl(tutorial.slug))}
                     className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-lg shadow flex items-center space-x-1.5 shrink-0 transition-colors"
                   >
                     <span>Try in Altium</span>
