@@ -1,0 +1,132 @@
+import React from 'react';
+import { CircuitBoard, Shield, ExternalLink, Mail, Github, Heart } from 'lucide-react';
+
+interface FooterProps {
+  setActiveTab: (tab: string) => void;
+  onOpenAltiumLink: (title: string, url: string) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAltiumLink }) => {
+  return (
+    <footer className="bg-slate-950 border-t border-slate-800 text-slate-400 text-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          
+          {/* Brand Info */}
+          <div className="md:col-span-1 space-y-4">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 rounded bg-blue-600 flex items-center justify-center text-white">
+                <CircuitBoard className="w-5 h-5 text-cyan-300" />
+              </div>
+              <span className="font-bold text-base text-white">EET Library</span>
+            </div>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Independent electronics product development learning platform created by Educational Engineering Team. Over 200 practical Altium Designer & Altium Develop tutorials.
+            </p>
+            <p className="font-mono text-xs text-slate-400">
+              learn.eduengteam.com
+            </p>
+          </div>
+
+          {/* Quick Navigation */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200 mb-4">Learning Navigation</h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <button onClick={() => setActiveTab('paths')} className="hover:text-blue-400 transition-colors">
+                  10 Curated Learning Paths
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('catalog')} className="hover:text-blue-400 transition-colors">
+                  All 201 Tutorials Catalog
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('projects')} className="hover:text-blue-400 transition-colors">
+                  Project Hubs (Arduino, ESP32, Buck)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('roles')} className="hover:text-blue-400 transition-colors">
+                  Engineering Roles Taxonomy
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Altium Products */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200 mb-4">Software Products</h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <button onClick={() => setActiveTab('products')} className="hover:text-blue-400 transition-colors">
+                  Altium Designer Tutorials (96)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('products')} className="hover:text-blue-400 transition-colors">
+                  Altium Develop Tutorials (105)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onOpenAltiumLink('Altium Official Site', 'https://www.altium.com')} className="hover:text-amber-400 transition-colors flex items-center space-x-1">
+                  <span>Altium Official Portal</span>
+                  <ExternalLink className="w-3 h-3" />
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onOpenAltiumLink('Altium Free Trial', 'https://www.altium.com/yt-eet-footer-trial')} className="hover:text-amber-400 transition-colors flex items-center space-x-1">
+                  <span>Start Altium Evaluation</span>
+                  <ExternalLink className="w-3 h-3" />
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Strategic Impact & Contact */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200 mb-4">Platform Intelligence</h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <button onClick={() => setActiveTab('impact')} className="hover:text-cyan-400 transition-colors font-medium text-cyan-300">
+                  Impact & Altium Analytics Dashboard
+                </button>
+              </li>
+              <li>
+                <a href="mailto:contact@eduengteam.com" className="hover:text-blue-400 transition-colors flex items-center space-x-1">
+                  <Mail className="w-3 h-3" />
+                  <span>contact@eduengteam.com</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        {/* Required Independent Disclaimer & Trademark Notice */}
+        <div className="pt-8 border-t border-slate-800/80 bg-slate-900/40 p-6 rounded-xl border border-slate-800 space-y-3">
+          <div className="flex items-center space-x-2 text-amber-400 font-medium text-xs">
+            <Shield className="w-4 h-4 shrink-0" />
+            <span>Required Legal & Trademark Attribution</span>
+          </div>
+          <p className="text-xs text-slate-300 leading-relaxed font-sans">
+            <strong>Independent Publication Disclaimer:</strong> The EET Electronics Product Development Library is an independent educational publication and is not affiliated with, authorized, sponsored, or otherwise approved by Altium LLC.
+          </p>
+          <p className="text-xs text-slate-400 leading-relaxed">
+            <strong>Trademark Notice:</strong> Altium, Altium Designer, Altium 365, and Altium Develop are trademarks or registered trademarks of Altium LLC or its affiliates in the United States and other countries. All other product names, logos, and brands are property of their respective owners.
+          </p>
+        </div>
+
+        {/* Bottom copyright line */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+          <p>© {new Date().getFullYear()} Educational Engineering Team (EET). All rights reserved.</p>
+          <p className="flex items-center space-x-1 text-slate-400">
+            <span>Built with precision for hardware developers worldwide</span>
+          </p>
+        </div>
+
+      </div>
+    </footer>
+  );
+};

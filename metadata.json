@@ -1,0 +1,6 @@
+{
+  "name": "EET Electronics Product Development Library",
+  "description": "Independent educational learning platform with 200+ structured electronics product development tutorials, learning paths, project hubs, role-based roadmaps, and Altium workflow analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
