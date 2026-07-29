@@ -1,10 +1,12 @@
 # EET Electronics Product Development Library — Feature Inventory
 
 > **Who this is for:** Ashraf (and anyone joining the project) who needs a single, honest map of what the product *actually ships today* — not the aspirational brief alone.  
+> **Launch status:** **FINAL** (Jul 29, 2026) — partner gate Pass with Partial analytics/feedback env leftovers for Ashraf.  
 > **Live URL:** [https://learn.eduengteam.com](https://learn.eduengteam.com) (Cloudflare DNS + Vercel SSL **LIVE** as of Jul 29, 2026)  
+> **Share with Altium:** [https://learn.eduengteam.com/altium-develop](https://learn.eduengteam.com/altium-develop)  
 > **Vercel alias:** [https://eet-electronics-product-dev-library.vercel.app](https://eet-electronics-product-dev-library.vercel.app)  
 > **Repo root file:** `FEATURES.md` (this document)  
-> **Numbers below** reflect the catalog after the Jul 29, 2026 MD→CSV import + YouTube embed audit (`catalogCounts` / `scripts/import-report.json`). Primary source: `data/videos.csv` (wins over xlsx).
+> **Numbers below** reflect `data/videos.csv` truth after MD→CSV import + YouTube embed audit: **333** rows / **333** playable / **55** Develop / **29** enriched Develop.
 
 ---
 
@@ -681,10 +683,11 @@ Call these out so nobody confuses roadmap with shipping:
 
 ---
 
-## 20. Partner launch gate (Jul 29, 2026)
+## 20. Partner launch gate (Jul 29, 2026) — FINAL
 
 **Share URL with Altium (not the homepage):** `https://learn.eduengteam.com/altium-develop`  
-**Vercel alias (backup):** `https://eet-electronics-product-dev-library.vercel.app/altium-develop`
+**Vercel alias (backup):** `https://eet-electronics-product-dev-library.vercel.app/altium-develop`  
+**Catalog truth (`data/videos.csv`):** 333 rows · 333 playable · 55 Develop · 29 enriched Develop.
 
 | # | Gate item | Status | Evidence |
 |---|-----------|--------|----------|

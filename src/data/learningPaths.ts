@@ -33,7 +33,8 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p1-m2',
         title: 'Schematic Capture Basics',
         description: 'Drawing schematics, placing symbols, wiring nets, and compiling.',
-        tutorialIds: ['cat-141', 'cat-074']
+        // Designer-only: cat-141/cat-074 are Altium Develop (kept on Develop paths/personas).
+        tutorialIds: ['cat-081', 'cat-015']
       },
       {
         id: 'p1-m3',
@@ -68,7 +69,7 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p2-m1',
         title: 'Schematic Symbol Creation',
         description: 'Creating multi-part symbols, pin types, and parameters.',
-        tutorialIds: ['cat-141']
+        tutorialIds: ['cat-015']
       },
       {
         id: 'p2-m2',
@@ -109,7 +110,7 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p3-m2',
         title: 'Interactive Routing & Copper Pours',
         description: 'Walkaround and Push routing, ground stitching, DRC.',
-        tutorialIds: ['cat-214', 'cat-002']
+        tutorialIds: ['cat-298', 'cat-002']
       }
     ]
   },
@@ -137,13 +138,13 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p4-m1',
         title: 'Arduino Schematic Capture',
         description: 'Power regulation, ATmega328P oscillator, USB transceiver.',
-        tutorialIds: ['cat-175', 'cat-074']
+        tutorialIds: ['cat-175', 'cat-021']
       },
       {
         id: 'p4-m2',
         title: 'Layout & Interactive Routing',
         description: 'Shield connector spacing, ground plane pour, DRC.',
-        tutorialIds: ['cat-067', 'cat-214']
+        tutorialIds: ['cat-067', 'cat-298']
       },
       {
         id: 'p4-m3',

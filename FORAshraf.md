@@ -183,7 +183,7 @@ Three “strong additions” that make `/altium-develop` feel like an adoption n
 | Item | Status | Notes |
 |------|--------|-------|
 | `/admin` + `/feedback-inbox` block without password in prod | **SET (code)** | `AdminView` / `FeedbackInboxView` refuse empty-password access when `import.meta.env.PROD` |
-| `VITE_ADMIN_PASSWORD` on Vercel | **SET** | Production + Preview + Development (generated strong value; see chat final summary — **not** stored in git). **Redeploy required** so Vite bakes it into the client bundle. |
+| `VITE_ADMIN_PASSWORD` on Vercel | **SET** | Production + Preview + Development. Value is **not** in git. Ashraf has it from the agent chat summary — **rotate in Vercel if this chat is shared**, then redeploy so Vite rebakes the client bundle. |
 | `VITE_SITE_URL` | **SET** | Production + Preview → `https://learn.eduengteam.com` |
 | `VITE_POSTHOG_KEY` / `VITE_GA_ID` | **Ashraf must set** | No tokens existed in Vercel env. Until set, analytics helpers no-op; `/insights` shows “not configured”. |
 | `api/feedback.ts` deploys | **SET (live)** | `GET https://learn.eduengteam.com/api/feedback` → 200 (`configured: false` until delivery secrets exist) |
@@ -217,7 +217,7 @@ vercel --prod   # or push to main so Production rebuilds with new VITE_* values
 ## Ashraf must still do (before Altium review)
 
 1. **PostHog and/or GA4 keys (Vercel Production)** — set `VITE_POSTHOG_KEY` and/or `VITE_GA_ID`, redeploy, confirm events in the vendor console (not on `/my-activity`).
-2. **Confirm admin unlock after redeploy** — open `/admin` on production; should prompt for password (not “Admin blocked”). Password value was shared once in the agent final summary.
+2. **Confirm admin unlock after redeploy** — open `/admin` on production; should prompt for password (not “Admin blocked”). Password was set on Vercel (all envs) and shared once in chat — **rotate if the chat is shared**.
 3. **Feedback delivery backends** — configure at least one server secret above so tutorial feedback / content reports actually store somewhere.
 4. **Optional:** Search Console property + sitemap submit for `learn.eduengteam.com` (DNS already **LIVE**).
 
