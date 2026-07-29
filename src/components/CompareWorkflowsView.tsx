@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, GitCompareArrows, Shield } from 'lucide-react';
+import { ArrowRight, ExternalLink, GitCompareArrows, Shield } from 'lucide-react';
 import { WorkflowComparisonTable } from './WorkflowComparisonTable';
 import { Breadcrumbs } from './ui';
 import { useDocumentTitle } from '../utils/documentTitle';
+import { landingAltiumTrialUrl } from '../utils/outbound';
 
 export const CompareWorkflowsView: React.FC = () => {
   useDocumentTitle('Compare workflows');
   const navigate = useNavigate();
+  const trialUrl = landingAltiumTrialUrl('compare-workflows');
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-slate-100">
@@ -37,13 +39,22 @@ export const CompareWorkflowsView: React.FC = () => {
         <Shield className="w-4 h-4 shrink-0 mt-0.5 text-amber-400" />
         <p>
           Independent EET educational framing — not an Altium marketing claim. We compare collaboration processes,
-          not competitor brands.
+          not competitor brands. Altium Develop is a trademark of Altium LLC or its affiliates.
         </p>
       </div>
 
       <WorkflowComparisonTable />
 
       <div className="flex flex-wrap gap-3 pt-2">
+        <a
+          href={trialUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold transition-colors"
+        >
+          Try Altium Develop
+          <ExternalLink className="w-3.5 h-3.5" />
+        </a>
         <Link
           to="/case-studies/esp32-product"
           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-slate-950 text-xs font-bold transition-colors"

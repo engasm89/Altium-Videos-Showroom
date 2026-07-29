@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -6,13 +6,18 @@ import {
   ExternalLink,
   GitCompareArrows,
   Layers,
+  MessageSquareHeart,
+  Route,
   Shield,
   Sparkles,
+  Wrench,
 } from 'lucide-react';
 import { ALL_TUTORIALS, catalogCounts } from '../data/catalog';
+import { LEARNING_PATHS } from '../data/learningPaths';
 import { PERSONA_JOURNEYS } from '../data/personas';
-import { Tutorial } from '../types';
+import { Tutorial, isPedagogicallyEnriched } from '../types';
 import { landingAltiumTrialUrl } from '../utils/outbound';
+import { ReportContentControl } from './ReportContentControl';
 import { WorkflowComparisonTable } from './WorkflowComparisonTable';
 import { WorkflowMapEmbed } from './WorkflowMapView';
 
@@ -23,6 +28,50 @@ interface AltiumDevelopLandingViewProps {
   onNavigate?: (path: string) => void;
 }
 
+const VALUE_PROPS = [
+  {
+    title: 'One connected workspace',
+    body: 'Schematic, PCB, reviews, and release live in a shared project hub — not a zip emailed around the org.',
+  },
+  {
+    title: 'Requirements stay attached',
+    body: 'PRD and ticket intent stay linked through design and verification so audits are not a scavenger hunt.',
+  },
+  {
+    title: 'BOM risk before fab',
+    body: 'Lifecycle, lead time, and alternates surface while copper is still changeable — not after Gerber drop.',
+  },
+  {
+    title: 'Everyone can review',
+    body: 'Mechanical, firmware, procurement, and leadership markup the same revision in the browser.',
+  },
+] as const;
+
+const TOOL_LINKS = [
+  {
+    path: '/tools/activebom',
+    label: 'ActiveBOM risk simulator',
+    blurb: 'Practice lifecycle and lead-time risk on sample BOMs.',
+  },
+  {
+    path: '/tools/drc',
+    label: 'DRC assistant',
+    blurb: 'Walk common clearance and manufacturing rule fixes.',
+  },
+  {
+    path: '/tools/stackup',
+    label: 'Stackup inspector',
+    blurb: 'Inspect FR-4 presets and impedance width examples.',
+  },
+  {
+    path: '/tools/shortcuts',
+    label: 'Keyboard shortcuts',
+    blurb: 'Schematic, PCB, and Develop hotkeys in one cheat sheet.',
+  },
+] as const;
+
+const DEVELOP_PATH_IDS = new Set(['path-006', 'path-007', 'path-008', 'path-009', 'path-010']);
+
 /**
  * Partner-facing Altium Develop hub — the URL Ashraf should send to Altium.
  * Embeds the flagship interactive workflow map; full map also lives at /workflow.
@@ -32,8 +81,24 @@ export const AltiumDevelopLandingView: React.FC<AltiumDevelopLandingViewProps> =
   onSelectTutorial,
   onOpenAltiumLink,
 }) => {
-  const developCount = ALL_TUTORIALS.filter((t) => t.product === 'Altium Develop').length;
+  const developTutorials = useMemo(
+    () => ALL_TUTORIALS.filter((t) => t.product === 'Altium Develop'),
+    []
+  );
+  const developCount = developTutorials.length;
   const trialUrl = landingAltiumTrialUrl('hero');
+  const footerTrialUrl = landingAltiumTrialUrl('landing-footer');
+
+  const featuredDevelop = useMemo(() => {
+    const enriched = developTutorials.filter((t) => isPedagogicallyEnriched(t.enrichmentStatus));
+    const pool = enriched.length >= 6 ? enriched : developTutorials;
+    return pool.slice(0, 8);
+  }, [developTutorials]);
+
+  const developPaths = useMemo(
+    () => LEARNING_PATHS.filter((p) => DEVELOP_PATH_IDS.has(p.id)),
+    []
+  );
 
   return (
     <div className="text-slate-100">
@@ -101,6 +166,26 @@ export const AltiumDevelopLandingView: React.FC<AltiumDevelopLandingViewProps> =
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 pb-16">
+        <section className="space-y-6">
+          <div className="space-y-2 max-w-2xl">
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Why Develop — not just another CAD seat</h2>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              Partner-facing value props grounded in how hardware teams actually ship — not a feature dump.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {VALUE_PROPS.map((item) => (
+              <div
+                key={item.title}
+                className="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2"
+              >
+                <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+                <p className="text-xs text-slate-400 leading-relaxed">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <WorkflowMapEmbed
           onSelectTutorial={onSelectTutorial}
           onOpenAltiumLink={onOpenAltiumLink}
@@ -144,6 +229,98 @@ export const AltiumDevelopLandingView: React.FC<AltiumDevelopLandingViewProps> =
         </section>
 
         <section className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+            <div className="space-y-2 max-w-2xl">
+              <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                <BookOpen className="w-5 h-5 text-cyan-400" />
+                Develop tutorials from the catalog
+              </h2>
+              <p className="text-sm text-slate-400 leading-relaxed">
+                Sourced from <span className="font-mono text-slate-300">data/videos.csv</span> (
+                {developCount} tagged Altium Develop). Prefer enriched lessons when available.
+              </p>
+            </div>
+            <Link
+              to="/tutorials?product=Altium%20Develop"
+              className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1 shrink-0"
+            >
+              View all {developCount} <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {featuredDevelop.map((tutorial) => (
+              <button
+                key={tutorial.id}
+                type="button"
+                onClick={() => onSelectTutorial(tutorial)}
+                className="text-left bg-slate-900 border border-slate-800 hover:border-cyan-700/70 rounded-xl p-4 space-y-2 transition-colors group"
+              >
+                <p className="text-[10px] font-mono text-cyan-400 uppercase tracking-wider">
+                  Altium Develop
+                  {isPedagogicallyEnriched(tutorial.enrichmentStatus) ? ' · enriched' : ''}
+                </p>
+                <h3 className="text-sm font-semibold text-white group-hover:text-cyan-200 leading-snug line-clamp-2">
+                  {tutorial.title}
+                </h3>
+                <p className="text-[11px] text-slate-500 font-mono">{tutorial.id}</p>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="space-y-2 max-w-2xl">
+            <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+              <Route className="w-5 h-5 text-cyan-400" />
+              Develop learning paths
+            </h2>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              Outcome paths for foundations, multidisciplinary co-creation, BOM risk, requirements, and leadership
+              visibility.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {developPaths.map((path) => (
+              <Link
+                key={path.id}
+                to={`/learning-paths/${path.slug}`}
+                className="bg-slate-900 border border-slate-800 hover:border-cyan-700/70 rounded-xl p-4 space-y-2 transition-colors block group"
+              >
+                <h3 className="text-sm font-semibold text-white group-hover:text-cyan-200">{path.title}</h3>
+                <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">{path.headline}</p>
+                <span className="text-[11px] font-mono text-slate-500">
+                  {path.difficulty} · ~{path.estimatedHours}h
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="space-y-2 max-w-2xl">
+            <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+              <Wrench className="w-5 h-5 text-cyan-400" />
+              Practice tools
+            </h2>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              Lightweight labs that reinforce Develop workflows without requiring a CAD seat.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {TOOL_LINKS.map((tool) => (
+              <Link
+                key={tool.path}
+                to={tool.path}
+                className="bg-slate-900 border border-slate-800 hover:border-cyan-700/70 rounded-xl p-4 space-y-2 transition-colors block group"
+              >
+                <h3 className="text-sm font-semibold text-white group-hover:text-cyan-200">{tool.label}</h3>
+                <p className="text-xs text-slate-400 leading-relaxed">{tool.blurb}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-6">
           <div className="space-y-2">
             <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
               <GitCompareArrows className="w-5 h-5 text-cyan-400" />
@@ -181,6 +358,38 @@ export const AltiumDevelopLandingView: React.FC<AltiumDevelopLandingViewProps> =
             Start the ESP32 case study
             <ArrowRight className="w-4 h-4" />
           </Link>
+        </section>
+
+        <section className="rounded-2xl border border-slate-800 bg-slate-950/60 p-6 sm:p-8 space-y-4">
+          <div className="space-y-2 max-w-2xl">
+            <h2 className="text-lg font-bold text-white flex items-center gap-2">
+              <MessageSquareHeart className="w-5 h-5 text-cyan-400" />
+              Feedback for partners & learners
+            </h2>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              Structured tutorial feedback lives inside each lesson modal. Use the control below to report outdated
+              hub copy, broken deep links, or partnership review notes — delivered via the central feedback API when
+              configured.
+            </p>
+          </div>
+          <ReportContentControl title="Altium Develop landing feedback" slug="altium-develop" />
+        </section>
+
+        <section className="rounded-2xl border border-cyan-900/50 bg-gradient-to-br from-cyan-950/40 to-slate-900 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-xl">
+            <h2 className="text-lg font-bold text-white">Evaluate Altium Develop with EET context</h2>
+            <p className="text-sm text-slate-300 leading-relaxed">
+              Trial CTA carries partner landing UTMs so Altium can attribute traffic from this hub.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => onOpenAltiumLink('Try Altium Develop (landing footer)', footerTrialUrl)}
+            className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-sm font-bold transition-colors"
+          >
+            Try Altium Develop
+            <ExternalLink className="w-4 h-4" />
+          </button>
         </section>
       </div>
     </div>

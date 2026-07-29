@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import {
   ArrowRight,
   Cpu,
+  ExternalLink,
   Factory,
   FileCheck2,
   Layers,
@@ -15,6 +16,7 @@ import { ALL_TUTORIALS } from '../data/catalog';
 import { Breadcrumbs } from './ui';
 import { useDocumentTitle } from '../utils/documentTitle';
 import { WorkflowComparisonTable } from './WorkflowComparisonTable';
+import { landingAltiumTrialUrl } from '../utils/outbound';
 
 const STAGE_ICONS = {
   requirements: FileCheck2,
@@ -28,6 +30,7 @@ export const Esp32CaseStudyView: React.FC = () => {
   useDocumentTitle(ESP32_CASE_STUDY.title);
   const navigate = useNavigate();
   const [activeStageId, setActiveStageId] = useState(ESP32_CASE_STUDY.stages[0]?.id);
+  const trialUrl = landingAltiumTrialUrl('esp32-case-study');
 
   const tutorialsBySlug = useMemo(() => {
     const map = new Map(ALL_TUTORIALS.map((t) => [t.slug, t]));
@@ -64,6 +67,15 @@ export const Esp32CaseStudyView: React.FC = () => {
           {ESP32_CASE_STUDY.description}
         </p>
         <div className="flex flex-wrap gap-3">
+          <a
+            href={trialUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold transition-colors"
+          >
+            Try Altium Develop
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
           <Link
             to={`/projects/${ESP32_CASE_STUDY.projectSlug}`}
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold transition-colors"

@@ -54,7 +54,7 @@ export const PERSONA_JOURNEYS: PersonaJourney[] = [
       'Faster alternate MPN decisions tied to the same project revision',
     ],
     recommendedPathId: 'path-008',
-    tutorialIds: ['cat-125', 'cat-258', 'cat-283', 'cat-274', 'cat-224'],
+    tutorialIds: ['cat-125', 'cat-163', 'cat-165', 'cat-143', 'cat-225'],
     workflowExample: {
       title: 'Kill a single-source risk before fab',
       narrative:
@@ -89,7 +89,7 @@ export const PERSONA_JOURNEYS: PersonaJourney[] = [
       'Fewer “wrong Gerber set” escapes between engineering and CM',
     ],
     recommendedPathId: 'path-007',
-    tutorialIds: ['cat-199', 'cat-140', 'cat-248', 'cat-244', 'cat-058'],
+    tutorialIds: ['cat-199', 'cat-140', 'cat-120', 'cat-187', 'cat-058'],
     workflowExample: {
       title: 'Sign off DFM on the revision you will build',
       narrative:
@@ -194,7 +194,7 @@ export const PERSONA_JOURNEYS: PersonaJourney[] = [
       'Shared compliance threads across design, procurement, and QA',
     ],
     recommendedPathId: 'path-009',
-    tutorialIds: ['cat-090', 'cat-157', 'cat-190', 'cat-125', 'cat-250'],
+    tutorialIds: ['cat-090', 'cat-157', 'cat-190', 'cat-125', 'cat-096'],
     workflowExample: {
       title: 'Trace a safety requirement to a test point',
       narrative:

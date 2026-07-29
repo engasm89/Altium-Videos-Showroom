@@ -688,9 +688,9 @@ Call these out so nobody confuses roadmap with shipping:
 
 | # | Gate item | Status | Evidence |
 |---|-----------|--------|----------|
-| 1 | Dedicated `/altium-develop` landing | **Pass** | `6d9e107` + `100e3f3` — independence statement, Develop value prop, workflow embed, personas, tutorials, CTAs, UTMs, Develop Hub chip |
-| 2 | Interactive workflow map | **Pass** | `/workflow` + `/workflow/:stageSlug`, 8 stages, embed on landing (`WorkflowMapEmbed`) |
-| 3 | Six persona journeys | **Pass** | `/personas` + `/personas/:slug`, linked from landing |
+| 1 | Dedicated `/altium-develop` landing | **Pass** | Independence, value prop, workflow embed, personas, CSV Develop tutorials, paths, tools, compare + ESP32 links, CTA UTMs, feedback control |
+| 2 | Interactive workflow map | **Pass** | `/workflow` + `/workflow/:stageSlug`, 8 stages, all tutorial IDs = Altium Develop from `data/videos.csv`; embed on landing |
+| 3 | Six persona journeys | **Pass** | `/personas` + `/personas/:slug`; all `tutorialIds` resolve to Develop catalog rows (Designer IDs removed) |
 | 4 | Real analytics + My Activity rename | **Pass (code) / Partial (keys)** | `/my-activity` = browser-local only; `/impact` → redirect; `/insights` refuses fake KPIs; events instrumented; needs `VITE_POSTHOG_KEY` / `VITE_GA_ID` |
 | 5 | 20–30 enriched Develop tutorials | **Pass** | 29 overlays in `developEnrichment.overlay.json` (`9effc07`) |
 | 6 | Central feedback collection | **Pass (code) / Partial (env)** | Tutorial Feedback → `api/feedback.ts` (webhook/Resend/GitHub); `/feedback-inbox` stub; needs server delivery env |

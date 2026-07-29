@@ -278,7 +278,8 @@ Outputs:
 - Designer **266** / Develop **55** / Other·Adjacent **12** (honest search-tail tags)
 - Learning paths / projects / roles remapped to new `cat-*` via YouTube ID
 - Persona journeys (`/personas`) sit beside Roles: outcome-led Develop audiences (PCB, procurement, manufacturing, applications, management, compliance) with UTM CTAs from `/altium-develop`
-- Partner landing `/altium-develop` is the shareable Altium-facing hub (not the homepage): independence statement, multidisciplinary value prop, workflow-map embed, persona selector, Develop-filtered tutorials, Develop paths, tools teaser, Try Develop CTA with `utm_medium=landing` / `utm_campaign=altium_develop` / `utm_content=hero`, feedback/contact — no Altium logo
+- Partner landing `/altium-develop` is the shareable Altium-facing hub (not the homepage): independence statement, multidisciplinary value prop, workflow-map embed, persona selector, Develop tutorials from `data/videos.csv`, Develop paths, practice tools, compare + ESP32 case study links, Try Develop CTAs with `utm_medium=landing` / `utm_campaign=altium_develop`, and hub feedback via `ReportContentControl` — no Altium logo
+- Persona + workflow tutorial IDs are smoke-tested to be real **Altium Develop** rows (not Designer fallthroughs). `npm run smoke:deeplinks` fails the build story if a persona points at the wrong product.
 
 **Honesty rules that still apply**
 - Format-valid IDs alone are **not** playable — UI requires `youtubeStatus === 'public'`.
