@@ -2,6 +2,8 @@ import React from 'react';
 import { CircuitBoard, Shield, ExternalLink, Mail } from 'lucide-react';
 import { ALL_TUTORIALS } from '../data/catalog';
 import { LEARNING_PATHS } from '../data/learningPaths';
+import { APP_STAGE_LABEL, APP_VERSION } from '../utils/siteConfig';
+import { ReportContentControl } from './ReportContentControl';
 
 interface FooterProps {
   setActiveTab: (tab: string) => void;
@@ -34,6 +36,9 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAltiumLink }
             <p className="font-mono text-xs text-slate-400">
               learn.eduengteam.com
             </p>
+            <p className="font-mono text-[11px] text-amber-300/90">
+              {APP_STAGE_LABEL} · v{APP_VERSION}
+            </p>
           </div>
 
           {/* Quick Navigation */}
@@ -56,8 +61,23 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAltiumLink }
                 </button>
               </li>
               <li>
+                <button onClick={() => setActiveTab('altiumDevelop')} className="hover:text-brand-bright transition-colors">
+                  Altium Develop Hub
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('workflow')} className="hover:text-brand-bright transition-colors">
+                  Product Development Workflow
+                </button>
+              </li>
+              <li>
                 <button onClick={() => setActiveTab('roles')} className="hover:text-brand-bright transition-colors">
                   Engineering Roles Taxonomy
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('personas')} className="hover:text-brand-bright transition-colors">
+                  Persona Journeys (Develop)
                 </button>
               </li>
               <li>
@@ -83,6 +103,11 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAltiumLink }
                 </button>
               </li>
               <li>
+                <button onClick={() => setActiveTab('altiumDevelop')} className="hover:text-cyan-300 transition-colors font-medium text-cyan-400">
+                  Altium Develop Learning Hub
+                </button>
+              </li>
+              <li>
                 <button onClick={() => onOpenAltiumLink('Altium Official Site', 'https://www.altium.com')} className="hover:text-amber-400 transition-colors flex items-center space-x-1">
                   <span>Altium Official Portal</span>
                   <ExternalLink className="w-3 h-3" />
@@ -102,8 +127,13 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAltiumLink }
             <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-200 mb-4">About & Legal</h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => setActiveTab('impact')} className="hover:text-brand-bright transition-colors font-medium text-cyan-300">
-                  Impact & Analytics Dashboard
+                <button onClick={() => setActiveTab('myActivity')} className="hover:text-brand-bright transition-colors font-medium text-cyan-300">
+                  My Activity (this browser)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('insights')} className="hover:text-brand-bright transition-colors">
+                  Site Insights (PostHog / GA4)
                 </button>
               </li>
               <li>
@@ -117,10 +147,18 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAltiumLink }
                 </button>
               </li>
               <li>
+                <button onClick={() => setActiveTab('changelog')} className="hover:text-brand-bright transition-colors">
+                  Changelog
+                </button>
+              </li>
+              <li>
                 <a href="mailto:contact@eduengteam.com" className="hover:text-brand-bright transition-colors flex items-center space-x-1">
                   <Mail className="w-3 h-3" />
                   <span>contact@eduengteam.com</span>
                 </a>
+              </li>
+              <li>
+                <ReportContentControl />
               </li>
             </ul>
           </div>
@@ -144,8 +182,16 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAltiumLink }
         {/* Bottom copyright line */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
           <p>© {new Date().getFullYear()} Educational Engineering Team (EET). All rights reserved.</p>
-          <p className="flex items-center space-x-1 text-slate-400">
-            <span>Built with precision for hardware developers worldwide</span>
+          <p className="flex items-center gap-3 text-slate-400">
+            <button
+              type="button"
+              onClick={() => setActiveTab('changelog')}
+              className="hover:text-brand-bright transition-colors font-mono"
+            >
+              {APP_STAGE_LABEL} v{APP_VERSION}
+            </button>
+            <span className="hidden sm:inline">·</span>
+            <span className="hidden sm:inline">Built for hardware developers</span>
           </p>
         </div>
 

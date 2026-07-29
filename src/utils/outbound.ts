@@ -1,16 +1,35 @@
-/** Shared UTM params for Altium evaluation / docs outbound clicks. */
+/** Shared UTM params for Altium evaluation / docs outbound clicks (tutorial flows). */
 export const EET_UTM = {
   utm_source: 'eet_learning_hub',
   utm_medium: 'tutorial',
   utm_campaign: 'altium_develop_library',
 } as const;
 
+/** Landing-page CTA UTMs (partner-facing `/altium-develop`). */
+export const EET_LANDING_UTM = {
+  utm_source: 'eet_learning_hub',
+  utm_medium: 'landing',
+  utm_campaign: 'altium_develop',
+} as const;
+
 const DEFAULT_TRIAL =
   'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library';
+
+const LANDING_TRIAL_BASE = 'https://www.altium.com/free-trial';
 
 export function defaultAltiumTrialUrl(contentSlug?: string): string {
   if (!contentSlug) return DEFAULT_TRIAL;
   const url = new URL(DEFAULT_TRIAL);
+  url.searchParams.set('utm_content', contentSlug);
+  return url.toString();
+}
+
+/** Trial CTA for the Altium Develop partner landing (distinct campaign from tutorial embeds). */
+export function landingAltiumTrialUrl(contentSlug = 'hero'): string {
+  const url = new URL(LANDING_TRIAL_BASE);
+  url.searchParams.set('utm_source', EET_LANDING_UTM.utm_source);
+  url.searchParams.set('utm_medium', EET_LANDING_UTM.utm_medium);
+  url.searchParams.set('utm_campaign', EET_LANDING_UTM.utm_campaign);
   url.searchParams.set('utm_content', contentSlug);
   return url.toString();
 }

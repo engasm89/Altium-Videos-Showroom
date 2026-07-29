@@ -19,10 +19,11 @@ Browser (Vite SPA)
   ├─ react-router-dom  →  URL = which gallery you're in
   ├─ Views (Hero, Catalog, Paths, Roles, Tools…)
   ├─ Data modules (catalog, paths, roles, projects, shortcuts)
-  └─ localStorage      →  your notebook (progress, notes, click/search logs)
+  ├─ localStorage      →  your notebook (progress, notes, click/search logs)
+  └─ /api/feedback     →  optional central tutorial feedback (webhook / Resend / GitHub)
 ```
 
-There is **no backend** in the current MVP. Progress, bookmarks, outbound click logs, and search logs live in the visitor's browser. That is deliberate: ship a credible learning UX first; bolt on real analytics later without inventing numbers today.
+Progress, bookmarks, outbound click logs, and search logs still live in the visitor's browser. **Tutorial feedback is the exception:** it POSTs to a Vercel function (or `VITE_FEEDBACK_ENDPOINT`) so curriculum signal is not trapped in one laptop's localStorage.
 
 **Data flow for a lesson open**
 
@@ -34,8 +35,8 @@ There is **no backend** in the current MVP. Progress, bookmarks, outbound click 
 **Deploy shape**
 
 - Vite builds static assets into `dist/`.
-- `vercel.json` rewrites all paths to `index.html` so deep links work after refresh.
-- No secrets required for the static learning UX.
+- `vercel.json` rewrites SPA paths to `index.html` (excluding `/api/*`) so deep links work after refresh.
+- Optional secrets for feedback backends; learning UX still works without them (submit shows a clear error until configured).
 
 ---
 
@@ -47,12 +48,17 @@ There is **no backend** in the current MVP. Progress, bookmarks, outbound click 
 | `src/App.tsx` | Shell: Navbar/Footer, `Routes`, tutorial modal, progress handlers |
 | `src/routes.ts` | Tab key ↔ public path map |
 | `src/data/catalog.ts` + `catalog.generated.json` | Imported MD→CSV catalog (333 rows) + enrichment overlays + honest counts |
-| `src/data/learningPaths.ts` / `roles.ts` / `projects.ts` / `shortcuts.ts` | Curriculum taxonomy |
+| `src/data/learningPaths.ts` / `roles.ts` / `personas.ts` / `projects.ts` / `shortcuts.ts` / `workflowStages.ts` | Curriculum taxonomy + Develop persona journeys + flagship workflow map stages |
+| `src/components/WorkflowMapView.tsx` | Interactive `/workflow` map (+ `WorkflowMapEmbed` on `/altium-develop`) |
 | `src/utils/youtube.ts` | Playable-ID gate (rejects `eet_*` synthetics) |
 | `src/utils/storage.ts` | localStorage progress + real-only logs |
+| `src/utils/feedback.ts` | Client submit helper for tutorial feedback |
+| `src/components/TutorialFeedbackForm.tsx` | Feedback tab UI + success/error states |
+| `src/components/FeedbackInboxView.tsx` | `/feedback-inbox` operator stub |
+| `api/feedback.ts` | Vercel Edge function → webhook / Resend / GitHub Issues |
 | `src/utils/search.ts` | Catalog search/filter (+ logs queries) |
 | `src/components/*` | Views + UI primitives (`components/ui/`) |
-| `vercel.json` | SPA fallback |
+| `vercel.json` | SPA fallback (skips `/api/*`) |
 | `FORAshraf.md` | You are here |
 
 Entry flow: `index.html` → `main.tsx` → `App` routes → view components.
@@ -87,9 +93,12 @@ Optional leftovers from the AI Studio scaffold (`@google/genai`, Express, etc.) 
 **Trade-off:** Smaller looking catalog vs. credibility.  
 **Decision:** Ship only hand-enriched entries (`ALL_TUTORIALS = TUTORIALS_CATALOG`). Keep `CATALOG_ENRICHMENT_GOAL = 201` as an explicit goal label, not a fake inventory. Players refuse non-YouTube / `eet_*` IDs.
 
-### 3. Impact = local evidence, not theater
+### 3. My Activity = local evidence, not theater
 **Context:** Seeded outbound clicks, fake search gaps, and pre-filled completion counts looked like traction.  
-**Decision:** Empty defaults. Impact dashboard labels metrics as *this browser only*. Export JSON says the same. Invented countries/visitors are banned.
+**Decision:** Empty defaults. **My Activity** (`/my-activity`, legacy `/impact` redirect) labels metrics as *YOUR browser only*. Export JSON says the same. Invented countries/visitors are banned. Site-wide aggregates require PostHog/GA4 (`/insights` explains this — does not invent numbers).
+
+### 3b. Real analytics only via env keys
+**Decision:** `VITE_POSTHOG_KEY` / `VITE_GA_ID` load scripts; otherwise track helpers no-op. Events carry anonymous `session_id` + first-touch UTMs. Privacy copy branches on whether keys are enabled.
 
 ### 4. Tab API preserved behind URLs
 Navbar/Footer still call `setActiveTab('catalog')`. App maps that to `navigate('/tutorials')`. Less churn across many view files; URLs still work.
@@ -130,17 +139,47 @@ oEmbed proved **14/15** original catalog IDs dead or wrong — including `L_LUpn
 2. **Centralize path maps** (`routes.ts`) so nav labels and URLs cannot drift.
 3. **Gate media with a helper** (`isPlayableYoutubeId`) instead of scattering `startsWith('eet')` checks.
 4. **Derive counts from data** (`catalogCounts`, `LEARNING_PATHS.length`) — never hardcode `201` / `96` / `105` in UI copy.
-5. **Deploy checklist:** `npm run build` → commit → push → `npx vercel --yes` / `--prod` with SPA rewrite present.
-6. **Secrets:** `.env*` gitignored; `.env.example` documents optional `APP_URL` / Gemini without requiring them for static deploy.
+5. **Deploy checklist:** `npm run build` → commit → push → `npx vercel --yes` / `--prod` with SPA rewrite present. After DNS is live, set Vercel env `VITE_SITE_URL=https://learn.eduengteam.com` (already the code default).
+6. **Secrets:** `.env*` gitignored; `.env.example` documents optional `VITE_SITE_URL` / analytics / Gemini without requiring them for static deploy.
+
+---
+
+## Custom domain — Ashraf DNS checklist (`learn.eduengteam.com`)
+
+The app is **code-ready** for the custom host. Agents cannot finish DNS without your Cloudflare access. Do this once:
+
+1. **Vercel → Project → Settings → Domains**
+   - Add `learn.eduengteam.com` (and optionally `www.learn.eduengteam.com` → redirect to apex or vice versa).
+   - Copy the DNS records Vercel shows (usually a `CNAME` to `cname.vercel-dns.com`, or A records for apex).
+
+2. **Cloudflare → DNS for `eduengteam.com`**
+   - Create the record Vercel requested for `learn` (CNAME or A/AAAA).
+   - **Proxy status:** start with **DNS only** (grey cloud) until the certificate issues; then you can try orange-cloud proxy if you want Cloudflare in front (may need SSL mode Full/Strict).
+   - Do **not** create conflicting `learn` records.
+
+3. **Wait for TLS**
+   - Vercel Domains UI should flip to Valid once DNS propagates.
+   - Hit `https://learn.eduengteam.com` and confirm the SPA loads (deep link e.g. `/tutorials` after refresh).
+
+4. **Env (optional but clean)**
+   - In Vercel Production env: `VITE_SITE_URL=https://learn.eduengteam.com`
+   - Redeploy so client builds bake the same base (default already matches).
+
+5. **Post-cutover**
+   - `npm run seo:generate` (already points sitemap/robots at the canonical host).
+   - Submit `https://learn.eduengteam.com/sitemap.xml` in Google Search Console when you own the property.
+   - Keep the Vercel URL as a fallback; it can redirect to the custom domain later if desired.
+
+**Until DNS is done:** live traffic stays on `https://eet-electronics-product-dev-library.vercel.app`. Chrome already brands `learn.eduengteam.com`; OG/canonical tags already prefer that host — expect a short mismatch window until DNS resolves.
 
 ---
 
 ## Remaining Gaps (call these out, do not hide them)
 
 - Hand-enrich chapters/transcripts beyond the current overlay set.
-- Wire PostHog/GA4 keys in Vercel env (`VITE_POSTHOG_KEY` / `VITE_GA_ID`) — stubs are live but no-op without keys.
-- Custom domain `learn.eduengteam.com` — still manual DNS + Vercel.
-- Phase 2: Supabase/Postgres backend when partnership analytics need multi-user truth.
+- Wire PostHog/GA4 keys in Vercel env (`VITE_POSTHOG_KEY` / `VITE_GA_ID`) — instrumentation is live but no-op without keys; aggregates live in those consoles, not `/my-activity`.
+- Custom domain `learn.eduengteam.com` — **Ashraf DNS steps above**; code/SEO prep is done.
+- Phase 2: Supabase/Postgres backend when partnership analytics need multi-user truth beyond PostHog/GA4.
 
 If you remember one sentence: **this library earns trust by refusing to pretend.**
 
@@ -163,14 +202,17 @@ npm run audit:youtube:apply     # honesty audit + rewrite catalog
 Outputs:
 - `src/data/catalog.generated.json` — 333 rows with `youtubeStatus` / `enrichmentStatus`
 - `scripts/import-report.json` — counts + duplicates
-- `public/sitemap.xml` — regenerated from slugs
+- `public/sitemap.xml` + `public/robots.txt` — regenerated for `VITE_SITE_URL` (default `https://learn.eduengteam.com`)
+- Or run SEO alone: `npm run seo:generate`
 
 **Import stats (MD→CSV + oEmbed audit)**
 - 333 named videos (332 numbered + 1 CSV-only)
 - 333 direct YouTube IDs (no invented IDs; deduped by video_id)
-- 332 oEmbed-`public` embeds; 1 demoted unverified
+- 333 oEmbed-`public` embeds (cat-104 re-verified; hard-demote list cleared)
 - Designer **266** / Develop **55** / Other·Adjacent **12** (honest search-tail tags)
 - Learning paths / projects / roles remapped to new `cat-*` via YouTube ID
+- Persona journeys (`/personas`) sit beside Roles: outcome-led Develop audiences (PCB, procurement, manufacturing, applications, management, compliance) with UTM CTAs from `/altium-develop`
+- Partner landing `/altium-develop` is the shareable Altium-facing hub (not the homepage): independence statement, multidisciplinary value prop, workflow-map embed, persona selector, Develop-filtered tutorials, Develop paths, tools teaser, Try Develop CTA with `utm_medium=landing` / `utm_campaign=altium_develop` / `utm_content=hero`, feedback/contact — no Altium logo
 
 **Honesty rules that still apply**
 - Format-valid IDs alone are **not** playable — UI requires `youtubeStatus === 'public'`.
@@ -188,5 +230,5 @@ Re-run with `npm run audit:youtube` / `npm run audit:youtube:apply`. Report: `sc
 
 **Phase 2 (explicitly deferred)**
 - Supabase/Postgres — optional JSON schema types can mirror brief tables later; do not block Vite SPA.
-- Custom domain `learn.eduengteam.com` — still manual DNS + Vercel domain attach.
+- Custom domain `learn.eduengteam.com` — DNS checklist above (Cloudflare + Vercel); code defaults already use that host.
 - Full transcript/chapter enrichment for all 333 rows (15 hand-enriched today).

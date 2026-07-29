@@ -26,11 +26,15 @@ export type YoutubeStatus =
   | 'id_present';
 
 export type EnrichmentStatus =
+  | 'enriched'
   | 'hand_enriched'
   | 'playable_candidate'
   | 'url_recovered'
   | 'url_recovered_unverified'
   | 'enrichment_pending';
+
+/** Honest label: full captions vs pedagogical outline when verbatim transcript is unavailable. */
+export type TranscriptKind = 'verbatim' | 'outline';
 
 export interface Chapter {
   timestampSeconds: number;
@@ -51,12 +55,38 @@ export interface CommandShortcut {
   context: 'Schematic' | 'PCB' | 'Develop' | 'General';
 }
 
+export interface ProceduralStep {
+  step: number;
+  title: string;
+  detail: string;
+}
+
+export interface OfficialDocLink {
+  title: string;
+  url: string;
+}
+
 export interface DownloadResource {
   title: string;
   type: 'Schematic' | 'BOM' | 'Gerber' | 'Guide' | 'Datasheet' | 'Project File';
   url: string;
   size?: string;
 }
+
+/** Product-development stage this lesson primarily teaches. */
+export type WorkflowStage =
+  | 'Workspace Setup'
+  | 'Multidisciplinary Collaboration'
+  | 'Requirements'
+  | 'Traceability'
+  | 'Project Visibility'
+  | 'Design Reviews'
+  | 'BOM & Supply Risk'
+  | 'Procurement'
+  | 'Manufacturing Handoff'
+  | 'Verification & Compliance'
+  | 'ECAD–MCAD'
+  | 'Engineering Management';
 
 export interface Tutorial {
   id: string;
@@ -69,6 +99,14 @@ export interface Tutorial {
   durationSeconds: number;
   durationFormatted: string;
   publishedDate: string;
+  /** Explicit record date when different from publishedDate; otherwise UI may use publishedDate. */
+  recordedDate?: string;
+  /** Last date EET verified the workflow against current Altium UI. */
+  lastVerifiedDate?: string;
+  /** Honest “still current” flag — only set when verified; omit when unknown. */
+  stillCurrent?: boolean;
+  /** Short note on which features remain available / accurate. */
+  featureAvailability?: string;
   product: ProductType;
   softwareVersion?: string;
   difficulty: DifficultyLevel;
@@ -78,10 +116,23 @@ export interface Tutorial {
   learningPathIds: string[];
   chapters: Chapter[];
   transcript?: TranscriptLine[];
+  /** When 'outline', UI must label content as a high-quality outline — not a full caption dump. */
+  transcriptKind?: TranscriptKind;
   commands?: CommandShortcut[];
+  /** Ordered how-to steps when hotkeys alone are not enough (Develop workflows). */
+  proceduralSteps?: ProceduralStep[];
+  learningOutcomes?: string[];
+  prerequisites?: string[];
+  workflowStage?: WorkflowStage | string;
+  /** Catalog id of the next recommended lesson in a Develop learning sequence. */
+  nextRecommendedLessonId?: string;
   resources?: DownloadResource[];
   officialDocUrl?: string;
+  /** Multiple related official docs (preferred over a single URL when present). */
+  officialDocLinks?: OfficialDocLink[];
   altiumTrialUrl?: string;
+  /** CTA button label for Altium evaluation / product trial. */
+  altiumCtaLabel?: string;
   /** @deprecated Never invent view counts — kept optional only for type compatibility. */
   viewsCount?: number;
   featured?: boolean;
@@ -96,6 +147,10 @@ export interface Tutorial {
   oembedAuthor?: string;
   /** Prior tut-* ids that map onto this imported row. */
   legacyIds?: string[];
+}
+
+export function isPedagogicallyEnriched(status?: EnrichmentStatus): boolean {
+  return status === 'enriched' || status === 'hand_enriched';
 }
 
 export interface LearningPathModule {
@@ -133,6 +188,38 @@ export interface EngineeringRole {
   recommendedPathId: string;
   tutorialIds: string[];
   iconName: string;
+}
+
+/** Develop-focused persona journey (outcome-led; distinct from catalog Role hubs). */
+export interface PersonaJourney {
+  id: string;
+  slug: string;
+  /** Short label for the “I am a …” selector */
+  selectorLabel: string;
+  title: string;
+  audience: string;
+  iconName: string;
+  /** Business outcomes Altium Develop addresses for this audience */
+  developOutcomes: string[];
+  recommendedPathId: string;
+  /** 3–6 curated tutorial IDs */
+  tutorialIds: string[];
+  workflowExample: {
+    title: string;
+    narrative: string;
+    steps: string[];
+  };
+  relevantTool: {
+    /** Tab key for pathForTab() */
+    tab: string;
+    label: string;
+    description: string;
+  };
+  ctaLabel: string;
+  /** utm_content value on outbound trial CTA */
+  utmContent: string;
+  /** Optional bridge to the catalog Roles taxonomy */
+  relatedRoleSlug?: string;
 }
 
 export interface HardwareProject {

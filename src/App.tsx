@@ -23,9 +23,11 @@ import { Hero } from './components/Hero';
 import { CatalogView } from './components/CatalogView';
 import { LearningPathView } from './components/LearningPathView';
 import { RoleView } from './components/RoleView';
+import { PersonaJourneyView } from './components/PersonaJourneyView';
 import { ProjectHubView } from './components/ProjectHubView';
 import { ProductCatalogView } from './components/ProductCatalogView';
-import { ImpactDashboardView } from './components/ImpactDashboardView';
+import { MyActivityView } from './components/MyActivityView';
+import { InsightsView } from './components/InsightsView';
 import { ShortcutsView } from './components/ShortcutsView';
 import { ActiveBomSimulatorView } from './components/ActiveBomSimulatorView';
 import { DrcAssistantView } from './components/DrcAssistantView';
@@ -36,22 +38,43 @@ import { NotesHubView } from './components/NotesHubView';
 import { GlossaryView } from './components/GlossaryView';
 import { AboutView } from './components/AboutView';
 import { PrivacyView } from './components/PrivacyView';
+import { ChangelogView } from './components/ChangelogView';
 import { SkillsIndexView } from './components/SkillsIndexView';
 import { AdminView } from './components/AdminView';
+import { AltiumDevelopLandingView } from './components/AltiumDevelopLandingView';
+import { WorkflowMapView } from './components/WorkflowMapView';
+import { Esp32CaseStudyView } from './components/Esp32CaseStudyView';
+import { CompareWorkflowsView } from './components/CompareWorkflowsView';
+import { FeedbackInboxView } from './components/FeedbackInboxView';
+import { NotFoundView } from './components/NotFoundView';
 import { pathForTab, tabFromPathname } from './routes';
 import { withEetUtm } from './utils/outbound';
-import { initAnalytics, trackEvent, trackPageView } from './utils/analytics';
+import {
+  initAnalytics,
+  trackAltiumCtaClick,
+  trackPageView,
+  trackPathProgression,
+  trackTutorialComplete,
+} from './utils/analytics';
 import { useDocumentTitle } from './utils/documentTitle';
+
+const DOCUMENT_TITLES: Record<string, string | null> = {
+  home: null,
+  altiumDevelop: 'Altium Develop Learning Hub',
+  workflow: 'Product Development Workflow',
+  myActivity: 'My Activity',
+  insights: 'Insights',
+  changelog: 'Changelog',
+};
 
 function AppShell() {
   const navigate = useNavigate();
   const location = useLocation();
   const activeTab = tabFromPathname(location.pathname);
-  useDocumentTitle(
-    activeTab === 'home'
-      ? null
-      : activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/([A-Z])/g, ' $1')
-  );
+  const titleOverride = Object.prototype.hasOwnProperty.call(DOCUMENT_TITLES, activeTab)
+    ? DOCUMENT_TITLES[activeTab]
+    : activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/([A-Z])/g, ' $1');
+  useDocumentTitle(titleOverride, undefined, location.pathname);
 
   React.useEffect(() => {
     initAnalytics();
@@ -74,8 +97,10 @@ function AppShell() {
   const [showQuizModal, setShowQuizModal] = useState<boolean>(false);
   const [initialPathSlug, setInitialPathSlug] = useState<string | undefined>();
   const [initialRoleSlug, setInitialRoleSlug] = useState<string | undefined>();
+  const [initialPersonaSlug, setInitialPersonaSlug] = useState<string | undefined>();
   const [initialProductSlug, setInitialProductSlug] = useState<string | undefined>();
   const [initialProjectSlug, setInitialProjectSlug] = useState<string | undefined>();
+  const [initialWorkflowSlug, setInitialWorkflowSlug] = useState<string | undefined>();
 
   const setActiveTab = (tab: string) => {
     navigate(pathForTab(tab));
@@ -99,11 +124,21 @@ function AppShell() {
     const roleMatch = matchPath('/roles/:slug', location.pathname);
     setInitialRoleSlug(roleMatch?.params.slug);
 
-    const productMatch = matchPath('/products/:slug', location.pathname);
-    setInitialProductSlug(productMatch?.params.slug);
+    const personaMatch = matchPath('/personas/:slug', location.pathname);
+    setInitialPersonaSlug(personaMatch?.params.slug);
+
+    if (location.pathname === '/altium-develop') {
+      setInitialProductSlug('altium-develop');
+    } else {
+      const productMatch = matchPath('/products/:slug', location.pathname);
+      setInitialProductSlug(productMatch?.params.slug);
+    }
 
     const projectMatch = matchPath('/projects/:slug', location.pathname);
     setInitialProjectSlug(projectMatch?.params.slug);
+
+    const workflowMatch = matchPath('/workflow/:stageSlug', location.pathname);
+    setInitialWorkflowSlug(workflowMatch?.params.stageSlug);
 
     const params = new URLSearchParams(location.search);
     const product = params.get('product');
@@ -116,8 +151,24 @@ function AppShell() {
     if (e) e.stopPropagation();
     const targetId = id || selectedTutorial?.id;
     if (!targetId) return;
+    const wasComplete = progress.completedTutorials.includes(targetId);
     const updated = toggleCompletedTutorial(targetId);
     setProgress(updated);
+
+    if (!wasComplete && updated.completedTutorials.includes(targetId)) {
+      const tut = ALL_TUTORIALS.find((t) => t.id === targetId);
+      trackTutorialComplete(targetId, tut?.slug);
+      for (const path of LEARNING_PATHS) {
+        const moduleTutorialIds = [...new Set(path.modules.flatMap((m) => m.tutorialIds))];
+        if (!moduleTutorialIds.includes(targetId)) continue;
+        const total = moduleTutorialIds.length;
+        const completed = moduleTutorialIds.filter((tid) =>
+          updated.completedTutorials.includes(tid)
+        ).length;
+        const percentage = total ? Math.round((completed / total) * 100) : 0;
+        trackPathProgression(path.id, completed, total, percentage);
+      }
+    }
   };
 
   const handleToggleBookmark = (e?: React.MouseEvent, id?: string) => {
@@ -134,8 +185,13 @@ function AppShell() {
   };
 
   const handleOpenAltiumLink = (title: string, url: string) => {
-    const tracked = withEetUtm(url, selectedTutorial?.slug);
-    trackEvent('cta_click', { title, url: tracked, tutorialId: selectedTutorial?.id });
+    // Landing CTA URLs already carry full UTMs — do not overwrite with tutorial campaign defaults.
+    const alreadyTracked =
+      url.includes('utm_source=') &&
+      url.includes('utm_medium=') &&
+      url.includes('utm_campaign=');
+    const tracked = alreadyTracked ? url : withEetUtm(url, selectedTutorial?.slug);
+    trackAltiumCtaClick({ title, url: tracked, tutorialId: selectedTutorial?.id });
     logOutboundClick(selectedTutorial?.id || 'general-nav', title, tracked);
     setProgress(getInitialProgress());
     window.open(tracked, '_blank', 'noopener,noreferrer');
@@ -181,8 +237,18 @@ function AppShell() {
     navigate(path ? `/learning-paths/${path.slug}` : '/learning-paths');
   };
 
+  const handleOpenToolFromPersona = (tab: string) => {
+    navigate(pathForTab(tab));
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-3 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:text-xs"
+      >
+        Skip to main content
+      </a>
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -193,7 +259,7 @@ function AppShell() {
         onOpenQuiz={() => setShowQuizModal(true)}
       />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1" tabIndex={-1}>
         <Routes>
           <Route
             path="/"
@@ -382,6 +448,32 @@ function AppShell() {
           />
 
           <Route
+            path="/personas"
+            element={
+              <PersonaJourneyView
+                onSelectTutorial={handleSelectTutorial}
+                onSelectPath={handleSelectPathFromRole}
+                onOpenTool={handleOpenToolFromPersona}
+                onOpenAltiumLink={handleOpenAltiumLink}
+                onNavigate={navigate}
+              />
+            }
+          />
+          <Route
+            path="/personas/:slug"
+            element={
+              <PersonaJourneyView
+                initialPersonaSlug={initialPersonaSlug}
+                onSelectTutorial={handleSelectTutorial}
+                onSelectPath={handleSelectPathFromRole}
+                onOpenTool={handleOpenToolFromPersona}
+                onOpenAltiumLink={handleOpenAltiumLink}
+                onNavigate={navigate}
+              />
+            }
+          />
+
+          <Route
             path="/products"
             element={
               <ProductCatalogView
@@ -402,6 +494,9 @@ function AppShell() {
             }
           />
 
+          <Route path="/case-studies/esp32-product" element={<Esp32CaseStudyView />} />
+          <Route path="/compare-workflows" element={<CompareWorkflowsView />} />
+
           <Route
             path="/tools/shortcuts"
             element={<ShortcutsView onSelectTutorial={handleSelectTutorial} />}
@@ -419,14 +514,21 @@ function AppShell() {
             element={<StackupInspectorView onSelectTutorial={handleSelectTutorial} />}
           />
 
+          <Route path="/impact" element={<Navigate to="/my-activity" replace />} />
+
           <Route
-            path="/impact"
+            path="/my-activity"
             element={
-              <ImpactDashboardView
+              <MyActivityView
                 progress={progress}
                 onOpenAltiumLink={handleOpenAltiumLink}
               />
             }
+          />
+
+          <Route
+            path="/insights"
+            element={<InsightsView setActiveTab={setActiveTab} />}
           />
 
           <Route
@@ -466,9 +568,51 @@ function AppShell() {
             element={<PrivacyView setActiveTab={setActiveTab} />}
           />
 
+          <Route
+            path="/changelog"
+            element={<ChangelogView setActiveTab={setActiveTab} />}
+          />
+
+          <Route
+            path="/altium-develop"
+            element={
+              <AltiumDevelopLandingView
+                onSelectTutorial={handleSelectTutorial}
+                onOpenAltiumLink={handleOpenAltiumLink}
+                setActiveTab={setActiveTab}
+                onNavigate={navigate}
+              />
+            }
+          />
+
+          <Route
+            path="/workflow"
+            element={
+              <WorkflowMapView
+                onSelectTutorial={handleSelectTutorial}
+                onOpenAltiumLink={handleOpenAltiumLink}
+              />
+            }
+          />
+          <Route
+            path="/workflow/:stageSlug"
+            element={
+              <WorkflowMapView
+                onSelectTutorial={handleSelectTutorial}
+                onOpenAltiumLink={handleOpenAltiumLink}
+                initialStageSlug={initialWorkflowSlug}
+              />
+            }
+          />
+
           <Route path="/admin" element={<AdminView />} />
 
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route
+            path="/feedback-inbox"
+            element={<FeedbackInboxView setActiveTab={setActiveTab} />}
+          />
+
+          <Route path="*" element={<NotFoundView />} />
         </Routes>
       </main>
 

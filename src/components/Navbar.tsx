@@ -14,10 +14,13 @@ import {
   HelpCircle,
   ChevronDown,
   Sparkles,
-  GraduationCap
+  GraduationCap,
+  Cloud,
+  GitBranch,
 } from 'lucide-react';
 import { UserProgress } from '../types';
 import { SearchOverlay } from './SearchOverlay';
+import { APP_STAGE_LABEL, APP_VERSION } from '../utils/siteConfig';
 
 interface NavbarProps {
   activeTab: string;
@@ -42,7 +45,7 @@ const PRIMARY_NAV: PrimaryNavItem[] = [
   { tab: 'roles', label: 'Engineering Roles', icon: <Users className="w-4 h-4 text-emerald-400" /> },
   { tab: 'skills', label: 'Skills', icon: <GraduationCap className="w-4 h-4 text-fuchsia-300" /> },
   { tab: 'catalog', label: 'All Tutorials', icon: <BookOpen className="w-4 h-4 text-blue-300" /> },
-  { tab: 'impact', label: 'Impact', icon: <BarChart3 className="w-4 h-4 text-cyan-400" /> },
+  { tab: 'myActivity', label: 'My Activity', icon: <BarChart3 className="w-4 h-4 text-cyan-400" /> },
 ];
 
 const TOOLS_MENU_TABS = ['shortcuts', 'activebom', 'drc', 'stackup', 'notes', 'glossary'];
@@ -61,6 +64,17 @@ export const Navbar: React.FC<NavbarProps> = ({
   const completedCount = progress.completedTutorials.length;
   const bookmarkedCount = progress.bookmarkedTutorials.length;
 
+  React.useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
   return (
     <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur border-b border-slate-800 text-slate-100 shadow-md">
       {/* Top utility strip: identity + independence notice, not a vendor ad slot */}
@@ -68,6 +82,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center space-x-2">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           <span className="text-slate-300 font-semibold">learn.eduengteam.com</span>
+          <span className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-amber-700/70 bg-amber-950/40 text-amber-300">
+            {APP_STAGE_LABEL}
+          </span>
+          <span className="hidden sm:inline text-slate-500">v{APP_VERSION}</span>
           <span className="hidden md:inline text-slate-500">| Independent EET learning library</span>
         </div>
         <div className="flex items-center space-x-4">
@@ -91,7 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
 
-          {/* Logo & Brand */}
+          {/* Logo & Brand — always primary identity */}
           <div
             onClick={() => setActiveTab('home')}
             className="flex items-center space-x-3 cursor-pointer group shrink-0"
@@ -107,6 +125,34 @@ export const Navbar: React.FC<NavbarProps> = ({
               <p className="text-xs text-slate-400 hidden sm:block">Electronics Product Development</p>
             </div>
           </div>
+
+          {/* Partner Develop hub — prominent, but secondary to EET brand (outline chip, not primary tab style) */}
+          <button
+            type="button"
+            onClick={() => setActiveTab('altiumDevelop')}
+            className={`hidden md:inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-colors shrink-0 ${
+              activeTab === 'altiumDevelop'
+                ? 'bg-cyan-500 text-slate-950 border-cyan-400'
+                : 'bg-cyan-950/50 text-cyan-300 border-cyan-800/80 hover:bg-cyan-900/60 hover:text-cyan-100'
+            }`}
+            title="Independent Altium Develop learning hub"
+          >
+            <Cloud className="w-3.5 h-3.5" />
+            <span>Develop Hub</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('workflow')}
+            className={`hidden lg:inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition-colors shrink-0 ${
+              activeTab === 'workflow'
+                ? 'bg-slate-100 text-slate-950 border-slate-300'
+                : 'bg-slate-900/80 text-slate-300 border-slate-700 hover:border-cyan-700 hover:text-cyan-200'
+            }`}
+            title="Interactive product-development workflow map"
+          >
+            <GitBranch className="w-3.5 h-3.5" />
+            <span>Workflow</span>
+          </button>
 
           {/* Search Bar (compact, desktop only — Search nav button covers mobile + full overlay) */}
           <div className="flex-1 max-w-sm relative hidden md:block">
@@ -261,6 +307,24 @@ export const Navbar: React.FC<NavbarProps> = ({
           className={`px-2 py-1 rounded whitespace-nowrap ${activeTab === 'home' ? 'text-brand-bright bg-slate-800' : ''}`}
         >
           Home
+        </button>
+        <button
+          onClick={() => setActiveTab('altiumDevelop')}
+          className={`px-2 py-1 rounded whitespace-nowrap border ${
+            activeTab === 'altiumDevelop'
+              ? 'text-slate-950 bg-cyan-500 border-cyan-400'
+              : 'text-cyan-300 border-cyan-900/60 bg-cyan-950/40'
+          }`}
+        >
+          Develop Hub
+        </button>
+        <button
+          onClick={() => setActiveTab('workflow')}
+          className={`px-2 py-1 rounded whitespace-nowrap ${
+            activeTab === 'workflow' ? 'text-brand-bright bg-slate-800' : ''
+          }`}
+        >
+          Workflow
         </button>
         {PRIMARY_NAV.map((item) => (
           <button

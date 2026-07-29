@@ -1,7 +1,8 @@
 # EET Electronics Product Development Library — Feature Inventory
 
 > **Who this is for:** Ashraf (and anyone joining the project) who needs a single, honest map of what the product *actually ships today* — not the aspirational brief alone.  
-> **Live URL:** [https://eet-electronics-product-dev-library.vercel.app](https://eet-electronics-product-dev-library.vercel.app)  
+> **Canonical URL:** [https://learn.eduengteam.com](https://learn.eduengteam.com) (DNS attach pending — see §18 / FORAshraf.md)  
+> **Live fallback (Vercel):** [https://eet-electronics-product-dev-library.vercel.app](https://eet-electronics-product-dev-library.vercel.app)  
 > **Repo root file:** `FEATURES.md` (this document)  
 > **Numbers below** reflect the catalog after the Jul 29, 2026 MD→CSV import + YouTube embed audit (`catalogCounts` / `scripts/import-report.json`). Primary source: `data/videos.csv` (wins over xlsx).
 
@@ -16,7 +17,7 @@
 5. [Tutorial detail experience](#5-tutorial-detail-experience)
 6. [Learning paths](#6-learning-paths)
 7. [Projects, products, roles & skills](#7-projects-products-roles--skills)
-8. [Impact dashboard](#8-impact-dashboard)
+8. [My Activity](#8-my-activity)
 9. [Tools & labs](#9-tools--labs)
 10. [Notes, glossary & skill quiz](#10-notes-glossary--skill-quiz)
 11. [Legal & about](#11-legal--about)
@@ -47,11 +48,13 @@
 | Video | `react-player` → YouTube embeds (only when status is `public`) |
 | Motion / delight | `motion`, `canvas-confetti` on “mark completed” |
 | Hosting | Vercel (`vercel.json` SPA rewrite → `index.html`) |
-| Data | Static JSON + TypeScript data modules (no backend) |
+| Data | Static JSON + TypeScript data modules; optional `api/feedback.ts` on Vercel |
 | Progress | Browser `localStorage` only |
+| Tutorial feedback | Central (webhook / Resend / GitHub Issues / `VITE_FEEDBACK_ENDPOINT`) |
 
 **Canonical product name in UI / titles:** *EET Electronics Product Development Library*  
-**Aspirational domain (not DNS-wired yet):** `learn.eduengteam.com` (shown in chrome; live traffic is still the Vercel URL).
+**Canonical host (code default via `VITE_SITE_URL`):** `https://learn.eduengteam.com`  
+**Vercel fallback until Cloudflare DNS is attached:** `https://eet-electronics-product-dev-library.vercel.app`
 
 ---
 
@@ -72,8 +75,15 @@ Central map: `src/routes.ts` (`TAB_PATHS`) ↔ `src/App.tsx` (`<Routes>`).
 | `/products/:slug` | Deep-link to a product hub |
 | `/roles` | Engineering roles |
 | `/roles/:slug` | Deep-link to a role |
+| `/personas` | Develop persona journeys (“I am a…”) |
+| `/personas/:slug` | Deep-link to a persona journey |
+| `/altium-develop` | Partner-facing Altium Develop landing (embeds workflow map; links to personas) |
+| `/workflow` | **Flagship** interactive product-development workflow map (8 stages) |
+| `/workflow/:stageSlug` | Deep-link into a workflow stage (concept…verification) |
 | `/skills` | Skills index → jumps to `/tutorials?skill=…` |
-| `/impact` | Local Impact dashboard |
+| `/my-activity` | My Activity — **this browser only** (localStorage) |
+| `/impact` | Redirect → `/my-activity` |
+| `/insights` | Site Insights status page (PostHog/GA4 required — no fake aggregates) |
 | `/tools/shortcuts` | Keyboard shortcuts lab |
 | `/tools/activebom` | ActiveBOM risk simulator (sample BOMs) |
 | `/tools/drc` | DRC assistant (rule database) |
@@ -82,8 +92,15 @@ Central map: `src/routes.ts` (`TAB_PATHS`) ↔ `src/App.tsx` (`<Routes>`).
 | `/glossary` | PCB / Altium glossary |
 | `/about` | About + independence disclaimer |
 | `/privacy` | Privacy policy |
+| `/changelog` | Public release notes (Beta / version) |
+| `/altium-develop` | Partner-facing Altium Develop landing (independent EET hub) |
+| `/workflow` · `/workflow/:stageSlug` | Interactive product-development workflow map |
+| `/personas` · `/personas/:slug` | Develop persona journeys |
+| `/compare-workflows` | Disconnected vs Develop process comparison |
+| `/case-studies/esp32-product` | ESP32 guided multidisciplinary case study |
+| `/feedback-inbox` | Operator stub: probes feedback backend status (password-gated like admin) |
 | `/admin` | Read-only catalog status admin |
-| `*` | Redirect → `/` |
+| `*` | NotFoundView (no silent redirect to home) |
 
 **Query params that matter:**
 
@@ -93,11 +110,11 @@ Central map: `src/routes.ts` (`TAB_PATHS`) ↔ `src/App.tsx` (`<Routes>`).
 
 **Nav chrome:**
 
-- Sticky navbar: primary tabs (Paths, Projects, Products, Roles, Skills, Tutorials, Impact) + **Tools** dropdown (shortcuts, ActiveBOM, DRC, stackup, notes, glossary)
+- Sticky navbar: EET brand first + secondary cyan **Develop Hub** chip (`/altium-develop`) + primary tabs (Paths, Projects, Products, Roles, Skills, Tutorials, My Activity) + **Tools** dropdown
 - Global search overlay (`SearchOverlay`)
 - Skill quiz entry (“Take Skill Quiz”)
 - Completion / bookmark counts from local progress
-- Footer: learning nav, product counts, Impact, About, Privacy, contact mailto
+- Footer: learning nav, product counts, Altium Develop Learning Hub, My Activity, Site Insights, About, Privacy, contact mailto
 
 ---
 
@@ -115,7 +132,7 @@ Implemented in `Hero` + home route block in `App.tsx`.
 6. **Honest status line** — playable / playlist-only / missing; notes custom domain still manual.
 7. **Choose your goal** — path / project / catalog.
 8. **Browse by role / product** teasers.
-9. **Projects + Impact teasers.**
+9. **Projects + My Activity teasers.**
 
 **Below the fold on `/`:**
 
@@ -185,6 +202,7 @@ Unverified / playlist-only / missing IDs never get a live embed, even if an ID s
 | Transcript | Searchable lines when present |
 | Commands | Shown only if `commands[]` exists |
 | My Notes | Per-tutorial notes → `localStorage` |
+| Feedback | Structured curriculum feedback → central store via `/api/feedback` (or `VITE_FEEDBACK_ENDPOINT`); not localStorage |
 
 ### Enrichment states
 
@@ -262,17 +280,39 @@ Hubs for **Altium Designer** and **Altium Develop** with counts and hand-off int
 
 Each role: responsibilities, workflows, recommended path, tutorial IDs, icon. Can jump to a learning path.
 
+### Interactive workflow map — `/workflow` (`WorkflowMapView`)
+
+**Flagship** eight-stage product-development map in `src/data/workflowStages.ts`:
+
+Concept → Requirements → System Design → PCB Design → Sourcing → Review → Manufacturing → Verification
+
+Click a stage for: responsible roles, common problems, Altium Develop capability, Develop-preferring catalog tutorials, linked learning path, and **Try this workflow in Altium** CTA (UTM `utm_content=workflow_*`). Same interactive panel embeds on `/altium-develop` via `WorkflowMapEmbed`. Mobile: horizontal scrollable stage strip + full detail panel.
+
+### Personas — `/personas` (`PersonaJourneyView`)
+
+**6** Develop-focused audience journeys in `src/data/personas.ts` — distinct from Roles (Roles = catalog taxonomy; Personas = “what Develop solves for my job”):
+
+1. PCB Designer — hardware design & engineering  
+2. Procurement Manager — BOM & supply chain  
+3. Manufacturing Engineer — manufacturing, testing, QA  
+4. Applications / Product Engineer — apps, technical marketing, product  
+5. Engineering Manager — leadership & strategy  
+6. Compliance Engineer — compliance & sustainability  
+
+Each journey: Develop business outcomes, recommended starting path, 3–6 tutorials, one realistic workflow example, one relevant tool, and a Try Altium Develop CTA with landing UTMs (`utm_content=persona-…`). Entry points from `/altium-develop` and the footer.
+
 ### Skills — `/skills` (`SkillsIndexView`)
 
 Thin index of **~55** skill tags derived from the catalog. Selecting a skill navigates to `/tutorials?skill=…` — catalog owns results rendering.
 
 ---
 
-## 8. Impact dashboard
+## 8. My Activity (formerly Impact)
 
-**Route:** `/impact` · `ImpactDashboardView`
+**Route:** `/my-activity` · `MyActivityView`  
+**Legacy:** `/impact` redirects here.
 
-**Be radically honest here:** this is **not** site-wide analytics. It reads **this browser’s** `localStorage`:
+**Be radically honest here:** this is **YOUR browser only** — not site-wide analytics. It reads **this browser’s** `localStorage`:
 
 | Metric source | Key / content |
 |---------------|----------------|
@@ -286,12 +326,14 @@ Thin index of **~55** skill tags derived from the catalog. Selecting a skill nav
 - This-browser completions / bookmarks / outbound clicks
 - Recent UTM-tagged outbound logs
 - Search gap analysis (including zero-result queries)
-- Export JSON “Altium partnership report” — explicitly labeled as local-session only
+- Export JSON — explicitly labeled as this-browser only
 - Partnership CTA links (Altium trial / site) with UTM tagging
 
-**UI banner:** “Local engagement only — not site-wide analytics.”
+**UI banner:** “YOUR browser only — not site-wide analytics.”
 
-If you clear site data, the “impact” story for that visitor resets. There is no multi-user truth until Phase 2.
+**Site Insights** (`/insights` · `InsightsView`) explains that real aggregates require PostHog/GA4 env keys and never invents traffic numbers from localStorage.
+
+If you clear site data, My Activity for that visitor resets. Multi-user truth lives in PostHog/GA4 after keys are enabled — not in this SPA.
 
 ---
 
@@ -335,9 +377,15 @@ Accessible from the Navbar **Tools** dropdown. These are **educational simulator
 
 - No account, no ad trackers claimed for the library itself
 - Explains localStorage for progress, notes, searches, outbound logs
+- Documents **optional tutorial feedback** sent to a central backend (`/api/feedback` or `VITE_FEEDBACK_ENDPOINT`) — not localStorage
 - Third-party Altium destinations have their own policies
-- Last updated label: January 2026
+- Last updated label: **July 29, 2026**
 - Contact mailto
+
+### Changelog — `/changelog`
+
+- Public release notes; Beta / version label matches nav + footer
+- Catalog honesty milestones and launch-trust / SEO prep called out
 
 **Privacy honesty gap to watch:** If `VITE_GA_ID` / `VITE_POSTHOG_KEY` are set in production, third-party analytics scripts *do* load — update Privacy copy when those keys go live.
 
@@ -355,13 +403,28 @@ Accessible from the Navbar **Tools** dropdown. These are **educational simulator
 
 **No mutations** — catalog changes happen via import/audit scripts, not the admin UI.
 
+### Feedback inbox — `/feedback-inbox` · `FeedbackInboxView`
+
+- Same password gate as admin
+- Probes `GET /api/feedback` for backend configuration (webhook / Resend / GitHub)
+- Does **not** list message bodies inside the SPA — operators read the configured store
+- Optional `VITE_FEEDBACK_INBOX_URL` deep-link
+
+### Tutorial feedback API — `api/feedback.ts`
+
+- Vercel Edge function; SPA rewrite excludes `/api/*`
+- Fields: useful, workflowWorked, unclear, nextWorkflow, role, altiumProduct (+ tutorial id/slug/title)
+- Backends (any one): `FEEDBACK_WEBHOOK_URL`, Resend (`RESEND_API_KEY` + `FEEDBACK_TO_EMAIL`), or GitHub Issues (`GITHUB_TOKEN` + `GITHUB_FEEDBACK_REPO`)
+- Client override: `VITE_FEEDBACK_ENDPOINT` (Formspree / Getform)
+- Documented in `.env.example`
+
 ---
 
 ## 13. Analytics, UTMs & events
 
 ### Outbound UTMs (`utils/outbound.ts`)
 
-Applied to **altium.com** destinations:
+Applied to **altium.com** destinations from tutorials:
 
 | Param | Value |
 |-------|--------|
@@ -370,16 +433,27 @@ Applied to **altium.com** destinations:
 | `utm_campaign` | `altium_develop_library` |
 | `utm_content` | tutorial slug when available |
 
+**Partner landing CTAs** (`landingAltiumTrialUrl` on `/altium-develop`):
+
+| Param | Value |
+|-------|--------|
+| `utm_source` | `eet_learning_hub` |
+| `utm_medium` | `landing` |
+| `utm_campaign` | `altium_develop` |
+| `utm_content` | `hero` (or section-specific) |
+
 Non-Altium URLs pass through unchanged.
 
-### Event stub (`utils/analytics.ts`)
+### Analytics (`utils/analytics.ts`)
 
-Loads **only if env vars are set**:
+Loads **only if env vars are set** (documented in `.env.example`):
 
 - `VITE_POSTHOG_KEY` → PostHog
 - `VITE_GA_ID` → gtag / GA4
 
-Without keys: `trackEvent` / `trackPageView` are safe no-ops.
+Without keys: `trackEvent` / `trackPageView` are safe no-ops (no scripts loaded).
+
+Every event is enriched with anonymous `session_id` + first-touch traffic attribution (`utm_*` / referrer) when available.
 
 **Events fired in code today:**
 
@@ -387,30 +461,37 @@ Without keys: `trackEvent` / `trackPageView` are safe no-ops.
 |-------|------|
 | `page_view` | Every route change |
 | `tutorial_start` | Opening a playable tutorial |
-| `playback_milestone` | 25 / 50 / 75 / 100% |
-| `cta_click` | Altium trial / docs / general outbound |
-| `search` | Catalog search / some filter changes |
+| `playback_milestone` / `playback_25`…`100` | Playback 25 / 50 / 75 / 100% |
+| `tutorial_complete` | Marking a lesson complete |
+| `path_progression` | Completing a lesson that belongs to a learning path |
+| `persona_selected` | Selecting a Develop persona journey |
+| `cta_click` / `altium_cta_click` | Altium trial / docs / general outbound |
+| `search` | Catalog search |
 | `search_zero_results` | Empty search |
+| `tutorial_feedback_submit` | Successful central feedback submit |
+| `tutorial_feedback_error` | Failed feedback submit |
 
 ### Local logging (always on, browser-only)
 
-- Outbound clicks → Impact + counter
-- Search queries (≥2 chars) → Impact gap analysis
+- Outbound clicks → My Activity + counter
+- Search queries (≥2 chars) → My Activity gap analysis
 
----
+Site-wide aggregates: PostHog / GA4 consoles (see `/insights`). **Never** fabricated in the SPA.
 
 ## 14. SEO
 
 | Asset | Behavior |
 |-------|----------|
-| `index.html` | Base title + meta description + dark color-scheme + SVG favicon + fonts |
-| `useDocumentTitle` | Per-route / per-tutorial titles: `{Page} · EET Electronics Product Development Library` |
-| `public/robots.txt` | `Allow: /` + sitemap URL pointing at the Vercel host |
-| `public/sitemap.xml` | Regenerated by `import:catalog` — home, hubs, and **per-tutorial** URLs |
+| `index.html` | Base title + meta description + OG/Twitter tags + canonical + favicon SVG + apple-touch-icon + fonts |
+| `public/og-image.png` | Default social share image (`1200×630`-class) |
+| `useDocumentTitle` / `applyPageMeta` | Per-route title + description + canonical + OG/Twitter updates |
+| `VITE_SITE_URL` | Canonical base (default `https://learn.eduengteam.com`); also accepted as `SITE_URL` / `APP_URL` in Node SEO scripts |
+| `public/robots.txt` | `Allow: /` + sitemap URL for the canonical host |
+| `public/sitemap.xml` | Regenerated by `import:catalog` or `npm run seo:generate` — hubs + per-tutorial URLs |
 | JSON-LD | Client-injected `VideoObject` for playable tutorials only |
 | SPA caveat | Vercel rewrites all paths to `index.html` — crawlers get the shell; rich per-URL HTML is limited without SSR |
 
-**Sitemap base URL:** `https://eet-electronics-product-dev-library.vercel.app` (hardcoded in import script).
+**Sitemap / robots base URL:** `https://learn.eduengteam.com` by default (override with `VITE_SITE_URL`). Vercel fallback for live traffic until DNS: `https://eet-electronics-product-dev-library.vercel.app`.
 
 ---
 
@@ -458,9 +539,10 @@ catalog.generated.json rewritten    ← retitle / demote weak matches
 | Command | What it does |
 |---------|----------------|
 | `npm run md:to-csv` | Prefer `data/parsed-from-md-report.json` (else re-parse MD) → `data/videos.csv` + `data/md-to-csv-report.json` |
-| `npm run import:catalog` | **CSV-first** when `data/videos.csv` exists → oEmbed-validate → generated catalog + report + sitemap |
+| `npm run import:catalog` | **CSV-first** when `data/videos.csv` exists → oEmbed-validate → generated catalog + report + sitemap + robots |
 | `npm run import:catalog:fast` | Same, `--skip-oembed` |
 | `npm run import:videos:csv` | Explicit CSV import (`import-catalog.mjs --csv`) — fails if CSV missing |
+| `npm run seo:generate` | Regenerate `sitemap.xml` + `robots.txt` only (reads `catalog.generated.json`) |
 | `npm run audit:youtube` | Re-oEmbed every ID; write Markdown + JSON report (no catalog rewrite) |
 | `npm run audit:youtube:apply` | Audit + rewrite `catalog.generated.json` (retitle / Develop→Designer fixes / demote weak matches) |
 | `npm run lint` | `tsc --noEmit` |
@@ -542,7 +624,7 @@ Derived from runtime `catalogCounts` after MD→CSV import + YouTube embed audit
 - Counts always derived from data (`catalogCounts`, `.length`) so marketing copy cannot drift from inventory.
 - Confetti on complete is intentional delight; certificates intentionally demoted.
 
-**A11y / polish gaps (real):** modal focus trap / scroll lock are basic; no dedicated keyboard help beyond the shortcuts lab; no account sync for progress.
+**A11y / polish:** modal focus trap, body scroll lock, and Escape-to-close ship via `useModalA11y` (tutorial / quiz / search / report dialogs). Skip link + Ctrl/⌘K search. No account sync for progress.
 
 ---
 
@@ -552,12 +634,12 @@ Call these out so nobody confuses roadmap with shipping:
 
 | Item | Status |
 |------|--------|
-| **Supabase / Postgres backend** | Not started — no multi-user progress or server analytics |
-| **Custom domain `learn.eduengteam.com`** | Branded in UI; DNS + Vercel attach still manual |
+| **Supabase / Postgres backend** | Not started — no multi-user progress or server analytics (tutorial feedback uses webhook/Resend/GitHub instead) |
+| **Custom domain `learn.eduengteam.com`** | **Code + SEO ready** (`VITE_SITE_URL` default). DNS + Cloudflare/Vercel attach still **manual (Ashraf)** — see FORAshraf.md |
 | **PostHog / GA4 keys in production** | Code stubs exist; no-op until `VITE_*` env set |
 | **Full chapter/transcript enrichment for all 333** | Only 15 hand-enriched overlays today |
-| **Resolve the 1 unverified embed** | Demoted by audit; re-audit / replace ID before promoting to `public` |
-| **SSR / prerender for SEO** | SPA rewrite only |
+| **Resolve the 1 unverified embed** | Done — `cat-104` re-verified (EET oEmbed author + title match); hard-demote list cleared |
+| **SSR / prerender for SEO** | SPA rewrite only — meta/sitemap help; HTML still one shell |
 | **Certificate issuance in path UX** | Component file present, not primary flow |
 | **Gemini / AI features** | `@google/genai` dependency + `.env.example` note — not productized |
 | **Live distributor / ActiveBOM APIs** | Simulator uses sample data |
@@ -572,15 +654,15 @@ Call these out so nobody confuses roadmap with shipping:
 ## 19. Devil’s advocate — where trust can still break
 
 1. **“333 tutorials” on the homepage can still mislead** if a visitor equates named rows with playable lessons. The UI reports **332 playable** (+ 1 unverified), but skimmers will miss it. Lead with playable in partnership decks. Also: 12 rows are honestly tagged `Other / Adjacent` — not Designer/Develop curriculum.
-2. **Impact dashboard looks like growth metrics.** Without the amber disclaimer, a partner could screenshot localStorage numbers as platform KPIs. Treat export JSON as a *demo of instrumentation*, not proof of traffic.
+2. **My Activity looks like growth metrics.** Without the disclaimer, a partner could screenshot localStorage numbers as platform KPIs. Treat export JSON as a *demo of instrumentation*, not proof of traffic. Use `/insights` + PostHog/GA4 for real aggregates.
 3. **Tools feel “live.”** ActiveBOM / DRC / stackup are excellent teaching UX — and dangerous if someone quotes sample stock or impedance as fab truth.
 4. **SPA SEO ceiling.** Sitemap + JSON-LD help, but Google mostly sees one shell. Custom domain + SSR is the real SEO unlock, not more meta tags.
-5. **Privacy copy vs future analytics.** Shipping GA/PostHog without updating Privacy is a self-inflicted trust bug.
+5. **Privacy copy vs production analytics.** Shipping GA/PostHog without updating Privacy is a self-inflicted trust bug — Privacy now branches on whether keys are enabled.
 6. **Admin with empty password** is fine for local; catastrophic if that builds to prod. Always set `VITE_ADMIN_PASSWORD` on Vercel.
 7. **Enrichment asymmetry.** 15 hand-enriched lessons feel like a premium product; the other ~318 thin audit rows feel like a spreadsheet dump. The product story should be “honest inventory + deepening enrichment,” not “finished academy.”
 8. **CSV vs xlsx confusion.** If someone re-imports from xlsx “because the spreadsheet is familiar,” they silently shrink / reshape the live catalog. Guardrail: keep `data/videos.csv` present; document CSV-first in every ops runbook.
 
-**Stronger long-term approach:** keep the honesty gates (status, oEmbed, demote-over-fake), instrument real analytics only when Privacy and Impact UI stop implying browser-local = global, deepen enrichment toward the 333 goal as content ops (same audit script), and treat the single unverified ID as a content ticket — not a frontend feature.
+**Stronger long-term approach:** keep the honesty gates (status, oEmbed, demote-over-fake), keep My Activity clearly browser-local while PostHog/GA4 own site-wide truth, deepen enrichment toward the 333 goal as content ops (same audit script), and treat the single unverified ID as a content ticket — not a frontend feature.
 
 ---
 
@@ -591,7 +673,7 @@ Call these out so nobody confuses roadmap with shipping:
 | Routes | `src/routes.ts`, `src/App.tsx` |
 | Catalog runtime | `src/data/catalog.ts`, `catalog.generated.json`, `curatedEnrichment.ts` |
 | Catalog source (primary) | `data/videos.csv` ← `npm run md:to-csv` ← `data/parsed-from-md-report.json` / MD list |
-| Paths / projects / roles | `src/data/learningPaths.ts`, `projects.ts`, `roles.ts` |
+| Paths / projects / roles / personas | `src/data/learningPaths.ts`, `projects.ts`, `roles.ts`, `personas.ts` |
 | Storage | `src/utils/storage.ts` |
 | Search | `src/utils/search.ts` |
 | Analytics / UTM / JSON-LD | `src/utils/analytics.ts`, `outbound.ts`, `jsonld.ts` |
