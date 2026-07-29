@@ -1,26 +1,22 @@
 # YouTube Embed Audit Report
 
-Audited: 2026-07-29T14:30:26.384Z
+Audited: 2026-07-29T20:41:14.129Z
 Apply mode: true
 
 ## Summary counts
 
-- Verified match (unchanged): **329**
-- Retitled to match YouTube: **3**
+- Verified match (unchanged): **333**
+- Retitled to match YouTube: **0**
 - Retitled + product fixed (Develop→Designer): **0**
-- Demoted / kept unverified: **1**
+- Demoted / kept unverified: **0**
 - Playlist-only: **0**
 - Missing ID: **0**
-- Public embeds: **332**
+- Public embeds: **333**
 
 ## Actions taken (non-match / changed)
 
 | id | youtubeId | catalog title | YouTube title | status | action |
 |---|---|---|---|---|---|
-| cat-004 | NSaBu7wJqUE | User Interface Altium Designer | User Interface Altium Designer | public | retitled_to_match_youtube |
-| cat-005 | Uvuxwma19zo | Introduction To Altium Designer | Introduction To Altium Designer | public | retitled_to_match_youtube |
-| cat-041 | 5TIyURTBs-U | How to Effectively Use History in Altium Develop | 12  How to Effectively Use History in Altium Develop | public | retitled_to_match_youtube |
-| cat-104 | 96EuE9kODmE | Short Duration Timer Circuit using Altium Desinger | Short Duration Timer Circuit using Altium Desinger | unverified | demoted_to_unverified_weak_topic_match |
 
 ## Full inventory (YouTube IDs)
 
@@ -29,8 +25,8 @@ Apply mode: true
 | cat-001 | MctyE99XnPA | How to download and Install Altium 2022 - Altium Designer | How to download and Install Altium 2022 - Altium Designer | public | verified_match |
 | cat-002 | QYD8xXVN5kQ | Design Motion Sensor with ESP32 using Altium designer | Design Motion Sensor with ESP32 using Altium designer | public | verified_match |
 | cat-003 | YWJnMMk4J8c | Adding the new Library File to your Design - Altium Designer | Adding the new Library File to your Design - Altium Designer | public | verified_match |
-| cat-004 | NSaBu7wJqUE | User Interface Altium Designer | User Interface Altium Designer | public | retitled_to_match_youtube |
-| cat-005 | Uvuxwma19zo | Introduction To Altium Designer | Introduction To Altium Designer | public | retitled_to_match_youtube |
+| cat-004 | NSaBu7wJqUE | User Interface Altium Designer | User Interface Altium Designer | public | verified_match |
+| cat-005 | Uvuxwma19zo | Introduction To Altium Designer | Introduction To Altium Designer | public | verified_match |
 | cat-006 | 4hOH0lxFpJc | USB Lamp using Altium Designer | USB Lamp using Altium Designer | public | verified_match |
 | cat-007 | qM0GwF1WdgE | Arduino UNO R4 PCB Layout Step by Step in Altium Designer | Arduino UNO R4 PCB Layout  Step by Step in Altium Designer | public | verified_match |
 | cat-008 | WLs8QpxUcM4 | Thief Door Alarm Using Transistor using Altium Designer | Thief Door Alarm Using Transistor using Altium Designer | public | verified_match |
@@ -66,7 +62,7 @@ Apply mode: true
 | cat-038 | rHcH1XivrZI | Setting up the connection matrix- Altium Designer | Setting up the connection matrix- Altium Designer | public | verified_match |
 | cat-039 | 8o528JEp12Q | Design Stack-Up and Design Rules - Altium Designer Tutorial | Design Stack-Up and Design Rules - Altium Designer Tutorial | public | verified_match |
 | cat-040 | 5Z0biRZTdJ0 | Lamp Dimmer using Altium Designer | Lamp Dimmer using Altium Designer | public | verified_match |
-| cat-041 | 5TIyURTBs-U | How to Effectively Use History in Altium Develop | 12  How to Effectively Use History in Altium Develop | public | retitled_to_match_youtube |
+| cat-041 | 5TIyURTBs-U | How to Effectively Use History in Altium Develop | 12  How to Effectively Use History in Altium Develop | public | verified_match |
 | cat-042 | -bAQN9V3pkg | DS3231 Real Time Clock Altium Designer | DS3231 Real Time Clock Altium Designer | public | verified_match |
 | cat-043 | jffLgs-soVU | Physical layers and the layer stack manager- Altium Designer | Physical layers and the layer stack manager- Altium Designer | public | verified_match |
 | cat-044 | fub4bTpdBh4 | Viewing your board in 3d- Altium Designer | Viewing your board in 3d- Altium Designer | public | verified_match |
@@ -129,7 +125,7 @@ Apply mode: true
 | cat-101 | jv-m0xkAFck | 1 Getting Started with Altium Develop Download, Setup & Navigation | 1 Getting Started with Altium Develop  Download, Setup & Navigation | public | verified_match |
 | cat-102 | Ai28NEt26o4 | Altium Develop From Files to Peer-Powered Network | Altium Develop From Files to Peer-Powered Network | public | verified_match |
 | cat-103 | j9QyMCQXxWo | Greber File and Bill of Material Altium Designer | Greber File and Bill of Material  Altium Designer | public | verified_match |
-| cat-104 | 96EuE9kODmE | Short Duration Timer Circuit using Altium Desinger | Short Duration Timer Circuit using Altium Desinger | unverified | demoted_to_unverified_weak_topic_match |
+| cat-104 | 96EuE9kODmE | Short Duration Timer Circuit using Altium Desinger | Short Duration Timer Circuit using Altium Desinger | public | verified_match |
 | cat-105 | RnR8mL64VIY | Seven Segment Counter using Atium Designer | Seven Segment Counter using Atium Designer | public | verified_match |
 | cat-106 | PZ4BYCB_Hw0 | Light Sensor Triggers LED using Altium Designer | Light Sensor Triggers LED using Altium Designer | public | verified_match |
 | cat-107 | EQxvq05dXhM | The Active Bar in Altium Designer | The Active Bar in Altium Designer | public | verified_match |

@@ -1,23 +1,22 @@
 {
   "summary": {
-    "auditedAt": "2026-07-29T14:30:26.384Z",
+    "auditedAt": "2026-07-29T20:41:14.129Z",
     "apply": true,
     "totalCatalog": 333,
     "withYoutubeId": 333,
     "verdictHistogram": {
-      "match": 330,
-      "mismatch": 3
+      "match": 333
     },
     "counts": {
-      "verified_match_unchanged": 329,
-      "retitled": 3,
+      "verified_match_unchanged": 333,
+      "retitled": 0,
       "retitled_and_product_fixed": 0,
-      "demoted_to_unverified": 1,
+      "demoted_to_unverified": 0,
       "already_unverified": 0,
       "playlist_only": 0,
       "missing": 0,
-      "public_after": 332,
-      "unverified_after": 1
+      "public_after": 333,
+      "unverified_after": 0
     }
   },
   "rows": [
@@ -70,31 +69,31 @@
       "id": "cat-004",
       "slug": "design-and-create-any-custom-component-in-altium-designer",
       "youtubeId": "NSaBu7wJqUE",
-      "catalogTitleBefore": "Design and Create Any Custom Component in Altium Designer",
+      "catalogTitleBefore": "User Interface Altium Designer",
       "catalogTitle": "User Interface Altium Designer",
       "youtubeTitle": "User Interface Altium Designer",
       "author": "Educational Engineering Team",
       "productBefore": "Altium Designer",
       "product": "Altium Designer",
       "status": "public",
-      "score": 0,
-      "containment": 0,
-      "action": "retitled_to_match_youtube"
+      "score": 1,
+      "containment": 1,
+      "action": "verified_match"
     },
     {
       "id": "cat-005",
       "slug": "pcb-design-make-arduino-nano-using-altium-designer",
       "youtubeId": "Uvuxwma19zo",
-      "catalogTitleBefore": "PCB Design: Make Arduino Nano using Altium Designer",
+      "catalogTitleBefore": "Introduction To Altium Designer",
       "catalogTitle": "Introduction To Altium Designer",
       "youtubeTitle": "Introduction To Altium Designer",
       "author": "Educational Engineering Team",
       "productBefore": "Altium Designer",
       "product": "Altium Designer",
       "status": "public",
-      "score": 0,
-      "containment": 0,
-      "action": "retitled_to_match_youtube"
+      "score": 1,
+      "containment": 1,
+      "action": "verified_match"
     },
     {
       "id": "cat-006",
@@ -625,16 +624,16 @@
       "id": "cat-041",
       "slug": "mastering-altium-develop-workflows",
       "youtubeId": "5TIyURTBs-U",
-      "catalogTitleBefore": "Mastering Altium Develop Workflows",
+      "catalogTitleBefore": "How to Effectively Use History in Altium Develop",
       "catalogTitle": "How to Effectively Use History in Altium Develop",
       "youtubeTitle": "12  How to Effectively Use History in Altium Develop",
       "author": "Educational Engineering Team",
       "productBefore": "Altium Develop",
       "product": "Altium Develop",
       "status": "public",
-      "score": 0,
-      "containment": 0,
-      "action": "retitled_to_match_youtube"
+      "score": 1,
+      "containment": 1,
+      "action": "verified_match"
     },
     {
       "id": "cat-042",
@@ -1570,12 +1569,16 @@
       "id": "cat-104",
       "slug": "short-duration-timer-circuit-using-altium-desinger",
       "youtubeId": "96EuE9kODmE",
+      "catalogTitleBefore": "Short Duration Timer Circuit using Altium Desinger",
       "catalogTitle": "Short Duration Timer Circuit using Altium Desinger",
       "youtubeTitle": "Short Duration Timer Circuit using Altium Desinger",
       "author": "Educational Engineering Team",
-      "status": "unverified",
-      "action": "demoted_to_unverified_weak_topic_match",
-      "note": "containment=1.00"
+      "productBefore": "Altium Designer",
+      "product": "Altium Designer",
+      "status": "public",
+      "score": 1,
+      "containment": 1,
+      "action": "verified_match"
     },
     {
       "id": "cat-105",

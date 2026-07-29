@@ -33,8 +33,8 @@
       "sourcePrecedence": "csv_over_xlsx",
       "oembedSkipped": false
     },
-    "lastYoutubeAuditAt": "2026-07-29T14:30:26.380Z",
-    "youtubeAuditNote": "Full oEmbed re-audit; titles aligned; Develop→Designer corrections; cat-104 re-verified (EET author + title match)",
+    "lastYoutubeAuditAt": "2026-07-29T20:41:14.113Z",
+    "youtubeAuditNote": "Full oEmbed re-audit; titles aligned to YouTube; Develop→Designer product corrections; weak matches demoted",
     "public": 333,
     "unverified": 0,
     "playlistOnly": 0,
