@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Users, 
   Cpu, 
@@ -74,6 +75,11 @@ export const RoleView: React.FC<RoleViewProps> = ({
         </h2>
         <p className="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
           Role hubs covering catalog categories — not a claim of every industry persona. Each hub maps recommended paths and linked lessons from the imported EET audit.
+          For Altium Develop outcome journeys (business outcomes + workflow + tool + CTA), see{' '}
+          <Link to="/personas" className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2">
+            Persona journeys
+          </Link>
+          .
         </p>
       </div>
 

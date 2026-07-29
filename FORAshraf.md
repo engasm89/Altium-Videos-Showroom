@@ -48,6 +48,8 @@ Progress, bookmarks, outbound click logs, and search logs still live in the visi
 | `src/App.tsx` | Shell: Navbar/Footer, `Routes`, tutorial modal, progress handlers |
 | `src/routes.ts` | Tab key ↔ public path map |
 | `src/data/catalog.ts` + `catalog.generated.json` | Imported MD→CSV catalog (333 rows) + enrichment overlays + honest counts |
+| `src/data/developEnrichment.overlay.json` | Strategic ~29 Altium Develop enrichments (`enrichment_status=enriched`) with outcomes, chapters, outline transcripts, steps, docs, next-lesson links |
+| `src/data/curatedEnrichment.ts` | Legacy hand-authored Designer/Develop overlays (merge before Develop JSON so Develop wins on shared IDs) |
 | `src/data/learningPaths.ts` / `roles.ts` / `personas.ts` / `projects.ts` / `shortcuts.ts` / `workflowStages.ts` | Curriculum taxonomy + Develop persona journeys + flagship workflow map stages |
 | `src/components/WorkflowMapView.tsx` | Interactive `/workflow` map (+ `WorkflowMapEmbed` on `/altium-develop`) |
 | `src/utils/youtube.ts` | Playable-ID gate (rejects `eet_*` synthetics) |

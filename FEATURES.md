@@ -193,14 +193,26 @@ Unverified / playlist-only / missing IDs never get a live embed, even if an ID s
 - Close → `/tutorials`
 - Prev / next adjacent tutorials in catalog order
 
+### Content freshness indicators
+
+Shown on tutorial detail **only when data exists** (never invented for the bulk catalog):
+
+- Recorded date (explicit or accompanying richer freshness)
+- Last verified date
+- Software version
+- Feature availability note
+- “Still current” / needs re-verification badge
+
+Hand-verified overlays live in `src/utils/contentFreshness.ts` (keyed by YouTube ID). Enriched lessons with `softwareVersion` also surface the version chip.
+
 ### Tabs
 
 | Tab | Behavior |
 |-----|----------|
-| Overview & Outcomes | Summary, skills, resources, thin-enrichment banner, Altium trial CTA, official docs CTA, related lessons |
+| Overview & Outcomes | Summary, learning outcomes, prerequisites, role, workflow stage, next recommended lesson, skills, resources, thin-enrichment banner, Altium CTA, official docs links, related lessons |
 | Chapters | Timestamp seek into player (or “enrichment pending”) |
-| Transcript | Searchable lines when present |
-| Commands | Shown only if `commands[]` exists |
+| Transcript | Searchable lines when present; outline-labeled when `transcriptKind=outline` |
+| Steps | Procedural steps + commands when authored |
 | My Notes | Per-tutorial notes → `localStorage` |
 | Feedback | Structured curriculum feedback → central store via `/api/feedback` (or `VITE_FEEDBACK_ENDPOINT`); not localStorage |
 
@@ -208,12 +220,13 @@ Unverified / playlist-only / missing IDs never get a live embed, even if an ID s
 
 | Status | Meaning in product |
 |--------|--------------------|
-| `hand_enriched` | Overlay from `curatedEnrichment.ts` (chapters / transcript / commands / richer copy) |
+| `enriched` | Strategic Develop overlay from `developEnrichment.overlay.json` (full pedagogy fields) |
+| `hand_enriched` | Legacy overlay from `curatedEnrichment.ts` (chapters / transcript / commands / richer copy) |
 | `playable_candidate` | Sheet + oEmbed public; thin pedagogical depth until enriched |
 | `url_recovered_unverified` | Recovered but not trusted for embed |
 | `enrichment_pending` | Typically playlist-only / missing — no public embed |
 
-**Current depth (runtime):** 15 hand-enriched (chapters), ~6 with transcripts, ~9 with command lists — out of **333** catalog rows (`CATALOG_ENRICHMENT_GOAL = 333`).
+**Current depth (runtime):** ~29 Develop `enriched` + legacy `hand_enriched` Designer overlays — still a strategic subset of **333** (`CATALOG_ENRICHMENT_GOAL = 333`). Develop overlay covers workspace setup through manufacturing/verification/management; transcripts are honest **outlines**, not verbatim captions.
 
 ### CTAs & outbound
 
@@ -395,8 +408,9 @@ Accessible from the Navbar **Tools** dropdown. These are **educational simulator
 
 **Route:** `/admin` · `AdminView` (read-only)
 
-- Optional gate via `VITE_ADMIN_PASSWORD` (`?key=` or password prompt → `sessionStorage`)
-- If password unset → open in local/dev (intentional stub)
+- **Requires** `VITE_ADMIN_PASSWORD` in production — if unset on a production build, `/admin` is **blocked** (no empty-password access). Documented in `.env.example` (Vercel env + redeploy).
+- Local/dev may omit the password (open stub for convenience)
+- Gate via `?key=` or password prompt → `sessionStorage`
 - Filters: all / public / pending / playlist_only
 - Table: id, title, product, YouTube status, enrichment status, playable flag
 - Shows import meta (source file, row counts)
@@ -589,8 +603,8 @@ Derived from runtime `catalogCounts` after MD→CSV import + YouTube embed audit
 |--------|------:|
 | Named catalog rows | **333** |
 | With YouTube URL / ID | 333 |
-| **Playable embeds (`public`)** | **332** |
-| Unverified (embed withheld) | **1** |
+| **Playable embeds (`public`)** | **333** |
+| Unverified (embed withheld) | **0** |
 | Playlist-only | 0 |
 | Missing / invalid | 0 |
 | Altium Designer | **266** |
@@ -653,16 +667,16 @@ Call these out so nobody confuses roadmap with shipping:
 
 ## 19. Devil’s advocate — where trust can still break
 
-1. **“333 tutorials” on the homepage can still mislead** if a visitor equates named rows with playable lessons. The UI reports **332 playable** (+ 1 unverified), but skimmers will miss it. Lead with playable in partnership decks. Also: 12 rows are honestly tagged `Other / Adjacent` — not Designer/Develop curriculum.
+1. **“333 tutorials” on the homepage can still mislead** if a visitor equates named rows with playable lessons. The UI reports **333 playable** after `cat-104` re-verify, but skimmers may still miss that 12 rows are honestly tagged `Other / Adjacent` — not Designer/Develop curriculum.
 2. **My Activity looks like growth metrics.** Without the disclaimer, a partner could screenshot localStorage numbers as platform KPIs. Treat export JSON as a *demo of instrumentation*, not proof of traffic. Use `/insights` + PostHog/GA4 for real aggregates.
 3. **Tools feel “live.”** ActiveBOM / DRC / stackup are excellent teaching UX — and dangerous if someone quotes sample stock or impedance as fab truth.
 4. **SPA SEO ceiling.** Sitemap + JSON-LD help, but Google mostly sees one shell. Custom domain + SSR is the real SEO unlock, not more meta tags.
 5. **Privacy copy vs production analytics.** Shipping GA/PostHog without updating Privacy is a self-inflicted trust bug — Privacy now branches on whether keys are enabled.
-6. **Admin with empty password** is fine for local; catastrophic if that builds to prod. Always set `VITE_ADMIN_PASSWORD` on Vercel.
+6. **Admin password is a Vite client gate.** Production **blocks** `/admin` (and `/feedback-inbox`) when `VITE_ADMIN_PASSWORD` is unset — set it on Vercel and redeploy. It is still not a server secret; do not treat it as one.
 7. **Enrichment asymmetry.** 15 hand-enriched lessons feel like a premium product; the other ~318 thin audit rows feel like a spreadsheet dump. The product story should be “honest inventory + deepening enrichment,” not “finished academy.”
 8. **CSV vs xlsx confusion.** If someone re-imports from xlsx “because the spreadsheet is familiar,” they silently shrink / reshape the live catalog. Guardrail: keep `data/videos.csv` present; document CSV-first in every ops runbook.
 
-**Stronger long-term approach:** keep the honesty gates (status, oEmbed, demote-over-fake), keep My Activity clearly browser-local while PostHog/GA4 own site-wide truth, deepen enrichment toward the 333 goal as content ops (same audit script), and treat the single unverified ID as a content ticket — not a frontend feature.
+**Stronger long-term approach:** keep the honesty gates (status, oEmbed, demote-over-fake), keep My Activity clearly browser-local while PostHog/GA4 own site-wide truth, deepen enrichment toward the 333 goal as content ops (same audit script), and keep content-report + tutorial feedback wired to `/api/feedback`.
 
 ---
 

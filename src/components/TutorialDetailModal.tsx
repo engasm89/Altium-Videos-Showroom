@@ -19,14 +19,20 @@ import {
   Share2,
   List,
   Sparkles,
-  MessageSquare
+  MessageSquare,
+  CalendarClock,
+  BadgeCheck
 } from 'lucide-react';
-import { Tutorial } from '../types';
+import { Tutorial, isPedagogicallyEnriched } from '../types';
 import { isPlayableTutorial, ALL_TUTORIALS } from '../data/catalog';
 import { defaultAltiumTrialUrl } from '../utils/outbound';
-import { trackEvent } from '../utils/analytics';
+import { trackTutorialStart, trackPlaybackMilestone } from '../utils/analytics';
 import { useDocumentTitle } from '../utils/documentTitle';
 import { upsertVideoJsonLd } from '../utils/jsonld';
+import { getContentFreshness } from '../utils/contentFreshness';
+import { useModalA11y } from '../utils/useModalA11y';
+import { TutorialFeedbackForm } from './TutorialFeedbackForm';
+import { ReportContentControl } from './ReportContentControl';
 
 interface TutorialDetailModalProps {
   tutorial: Tutorial | null;
@@ -57,14 +63,20 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
   hasPrev,
   hasNext
 }) => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'chapters' | 'transcript' | 'commands' | 'notes'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'chapters' | 'transcript' | 'commands' | 'notes' | 'feedback'>('overview');
   const [transcriptSearch, setTranscriptSearch] = useState('');
   const [currentNoteText, setCurrentNoteText] = useState(userNote || '');
   const [currentPlayTimestamp, setCurrentPlayTimestamp] = useState<number>(0);
   const [milestonesHit, setMilestonesHit] = useState<Set<number>>(new Set());
   const playerRef = useRef<HTMLVideoElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
-  useDocumentTitle(tutorial?.title);
+  useDocumentTitle(
+    tutorial?.title,
+    tutorial?.shortDescription,
+    tutorial ? `/tutorials/${tutorial.slug}` : undefined
+  );
+  useModalA11y(Boolean(tutorial), dialogRef, onClose);
 
   React.useEffect(() => {
     upsertVideoJsonLd(tutorial);
@@ -77,10 +89,25 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
 
   React.useEffect(() => {
     if (tutorial && isPlayableTutorial(tutorial)) {
-      trackEvent('tutorial_start', { tutorialId: tutorial.id, slug: tutorial.slug });
+      trackTutorialStart(tutorial.id, tutorial.slug);
       setMilestonesHit(new Set());
     }
   }, [tutorial?.id]);
+
+  React.useEffect(() => {
+    if (!tutorial) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft' && hasPrev) {
+        e.preventDefault();
+        onSelectAdjacentTutorial('prev');
+      } else if (e.key === 'ArrowRight' && hasNext) {
+        e.preventDefault();
+        onSelectAdjacentTutorial('next');
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [tutorial, hasPrev, hasNext, onSelectAdjacentTutorial]);
 
   if (!tutorial) return null;
 
@@ -93,8 +120,22 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
 
   const isDevelop = tutorial.product === 'Altium Develop';
   const playable = isPlayableTutorial(tutorial);
+  const freshness = getContentFreshness(tutorial);
   const thinEnrichment =
-    !tutorial.chapters?.length && !tutorial.transcript?.length && tutorial.enrichmentStatus !== 'hand_enriched';
+    !tutorial.chapters?.length &&
+    !tutorial.transcript?.length &&
+    !isPedagogicallyEnriched(tutorial.enrichmentStatus);
+
+  const nextLesson = tutorial.nextRecommendedLessonId
+    ? ALL_TUTORIALS.find((t) => t.id === tutorial.nextRecommendedLessonId)
+    : undefined;
+  const docLinks =
+    tutorial.officialDocLinks?.length
+      ? tutorial.officialDocLinks
+      : tutorial.officialDocUrl
+        ? [{ title: 'Altium Online Documentation', url: tutorial.officialDocUrl }]
+        : [];
+  const transcriptIsOutline = tutorial.transcriptKind === 'outline';
 
   const related = ALL_TUTORIALS.filter(
     (t) =>
@@ -111,21 +152,29 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
   const onProgress = (state: { played: number; playedSeconds: number }) => {
     setCurrentPlayTimestamp(state.playedSeconds);
     const pct = Math.round(state.played * 100);
-    for (const milestone of [25, 50, 75, 100]) {
+    for (const milestone of [25, 50, 75, 100] as const) {
       if (pct >= milestone && !milestonesHit.has(milestone)) {
         setMilestonesHit((prev) => new Set(prev).add(milestone));
-        trackEvent('playback_milestone', {
-          tutorialId: tutorial.id,
-          milestone,
-        });
+        trackPlaybackMilestone(tutorial.id, milestone);
       }
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 animate-fadeIn">
-      <div className="bg-slate-900 border border-slate-700/80 rounded-2xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden text-slate-100">
-        
+    <div
+      className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 animate-fadeIn"
+      role="presentation"
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={tutorial.title}
+        className="bg-slate-900 border border-slate-700/80 rounded-2xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden text-slate-100"
+      >
         {/* Modal Header */}
         <div className="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between shrink-0">
           <div className="flex items-center space-x-2 text-xs">
@@ -180,6 +229,7 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
             <button
               onClick={onClose}
               className="p-1.5 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
+              aria-label="Close tutorial"
             >
               <X className="w-5 h-5" />
             </button>
@@ -233,7 +283,7 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
           </div>
 
           {/* Title & Metadata Banner */}
-          <div className="p-4 sm:p-6 bg-slate-900 border-b border-slate-800 space-y-2">
+          <div className="p-4 sm:p-6 bg-slate-900 border-b border-slate-800 space-y-3">
             <h2 className="text-xl sm:text-2xl font-bold text-white leading-tight">{tutorial.title}</h2>
             <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 font-mono">
               <span className="flex items-center space-x-1">
@@ -242,9 +292,64 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
               </span>
               <span>•</span>
               <span>Role: {tutorial.role}</span>
+              {tutorial.workflowStage && (
+                <>
+                  <span>•</span>
+                  <span>Stage: {tutorial.workflowStage}</span>
+                </>
+              )}
+              {isPedagogicallyEnriched(tutorial.enrichmentStatus) && (
+                <>
+                  <span>•</span>
+                  <span className="text-emerald-400">
+                    {tutorial.enrichmentStatus === 'enriched' ? 'enriched' : 'hand_enriched'}
+                  </span>
+                </>
+              )}
               <span>•</span>
               <span>Published: {tutorial.publishedDate}</span>
             </div>
+
+            {freshness.hasAny && (
+              <div
+                className="flex flex-wrap gap-2 pt-1"
+                aria-label="Content freshness indicators"
+              >
+                {freshness.recordedDate && (
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-700 text-slate-300">
+                    <CalendarClock className="w-3 h-3 text-slate-400" />
+                    Recorded {freshness.recordedDate}
+                  </span>
+                )}
+                {freshness.lastVerifiedDate && (
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-700 text-slate-300">
+                    <BadgeCheck className="w-3 h-3 text-emerald-400" />
+                    Last verified {freshness.lastVerifiedDate}
+                  </span>
+                )}
+                {freshness.softwareVersion && (
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-700 text-slate-300">
+                    Version {freshness.softwareVersion}
+                  </span>
+                )}
+                {freshness.stillCurrent !== undefined && (
+                  <span
+                    className={`inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-lg border ${
+                      freshness.stillCurrent
+                        ? 'bg-emerald-950/60 border-emerald-800 text-emerald-300'
+                        : 'bg-amber-950/60 border-amber-800 text-amber-200'
+                    }`}
+                  >
+                    {freshness.stillCurrent ? 'Still current' : 'Needs re-verification'}
+                  </span>
+                )}
+                {freshness.featureAvailability && (
+                  <span className="w-full text-[11px] text-slate-400 leading-relaxed mt-0.5">
+                    Feature availability: {freshness.featureAvailability}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Tab Controls */}
@@ -279,7 +384,8 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
               <span>Transcript</span>
             </button>
 
-            {tutorial.commands && tutorial.commands.length > 0 && (
+            {((tutorial.commands && tutorial.commands.length > 0) ||
+              (tutorial.proceduralSteps && tutorial.proceduralSteps.length > 0)) && (
               <button
                 onClick={() => setActiveTab('commands')}
                 className={`py-3 px-3 border-b-2 transition-colors flex items-center space-x-1.5 shrink-0 ${
@@ -287,7 +393,14 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
                 }`}
               >
                 <Terminal className="w-4 h-4 text-emerald-400" />
-                <span>Commands ({tutorial.commands.length})</span>
+                <span>
+                  Steps
+                  {tutorial.proceduralSteps?.length
+                    ? ` (${tutorial.proceduralSteps.length})`
+                    : tutorial.commands?.length
+                      ? ` (${tutorial.commands.length})`
+                      : ''}
+                </span>
               </button>
             )}
 
@@ -299,6 +412,16 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
             >
               <MessageSquare className="w-4 h-4 text-purple-400" />
               <span>My Notes</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('feedback')}
+              className={`py-3 px-3 border-b-2 transition-colors flex items-center space-x-1.5 shrink-0 ${
+                activeTab === 'feedback' ? 'border-blue-500 text-blue-400 font-semibold' : 'border-transparent text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <span>Feedback</span>
             </button>
           </div>
 
@@ -321,6 +444,31 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
                   </p>
                 </div>
 
+                {tutorial.learningOutcomes && tutorial.learningOutcomes.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Learning Outcomes</h4>
+                    <ul className="space-y-2 bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+                      {tutorial.learningOutcomes.map((outcome, idx) => (
+                        <li key={idx} className="text-sm text-slate-200 flex items-start gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{outcome}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {tutorial.prerequisites && tutorial.prerequisites.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Prerequisites</h4>
+                    <ul className="space-y-1.5 text-sm text-slate-300 list-disc list-inside">
+                      {tutorial.prerequisites.map((pre, idx) => (
+                        <li key={idx}>{pre}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 {/* Skills Acquired */}
                 <div>
                   <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Skills & Engineering Workflows</h4>
@@ -332,6 +480,36 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
                     ))}
                   </div>
                 </div>
+
+                {(tutorial.role || tutorial.workflowStage) && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="p-3 bg-slate-950/60 border border-slate-800 rounded-xl">
+                      <h4 className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-1">Related role</h4>
+                      <p className="text-sm text-slate-200">{tutorial.role}</p>
+                    </div>
+                    {tutorial.workflowStage && (
+                      <div className="p-3 bg-slate-950/60 border border-slate-800 rounded-xl">
+                        <h4 className="text-[10px] font-mono uppercase tracking-wider text-slate-500 mb-1">Workflow stage</h4>
+                        <p className="text-sm text-cyan-300">{tutorial.workflowStage}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {nextLesson && (
+                  <div>
+                    <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Next recommended lesson</h4>
+                    <Link
+                      to={`/tutorials/${nextLesson.slug}`}
+                      className="block p-4 bg-cyan-950/40 border border-cyan-800/80 rounded-xl hover:border-cyan-600 transition-colors"
+                    >
+                      <div className="text-sm font-semibold text-white">{nextLesson.title}</div>
+                      <div className="text-[10px] font-mono text-cyan-400/80 mt-1">
+                        {nextLesson.workflowStage || nextLesson.product} · Continue sequence →
+                      </div>
+                    </Link>
+                  </div>
+                )}
 
                 {/* Downloadable Resources */}
                 {tutorial.resources && tutorial.resources.length > 0 && (
@@ -373,30 +551,34 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
                   </div>
                   <button
                     onClick={() => {
-                      trackEvent('cta_click', { destination: 'altium_trial', tutorialId: tutorial.id });
                       onOpenAltiumLink(tutorial.title, tutorial.altiumTrialUrl || defaultAltiumTrialUrl(tutorial.slug));
                     }}
                     className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-lg shadow flex items-center space-x-1.5 shrink-0 transition-colors"
                   >
-                    <span>Try in Altium</span>
+                    <span>{tutorial.altiumCtaLabel || 'Try in Altium'}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
-                {/* Official Docs Link */}
-                {tutorial.officialDocUrl && (
-                  <div className="text-xs text-slate-400">
-                    <span>Reference Official Docs: </span>
-                    <button
-                      onClick={() => {
-                        trackEvent('cta_click', { destination: 'docs', tutorialId: tutorial.id });
-                        onOpenAltiumLink('Official Documentation', tutorial.officialDocUrl!);
-                      }}
-                      className="text-blue-400 hover:underline inline-flex items-center space-x-1"
-                    >
-                      <span>Altium Online Documentation</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </button>
+                {/* Official Docs Links */}
+                {docLinks.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Related official docs</h4>
+                    <ul className="space-y-2">
+                      {docLinks.map((doc, idx) => (
+                        <li key={idx}>
+                          <button
+                            onClick={() => {
+                              onOpenAltiumLink(doc.title, doc.url);
+                            }}
+                            className="text-xs text-blue-400 hover:underline inline-flex items-center space-x-1"
+                          >
+                            <span>{doc.title}</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
 
@@ -457,9 +639,14 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
               <div className="space-y-4">
                 {(tutorial.transcript || []).length > 0 ? (
                   <>
+                    {transcriptIsOutline && (
+                      <div className="p-3 bg-amber-950/40 border border-amber-800/70 rounded-xl text-xs text-amber-100 font-mono">
+                        Lesson outline / summary — not a full verbatim transcript. Timestamps are pedagogical anchors for seeking.
+                      </div>
+                    )}
                     <input
                       type="text"
-                      placeholder="Search transcript text..."
+                      placeholder={transcriptIsOutline ? 'Search outline text...' : 'Search transcript text...'}
                       value={transcriptSearch}
                       onChange={(e) => setTranscriptSearch(e.target.value)}
                       className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
@@ -490,23 +677,48 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
               </div>
             )}
 
-            {/* COMMANDS TAB */}
+            {/* COMMANDS / PROCEDURAL STEPS TAB */}
             {activeTab === 'commands' && (
-              <div className="space-y-3">
-                <p className="text-xs text-slate-400">Key keyboard hotkeys and commands demonstrated in this lesson:</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {(tutorial.commands || []).map((cmd, idx) => (
-                    <div key={idx} className="p-3 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between">
-                      <div>
-                        <div className="text-xs font-medium text-slate-200">{cmd.action}</div>
-                        <div className="text-[10px] text-slate-500 font-mono">{cmd.context} Mode</div>
-                      </div>
-                      <span className="font-mono text-xs text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2.5 py-1 rounded">
-                        {cmd.key}
-                      </span>
+              <div className="space-y-6">
+                {tutorial.proceduralSteps && tutorial.proceduralSteps.length > 0 && (
+                  <div className="space-y-3">
+                    <p className="text-xs text-slate-400">Procedural steps for this Develop workflow:</p>
+                    <ol className="space-y-2">
+                      {tutorial.proceduralSteps.map((step) => (
+                        <li
+                          key={step.step}
+                          className="p-3 bg-slate-950 border border-slate-800 rounded-xl flex items-start gap-3"
+                        >
+                          <span className="font-mono text-xs text-cyan-300 bg-cyan-950 border border-cyan-800 px-2 py-1 rounded shrink-0">
+                            {step.step}
+                          </span>
+                          <div>
+                            <div className="text-sm font-medium text-slate-100">{step.title}</div>
+                            <p className="text-xs text-slate-400 mt-1 leading-relaxed">{step.detail}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+                {tutorial.commands && tutorial.commands.length > 0 && (
+                  <div className="space-y-3">
+                    <p className="text-xs text-slate-400">Key commands / actions demonstrated in this lesson:</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {tutorial.commands.map((cmd, idx) => (
+                        <div key={idx} className="p-3 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between">
+                          <div>
+                            <div className="text-xs font-medium text-slate-200">{cmd.action}</div>
+                            <div className="text-[10px] text-slate-500 font-mono">{cmd.context} Mode</div>
+                          </div>
+                          <span className="font-mono text-xs text-amber-300 bg-amber-950/80 border border-amber-800/80 px-2.5 py-1 rounded">
+                            {cmd.key}
+                          </span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                )}
               </div>
             )}
 
@@ -530,15 +742,23 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
               </div>
             )}
 
+            {/* FEEDBACK TAB — central store via /api/feedback or VITE_FEEDBACK_ENDPOINT */}
+            {activeTab === 'feedback' && (
+              <div className="max-w-xl">
+                <TutorialFeedbackForm key={tutorial.id} tutorial={tutorial} />
+              </div>
+            )}
+
           </div>
 
         </div>
 
         {/* Modal Footer Navigation */}
-        <div className="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between shrink-0 text-xs">
+        <div className="p-4 bg-slate-950 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 shrink-0 text-xs">
           <button
             disabled={!hasPrev}
             onClick={() => onSelectAdjacentTutorial('prev')}
+            aria-label="Previous lesson"
             className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border transition-colors ${
               hasPrev ? 'bg-slate-800 text-slate-200 border-slate-700 hover:bg-slate-700' : 'opacity-40 cursor-not-allowed border-slate-800 text-slate-600'
             }`}
@@ -547,11 +767,20 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
             <span>Previous Lesson</span>
           </button>
 
-          <span className="text-slate-500 font-mono hidden sm:inline">EET Catalog ID: {tutorial.id}</span>
+          <div className="flex flex-col items-center gap-1 order-last sm:order-none w-full sm:w-auto">
+            <span className="text-slate-500 font-mono hidden sm:inline">EET Catalog ID: {tutorial.id}</span>
+            <ReportContentControl
+              compact
+              tutorialId={tutorial.id}
+              slug={tutorial.slug}
+              title={tutorial.title}
+            />
+          </div>
 
           <button
             disabled={!hasNext}
             onClick={() => onSelectAdjacentTutorial('next')}
+            aria-label="Next lesson"
             className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border transition-colors ${
               hasNext ? 'bg-blue-600 text-white border-blue-500 hover:bg-blue-500' : 'opacity-40 cursor-not-allowed border-slate-800 text-slate-600'
             }`}
