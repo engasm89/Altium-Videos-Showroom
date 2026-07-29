@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { 
   Search, 
   Filter, 
@@ -24,6 +25,7 @@ interface CatalogViewProps {
   onToggleBookmark: (e: React.MouseEvent, id: string) => void;
   onToggleCompleted: (e: React.MouseEvent, id: string) => void;
   productFilterOverride?: string;
+  skillFilterOverride?: string;
 }
 
 export const CatalogView: React.FC<CatalogViewProps> = ({
@@ -33,14 +35,17 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   onSelectTutorial,
   onToggleBookmark,
   onToggleCompleted,
-  productFilterOverride
+  productFilterOverride,
+  skillFilterOverride
 }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [filters, setFilters] = useState<SearchFilterState>({
     query: searchQuery,
-    product: (productFilterOverride as any) || 'All',
+    product: (productFilterOverride as SearchFilterState['product']) || 'All',
     role: 'All',
     difficulty: 'All',
-    skill: 'All',
+    skill: (skillFilterOverride as SearchFilterState['skill']) || 'All',
     learningPathId: 'All',
     projectId: 'All',
     durationRange: 'All',
@@ -51,12 +56,38 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   const [showOnlyCompleted, setShowOnlyCompleted] = useState(false);
   const [showOnlyBookmarked, setShowOnlyBookmarked] = useState(false);
 
+  useEffect(() => {
+    if (productFilterOverride && productFilterOverride !== 'All') {
+      setFilters((prev) => ({
+        ...prev,
+        product: productFilterOverride as SearchFilterState['product'],
+      }));
+    }
+  }, [productFilterOverride]);
+
+  useEffect(() => {
+    if (skillFilterOverride && skillFilterOverride !== 'All') {
+      setFilters((prev) => ({
+        ...prev,
+        skill: skillFilterOverride,
+      }));
+    }
+  }, [skillFilterOverride]);
+
   // Keep search query in sync
   const currentQuery = searchQuery;
 
   const activeFilters: SearchFilterState = {
     ...filters,
-    query: currentQuery
+    query: currentQuery,
+    product:
+      productFilterOverride && productFilterOverride !== 'All'
+        ? (productFilterOverride as SearchFilterState['product'])
+        : filters.product,
+    skill:
+      skillFilterOverride && skillFilterOverride !== 'All'
+        ? skillFilterOverride
+        : filters.skill,
   };
 
   const { results, totalMatches } = searchAndFilterTutorials(ALL_TUTORIALS, activeFilters);
@@ -87,6 +118,11 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
     });
     setShowOnlyCompleted(false);
     setShowOnlyBookmarked(false);
+    if (location.pathname.startsWith('/tutorials/') && location.pathname !== '/tutorials') {
+      navigate('/tutorials');
+    } else if (location.search) {
+      navigate('/tutorials');
+    }
   };
 
   return (
@@ -163,14 +199,22 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
         </div>
 
         {/* Multi-Select Filters Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-2 text-xs border-t border-slate-800">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-2 text-xs border-t border-slate-800">
           
           {/* Product Filter */}
           <div>
             <label className="block font-mono text-[10px] text-slate-400 uppercase mb-1">Product</label>
             <select
-              value={filters.product}
-              onChange={(e) => setFilters({ ...filters, product: e.target.value as any })}
+              value={activeFilters.product}
+              onChange={(e) => {
+                const product = e.target.value as SearchFilterState['product'];
+                setFilters({ ...filters, product });
+                navigate(
+                  product === 'All'
+                    ? '/tutorials'
+                    : `/tutorials?product=${encodeURIComponent(product)}`
+                );
+              }}
               className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-blue-500"
             >
               <option value="All">All Products ({ALL_TUTORIALS.length})</option>
@@ -212,6 +256,30 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             </select>
           </div>
 
+          {/* Skill Filter */}
+          <div>
+            <label className="block font-mono text-[10px] text-slate-400 uppercase mb-1">Skill</label>
+            <select
+              value={activeFilters.skill}
+              onChange={(e) => {
+                setFilters({ ...filters, skill: e.target.value });
+                navigate(
+                  e.target.value === 'All'
+                    ? '/tutorials'
+                    : `/tutorials?skill=${encodeURIComponent(e.target.value)}`
+                );
+              }}
+              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-blue-500"
+            >
+              <option value="All">All Skills</option>
+              {allSkills.map((skill) => (
+                <option key={skill} value={skill}>
+                  {skill}
+                </option>
+              ))}
+            </select>
+          </div>
+
           {/* Duration Filter */}
           <div>
             <label className="block font-mono text-[10px] text-slate-400 uppercase mb-1">Duration</label>
@@ -249,7 +317,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             Showing <span className="text-white font-bold">{displayed.length}</span> of <span className="text-white">{ALL_TUTORIALS.length}</span> tutorials
           </div>
 
-          {(filters.product !== 'All' || filters.role !== 'All' || filters.difficulty !== 'All' || searchQuery || showOnlyCompleted || showOnlyBookmarked) && (
+          {(activeFilters.product !== 'All' || activeFilters.role !== 'All' || activeFilters.difficulty !== 'All' || activeFilters.skill !== 'All' || searchQuery || showOnlyCompleted || showOnlyBookmarked) && (
             <button
               onClick={resetFilters}
               className="text-amber-400 hover:underline flex items-center space-x-1"

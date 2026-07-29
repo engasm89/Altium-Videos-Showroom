@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { GraduationCap } from 'lucide-react';
 import { ALL_TUTORIALS } from '../data/catalog';
 import { getAllSkillsList } from '../utils/search';
@@ -6,7 +7,6 @@ import { Breadcrumbs, Badge } from './ui';
 
 interface SkillsIndexViewProps {
   setActiveTab: (tab: string) => void;
-  setSearchQuery: (query: string) => void;
 }
 
 /**
@@ -14,7 +14,8 @@ interface SkillsIndexViewProps {
  * hands off to the catalog's own search/filter for actual tutorial results.
  * Detailed catalog rendering stays owned by the catalog view.
  */
-export const SkillsIndexView: React.FC<SkillsIndexViewProps> = ({ setActiveTab, setSearchQuery }) => {
+export const SkillsIndexView: React.FC<SkillsIndexViewProps> = ({ setActiveTab }) => {
+  const navigate = useNavigate();
   const skills = useMemo(() => getAllSkillsList(ALL_TUTORIALS), []);
 
   const countsBySkill = useMemo(() => {
@@ -28,8 +29,7 @@ export const SkillsIndexView: React.FC<SkillsIndexViewProps> = ({ setActiveTab, 
   }, []);
 
   const handleSelectSkill = (skill: string) => {
-    setSearchQuery(skill);
-    setActiveTab('catalog');
+    navigate(`/tutorials?skill=${encodeURIComponent(skill)}`);
   };
 
   return (

@@ -47,7 +47,12 @@ function AppShell() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedTutorial, setSelectedTutorial] = useState<Tutorial | null>(null);
   const [progress, setProgress] = useState<UserProgress>(getInitialProgress());
-  const [productFilterOverride, setProductFilterOverride] = useState<string>('All');
+  const [productFilterOverride, setProductFilterOverride] = useState<string>(() => {
+    return new URLSearchParams(location.search).get('product') || 'All';
+  });
+  const [skillFilterOverride, setSkillFilterOverride] = useState<string>(() => {
+    return new URLSearchParams(location.search).get('skill') || 'All';
+  });
   const [showQuizModal, setShowQuizModal] = useState<boolean>(false);
   const [initialPathSlug, setInitialPathSlug] = useState<string | undefined>();
   const [initialRoleSlug, setInitialRoleSlug] = useState<string | undefined>();
@@ -78,7 +83,9 @@ function AppShell() {
 
     const params = new URLSearchParams(location.search);
     const product = params.get('product');
-    if (product) setProductFilterOverride(product);
+    setProductFilterOverride(product || 'All');
+    const skill = params.get('skill');
+    setSkillFilterOverride(skill || 'All');
   }, [location.pathname, location.search]);
 
   const handleToggleCompleted = (e?: React.MouseEvent, id?: string) => {
@@ -216,6 +223,7 @@ function AppShell() {
                     onToggleBookmark={handleToggleBookmark}
                     onToggleCompleted={handleToggleCompleted}
                     productFilterOverride="All"
+                    skillFilterOverride="All"
                   />
                 </div>
               </div>
@@ -254,6 +262,7 @@ function AppShell() {
                 onToggleBookmark={handleToggleBookmark}
                 onToggleCompleted={handleToggleCompleted}
                 productFilterOverride={productFilterOverride}
+                skillFilterOverride={skillFilterOverride}
               />
             }
           />
@@ -268,6 +277,7 @@ function AppShell() {
                 onToggleBookmark={handleToggleBookmark}
                 onToggleCompleted={handleToggleCompleted}
                 productFilterOverride={productFilterOverride}
+                skillFilterOverride={skillFilterOverride}
               />
             }
           />
@@ -364,7 +374,6 @@ function AppShell() {
             element={
               <SkillsIndexView
                 setActiveTab={setActiveTab}
-                setSearchQuery={setSearchQuery}
               />
             }
           />
