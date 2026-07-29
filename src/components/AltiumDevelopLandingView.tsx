@@ -4,6 +4,7 @@ import {
   ArrowRight,
   BookOpen,
   ExternalLink,
+  GitCompareArrows,
   Layers,
   Shield,
   Sparkles,
@@ -12,6 +13,7 @@ import { ALL_TUTORIALS, catalogCounts } from '../data/catalog';
 import { PERSONA_JOURNEYS } from '../data/personas';
 import { Tutorial } from '../types';
 import { landingAltiumTrialUrl } from '../utils/outbound';
+import { WorkflowComparisonTable } from './WorkflowComparisonTable';
 import { WorkflowMapEmbed } from './WorkflowMapView';
 
 interface AltiumDevelopLandingViewProps {
@@ -138,6 +140,46 @@ export const AltiumDevelopLandingView: React.FC<AltiumDevelopLandingViewProps> =
             className="text-xs font-mono text-cyan-300 hover:underline inline-flex items-center gap-1"
           >
             Browse all persona journeys <ArrowRight className="w-3 h-3" />
+          </Link>
+        </section>
+
+        <section className="space-y-6">
+          <div className="space-y-2">
+            <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+              <GitCompareArrows className="w-5 h-5 text-cyan-400" />
+              Disconnected vs Altium Develop process
+            </h2>
+            <p className="text-sm text-slate-400 max-w-2xl">
+              A process comparison — not a brand attack. See how intent, reviews, sourcing, and DFM stay connected.
+            </p>
+          </div>
+          <WorkflowComparisonTable compact />
+          <Link
+            to="/compare-workflows"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300"
+          >
+            Open full comparison page
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </section>
+
+        <section className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-xl">
+            <h2 className="text-lg font-bold text-white flex items-center gap-2">
+              <Layers className="w-5 h-5 text-cyan-400" />
+              ESP32 multidisciplinary case study
+            </h2>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              Requirements → PCB → sourcing → review → manufacturing, with stakeholder entry points at each stage —
+              one coherent product story instead of dozens of unrelated clips.
+            </p>
+          </div>
+          <Link
+            to="/case-studies/esp32-product"
+            className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-slate-950 text-sm font-bold transition-colors"
+          >
+            Start the ESP32 case study
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </section>
       </div>
