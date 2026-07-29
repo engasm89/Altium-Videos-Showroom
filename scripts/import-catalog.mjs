@@ -46,7 +46,14 @@ const XLSX_PATH =
 const OUT_JSON = path.join(ROOT, 'src/data/catalog.generated.json');
 const OUT_REPORT = path.join(ROOT, 'scripts/import-report.json');
 const OUT_SITEMAP = path.join(ROOT, 'public/sitemap.xml');
-const SITE_BASE = 'https://eet-electronics-product-dev-library.vercel.app';
+const OUT_ROBOTS = path.join(ROOT, 'public/robots.txt');
+/** Canonical default: learn.eduengteam.com. Override with VITE_SITE_URL / SITE_URL / APP_URL. */
+const SITE_BASE = (
+  process.env.VITE_SITE_URL ||
+  process.env.SITE_URL ||
+  process.env.APP_URL ||
+  'https://learn.eduengteam.com'
+).replace(/\/+$/, '');
 
 const YT_ID_RE = /^[A-Za-z0-9_-]{11}$/;
 
@@ -635,20 +642,30 @@ const staticPaths = [
   '/learning-paths',
   '/projects',
   '/roles',
+  '/personas',
   '/products',
-  '/impact',
+  '/my-activity',
+  '/insights',
   '/about',
   '/privacy',
+  '/changelog',
   '/skills',
   '/glossary',
   '/notes',
+  '/altium-develop',
+  '/workflow',
+  '/compare-workflows',
+  '/case-studies/esp32-product',
   '/tools/shortcuts',
   '/tools/activebom',
   '/tools/drc',
   '/tools/stackup',
 ];
 const urls = [
-  ...staticPaths.map((p) => ({ loc: `${SITE_BASE}${p}`, priority: p === '/' ? '1.0' : '0.7' })),
+  ...staticPaths.map((p) => ({
+    loc: p === '/' ? `${SITE_BASE}/` : `${SITE_BASE}${p}`,
+    priority: p === '/' ? '1.0' : '0.7',
+  })),
   ...tutorials.map((t) => ({
     loc: `${SITE_BASE}/tutorials/${t.slug}`,
     priority: '0.6',
@@ -668,9 +685,14 @@ ${urls
 </urlset>
 `;
 fs.writeFileSync(OUT_SITEMAP, sitemap);
+fs.writeFileSync(
+  OUT_ROBOTS,
+  `User-agent: *\nAllow: /\n\nSitemap: ${SITE_BASE}/sitemap.xml\n`
+);
 
 console.log('\nImport complete:');
 console.log(JSON.stringify(stats, null, 2));
 console.log(`\nWrote ${OUT_JSON}`);
 console.log(`Wrote ${OUT_REPORT}`);
-console.log(`Wrote ${OUT_SITEMAP}`);
+console.log(`Wrote ${OUT_SITEMAP} (base ${SITE_BASE})`);
+console.log(`Wrote ${OUT_ROBOTS}`);

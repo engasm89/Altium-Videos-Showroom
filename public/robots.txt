@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eet-electronics-product-dev-library.vercel.app/sitemap.xml
+Sitemap: https://learn.eduengteam.com/sitemap.xml
