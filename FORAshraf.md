@@ -108,7 +108,10 @@ Several parallel agents stalled on API usage limits before finishing. Lesson: fe
 Client routes without `vercel.json` rewrites produce 404s on refresh. Always add the catch-all rewrite the same day you add react-router.
 
 ### Seed Data Is Still a Debt
-Some curated `youtubeId` values *look* like valid 11-character YouTube IDs but may not resolve to real EET videos. Format validation is necessary but not sufficient. **Next enrichment pass:** verify each ID against the actual channel / replace with confirmed URLs or mark `enrichment-pending` explicitly.
+Some curated `youtubeId` values *look* like valid 11-character YouTube IDs but may not resolve to real EET videos. Format validation is necessary but not sufficient. **Mitigation shipped:** full oEmbed audit + title/product alignment; remaining weak IDs stay `unverified` with embeds withheld.
+
+### Invoice Titles ≠ YouTube Titles
+Sponsored/invoice archives often name a deliverable (“Partners Ecosystem playbook”, “Forget Version Control Headaches”) while the public upload uses a different title. If you show the invoice name next to the YouTube player, users assume the site is wrong — even when the ID is correct. Always align the visible catalog title to oEmbed, and demote when topical overlap is too thin to defend.
 
 ### Full QA pass (Jul 2026)
 oEmbed proved **14/15** original catalog IDs dead or wrong — including `L_LUpnjgPso` resolving to unrelated fireplace ambient video while still embedding. Synthetic regex correctly blocked tut-009–015 on `e43ebfd`, but tut-001–008 still looked “Watchable.” Fix: wire only verified Educational Engineering Team uploads where topic alignment is strong; mark the rest `eet_pending_*`. Also corrected inflated `tutorialCount` (claimed 14 vs 6 real lessons), removed invented `viewsCount`, killed 404 resource/project/trial URLs, and append UTM on Altium outbound clicks.
@@ -159,16 +162,21 @@ Outputs:
 - `scripts/import-report.json` — counts + duplicates
 - `public/sitemap.xml` — regenerated from slugs
 
-**Import stats (latest run)**
+**Import stats (post Jul 29, 2026 YouTube embed audit)**
 - 201 named videos
 - 165 direct YouTube IDs / 198 with some URL
-- 164 oEmbed-`public` (author: Educational Engineering Team)
-- 1 unverified ID (embed withheld)
+- 163 oEmbed-`public` (author: Educational Engineering Team)
+- 2 unverified (embed withheld): oEmbed 403 + one weak title/topic mismatch
 - 33 playlist-only + 3 missing individual URLs
-- Designer 96 / Develop 105
+- Designer 101 / Develop 100 (five “Develop Workspace” rows were actually Designer uploads)
+
+**Full embed re-audit (same day)**
+Spreadsheet URLs matched generated IDs 165/165 — no wrong-ID swaps left from the old Fireplace Ambience class of bug. What *did* remain was quieter: invoice/marketing titles that did not match the YouTube upload title, and five lessons labeled Altium Develop whose oEmbed titles clearly said Altium Designer. Fix: retitle to oEmbed, correct product tags, demote anything too weak to invent a match (`cat-104`). Re-run with `npm run audit:youtube` / `npm run audit:youtube:apply`. Report: `scripts/youtube-embed-audit-report.md`.
 
 **Honesty rules that still apply**
 - Format-valid IDs alone are **not** playable — UI requires `youtubeStatus === 'public'`.
+- Channel match is necessary but not sufficient — catalog title must also reflect the actual upload.
+- Prefer demoting a dubious embed over shipping the wrong lesson.
 - Hand-enriched chapters/transcripts from the prior 15 curated lessons overlay onto matching imported rows (by verified YouTube ID or topic fallback). Paths/roles/projects remapped to `cat-*` IDs.
 - Certificates removed from primary path UX (component file may remain unused).
 - No synthetic views / fake padding.
