@@ -21,7 +21,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'OutJob Release'
     ],
     recommendedPathId: 'path-001',
-    tutorialIds: ['tut-001', 'tut-002', 'tut-004', 'tut-006', 'tut-007', 'tut-008', 'tut-014'],
+    tutorialIds: ['cat-036', 'cat-178', 'cat-191', 'cat-197', 'cat-186', 'cat-133', 'cat-047'],
     iconName: 'Cpu'
   },
   {
@@ -43,7 +43,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'Alternate Part Number Assignment'
     ],
     recommendedPathId: 'path-008',
-    tutorialIds: ['tut-003', 'tut-011'],
+    tutorialIds: ['cat-189', 'cat-161'],
     iconName: 'ShoppingBag'
   },
   {
@@ -65,7 +65,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'ECAD-MCAD CoDesign'
     ],
     recommendedPathId: 'path-004',
-    tutorialIds: ['tut-004', 'tut-012', 'tut-015'],
+    tutorialIds: ['cat-191', 'cat-160', 'cat-150'],
     iconName: 'Wrench'
   },
   {
@@ -87,7 +87,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'Firmware Pin Header Export'
     ],
     recommendedPathId: 'path-004',
-    tutorialIds: ['tut-005', 'tut-014'],
+    tutorialIds: ['cat-180', 'cat-047'],
     iconName: 'Terminal'
   },
   {
@@ -109,7 +109,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'Release Approval Gates'
     ],
     recommendedPathId: 'path-010',
-    tutorialIds: ['tut-009', 'tut-010', 'tut-013'],
+    tutorialIds: ['cat-188', 'cat-170', 'cat-163'],
     iconName: 'Users'
   },
   {
@@ -130,7 +130,51 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'Environmental Compliance Verification'
     ],
     recommendedPathId: 'path-009',
-    tutorialIds: ['tut-010', 'tut-011'],
+    tutorialIds: ['cat-170', 'cat-161'],
     iconName: 'ShieldAlert'
+  },
+  {
+    id: 'role-library',
+    slug: 'component-library-architect',
+    title: 'Component Library Architect',
+    category: 'Procurement & Components',
+    description: 'Role hub for engineers who own corporate SchLib/PcbLib standards, IPC footprints, and symbol quality gates.',
+    keyResponsibilities: [
+      'IPC-compliant footprint & courtyard standards',
+      'Symbol electrical-type conventions',
+      'Library release & versioning',
+      'Part parameter completeness for BOM'
+    ],
+    primaryWorkflows: [
+      'Symbol Creation',
+      'Footprint Wizard',
+      'Library Integration',
+      'MPN Parameters'
+    ],
+    recommendedPathId: 'path-002',
+    tutorialIds: ['cat-189', 'cat-191', 'cat-004'],
+    iconName: 'Boxes'
+  },
+  {
+    id: 'role-fae',
+    slug: 'field-applications-engineer',
+    title: 'Field Applications / Customer Success Engineer',
+    category: 'Product & Applications',
+    description: 'Role hub covering demo boards, customer enablement content, and Develop workspace onboarding for partner conversations.',
+    keyResponsibilities: [
+      'Demo project readiness',
+      'Workspace onboarding walkthroughs',
+      'Customer-facing design reviews',
+      'Mapping pain points to tutorial curricula'
+    ],
+    primaryWorkflows: [
+      'Develop Onboarding',
+      'Project Hubs',
+      'Design Reviews',
+      'Trial Enablement'
+    ],
+    recommendedPathId: 'path-006',
+    tutorialIds: ['cat-188', 'cat-178', 'cat-163'],
+    iconName: 'Briefcase'
   }
 ];

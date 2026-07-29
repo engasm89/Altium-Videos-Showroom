@@ -37,13 +37,29 @@ import { GlossaryView } from './components/GlossaryView';
 import { AboutView } from './components/AboutView';
 import { PrivacyView } from './components/PrivacyView';
 import { SkillsIndexView } from './components/SkillsIndexView';
+import { AdminView } from './components/AdminView';
 import { pathForTab, tabFromPathname } from './routes';
 import { withEetUtm } from './utils/outbound';
+import { initAnalytics, trackEvent, trackPageView } from './utils/analytics';
+import { useDocumentTitle } from './utils/documentTitle';
 
 function AppShell() {
   const navigate = useNavigate();
   const location = useLocation();
   const activeTab = tabFromPathname(location.pathname);
+  useDocumentTitle(
+    activeTab === 'home'
+      ? null
+      : activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace(/([A-Z])/g, ' $1')
+  );
+
+  React.useEffect(() => {
+    initAnalytics();
+  }, []);
+
+  React.useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location.pathname, location.search]);
 
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedTutorial, setSelectedTutorial] = useState<Tutorial | null>(null);
@@ -59,6 +75,7 @@ function AppShell() {
   const [initialPathSlug, setInitialPathSlug] = useState<string | undefined>();
   const [initialRoleSlug, setInitialRoleSlug] = useState<string | undefined>();
   const [initialProductSlug, setInitialProductSlug] = useState<string | undefined>();
+  const [initialProjectSlug, setInitialProjectSlug] = useState<string | undefined>();
 
   const setActiveTab = (tab: string) => {
     navigate(pathForTab(tab));
@@ -84,6 +101,9 @@ function AppShell() {
 
     const productMatch = matchPath('/products/:slug', location.pathname);
     setInitialProductSlug(productMatch?.params.slug);
+
+    const projectMatch = matchPath('/projects/:slug', location.pathname);
+    setInitialProjectSlug(projectMatch?.params.slug);
 
     const params = new URLSearchParams(location.search);
     const product = params.get('product');
@@ -115,6 +135,7 @@ function AppShell() {
 
   const handleOpenAltiumLink = (title: string, url: string) => {
     const tracked = withEetUtm(url, selectedTutorial?.slug);
+    trackEvent('cta_click', { title, url: tracked, tutorialId: selectedTutorial?.id });
     logOutboundClick(selectedTutorial?.id || 'general-nav', title, tracked);
     setProgress(getInitialProgress());
     window.open(tracked, '_blank', 'noopener,noreferrer');
@@ -329,6 +350,15 @@ function AppShell() {
             path="/projects"
             element={<ProjectHubView onSelectTutorial={handleSelectTutorial} />}
           />
+          <Route
+            path="/projects/:slug"
+            element={
+              <ProjectHubView
+                onSelectTutorial={handleSelectTutorial}
+                initialProjectSlug={initialProjectSlug}
+              />
+            }
+          />
 
           <Route
             path="/roles"
@@ -435,6 +465,8 @@ function AppShell() {
             path="/privacy"
             element={<PrivacyView setActiveTab={setActiveTab} />}
           />
+
+          <Route path="/admin" element={<AdminView />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

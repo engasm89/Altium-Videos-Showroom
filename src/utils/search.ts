@@ -1,5 +1,6 @@
 import { Tutorial, SearchFilterState } from '../types';
 import { logSearchQuery } from './storage';
+import { trackEvent } from './analytics';
 
 const SYNONYM_MAP: Record<string, string[]> = {
   'rule check': ['drc', 'design-rule check', 'clearance'],
@@ -50,6 +51,10 @@ export function searchAndFilterTutorials(
 
     // Log query for search gap analysis
     logSearchQuery(filters.query, filtered.length);
+    trackEvent('search', { query: filters.query, resultCount: filtered.length });
+    if (filtered.length === 0) {
+      trackEvent('search_zero_results', { query: filters.query });
+    }
   }
 
   // 2. Filter by Product

@@ -7,7 +7,9 @@ import {
   Cloud, 
   ArrowRight, 
   Layers,
-  CircuitBoard
+  CircuitBoard,
+  Target,
+  BarChart3
 } from 'lucide-react';
 import { catalogCounts } from '../data/catalog';
 import { LEARNING_PATHS } from '../data/learningPaths';
@@ -27,7 +29,7 @@ export const Hero: React.FC<HeroProps> = ({
   setSearchQuery,
   onFilterProduct
 }) => {
-  const { enriched, enrichmentGoal, designer, develop } = catalogCounts;
+  const { total, playable, designer, develop, playlistOnly, missing } = catalogCounts;
 
   return (
     <section className="relative overflow-hidden bg-slate-950 text-white border-b border-slate-800 pt-10 pb-16">
@@ -42,7 +44,7 @@ export const Hero: React.FC<HeroProps> = ({
           <span>Educational Engineering Team Catalog</span>
           <span className="text-slate-400">•</span>
           <span className="text-emerald-400 font-semibold">
-            {enriched} enriched lessons · goal {enrichmentGoal}
+            {total} named videos · {playable} playable embeds
           </span>
         </div>
 
@@ -55,7 +57,8 @@ export const Hero: React.FC<HeroProps> = ({
           </h1>
           
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl">
-            Follow structured, project-based learning paths covering PCB design, component libraries, interactive routing, manufacturing release, cross-team collaboration, AI requirements, BOM supply-chain risk, and multidisciplinary hardware engineering.
+            Independent EET learning hub for Altium Designer &amp; Altium Develop workflows — structured paths, roles, and projects.
+            Not an Altium product. Catalog counts come from the recovered video audit, not invented padding.
           </p>
         </div>
 
@@ -64,7 +67,7 @@ export const Hero: React.FC<HeroProps> = ({
             <Search className="w-5 h-5 absolute left-4 text-slate-400 pointer-events-none" />
             <input
               type="text"
-              placeholder={`Search ${enriched} tutorials: DRC, ESP32, ActiveBOM, SolidWorks, Gerber...`}
+              placeholder={`Search ${total} tutorials: DRC, ESP32, ActiveBOM, SolidWorks, Gerber...`}
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
@@ -129,8 +132,8 @@ export const Hero: React.FC<HeroProps> = ({
               <CircuitBoard className="w-5 h-5" />
             </div>
             <div>
-              <div className="text-xl font-bold text-white font-mono">{enriched}</div>
-              <div className="text-xs text-slate-400">Enriched Tutorials</div>
+              <div className="text-xl font-bold text-white font-mono">{total}</div>
+              <div className="text-xs text-slate-400">Named catalog videos</div>
             </div>
           </div>
 
@@ -160,9 +163,98 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
             <div>
               <div className="text-xl font-bold text-white font-mono">{ENGINEERING_ROLES.length}</div>
-              <div className="text-xs text-slate-400">Engineering Personas</div>
+              <div className="text-xs text-slate-400">Role hubs</div>
             </div>
           </div>
+        </div>
+
+        <p className="mt-4 text-[11px] text-slate-500 font-mono">
+          Honest status: {playable} oEmbed-public embeds · {playlistOnly} playlist-only · {missing} missing individual URLs.
+          Custom domain learn.eduengteam.com remains a manual DNS/Vercel step.
+        </p>
+
+        {/* Wireframe: choose your goal */}
+        <div className="mt-14 space-y-4">
+          <div className="flex items-center gap-2">
+            <Target className="w-4 h-4 text-cyan-400" />
+            <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono">Choose your goal</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {[
+              { tab: 'paths', title: 'Follow a learning path', blurb: `${LEARNING_PATHS.length} outcome-driven curricula` },
+              { tab: 'projects', title: 'Build a hardware project', blurb: `${HARDWARE_PROJECTS.length} project hubs from catalog themes` },
+              { tab: 'catalog', title: 'Browse the full catalog', blurb: `${total} recovered named videos` },
+            ].map((g) => (
+              <button
+                key={g.tab}
+                type="button"
+                onClick={() => setActiveTab(g.tab)}
+                className="text-left p-4 bg-slate-900/80 border border-slate-800 hover:border-blue-600 rounded-xl transition-colors"
+              >
+                <div className="text-sm font-semibold text-white">{g.title}</div>
+                <div className="text-xs text-slate-400 mt-1">{g.blurb}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Browse by role / product teasers */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-3">
+            <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono flex items-center gap-2">
+              <Users className="w-4 h-4 text-purple-400" /> Browse by role
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {ENGINEERING_ROLES.map((r) => (
+                <button
+                  key={r.id}
+                  type="button"
+                  onClick={() => setActiveTab('roles')}
+                  className="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-300 hover:border-purple-600"
+                >
+                  {r.title}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-3">
+            <h2 className="text-sm font-bold text-white uppercase tracking-wider font-mono flex items-center gap-2">
+              <Cpu className="w-4 h-4 text-blue-400" /> Browse by product
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              <button type="button" onClick={() => onFilterProduct('Altium Designer')} className="text-xs px-3 py-1.5 bg-slate-900 border border-blue-900 rounded-lg text-blue-300">
+                Designer · {designer}
+              </button>
+              <button type="button" onClick={() => onFilterProduct('Altium Develop')} className="text-xs px-3 py-1.5 bg-slate-900 border border-cyan-900 rounded-lg text-cyan-300">
+                Develop · {develop}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <button
+            type="button"
+            onClick={() => setActiveTab('projects')}
+            className="text-left p-5 bg-slate-900/60 border border-slate-800 rounded-xl hover:border-amber-700 transition-colors"
+          >
+            <div className="text-xs font-mono text-amber-400 uppercase mb-1">Projects teaser</div>
+            <div className="text-sm font-bold text-white">{HARDWARE_PROJECTS[0]?.title}</div>
+            <p className="text-xs text-slate-400 mt-1 line-clamp-2">{HARDWARE_PROJECTS[0]?.subtitle}</p>
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('impact')}
+            className="text-left p-5 bg-slate-900/60 border border-slate-800 rounded-xl hover:border-emerald-700 transition-colors"
+          >
+            <div className="text-xs font-mono text-emerald-400 uppercase mb-1 flex items-center gap-1">
+              <BarChart3 className="w-3.5 h-3.5" /> Impact teaser
+            </div>
+            <div className="text-sm font-bold text-white">{playable} playable · {total} catalog</div>
+            <p className="text-xs text-slate-400 mt-1">
+              Impact dashboard uses this-browser localStorage only — no synthetic traffic metrics.
+            </p>
+          </button>
         </div>
 
       </div>

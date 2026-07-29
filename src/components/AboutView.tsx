@@ -55,7 +55,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ setActiveTab, onOpenAltium
           <BookOpen className="w-5 h-5 text-blue-400" />
           <div className="text-2xl font-display font-bold text-white">{ALL_TUTORIALS.length}</div>
           <p className="text-xs text-slate-400">
-            Enriched tutorials (goal {catalogCounts.enrichmentGoal})
+            Imported catalog ({catalogCounts.playable} playable)
           </p>
         </div>
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-2">

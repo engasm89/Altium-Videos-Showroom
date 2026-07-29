@@ -10,11 +10,13 @@ import {
   CheckCircle, 
   ArrowRight, 
   Play, 
-  Clock 
+  Clock,
+  Boxes
 } from 'lucide-react';
 import { ENGINEERING_ROLES } from '../data/roles';
 import { ALL_TUTORIALS } from '../data/catalog';
-import { EngineeringRole, Tutorial } from '../types';
+import { Tutorial } from '../types';
+import { useDocumentTitle } from '../utils/documentTitle';
 
 interface RoleViewProps {
   onSelectTutorial: (tutorial: Tutorial) => void;
@@ -31,6 +33,9 @@ export const RoleView: React.FC<RoleViewProps> = ({
     ? ENGINEERING_ROLES.find((r) => r.slug === initialRoleSlug)?.id
     : undefined;
   const [selectedRoleId, setSelectedRoleId] = useState<string>(slugMatched || 'role-pcb');
+  useDocumentTitle(
+    ENGINEERING_ROLES.find((r) => r.id === (slugMatched || selectedRoleId))?.title || 'Roles'
+  );
 
   React.useEffect(() => {
     if (!initialRoleSlug) return;
@@ -48,6 +53,8 @@ export const RoleView: React.FC<RoleViewProps> = ({
       case 'Wrench': return <Wrench className="w-5 h-5" />;
       case 'Terminal': return <Terminal className="w-5 h-5" />;
       case 'Users': return <Briefcase className="w-5 h-5" />;
+      case 'Briefcase': return <Briefcase className="w-5 h-5" />;
+      case 'Boxes': return <Boxes className="w-5 h-5" />;
       case 'ShieldAlert': return <ShieldAlert className="w-5 h-5" />;
       default: return <Users className="w-5 h-5" />;
     }
@@ -60,18 +67,18 @@ export const RoleView: React.FC<RoleViewProps> = ({
       <div className="space-y-3">
         <div className="inline-flex items-center space-x-2 text-xs font-mono bg-purple-950 text-purple-300 border border-purple-800 px-3 py-1 rounded-full">
           <Users className="w-3.5 h-3.5 text-purple-400" />
-          <span>Role-Based Engineering Personas</span>
+          <span>{ENGINEERING_ROLES.length} Role Hubs</span>
         </div>
         <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Targeted Engineering Learning Centers
+          Engineering Role Hubs
         </h2>
         <p className="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
-          An engineering manager shouldn’t be forced to browse through footprint tutorials to find collaboration tools. Choose your role to access curated workflows.
+          Role hubs covering catalog categories — not a claim of every industry persona. Each hub maps recommended paths and linked lessons from the imported EET audit.
         </p>
       </div>
 
       {/* Role Selection Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
         {ENGINEERING_ROLES.map((role) => {
           const isSelected = role.id === selectedRoleId;
           return (

@@ -13,3 +13,16 @@ export function isPlayableYoutubeId(youtubeId: string | undefined | null): boole
   if (SYNTHETIC_PLACEHOLDER_RE.test(youtubeId)) return false;
   return YOUTUBE_ID_RE.test(youtubeId);
 }
+
+/**
+ * Prefer catalog youtubeStatus when present: only `public` (oEmbed-confirmed) is embeddable.
+ * Falls back to format check for legacy rows without status.
+ */
+export function isEmbeddableYoutube(
+  youtubeId: string | undefined | null,
+  youtubeStatus?: string | null
+): boolean {
+  if (!isPlayableYoutubeId(youtubeId)) return false;
+  if (youtubeStatus && youtubeStatus !== 'public') return false;
+  return true;
+}

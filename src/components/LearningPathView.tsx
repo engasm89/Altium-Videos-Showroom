@@ -17,13 +17,12 @@ import {
   Share2, 
   TrendingUp, 
   CircuitBoard,
-  Play,
-  Award
+  Play
 } from 'lucide-react';
 import { LEARNING_PATHS } from '../data/learningPaths';
-import { ALL_TUTORIALS } from '../data/catalog';
+import { ALL_TUTORIALS, findTutorialById } from '../data/catalog';
 import { LearningPath, Tutorial, UserProgress } from '../types';
-import { CertificateModal } from './CertificateModal';
+import { useDocumentTitle } from '../utils/documentTitle';
 
 interface LearningPathViewProps {
   progress: UserProgress;
@@ -40,7 +39,12 @@ export const LearningPathView: React.FC<LearningPathViewProps> = ({
     ? LEARNING_PATHS.find((p) => p.slug === initialPathSlug)?.id
     : undefined;
   const [expandedPathId, setExpandedPathId] = useState<string | null>(slugMatched || 'path-001');
-  const [selectedCertPath, setSelectedCertPath] = useState<LearningPath | null>(null);
+
+  useDocumentTitle(
+    initialPathSlug
+      ? LEARNING_PATHS.find((p) => p.slug === initialPathSlug)?.title || 'Learning Paths'
+      : 'Learning Paths'
+  );
 
   React.useEffect(() => {
     if (!initialPathSlug) return;
@@ -67,7 +71,7 @@ export const LearningPathView: React.FC<LearningPathViewProps> = ({
   const calculatePathProgress = (path: LearningPath) => {
     const moduleTutorialIds = [...new Set(path.modules.flatMap((m) => m.tutorialIds))];
     const pathTutorials = moduleTutorialIds
-      .map((id) => ALL_TUTORIALS.find((t) => t.id === id))
+      .map((id) => findTutorialById(id) || ALL_TUTORIALS.find((t) => t.id === id))
       .filter((t): t is Tutorial => Boolean(t));
     if (pathTutorials.length === 0) return { completed: 0, total: 0, percentage: 0 };
 
@@ -176,22 +180,14 @@ export const LearningPathView: React.FC<LearningPathViewProps> = ({
               {isExpanded && (
                 <div className="p-5 sm:p-6 bg-slate-950/70 border-t border-slate-800/80 space-y-6">
                   
-                  {/* Target Outcome & Certificate CTA */}
-                  <div className="p-4 bg-slate-900/90 rounded-xl border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  {/* Target Outcome */}
+                  <div className="p-4 bg-slate-900/90 rounded-xl border border-slate-800">
                     <div className="space-y-1">
                       <h4 className="text-xs font-mono uppercase tracking-wider text-blue-400">Target Outcome</h4>
                       <p className="text-sm text-slate-200 leading-relaxed">
                         {path.outcome}
                       </p>
                     </div>
-
-                    <button
-                      onClick={() => setSelectedCertPath(path)}
-                      className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-500 text-slate-950 font-extrabold text-xs rounded-xl shadow-lg flex items-center space-x-1.5 shrink-0 hover:brightness-110 transition-all"
-                    >
-                      <Award className="w-4 h-4" />
-                      <span>Preview Official Certificate</span>
-                    </button>
                   </div>
 
                   {/* Skills Acquired Grid */}
@@ -221,7 +217,7 @@ export const LearningPathView: React.FC<LearningPathViewProps> = ({
 
                           <div className="space-y-2 pt-1">
                             {mod.tutorialIds.map((tutId) => {
-                              const tut = ALL_TUTORIALS.find(t => t.id === tutId);
+                              const tut = findTutorialById(tutId) || ALL_TUTORIALS.find(t => t.id === tutId);
                               if (!tut) return null;
                               const isDone = progress.completedTutorials.includes(tut.id);
 
@@ -274,14 +270,6 @@ export const LearningPathView: React.FC<LearningPathViewProps> = ({
           );
         })}
       </div>
-
-      {/* Certificate Modal */}
-      {selectedCertPath && (
-        <CertificateModal
-          path={selectedCertPath}
-          onClose={() => setSelectedCertPath(null)}
-        />
-      )}
 
     </div>
   );

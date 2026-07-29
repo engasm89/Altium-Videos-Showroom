@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import confetti from 'canvas-confetti';
 import { 
@@ -21,8 +22,11 @@ import {
   MessageSquare
 } from 'lucide-react';
 import { Tutorial } from '../types';
-import { isPlayableYoutubeId } from '../utils/youtube';
+import { isPlayableTutorial, ALL_TUTORIALS } from '../data/catalog';
 import { defaultAltiumTrialUrl } from '../utils/outbound';
+import { trackEvent } from '../utils/analytics';
+import { useDocumentTitle } from '../utils/documentTitle';
+import { upsertVideoJsonLd } from '../utils/jsonld';
 
 interface TutorialDetailModalProps {
   tutorial: Tutorial | null;
@@ -53,13 +57,32 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
   hasPrev,
   hasNext
 }) => {
-  if (!tutorial) return null;
-
   const [activeTab, setActiveTab] = useState<'overview' | 'chapters' | 'transcript' | 'commands' | 'notes'>('overview');
   const [transcriptSearch, setTranscriptSearch] = useState('');
   const [currentNoteText, setCurrentNoteText] = useState(userNote || '');
   const [currentPlayTimestamp, setCurrentPlayTimestamp] = useState<number>(0);
+  const [milestonesHit, setMilestonesHit] = useState<Set<number>>(new Set());
   const playerRef = useRef<HTMLVideoElement>(null);
+
+  useDocumentTitle(tutorial?.title);
+
+  React.useEffect(() => {
+    upsertVideoJsonLd(tutorial);
+    return () => upsertVideoJsonLd(null);
+  }, [tutorial]);
+
+  React.useEffect(() => {
+    setCurrentNoteText(userNote || '');
+  }, [userNote, tutorial?.id]);
+
+  React.useEffect(() => {
+    if (tutorial && isPlayableTutorial(tutorial)) {
+      trackEvent('tutorial_start', { tutorialId: tutorial.id, slug: tutorial.slug });
+      setMilestonesHit(new Set());
+    }
+  }, [tutorial?.id]);
+
+  if (!tutorial) return null;
 
   const handleSeek = (timestampSeconds: number) => {
     setCurrentPlayTimestamp(timestampSeconds);
@@ -69,11 +92,35 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
   };
 
   const isDevelop = tutorial.product === 'Altium Develop';
-  const playable = isPlayableYoutubeId(tutorial.youtubeId);
+  const playable = isPlayableTutorial(tutorial);
+  const thinEnrichment =
+    !tutorial.chapters?.length && !tutorial.transcript?.length && tutorial.enrichmentStatus !== 'hand_enriched';
+
+  const related = ALL_TUTORIALS.filter(
+    (t) =>
+      t.id !== tutorial.id &&
+      (t.product === tutorial.product ||
+        t.skills.some((s) => tutorial.skills.includes(s)) ||
+        t.learningPathIds.some((p) => tutorial.learningPathIds.includes(p)))
+  ).slice(0, 4);
 
   const filteredTranscript = (tutorial.transcript || []).filter(line => 
     !transcriptSearch || line.text.toLowerCase().includes(transcriptSearch.toLowerCase())
   );
+
+  const onProgress = (state: { played: number; playedSeconds: number }) => {
+    setCurrentPlayTimestamp(state.playedSeconds);
+    const pct = Math.round(state.played * 100);
+    for (const milestone of [25, 50, 75, 100]) {
+      if (pct >= milestone && !milestonesHit.has(milestone)) {
+        setMilestonesHit((prev) => new Set(prev).add(milestone));
+        trackEvent('playback_milestone', {
+          tutorialId: tutorial.id,
+          milestone,
+        });
+      }
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 md:p-6 animate-fadeIn">
@@ -152,6 +199,14 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
                 height="100%"
                 controls={true}
                 playing={true}
+                onTimeUpdate={() => {
+                  const el = playerRef.current;
+                  if (!el || !el.duration) return;
+                  onProgress({
+                    played: el.currentTime / el.duration,
+                    playedSeconds: el.currentTime,
+                  });
+                }}
               />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 flex flex-col items-center justify-center p-6 text-center relative">
@@ -160,12 +215,18 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
                 </div>
                 <h3 className="text-lg font-bold text-white max-w-xl">{tutorial.title}</h3>
                 <p className="text-xs text-amber-300 mt-2 font-mono">
-                  Video enrichment pending — this lesson outline is not a playable YouTube embed
+                  {tutorial.youtubeStatus === 'playlist_only'
+                    ? 'Playlist-only recovery — individual video URL not recovered yet'
+                    : tutorial.youtubeStatus === 'unverified'
+                      ? 'YouTube ID present but not oEmbed-confirmed — embed withheld'
+                      : 'Video enrichment pending — not a playable YouTube embed'}
                 </p>
-                <p className="text-xs text-slate-400 mt-1 font-mono">Duration estimate {tutorial.durationFormatted}</p>
+                <p className="text-xs text-slate-400 mt-1 font-mono">
+                  Status: {tutorial.youtubeStatus || 'unknown'} · {tutorial.durationFormatted}
+                </p>
                 <div className="mt-4 flex items-center space-x-2 text-xs bg-slate-900/90 border border-slate-700 px-3 py-1.5 rounded-lg text-slate-300">
                   <Sparkles className="w-4 h-4 text-cyan-400" />
-                  <span>Chapters, notes, and docs below still apply</span>
+                  <span>Chapters, notes, and docs below still apply when available</span>
                 </div>
               </div>
             )}
@@ -247,6 +308,12 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
             {/* OVERVIEW TAB */}
             {activeTab === 'overview' && (
               <div className="space-y-6">
+                {thinEnrichment && (
+                  <div className="p-3 bg-amber-950/50 border border-amber-800/80 rounded-xl text-xs text-amber-200 font-mono">
+                    Enrichment pending — summary below is audit-derived. Chapters/transcript will land in a later pass.
+                    {tutorial.youtubeStatus ? ` · youtube_status=${tutorial.youtubeStatus}` : ''}
+                  </div>
+                )}
                 <div>
                   <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Lesson Summary</h4>
                   <p className="text-sm text-slate-200 leading-relaxed bg-slate-950/60 p-4 rounded-xl border border-slate-800">
@@ -305,7 +372,10 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
                     </p>
                   </div>
                   <button
-                    onClick={() => onOpenAltiumLink(tutorial.title, tutorial.altiumTrialUrl || defaultAltiumTrialUrl(tutorial.slug))}
+                    onClick={() => {
+                      trackEvent('cta_click', { destination: 'altium_trial', tutorialId: tutorial.id });
+                      onOpenAltiumLink(tutorial.title, tutorial.altiumTrialUrl || defaultAltiumTrialUrl(tutorial.slug));
+                    }}
                     className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-lg shadow flex items-center space-x-1.5 shrink-0 transition-colors"
                   >
                     <span>Try in Altium</span>
@@ -318,12 +388,33 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
                   <div className="text-xs text-slate-400">
                     <span>Reference Official Docs: </span>
                     <button
-                      onClick={() => onOpenAltiumLink('Official Documentation', tutorial.officialDocUrl!)}
+                      onClick={() => {
+                        trackEvent('cta_click', { destination: 'docs', tutorialId: tutorial.id });
+                        onOpenAltiumLink('Official Documentation', tutorial.officialDocUrl!);
+                      }}
                       className="text-blue-400 hover:underline inline-flex items-center space-x-1"
                     >
                       <span>Altium Online Documentation</span>
                       <ExternalLink className="w-3 h-3" />
                     </button>
+                  </div>
+                )}
+
+                {related.length > 0 && (
+                  <div>
+                    <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Related lessons</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {related.map((r) => (
+                        <Link
+                          key={r.id}
+                          to={`/tutorials/${r.slug}`}
+                          className="text-left p-3 bg-slate-950 border border-slate-800 rounded-xl hover:border-blue-700 transition-colors block"
+                        >
+                          <div className="text-xs font-medium text-white line-clamp-2">{r.title}</div>
+                          <div className="text-[10px] font-mono text-slate-500 mt-1">{r.product}</div>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -332,53 +423,69 @@ export const TutorialDetailModal: React.FC<TutorialDetailModalProps> = ({
             {/* CHAPTERS TAB */}
             {activeTab === 'chapters' && (
               <div className="space-y-3">
-                <p className="text-xs text-slate-400">Click any chapter timestamp to seek the video to that exact section:</p>
-                <div className="space-y-2">
-                  {tutorial.chapters.map((ch, idx) => (
-                    <div
-                      key={idx}
-                      onClick={() => handleSeek(ch.timestampSeconds)}
-                      className="p-3 bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-xl flex items-center justify-between cursor-pointer transition-colors"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <span className="font-mono text-xs text-cyan-400 bg-cyan-950 border border-cyan-800 px-2.5 py-1 rounded">
-                          {ch.timestampFormatted}
-                        </span>
-                        <span className="text-sm font-medium text-slate-200">{ch.title}</span>
-                      </div>
-                      <Play className="w-4 h-4 text-slate-500 hover:text-cyan-400" />
+                {tutorial.chapters.length > 0 ? (
+                  <>
+                    <p className="text-xs text-slate-400">Click any chapter timestamp to seek the video to that exact section:</p>
+                    <div className="space-y-2">
+                      {tutorial.chapters.map((ch, idx) => (
+                        <div
+                          key={idx}
+                          onClick={() => handleSeek(ch.timestampSeconds)}
+                          className="p-3 bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 rounded-xl flex items-center justify-between cursor-pointer transition-colors"
+                        >
+                          <div className="flex items-center space-x-3">
+                            <span className="font-mono text-xs text-cyan-400 bg-cyan-950 border border-cyan-800 px-2.5 py-1 rounded">
+                              {ch.timestampFormatted}
+                            </span>
+                            <span className="text-sm font-medium text-slate-200">{ch.title}</span>
+                          </div>
+                          <Play className="w-4 h-4 text-slate-500 hover:text-cyan-400" />
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </>
+                ) : (
+                  <p className="text-xs text-amber-300 font-mono">
+                    Enrichment pending — chapter markers not authored for this imported lesson yet.
+                  </p>
+                )}
               </div>
             )}
 
             {/* TRANSCRIPT TAB */}
             {activeTab === 'transcript' && (
               <div className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Search transcript text..."
-                  value={transcriptSearch}
-                  onChange={(e) => setTranscriptSearch(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
-                />
+                {(tutorial.transcript || []).length > 0 ? (
+                  <>
+                    <input
+                      type="text"
+                      placeholder="Search transcript text..."
+                      value={transcriptSearch}
+                      onChange={(e) => setTranscriptSearch(e.target.value)}
+                      className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                    />
 
-                {filteredTranscript.length > 0 ? (
-                  <div className="space-y-2 max-h-80 overflow-y-auto pr-2">
-                    {filteredTranscript.map((line, idx) => (
-                      <div
-                        key={idx}
-                        onClick={() => handleSeek(line.timestampSeconds)}
-                        className="p-2.5 bg-slate-950 hover:bg-slate-800 rounded-lg border border-slate-800 text-xs flex items-start space-x-3 cursor-pointer transition-colors"
-                      >
-                        <span className="font-mono text-xs text-blue-400 shrink-0 mt-0.5">{line.timestampFormatted}</span>
-                        <p className="text-slate-300 leading-relaxed">{line.text}</p>
+                    {filteredTranscript.length > 0 ? (
+                      <div className="space-y-2 max-h-80 overflow-y-auto pr-2">
+                        {filteredTranscript.map((line, idx) => (
+                          <div
+                            key={idx}
+                            onClick={() => handleSeek(line.timestampSeconds)}
+                            className="p-2.5 bg-slate-950 hover:bg-slate-800 rounded-lg border border-slate-800 text-xs flex items-start space-x-3 cursor-pointer transition-colors"
+                          >
+                            <span className="font-mono text-xs text-blue-400 shrink-0 mt-0.5">{line.timestampFormatted}</span>
+                            <p className="text-slate-300 leading-relaxed">{line.text}</p>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    ) : (
+                      <p className="text-xs text-slate-500 italic">No matching transcript lines found.</p>
+                    )}
+                  </>
                 ) : (
-                  <p className="text-xs text-slate-500 italic">No matching transcript lines found.</p>
+                  <p className="text-xs text-amber-300 font-mono">
+                    Enrichment pending — transcript not available for this imported lesson yet.
+                  </p>
                 )}
               </div>
             )}

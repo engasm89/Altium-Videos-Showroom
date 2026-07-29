@@ -10,6 +10,23 @@ export type RoleCategory =
   | 'Engineering Leadership'
   | 'Compliance & Sustainability';
 
+/** Honest playback / recovery status from spreadsheet + oEmbed validation. */
+export type YoutubeStatus =
+  | 'public'
+  | 'unverified'
+  | 'unavailable'
+  | 'missing'
+  | 'playlist_only'
+  | 'invalid'
+  | 'id_present';
+
+export type EnrichmentStatus =
+  | 'hand_enriched'
+  | 'playable_candidate'
+  | 'url_recovered'
+  | 'url_recovered_unverified'
+  | 'enrichment_pending';
+
 export interface Chapter {
   timestampSeconds: number;
   timestampFormatted: string;
@@ -60,8 +77,20 @@ export interface Tutorial {
   resources?: DownloadResource[];
   officialDocUrl?: string;
   altiumTrialUrl?: string;
+  /** @deprecated Never invent view counts — kept optional only for type compatibility. */
   viewsCount?: number;
   featured?: boolean;
+  youtubeStatus?: YoutubeStatus;
+  enrichmentStatus?: EnrichmentStatus;
+  youtubeUrl?: string;
+  catalogNumber?: number;
+  series?: string;
+  evidenceClass?: string;
+  liveStatus?: string;
+  oembedTitle?: string;
+  oembedAuthor?: string;
+  /** Prior tut-* ids that map onto this imported row. */
+  legacyIds?: string[];
 }
 
 export interface LearningPathModule {

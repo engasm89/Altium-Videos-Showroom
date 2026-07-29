@@ -148,6 +148,40 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
 
       </div>
 
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+        <div className="space-y-3">
+          <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wider">Designer topic taxonomy</h3>
+          <div className="flex flex-wrap gap-2">
+            {['Schematic Capture', 'PCB Footprints', 'Interactive Routing', 'Design Rule Checks', 'Manufacturing Release', 'Power Electronics', 'RF Layout'].map((skill) => (
+              <button
+                key={skill}
+                type="button"
+                onClick={() => onFilterProduct('Altium Designer')}
+                className="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-blue-300 hover:border-blue-600"
+              >
+                {skill}
+              </button>
+            ))}
+          </div>
+          <p className="text-[11px] text-slate-500">Opens Designer catalog — refine with skill filters on the tutorials page.</p>
+        </div>
+        <div className="space-y-3">
+          <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wider">Develop topic taxonomy</h3>
+          <div className="flex flex-wrap gap-2">
+            {['Cloud Collaboration', 'BOM & Supply Chain', 'ECAD-MCAD', 'Requirements Engineering', 'Engineering Management', 'Search & Navigation'].map((skill) => (
+              <button
+                key={skill}
+                type="button"
+                onClick={() => onFilterProduct('Altium Develop')}
+                className="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-cyan-300 hover:border-cyan-600"
+              >
+                {skill}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };

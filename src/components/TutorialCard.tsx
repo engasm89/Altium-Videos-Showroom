@@ -95,12 +95,7 @@ export const TutorialCard: React.FC<TutorialCardProps> = ({
               <Clock className="w-3 h-3 text-slate-400" />
               <span>{tutorial.durationFormatted}</span>
             </div>
-            {tutorial.viewsCount && (
-              <div className="flex items-center space-x-1 text-slate-400">
-                <Eye className="w-3 h-3" />
-                <span>{tutorial.viewsCount.toLocaleString()}</span>
-              </div>
-            )}
+            {/* viewsCount omitted — never invent engagement metrics */}
           </div>
         </div>
 

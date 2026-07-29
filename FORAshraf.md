@@ -46,7 +46,7 @@ There is **no backend** in the current MVP. Progress, bookmarks, outbound click 
 | `src/main.tsx` | React root + `BrowserRouter` |
 | `src/App.tsx` | Shell: Navbar/Footer, `Routes`, tutorial modal, progress handlers |
 | `src/routes.ts` | Tab key ↔ public path map |
-| `src/data/catalog.ts` | Hand-enriched tutorials + honest count helpers |
+| `src/data/catalog.ts` + `catalog.generated.json` | Imported 201-row audit + enrichment overlays + honest counts |
 | `src/data/learningPaths.ts` / `roles.ts` / `projects.ts` / `shortcuts.ts` | Curriculum taxonomy |
 | `src/utils/youtube.ts` | Playable-ID gate (rejects `eet_*` synthetics) |
 | `src/utils/storage.ts` | localStorage progress + real-only logs |
@@ -134,9 +134,46 @@ oEmbed proved **14/15** original catalog IDs dead or wrong — including `L_LUpn
 
 ## Remaining Gaps (call these out, do not hide them)
 
-- Recover and verify real YouTube IDs / transcripts for the enrichment goal of 201.
-- Replace localStorage-only Impact with privacy-respecting real analytics when traffic exists.
-- Optional: SSR/meta tags per tutorial for SEO.
-- Wire custom domain `learn.eduengteam.com` in Vercel + DNS.
+- Hand-enrich chapters/transcripts beyond the current overlay set.
+- Wire PostHog/GA4 keys in Vercel env (`VITE_POSTHOG_KEY` / `VITE_GA_ID`) — stubs are live but no-op without keys.
+- Custom domain `learn.eduengteam.com` — still manual DNS + Vercel.
+- Phase 2: Supabase/Postgres backend when partnership analytics need multi-user truth.
 
 If you remember one sentence: **this library earns trust by refusing to pretend.**
+
+---
+
+## Catalog Import Reality (Jul 29, 2026)
+
+The spreadsheet `Educational_Engineering_Team_Altium_Video_Catalog.xlsx` is now the inventory source of truth.
+
+**How to re-import**
+
+```bash
+npm run import:catalog          # parses xlsx + oEmbed validates IDs
+npm run import:catalog:fast     # format-only (skip network)
+```
+
+Outputs:
+- `src/data/catalog.generated.json` — 201 rows with `youtubeStatus` / `enrichmentStatus`
+- `scripts/import-report.json` — counts + duplicates
+- `public/sitemap.xml` — regenerated from slugs
+
+**Import stats (latest run)**
+- 201 named videos
+- 165 direct YouTube IDs / 198 with some URL
+- 164 oEmbed-`public` (author: Educational Engineering Team)
+- 1 unverified ID (embed withheld)
+- 33 playlist-only + 3 missing individual URLs
+- Designer 96 / Develop 105
+
+**Honesty rules that still apply**
+- Format-valid IDs alone are **not** playable — UI requires `youtubeStatus === 'public'`.
+- Hand-enriched chapters/transcripts from the prior 15 curated lessons overlay onto matching imported rows (by verified YouTube ID or topic fallback). Paths/roles/projects remapped to `cat-*` IDs.
+- Certificates removed from primary path UX (component file may remain unused).
+- No synthetic views / fake padding.
+
+**Phase 2 (explicitly deferred)**
+- Supabase/Postgres — optional JSON schema types can mirror brief tables later; do not block Vite SPA.
+- Custom domain `learn.eduengteam.com` — still manual DNS + Vercel domain attach.
+- Full transcript/chapter enrichment for all 201 rows.

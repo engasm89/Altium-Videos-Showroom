@@ -41,6 +41,8 @@ export const ImpactDashboardView: React.FC<ImpactDashboardViewProps> = ({
       note: 'Metrics below are this browser session only (localStorage). They are not site-wide analytics.',
       catalogMetrics: {
         enrichedTutorials: catalogCounts.enriched,
+        totalCatalog: catalogCounts.total,
+        playableEmbeds: catalogCounts.playable,
         enrichmentGoal: catalogCounts.enrichmentGoal,
         altiumDesignerTutorials: catalogCounts.designer,
         altiumDevelopTutorials: catalogCounts.develop,
@@ -88,7 +90,7 @@ export const ImpactDashboardView: React.FC<ImpactDashboardViewProps> = ({
           </h2>
           <p className="text-slate-300 text-sm max-w-2xl leading-relaxed">
             Counts below come from this browser&apos;s localStorage (completions, bookmarks, outbound clicks, searches).
-            Catalog sizes reflect hand-enriched content currently shipped — not a padded synthetic library.
+            Catalog sizes reflect the imported EET audit spreadsheet — playable embeds require oEmbed-public status.
           </p>
         </div>
 
@@ -115,9 +117,9 @@ export const ImpactDashboardView: React.FC<ImpactDashboardViewProps> = ({
             <span>Enriched Tutorials</span>
             <Globe className="w-4 h-4 text-blue-400" />
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">{ALL_TUTORIALS.length}</div>
+          <div className="text-3xl font-extrabold text-white font-mono">{catalogCounts.total}</div>
           <div className="text-[11px] text-slate-400">
-            Goal {catalogCounts.enrichmentGoal} · Designer {catalogCounts.designer} / Develop {catalogCounts.develop}
+            {catalogCounts.playable} playable · Designer {catalogCounts.designer} / Develop {catalogCounts.develop}
           </div>
         </div>
 
@@ -248,7 +250,8 @@ export const ImpactDashboardView: React.FC<ImpactDashboardViewProps> = ({
         </div>
         
         <p className="text-xs text-slate-300 leading-relaxed">
-          Pitch from what is real: {catalogCounts.enriched} hand-enriched tutorials today (goal {catalogCounts.enrichmentGoal}),
+          Pitch from what is real: {catalogCounts.total} imported catalog rows ({catalogCounts.playable} oEmbed-public),
+          {catalogCounts.enriched} hand-enriched overlays,
           {' '}{LEARNING_PATHS.length} outcome paths, {HARDWARE_PROJECTS.length} project hubs, and verifiable local engagement signals —
           not invented visitor or country metrics.
         </p>
@@ -261,7 +264,7 @@ export const ImpactDashboardView: React.FC<ImpactDashboardViewProps> = ({
           <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800">
             <div className="font-semibold text-white mb-1">2. Honest scale</div>
             <p className="text-[11px] text-slate-400">
-              {catalogCounts.enriched} enriched lessons shipped; enrichment goal {catalogCounts.enrichmentGoal}.
+              {catalogCounts.total} catalog rows imported; {catalogCounts.playable} playable embeds; {catalogCounts.enriched} hand-enriched.
             </p>
           </div>
           <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800">

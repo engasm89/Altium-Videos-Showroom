@@ -13,9 +13,13 @@ import {
   List as ListIcon
 } from 'lucide-react';
 import { ALL_TUTORIALS, catalogCounts } from '../data/catalog';
+import { LEARNING_PATHS } from '../data/learningPaths';
+import { HARDWARE_PROJECTS } from '../data/projects';
 import { searchAndFilterTutorials, getAllSkillsList } from '../utils/search';
 import { Tutorial, SearchFilterState, UserProgress } from '../types';
 import { TutorialCard } from './TutorialCard';
+import { useDocumentTitle } from '../utils/documentTitle';
+import { trackEvent } from '../utils/analytics';
 
 interface CatalogViewProps {
   searchQuery: string;
@@ -55,6 +59,21 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [showOnlyCompleted, setShowOnlyCompleted] = useState(false);
   const [showOnlyBookmarked, setShowOnlyBookmarked] = useState(false);
+
+  useDocumentTitle('Tutorial Catalog');
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const pathId = params.get('path');
+    const projectId = params.get('project');
+    if (pathId || projectId) {
+      setFilters((prev) => ({
+        ...prev,
+        learningPathId: pathId || prev.learningPathId,
+        projectId: projectId || prev.projectId,
+      }));
+    }
+  }, [location.search]);
 
   useEffect(() => {
     if (productFilterOverride && productFilterOverride !== 'All') {
@@ -132,14 +151,14 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
       <div className="space-y-3">
         <div className="inline-flex items-center space-x-2 text-xs font-mono bg-blue-950 text-blue-300 border border-blue-800 px-3 py-1 rounded-full">
           <BookOpen className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Enriched Tutorial Catalog</span>
+          <span>Imported EET Video Catalog</span>
         </div>
         <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-          {catalogCounts.enriched} Structured Tutorials
+          {catalogCounts.total} Named Tutorials
         </h2>
         <p className="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
-          Search across titles, descriptions, transcripts, keyboard commands, and component tags.
-          Building toward a {catalogCounts.enrichmentGoal}-lesson library — only hand-enriched entries are listed here (no synthetic placeholders).
+          Full recovered audit catalog — {catalogCounts.playable} oEmbed-public embeds, {catalogCounts.playlistOnly} playlist-only,
+          {catalogCounts.enriched} hand-enriched outlines. No synthetic YouTube padding.
         </p>
       </div>
 
@@ -199,7 +218,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
         </div>
 
         {/* Multi-Select Filters Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-2 text-xs border-t border-slate-800">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-3 pt-2 text-xs border-t border-slate-800">
           
           {/* Product Filter */}
           <div>
@@ -228,7 +247,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             <label className="block font-mono text-[10px] text-slate-400 uppercase mb-1">Engineering Role</label>
             <select
               value={filters.role}
-              onChange={(e) => setFilters({ ...filters, role: e.target.value as any })}
+              onChange={(e) => setFilters({ ...filters, role: e.target.value as SearchFilterState['role'] })}
               className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-blue-500"
             >
               <option value="All">All Engineering Roles</option>
@@ -246,7 +265,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             <label className="block font-mono text-[10px] text-slate-400 uppercase mb-1">Difficulty</label>
             <select
               value={filters.difficulty}
-              onChange={(e) => setFilters({ ...filters, difficulty: e.target.value as any })}
+              onChange={(e) => setFilters({ ...filters, difficulty: e.target.value as SearchFilterState['difficulty'] })}
               className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-blue-500"
             >
               <option value="All">All Difficulties</option>
@@ -280,12 +299,45 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             </select>
           </div>
 
+          {/* Learning Path */}
+          <div>
+            <label className="block font-mono text-[10px] text-slate-400 uppercase mb-1">Learning Path</label>
+            <select
+              value={filters.learningPathId}
+              onChange={(e) => {
+                setFilters({ ...filters, learningPathId: e.target.value });
+                trackEvent('search', { filter: 'learningPath', value: e.target.value });
+              }}
+              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-blue-500"
+            >
+              <option value="All">All Paths</option>
+              {LEARNING_PATHS.map((p) => (
+                <option key={p.id} value={p.id}>{p.title}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Project */}
+          <div>
+            <label className="block font-mono text-[10px] text-slate-400 uppercase mb-1">Project</label>
+            <select
+              value={filters.projectId}
+              onChange={(e) => setFilters({ ...filters, projectId: e.target.value })}
+              className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-blue-500"
+            >
+              <option value="All">All Projects</option>
+              {HARDWARE_PROJECTS.map((p) => (
+                <option key={p.id} value={p.id}>{p.title}</option>
+              ))}
+            </select>
+          </div>
+
           {/* Duration Filter */}
           <div>
             <label className="block font-mono text-[10px] text-slate-400 uppercase mb-1">Duration</label>
             <select
               value={filters.durationRange}
-              onChange={(e) => setFilters({ ...filters, durationRange: e.target.value as any })}
+              onChange={(e) => setFilters({ ...filters, durationRange: e.target.value as SearchFilterState['durationRange'] })}
               className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-blue-500"
             >
               <option value="All">Any Duration</option>
@@ -300,12 +352,13 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             <label className="block font-mono text-[10px] text-slate-400 uppercase mb-1">Sort By</label>
             <select
               value={filters.sortBy}
-              onChange={(e) => setFilters({ ...filters, sortBy: e.target.value as any })}
+              onChange={(e) => setFilters({ ...filters, sortBy: e.target.value as SearchFilterState['sortBy'] })}
               className="w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-blue-500"
             >
-              <option value="popular">Most Popular</option>
+              <option value="popular">Featured / Newest</option>
               <option value="newest">Newest First</option>
               <option value="duration">Longest Duration</option>
+              <option value="relevance">Relevance</option>
             </select>
           </div>
 
@@ -317,7 +370,7 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
             Showing <span className="text-white font-bold">{displayed.length}</span> of <span className="text-white">{ALL_TUTORIALS.length}</span> tutorials
           </div>
 
-          {(activeFilters.product !== 'All' || activeFilters.role !== 'All' || activeFilters.difficulty !== 'All' || activeFilters.skill !== 'All' || searchQuery || showOnlyCompleted || showOnlyBookmarked) && (
+          {(activeFilters.product !== 'All' || activeFilters.role !== 'All' || activeFilters.difficulty !== 'All' || activeFilters.skill !== 'All' || filters.learningPathId !== 'All' || filters.projectId !== 'All' || searchQuery || showOnlyCompleted || showOnlyBookmarked) && (
             <button
               onClick={resetFilters}
               className="text-amber-400 hover:underline flex items-center space-x-1"
