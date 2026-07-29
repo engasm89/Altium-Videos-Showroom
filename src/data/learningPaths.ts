@@ -27,19 +27,19 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p1-m1',
         title: 'Environment & Workspace Configuration',
         description: 'Set up Altium Designer preferences, licensing, and grid defaults.',
-        tutorialIds: ['cat-036', 'cat-178']
+        tutorialIds: ['cat-001', 'cat-175']
       },
       {
         id: 'p1-m2',
         title: 'Schematic Capture Basics',
         description: 'Drawing schematics, placing symbols, wiring nets, and compiling.',
-        tutorialIds: ['cat-189', 'cat-180']
+        tutorialIds: ['cat-141', 'cat-074']
       },
       {
         id: 'p1-m3',
         title: 'Project Compilation & ERC Validation',
         description: 'Run Electrical Rule Checks and resolve net warnings.',
-        tutorialIds: ['cat-150', 'cat-191']
+        tutorialIds: ['cat-244', 'cat-215']
       }
     ]
   },
@@ -68,13 +68,13 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p2-m1',
         title: 'Schematic Symbol Creation',
         description: 'Creating multi-part symbols, pin types, and parameters.',
-        tutorialIds: ['cat-189']
+        tutorialIds: ['cat-141']
       },
       {
         id: 'p2-m2',
         title: 'Precision PCB Footprints & 3D Integration',
         description: 'Using IPC Wizard, creating QFN/LQFP footprints, aligning 3D STEP files.',
-        tutorialIds: ['cat-191']
+        tutorialIds: ['cat-215']
       }
     ]
   },
@@ -103,13 +103,13 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p3-m1',
         title: 'Placement & Sub-circuit Grouping',
         description: 'Group high-speed signals, crystals, and power paths.',
-        tutorialIds: ['cat-197']
+        tutorialIds: ['cat-067']
       },
       {
         id: 'p3-m2',
         title: 'Interactive Routing & Copper Pours',
         description: 'Walkaround and Push routing, ground stitching, DRC.',
-        tutorialIds: ['cat-186', 'cat-047']
+        tutorialIds: ['cat-214', 'cat-002']
       }
     ]
   },
@@ -137,19 +137,19 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p4-m1',
         title: 'Arduino Schematic Capture',
         description: 'Power regulation, ATmega328P oscillator, USB transceiver.',
-        tutorialIds: ['cat-178', 'cat-180']
+        tutorialIds: ['cat-175', 'cat-074']
       },
       {
         id: 'p4-m2',
         title: 'Layout & Interactive Routing',
         description: 'Shield connector spacing, ground plane pour, DRC.',
-        tutorialIds: ['cat-197', 'cat-186']
+        tutorialIds: ['cat-067', 'cat-214']
       },
       {
         id: 'p4-m3',
         title: 'Manufacturing Release',
         description: 'Gerber X2, NC Drill, Pick & Place centroid generation.',
-        tutorialIds: ['cat-150']
+        tutorialIds: ['cat-244']
       }
     ]
   },
@@ -205,7 +205,7 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p6-m1',
         title: 'Platform Architecture & Navigation',
         description: 'Web project inspector, browser 3D view, user permissions.',
-        tutorialIds: ['cat-188', 'cat-163']
+        tutorialIds: ['cat-101', 'cat-114']
       }
     ]
   },
@@ -233,7 +233,7 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p7-m1',
         title: 'Cross-Functional Engineering Sync',
         description: 'SolidWorks sync, requirements extraction, BOM risk.',
-        tutorialIds: ['cat-170', 'cat-161', 'cat-160']
+        tutorialIds: ['cat-090', 'cat-125', 'cat-140']
       }
     ]
   },
@@ -261,7 +261,7 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p8-m1',
         title: 'Live Supply Chain Analytics',
         description: 'Connecting ActiveBOM to Mouser/DigiKey API feeds.',
-        tutorialIds: ['cat-161']
+        tutorialIds: ['cat-125']
       }
     ]
   },
@@ -289,7 +289,7 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p9-m1',
         title: 'Requirements Traceability',
         description: 'AI spec parsing and schematic net rule binding.',
-        tutorialIds: ['cat-170']
+        tutorialIds: ['cat-090']
       }
     ]
   },
@@ -317,7 +317,7 @@ export const LEARNING_PATHS: LearningPath[] = [
         id: 'p10-m1',
         title: 'Hardware Lifecycle Control',
         description: 'R&D dashboards, comment auditing, release gates.',
-        tutorialIds: ['cat-188', 'cat-163']
+        tutorialIds: ['cat-101', 'cat-114']
       }
     ]
   }

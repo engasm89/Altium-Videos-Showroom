@@ -67,6 +67,8 @@ export const AdminView: React.FC = () => {
           Imported {CATALOG_IMPORT_META?.stats?.totalRows ?? catalogCounts.total} rows · playable{' '}
           {catalogCounts.playable} · hand-enriched {catalogCounts.enriched} · source{' '}
           {CATALOG_IMPORT_META?.source || 'catalog.generated.json'}
+          {CATALOG_IMPORT_META?.sourceKind ? ` (${CATALOG_IMPORT_META.sourceKind})` : ''}
+          {CATALOG_IMPORT_META?.sourcePrecedence ? ` · ${CATALOG_IMPORT_META.sourcePrecedence}` : ''}
         </p>
       </div>
 

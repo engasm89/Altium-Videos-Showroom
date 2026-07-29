@@ -81,262 +81,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/introduction-getting-started-with-altium</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/download-and-installing-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-designer-interface-introduction</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/create-component-libraries-for-atmega-symbol-add-pins</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/finishing-the-schematic</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/creating-your-components-symbol-making</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/link-footprint-with-schematic-library</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adding-the-new-library-file-to-your-design</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/creating-the-atmega-component-symbol</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/creating-the-atmega-pcb-footprint</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adding-components-and-placing-them-on-schematic</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adding-components-libraries</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/atmega-schematic-connection</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/usb-connector-schematic</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/header-pins-for-nano-board</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adding-resistors-led-indicators-voltage-regulator</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/annotating-and-compiling-project</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/getting-started-with-the-pcb-design-solve-errors</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/drawing-the-board-shape</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/placing-pcb-items-atmega-and-headers</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/icsp-switch-resistor-array-crystal-microusb</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ftdi-regulator-capacitors</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/manual-routing</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/autorouting</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-make-the-auto-routing-work-for-you</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/improve-autorouting-trial-and-error</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/greber-file-and-bill-of-material</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/professional-pcb-manufacture-a-professional-pcb</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/introduction-to-altium-user-interface</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/download-and-install-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/create-component-symbol-add-pins</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/finishing-the-schematic-2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/making-footprint-and-pcb-layout</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/link-footprint-with-schematic-library-2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adding-the-new-library-file-to-your-design-2</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-download-and-install-altium-2022-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-switch-ui-dark-and-light-theme-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/modified-arduino-uno-schematic-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/make-3d-viewer-for-pcb-smoother-with-antialiasing-feature-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/speed-up-your-pcb-design-process-with-integrated-schematic-creation-altium-desig</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/placing-the-capacitors-in-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-helping-you-search-for-what-you-need</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-configure-the-board-shape-and-location-of-your-altium-designer-circuit</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/setting-up-the-grid-in-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/voltage-sensor-using-altium-desinger</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-relay-module-pcb-using-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-esp32-with-lcd-pcb-using-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-quickly-and-easily-extract-step-files-from-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-bluetooth-module-with-arduino-nano-using-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-full-bridge-rectifier-pcb-using-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/lamp-dimmer-using-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-a-temperature-sensor-with-pic16f877a-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -346,387 +91,67 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/touch-sensor-using-altium-designer</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adding-the-new-library-file-to-your-design-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-ir-sensor-pcb-using-altium-designer</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-and-create-any-custom-component-in-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-pcb-designer-feature-that-will-make-your-life-easier</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/pcb-design-make-arduino-nano-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/download-and-install-arduino-pro-ide-2-0-0-altium-designer</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/usb-lamp-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/fix-for-all-of-your-labview-linx-and-raspberry-pi-problems-altium-designer</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-uno-r4-pcb-layout-step-by-step-in-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/acceleration-sensing-alarm-using-adxl337</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/thief-door-alarm-using-transistor-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/mini-audio-amplifier-circuit</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/working-with-active-route-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/current-sensor-switch</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/led-flasher-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/audio-amplifier-circuit-using-ic-lm386</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-library-management-github-desktop-made-simple</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/thief-door-alarm-using-transistor</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-full-bridge-rectifier-pcb-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/cupboard-lighting-circuit</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/theft-alarm-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/automated-garage-door-lights-circuit</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-flashlight-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/pressure-sensor-circuit</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/air-flow-detector</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ultrasonic-sensor</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/light-sensor-triggers</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/water-level-sensor</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/smoke-sensor</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/mq3-alcohol-sensor</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ds1307-rtc-module</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/i2c-oled</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/xy-joystick-control-in-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/pir-motion-sensor-in-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/humidity-sensor-in-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/advanced-3d-design-with-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/multi-board-assembly-using-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/interactive-routing-with-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/electret-microphone-amplifier-using-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ds3231-real-time-clock-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ttp223-touch-sensor-using-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/let-s-get-started-in-arduino-r4</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-uno-r4-unveiled-exploring-features-and-functionality</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-uno-r4-schematic-deep-dive-exploring-every-circuitry-detail</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-uno-r4-schematic-pcb-design-course</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/deep-dive-exploring-every-circuitry-detail-arduino-uno-r4-schematic-pcb-design-c</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-uno-r4-schematic-design-step-by-step-in-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-r4-component-placement-step-by-step-in-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-r4-pcb-layout-step-by-step-in-altium-designer</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/introduction-to-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/stop-guessing-use-threading-to-control-your-design-workflow</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/forget-version-control-headaches</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/engineering-guidelines-using-altium-develop-documents</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/managing-pcb-project-workflows</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/tracking-design-progress-in-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/collaboration-on-hardware-project-using-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/showcasing-mechanical-collaboration</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/connecting-ecad-mcad-and-manufacturing-the-future-of-unified-design</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/inviting-unlimited-external-stakeholders-safely</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/getting-supplier-feedback-in-few-minutes</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/best-practices-for-managing-hardware-team-productivity</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/shared-context-to-eliminate-hidden-engineering-debt</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/boost-engineering-precision-with-ai-assisted-requirements</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/synchronization-with-firmware-team</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/real-time-bom-risk-forecasting</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-altium-develop-enables-engineering-verification</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/common-issues-with-modular-architectural-design</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/live-observability-in-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/the-smart-path-to-sustainable-compliant-engineering</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/create-clear-data-boundaries-using-rbac</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-managers-use-cross-discipline-signals</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/constraint-intelligence-the-silent-partner</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/future-of-collaborative-hardware-engineering</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-for-system-level-architects</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/linking-customer-feedback-to-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/building-bridge-b-w-jira-and-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/three-engineering-roles-use-the-same-workspace</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/smarter-hardware-decisions-with-supply-chain-insight</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/sprint-week-entirely-in-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-for-post-silicon-iteration</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/partners-ecosystem-playbook</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/life-cycle-thinking-in-hardware</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/coaching-new-hires-with-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-reviewer-can-effectively-review</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-effectively-use-history-in-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/project-setup-in-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/selecting-the-right-buck-ic-topology-altium-designer-tutorial</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/capturing-design-intent-through-commenting-altium-designer-tutorial</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/create-component-symbol-add-pins-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -736,197 +161,247 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/verifying-the-project-to-check-for-errors-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-bluetooth-module-with-arduino-nano-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/setting-up-the-grid-in-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-flame-detector-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-uno-r4-schematic-design-step-by-step-in-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/current-sensor-switch-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/simple-calculator-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-gps-tracker-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/clearance-violations-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ftdi-regulator-capacitors-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/dc-motor-speed-control-circuit-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-with-altium-today</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/editing-the-board-shape-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/03-building-bridge-between-jira-and-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-multivibrator-circuit-flip-flop-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/voltage-sensor-using-altium-desinger</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/pcb-rules-and-violations-panel-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/individual-outputs-or-an-output-job-file-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/interactive-routing-with-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/active-route-automated-interactive-routing-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/nets-and-net-labels-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/setting-up-the-connection-matrix-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-stack-up-and-design-rules-altium-designer-tutorial</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/buck-converter-pcb-layout-altium-designer-tutorial</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/lamp-dimmer-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/a-day-in-the-life-of-a-hardware-team-using-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/mastering-altium-develop-workflows</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-from-files-to-peer-powered-network</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ds3231-real-time-clock-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/working-with-external-partners-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/physical-layers-and-the-layer-stack-manager-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/cutting-re-spins-with-continuous-insight-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/viewing-your-board-in-3d-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/turning-past-projects-into-a-living-training-ground-with-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/12-altium-designer-tutorial-pcb-component-layout-layer-setup</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/why-multidisciplinary-teams-need-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-flasher-pcb-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-platform-tour</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/overvoltage-protection-circuit-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/creating-team-workspace-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/03-from-schematic-to-pcb-in-altium-develop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/capturing-arduino-uno-schematics</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/defining-the-electrical-clearance-constraint-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/managing-arduino-uno-parts-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/mq3-alcohol-sensor-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/schematics-review-comments</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-your-own-customized-pir-motion-sensor-in-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-rules-for-arduino-uno</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/designing-flex-pcbs-with-ai-for-wearables-in-altium</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/placing-routing-arduino-uno</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/creating-the-atmega-component-symbol-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/mcad-co-designer-checks-for-arduino-uno-in-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/get-up-to-speed-with-your-pcb-design-process-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/bom-management-for-arduino-uno</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/air-flow-detector-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/releasing-project-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-access-altium-s-db-library-like-a-pro</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/generating-manufacturing-outputs-for-arduino</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/drc-rules-to-check-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/team-handoff-next-steps</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/10-how-to-release-a-project-in-altium-develop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-in-5-minutes-complete-overview</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-designer-pcb-clearance-settings-the-ultimate-guide</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/your-first-team-workspace-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-speaker-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/from-schematic-to-pcb-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/8-how-to-add-wires-net-labels-power-ports-in-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-rules-and-drc-the-simple-way-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/making-footprint-and-pcb-layout-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/comments-reviews-and-design-intent-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/13-master-advanced-schematic-search-features-in-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/managing-hardware-project-workflow-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/07-pcb-board-planning-strategy-for-reliable-hardware-design-in-altium-develop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/tracking-progress-and-using-history-in-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/version-control-in-altium-develop-no-more-headaches</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ecad-mcad-collaboration-and-external-stakeholders-in-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/bom-supply-chain-and-fast-supplier-feedback-in-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/working-with-partners-and-post-silicon-iteration-in-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/coaching-teams-and-scaling-best-practices-with-altium-develop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/stop-guessing-threaded-hardware-discussions-in-altium-develop-pcb-team-communica</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/one-day-in-a-hardware-team-workspace-in-altium-develop-pcb-collaboration-workflo</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/three-engineering-roles-one-workspace-in-altium-develop-unified-pcb-team-platfor</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/run-an-entire-hardware-sprint-week-in-altium-develop-agile-pcb-engineering-workf</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/from-jira-ticket-to-released-pcb-in-altium-develop-complete-hardware-delivery-pi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/manager-signals-see-hardware-health-at-a-glance-in-altium-develop-real-time-pcb-</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ai-assisted-requirements-to-verified-hardware-in-altium-develop-future-of-pcb-de</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/car-amplifier-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -936,152 +411,1337 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/from-requirement-to-test-point-in-altium-develop-complete-pcb-verification-trail</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/10-import-design-changes-and-create-pcb-outline-in-altium</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/audit-ready-trace-every-hardware-change-in-altium-develop-full-pcb-traceability</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/interactive-routing-modes-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/post-silicon-iteration-without-chaos-in-altium-develop-faster-hardware-revisions</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/setting-up-the-comparator-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/compliance-sustainability-threads-in-altium-develop-hardware-esg-regulatory-work</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/positioning-the-components-on-the-pcb-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-01-one-day-in-your-hardware-workspace</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/wiring-up-the-circuit-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-02-connected-stack-setup-and-review</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-make-a-pcb-in-altium-designer-the-basics</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-03-new-project-setup-for-pcb-teams</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/14-advanced-search-features-for-pcb-design-in-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-04-managing-schematic-components-in-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/05-professional-schematic-wiring-and-design-rules-in-altium-develop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-05-schematic-wiring-and-design-rules-in-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/make-3d-viewer-for-pcb-smoother-with-antialiasing-feature-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-06-importing-designs-to-pcb-in-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/the-active-bar-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-07-board-planning-mode-and-strategy-in-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/checking-the-electrical-properties-of-your-schematic-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-08-grid-control-and-board-shape-in-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/routing-with-design-rules-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-09-pcb-layers-graphics-and-views-in-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/creating-library-and-schematic-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-10-intelligent-component-placement-workflow</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/kitchen-timer-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-11-routing-and-ground-planes-for-robust-pcbs</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/creating-a-schematic-in-altium</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-12-template-projects-and-reuse-in-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/preparing-for-interactive-routing-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/getting-started-with-altium-develop-download-setup-navigation</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/editing-in-the-properties-panel-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-tutorial-create-esp32-symbol-step-by-step</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/04-design-rules-and-drc-the-simple-way-in-altium-develop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/discover-how-to-use-built-in-libraries-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/configuring-the-defaults-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/create-esp32-pcb-footprint-library-from-scratch</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/bonus-lecture-manufacture-a-professional-pcb-by-pcbway-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/link-pcb-footprint-to-schematic-components-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-digital-counter-using-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/create-schematic-documents-and-templates-in-altium-develop</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/interactive-sliding-tips-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-annotation-tools-assign-designators-correctly-every-time</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/interactively-routing-the-board-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-workspace-tutorial-add-wires-net-labels-and-power-ports-to-your-s</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ai-assisted-requirements-to-verified-hardware-in-altium-develop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-workspace-tutorial-schematic-validation-and-error-reporting</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/time-to-route-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-workspace-tutorial-import-design-changes-create-the-board-outline</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/01-complete-hardware-team-workspace-in-altium-develop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-workspace-tutorial-component-placement-tools-techniques</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/available-output-types-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-workspace-tutorial-pcb-component-layout-layer-configuration</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/output-documentation-and-project-release-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-workspace-tutorial-advanced-search-features-for-schematics</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/configuring-the-class-generation-altium-designer</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-workspace-tutorial-advanced-search-features-for-pcb-design</loc>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/audit-ready-trace-every-hardware-change-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/three-engineering-roles-one-workspace-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/one-day-in-a-hardware-team-workspace-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/positioning-components-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/electret-microphone-amplifier-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/1-getting-started-with-altium-develop-download-setup-navigation</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-develop-from-files-to-peer-powered-network</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/greber-file-and-bill-of-material-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/short-duration-timer-circuit-using-altium-desinger</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/seven-segment-counter-using-atium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/light-sensor-triggers-led-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/the-active-bar-in-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/making-footprint-and-pcb-layout-altium-designer-2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/touch-activated-call-bell-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/placing-pcb-items-atmega-and-headers-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/review-the-design-rules-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/touch-sensor-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/11-altium-schematic-component-placement-tools-and-techniques</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/12-coaching-teams-and-scaling-best-practices-with-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/setting-up-the-design-rules-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/document-commenting-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/05-comments-reviews-and-design-intent-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/verifying-your-board-design-part-2-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/02-your-first-team-workspace-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/11-working-with-partners-and-post-silicon-iteration-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/acceleration-sensing-alarm-using-adxl337-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-configure-the-board-shape-and-location-of-your-altium-designer-circuit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/introduction-to-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/existing-design-rule-violations-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/10-bom-supply-chain-and-fast-supplier-feedback-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/rain-sensor-using-altium-design</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/post-silicon-iteration-without-chaos-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/10-coaching-new-hires-faster-with-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-make-the-autorouting-work-for-you-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/managing-pcb-project-workflows-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-helping-you-search-for-what-you-need</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ds1307-rtc-module-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/buck-converter-pcb-layout-altium-designer-tutorial</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/configuring-the-rule-checker-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-place-capacitors-in-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/finishing-the-schematic-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/link-footprint-with-schematic-library-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/locating-the-error-condition-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/finishing-the-schematic-altium-designer-step-by-step-tutorial</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/showcasing-mechanical-collaboration-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/2-altium-develop-tutorial-create-esp32-symbol-step-by-step</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-how-to-use-the-supplier-tile</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/working-with-external-partners-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/easy-steps-for-wiring-up-your-altium-circuit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/resolving-the-violations-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-designers-editing-in-the-properties-panel</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/setting-nodes-with-altium</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/setting-the-origin-and-the-grid-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/editing-the-board-shape-part-ii-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/turning-past-projects-into-a-living-training-ground-with-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/creating-a-material-bill-of-materials-in-altium</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adding-components-libraries-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/configuring-altium-s-default-settings</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ina168-current-sensor-module-using-altium</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/header-pins-for-nano-board-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/xy-joystick-control-in-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/compliance-sustainability-threads-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/stop-guessing-use-threading-to-control-your-design-workflow-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/07-faster-post-silicon-fixes-with-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/viewing-the-design-in-a-web-browser-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/02-how-to-create-a-team-workspace-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/07-tracking-progress-and-using-history-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/04-arduino-uno-parts-management-in-altium-develop-explained</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/joystick-controller-for-servo-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/08-building-strong-partner-ecosystems-using-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/audio-amplifier-circuit-using-ic-lm386-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/why-multidisciplinary-teams-need-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/best-practices-for-managing-hardware-team-productivity-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-document-engineering-guidelines-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-uno-r4-pcb-layout-step-by-step-in-altium-designer-2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/project-setup-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/06-importing-schematic-designs-into-the-pcb-layout-workspace</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/cupboard-lighting-circuit-using-transistor</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/setting-up-a-project-with-altium</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/03-pcb-project-setup-for-team-collaboration</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/tracking-design-progress-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/02-connected-pcb-design-stack-setup-and-review-workflow</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/lm2576-buck-converter</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/01-altium-develop-platform-tour-for-engineers</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/inviting-unlimited-external-stakeholders-safely-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/hardware-version-control-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/06-running-sprint-week-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/05-how-altium-develop-enables-engineering-verification</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/01-altium-develop-for-system-level-architects</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/04-managing-schematic-components-in-a-connected-pcb-workflow</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/02-linking-customer-feedback-to-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/from-jira-ticket-to-released-pcb-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/05-how-to-review-schematics-effectively-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/understanding-the-error-condition-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/from-requirement-to-test-point-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-uno-r4-component-placement-step-by-step-in-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-vs-eagle-for-pbc-layout</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-sets-up-the-comparator-for-you</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-nfc-reader-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-is-here-to-shape-up-your-pcb-design</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/7-altium-annotation-tools-assign-designators-correctly-every-time</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-transfer-a-design-from-altium</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/component-positioning-and-placement-options-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/connecting-ecad-mcad-and-manufacturing-the-future-of-unified-design-altium-devel</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/get-ready-to-rock-out-it-s-time-to-route</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/existing-design-rule-violations</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/03-capturing-arduino-uno-schematics-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adding-net-labels</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/suitable-grid-settings-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/07-arduino-uno-pcb-placement-and-routing-guide</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/designs-now-protected-by-electrical-clearance-constraint</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/link-footprint-with-schematic-library-altium-designer-2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-iot-switch-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/alternate-switching-led-circuit-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/project-history</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/i2c-oled-display-using-altium-designher</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/08-mcad-co-designer-checks-for-arduino-uno-explained</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/silk-to-silk-clearance-violation-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/11-pcb-routing-and-ground-plane-design-for-reliable-boards-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/4-create-esp32-pcb-footprint-library-from-scratch</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/review-the-design-rules-and-save-time</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/selecting-the-right-buck-ic-topology-altium-designer-tutorial</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-set-data-boundaries-with-rbac-in-altium</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/sliding-tips-that-are-interactive</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/interactive-routing-modes</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/getting-started-with-the-pcb-design-solve-errors-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/06-common-issues-with-modular-architectural-design</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-uno-r4-schematic-pcb-design-course</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/preparing-the-output-bom-altium-desinger</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/cutting-re-spins-with-continuous-insight-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ultrasonic-sensor-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-add-a-new-board</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-nano-with-oled-display-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adding-components-and-placing-them-on-schematic-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/configuring-the-bill-of-materials-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/10-smart-pcb-component-placement-workflow-in-altium-develop</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/03-synchronization-with-firmware-team</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/preparing-for-interactive-routing</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/releasing-of-a-project</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/project-history-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/a-new-tool-for-defining-routing-styles</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/humidity-sensor-in-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-place-the-resistors</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/servo-motor-driver-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/11-how-reviewers-can-review-effectively</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/setting-the-snap-grid-for-design</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/displaying-layers-view-configuration</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/04-three-engineering-roles-use-the-same-workspace</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/11-from-design-to-production-arduino-outputs-guide</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/learning-how-to-place-the-multivibrator-parts-properly</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-switch-ui-dark-and-light-theme-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/modifying-and-rerouting-existing-routes</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/configuring-the-gerber-files-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/switch-mode-power-supply-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/ai-assisted-requirements-for-precise-engineering</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/11-constraint-intelligence-the-silent-partner</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-battery-level-indicator-pcb-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/water-level-sensor-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/performing-a-drc-design-rule-check</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adding-resistors-led-indicators-voltage-regulator-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-pic-development-board-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/12-how-to-manage-engineering-handoff-and-next-steps</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/05-smarter-hardware-decisions-with-supply-chain-insight</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-arduino-nano-with-ultrasonic-sensor-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/mini-audio-amplifier-circuit-using-ic-tda7052-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/manual-routing-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/annotating-and-compiling-project-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-create-a-new-pcb-project</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/positioning-components</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/the-future-of-pcb-design-what-s-next</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/individual-outputs-or-a-job-file-with-outputs</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/smoke-sensor-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/setting-the-snap-grid-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adding-net-labels-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/placing-the-resistors-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/creating-the-atmega-pcb-footprint-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/atmega-schematic-connection-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/improve-autorouting-trial-and-error-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/09-arduino-uno-bom-management-made-simple</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/input-during-the-interactive-routing-process</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/clearance-violations</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/icsp-switch-resistor-array-crystal-microusb-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/step-up-dc-to-dc-converter-using-max1709</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/led-brightness-controller-with-555-timer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/09-mastering-pcb-layers-graphics-and-board-views-for-clear-design</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/micro-sd-card-module-using-altium</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/modified-arduino-uno-schematic-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/04-real-time-bom-risk-forecasting</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/usb-connector-schematic-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/5v-usb-car-charger-with-78s05-1a-regulator</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/design-a-temperature-sensor-with-pic16f877a-using-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/drawing-the-board-shape-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-uno-r4-schematic-design-step-by-step-in-altium-designer-2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/lithium-li-ion-battery-charger-using-lp2951-ic</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/arduino-uno-r4-new-features-and-functionality</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/documentation-of-the-project-s-output-and-its-release</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/getting-everything-you-need-for-multi-vibrator-projects</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/editing-the-board-shape-part-ii</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/placing-the-transistor-altium-designer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/08-grid-control-and-custom-board-shape-setup-for-pcb-layout</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/adjustable-switching-power-supply</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/avoid-these-mistakes-when-assigning-resistor-footprints</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-route-nets-on-a-pcb-a-beginner-s-guide</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/09-why-life-cycle-thinking-matters-in-hardware-engineering</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/positioning-the-components-on-a-pcb</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/10-how-managers-use-cross-discipline-signals</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/get-your-issues-resolved-in-no-time</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-transfer-the-design-from-pcba-layout</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/electronic-resistive-load</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/verifying-your-board-design-part-2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-set-up-the-gerber-files</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-prepare-the-output-bom-for-success</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/verifying-the-design-of-your-board</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-check-the-electrical-properties-of-your-schematic</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/a-new-way-to-make-a-pcb</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/designing-a-pcb-with-the-right-amount-of-routing-width</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/setting-up-the-connection-matrix</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/the-rule-checker-s-settings</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/best-pcb-simulation-software-for-beginners</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/level-up-your-engineering-skills-with-ee</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/uart-to-rs232-rj45-serial-adaptor-1</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/the-future-of-pcb-design-is-merging-electronics-with-living-cells</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/active-route-automated-interactive-routing</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/checking-the-drc-rules</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-properly-configure-your-pcb</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/how-to-start-embedded-systems-programming-step-by-step-guide</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/recognizing-the-source-of-the-error</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/62-working-with-active-route</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/identifying-the-source-of-the-problem</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/project-share-the-best-way-to-save-for-your-future</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/deep-dive-exploring-every-circuitry-detail-arduino-uno-r4-schematic-pcb-design-c</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/download-and-install-arduino-pro-ide-2-0-0</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/everything-you-need-to-know-about-octopart-marketing</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/download-and-install-easyeda-free-circuit-design-and-pcb-software</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/make-a-raspberry-pi-in-minutes-step-by-step-guide</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/raspberry-pi-2-components</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/educational-engineering-team</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eet-electronics-product-dev-library.vercel.app/tutorials/altium-designer-interface-introduction</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

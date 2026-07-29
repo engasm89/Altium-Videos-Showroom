@@ -1,11 +1,16 @@
 #!/usr/bin/env node
 /**
- * Import Educational_Engineering_Team_Altium_Video_Catalog.xlsx → structured JSON.
+ * Import catalog → structured JSON.
+ *
+ * Source precedence (Ashraf):
+ *   1. data/videos.csv when present (MD channel-search dump) — WINS
+ *   2. Educational_Engineering_Team_Altium_Video_Catalog.xlsx — fallback
  *
  * Usage:
  *   node scripts/import-catalog.mjs
- *   node scripts/import-catalog.mjs --skip-oembed   # faster, format-only validation
- *   node scripts/import-catalog.mjs --xlsx path/to/file.xlsx
+ *   node scripts/import-catalog.mjs --csv              # require CSV
+ *   node scripts/import-catalog.mjs --xlsx [path]      # force xlsx
+ *   node scripts/import-catalog.mjs --skip-oembed
  *
  * Outputs:
  *   src/data/catalog.generated.json
@@ -23,11 +28,20 @@ const ROOT = path.resolve(__dirname, '..');
 
 const args = process.argv.slice(2);
 const skipOembed = args.includes('--skip-oembed');
+const forceCsv = args.includes('--csv');
+const forceXlsx = args.includes('--xlsx');
 const xlsxIdx = args.indexOf('--xlsx');
+const csvIdx = args.indexOf('--csv-path');
+
+const DEFAULT_CSV = path.join(ROOT, 'data/videos.csv');
+const DEFAULT_XLSX = path.join(ROOT, 'Educational_Engineering_Team_Altium_Video_Catalog.xlsx');
+
+const CSV_PATH =
+  csvIdx >= 0 && args[csvIdx + 1] ? path.resolve(args[csvIdx + 1]) : DEFAULT_CSV;
 const XLSX_PATH =
-  xlsxIdx >= 0 && args[xlsxIdx + 1]
+  xlsxIdx >= 0 && args[xlsxIdx + 1] && !args[xlsxIdx + 1].startsWith('-')
     ? path.resolve(args[xlsxIdx + 1])
-    : path.join(ROOT, 'Educational_Engineering_Team_Altium_Video_Catalog.xlsx');
+    : DEFAULT_XLSX;
 
 const OUT_JSON = path.join(ROOT, 'src/data/catalog.generated.json');
 const OUT_REPORT = path.join(ROOT, 'scripts/import-report.json');
@@ -65,6 +79,7 @@ function extractYoutubeId(rawId, rawUrl) {
 
 function normalizeProduct(raw) {
   const p = String(raw || '').trim();
+  if (/other|adjacent/i.test(p)) return 'Other / Adjacent';
   if (/develop/i.test(p)) return 'Altium Develop';
   if (/365/i.test(p)) return 'Altium 365';
   if (/circuit\s*maker/i.test(p)) return 'CircuitMaker';
@@ -94,7 +109,10 @@ function inferRole(title, product) {
   if (/requirement|compliance|rohs|reach|emc|fcc|ce /.test(t)) {
     return 'Compliance & Sustainability';
   }
-  if (/review|collaboration|team|management|version|history|markup|develop workspace/.test(t) || product === 'Altium Develop') {
+  if (
+    /review|collaboration|team|management|version|history|markup|develop workspace/.test(t) ||
+    product === 'Altium Develop'
+  ) {
     return 'Engineering Leadership';
   }
   if (/arduino|esp32|firmware|embedded|iot|microcontroller|pin/.test(t)) {
@@ -127,7 +145,8 @@ function inferSkills(title, product) {
     if (re.test(t)) skills.add(skill);
   }
   if (skills.size === 0) {
-    skills.add(product === 'Altium Develop' ? 'Altium Develop Workflows' : 'Altium Designer Workflows');
+    if (product === 'Other / Adjacent') skills.add('Adjacent Channel Content');
+    else skills.add(product === 'Altium Develop' ? 'Altium Develop Workflows' : 'Altium Designer Workflows');
   }
   return [...skills].slice(0, 5);
 }
@@ -172,7 +191,10 @@ function inferProjectId(title) {
 function inferLearningPathIds(title, product, role) {
   const t = title.toLowerCase();
   const ids = new Set();
-  if (/install|getting started|interface|project|schematic|symbol|environment/.test(t) && product === 'Altium Designer') {
+  if (
+    /install|getting started|interface|project|schematic|symbol|environment/.test(t) &&
+    product === 'Altium Designer'
+  ) {
     ids.add('path-001');
   }
   if (/footprint|symbol|library|ipc|component/.test(t)) ids.add('path-002');
@@ -187,6 +209,7 @@ function inferLearningPathIds(title, product, role) {
     ids.add('path-010');
   }
   if (ids.size === 0) {
+    if (product === 'Other / Adjacent') return [];
     ids.add(product === 'Altium Develop' ? 'path-006' : 'path-001');
   }
   return [...ids];
@@ -195,6 +218,52 @@ function inferLearningPathIds(title, product, role) {
 function shortDescriptionFrom(title, series, notes) {
   const base = notes || series || `Educational Engineering Team tutorial: ${title}`;
   return String(base).replace(/\s+/g, ' ').trim().slice(0, 220);
+}
+
+function parseCsv(text) {
+  const rows = [];
+  const lines = text.replace(/^\uFEFF/, '').split(/\r?\n/).filter((l) => l.trim());
+  if (!lines.length) return rows;
+  const headers = splitCsvLine(lines[0]).map((h) => h.trim());
+  for (let i = 1; i < lines.length; i++) {
+    const cols = splitCsvLine(lines[i]);
+    const obj = {};
+    headers.forEach((h, idx) => {
+      obj[h] = cols[idx] ?? '';
+    });
+    rows.push(obj);
+  }
+  return rows;
+}
+
+function splitCsvLine(line) {
+  const out = [];
+  let cur = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (inQuotes) {
+      if (ch === '"') {
+        if (line[i + 1] === '"') {
+          cur += '"';
+          i++;
+        } else {
+          inQuotes = false;
+        }
+      } else {
+        cur += ch;
+      }
+    } else if (ch === '"') {
+      inQuotes = true;
+    } else if (ch === ',') {
+      out.push(cur);
+      cur = '';
+    } else {
+      cur += ch;
+    }
+  }
+  out.push(cur);
+  return out;
 }
 
 async function checkOembed(youtubeId) {
@@ -239,117 +308,249 @@ function ensureUniqueSlugs(rows) {
   }
 }
 
-console.log(`Reading ${XLSX_PATH}`);
-if (!fs.existsSync(XLSX_PATH)) {
-  console.error('Catalog xlsx not found.');
+function resolveSource() {
+  const csvExists = fs.existsSync(CSV_PATH);
+  const xlsxExists = fs.existsSync(XLSX_PATH);
+
+  if (forceCsv || (!forceXlsx && csvExists)) {
+    if (!csvExists) {
+      console.error(`CSV required but not found: ${CSV_PATH}`);
+      process.exit(1);
+    }
+    return { kind: 'csv', path: CSV_PATH };
+  }
+  if (xlsxExists) return { kind: 'xlsx', path: XLSX_PATH };
+  console.error('No catalog source found (data/videos.csv or xlsx).');
   process.exit(1);
 }
 
-const workbook = XLSX.readFile(XLSX_PATH, { cellDates: true });
-const sheet = workbook.Sheets['Catalog'] || workbook.Sheets[workbook.SheetNames[0]];
-const rawRows = XLSX.utils.sheet_to_json(sheet, { defval: null, range: 3 }); // header row is Excel row 4 (0-index 3)
+function loadFromCsv(csvPath) {
+  const text = fs.readFileSync(csvPath, 'utf8');
+  const rawRows = parseCsv(text);
+  const tutorials = [];
+  const titleIndex = new Map();
+  const idIndex = new Map();
+  const duplicates = [];
 
-const tutorials = [];
-const titleIndex = new Map();
-const idIndex = new Map();
-const duplicates = [];
+  for (let i = 0; i < rawRows.length; i++) {
+    const raw = rawRows[i];
+    const title = String(raw.title || '').trim();
+    if (!title) continue;
 
-for (const raw of rawRows) {
-  const num = Number(raw['#']);
-  if (!Number.isFinite(num)) continue;
+    const youtubeId = extractYoutubeId(raw.youtube_video_id, raw.youtube_url);
+    const youtubeUrl = raw.youtube_url
+      ? String(raw.youtube_url).trim()
+      : youtubeId
+        ? `https://www.youtube.com/watch?v=${youtubeId}`
+        : null;
+    const product = normalizeProduct(raw.product || 'Altium Designer');
+    const num = i + 1;
+    const id = String(raw.id || '').trim() || `cat-${String(num).padStart(3, '0')}`;
+    const catalogNumber = Number(String(id).replace(/^cat-/, '')) || num;
+    const slug = String(raw.slug || '').trim() || slugify(title, catalogNumber);
 
-  const title = String(raw['Video Title'] || '').trim();
-  if (!title) continue;
-
-  const youtubeId = extractYoutubeId(raw['Video ID'], raw['YouTube URL']);
-  const urlType = String(raw['URL Type'] || '').trim();
-  const youtubeUrl = raw['YouTube URL'] ? String(raw['YouTube URL']).trim() : null;
-  const product = normalizeProduct(raw['Product']);
-  const id = `cat-${String(num).padStart(3, '0')}`;
-  const slug = slugify(title, num);
-
-  let youtubeStatus = 'missing';
-  if (urlType.toLowerCase().includes('playlist') && !youtubeId) {
-    youtubeStatus = 'playlist_only';
-  } else if (youtubeId && YT_ID_RE.test(youtubeId)) {
-    youtubeStatus = 'id_present'; // refined after oEmbed
-  } else if (youtubeUrl && !youtubeId) {
-    youtubeStatus = 'invalid';
-  }
-
-  const publishedDate = inferPublishedDate(raw['Year / Era'], raw['Month']);
-  const role = inferRole(title, product);
-  const difficulty = inferDifficulty(title, product);
-  const skills = inferSkills(title, product);
-  const learningPathIds = inferLearningPathIds(title, product, role);
-  const projectId = inferProjectId(title);
-  const notes = raw['Notes'] ? String(raw['Notes']).trim() : '';
-  const series = raw['Series / Playlist'] ? String(raw['Series / Playlist']).trim() : '';
-  const liveStatus = raw['Live Status'] ? String(raw['Live Status']).trim() : '';
-  const evidenceClass = raw['Evidence Class'] ? String(raw['Evidence Class']).trim() : '';
-
-  const enrichmentStatus =
-    youtubeStatus === 'id_present' ? 'url_recovered' : 'enrichment_pending';
-
-  const shortDescription = shortDescriptionFrom(title, series, notes);
-  const fullSummary =
-    notes ||
-    `${title}. Recovered from the Educational Engineering Team Altium video audit (${evidenceClass || 'archive'}). Live status note: ${liveStatus || 'not independently re-verified at import time'}.`;
-
-  const tutorial = {
-    id,
-    catalogNumber: num,
-    youtubeId: youtubeId || `eet_pending_${String(num).padStart(3, '0')}`,
-    youtubeUrl,
-    youtubeStatus,
-    enrichmentStatus,
-    urlType,
-    title,
-    slug,
-    shortDescription,
-    fullSummary,
-    durationSeconds: 0,
-    durationFormatted: '—',
-    publishedDate,
-    product,
-    difficulty,
-    role,
-    skills,
-    projectId,
-    learningPathIds,
-    chapters: [],
-    transcript: undefined,
-    commands: undefined,
-    resources: undefined,
-    officialDocUrl: 'https://www.altium.com/documentation',
-    altiumTrialUrl:
-      'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library',
-    featured: num <= 12 || product === 'Altium Develop' && num >= 180,
-    series,
-    evidenceClass,
-    liveStatus,
-    sourceNotes: notes,
-    yearEra: raw['Year / Era'] ? String(raw['Year / Era']) : '',
-    month: raw['Month'] ? String(raw['Month']) : '',
-  };
-
-  const normTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
-  if (titleIndex.has(normTitle)) {
-    duplicates.push({ type: 'title', a: titleIndex.get(normTitle), b: id, title });
-  } else {
-    titleIndex.set(normTitle, id);
-  }
-  if (youtubeId) {
-    if (idIndex.has(youtubeId)) {
-      duplicates.push({ type: 'youtubeId', a: idIndex.get(youtubeId), b: id, youtubeId });
-    } else {
-      idIndex.set(youtubeId, id);
+    let youtubeStatus = String(raw.youtube_status || '').trim() || 'missing';
+    if (youtubeId && YT_ID_RE.test(youtubeId)) {
+      if (youtubeStatus === 'missing' || !youtubeStatus) youtubeStatus = 'id_present';
+    } else if (youtubeUrl && !youtubeId) {
+      youtubeStatus = 'invalid';
     }
+
+    const publishedDate = String(raw.published_at || '').trim() || '2024-06-15';
+    const role = inferRole(title, product);
+    const difficulty = String(raw.difficulty || '').trim() || inferDifficulty(title, product);
+    const skills = inferSkills(title, product);
+    const learningPathIds = inferLearningPathIds(title, product, role);
+    const projectId = inferProjectId(title);
+    const notes = String(raw.source_notes || '').trim();
+    const series = String(raw.playlist || '').trim();
+    const enrichmentStatus =
+      String(raw.enrichment_status || '').trim() ||
+      (youtubeStatus === 'id_present' ? 'url_recovered' : 'enrichment_pending');
+    const durationSeconds = Number(raw.duration_seconds) || 0;
+
+    const tutorial = {
+      id,
+      catalogNumber,
+      youtubeId: youtubeId || `eet_pending_${String(catalogNumber).padStart(3, '0')}`,
+      youtubeUrl,
+      youtubeStatus,
+      enrichmentStatus,
+      urlType: youtubeId ? 'watch' : 'missing',
+      title,
+      slug,
+      shortDescription:
+        String(raw.short_description || '').trim() || shortDescriptionFrom(title, series, notes),
+      fullSummary:
+        notes ||
+        `${title}. Imported from MD→CSV channel search dump (CSV primary; xlsx fallback unused).`,
+      durationSeconds,
+      durationFormatted: durationSeconds > 0 ? formatDuration(durationSeconds) : '—',
+      publishedDate,
+      product,
+      difficulty,
+      role,
+      skills,
+      projectId,
+      learningPathIds,
+      chapters: [],
+      transcript: undefined,
+      commands: undefined,
+      resources: undefined,
+      officialDocUrl: 'https://www.altium.com/documentation',
+      altiumTrialUrl:
+        'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library',
+      featured: catalogNumber <= 12 || (product === 'Altium Develop' && catalogNumber <= 50),
+      series,
+      evidenceClass: 'md_channel_search',
+      liveStatus: '',
+      sourceNotes: notes,
+      yearEra: '',
+      month: '',
+    };
+
+    const normTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
+    if (titleIndex.has(normTitle)) {
+      duplicates.push({ type: 'title', a: titleIndex.get(normTitle), b: id, title });
+    } else {
+      titleIndex.set(normTitle, id);
+    }
+    if (youtubeId) {
+      if (idIndex.has(youtubeId)) {
+        duplicates.push({ type: 'youtubeId', a: idIndex.get(youtubeId), b: id, youtubeId });
+      } else {
+        idIndex.set(youtubeId, id);
+      }
+    }
+
+    tutorials.push(tutorial);
   }
 
-  tutorials.push(tutorial);
+  return { tutorials, duplicates };
 }
 
+function formatDuration(seconds) {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function loadFromXlsx(xlsxPath) {
+  const workbook = XLSX.readFile(xlsxPath, { cellDates: true });
+  const sheet = workbook.Sheets['Catalog'] || workbook.Sheets[workbook.SheetNames[0]];
+  const rawRows = XLSX.utils.sheet_to_json(sheet, { defval: null, range: 3 });
+
+  const tutorials = [];
+  const titleIndex = new Map();
+  const idIndex = new Map();
+  const duplicates = [];
+
+  for (const raw of rawRows) {
+    const num = Number(raw['#']);
+    if (!Number.isFinite(num)) continue;
+
+    const title = String(raw['Video Title'] || '').trim();
+    if (!title) continue;
+
+    const youtubeId = extractYoutubeId(raw['Video ID'], raw['YouTube URL']);
+    const urlType = String(raw['URL Type'] || '').trim();
+    const youtubeUrl = raw['YouTube URL'] ? String(raw['YouTube URL']).trim() : null;
+    const product = normalizeProduct(raw['Product']);
+    const id = `cat-${String(num).padStart(3, '0')}`;
+    const slug = slugify(title, num);
+
+    let youtubeStatus = 'missing';
+    if (urlType.toLowerCase().includes('playlist') && !youtubeId) {
+      youtubeStatus = 'playlist_only';
+    } else if (youtubeId && YT_ID_RE.test(youtubeId)) {
+      youtubeStatus = 'id_present';
+    } else if (youtubeUrl && !youtubeId) {
+      youtubeStatus = 'invalid';
+    }
+
+    const publishedDate = inferPublishedDate(raw['Year / Era'], raw['Month']);
+    const role = inferRole(title, product);
+    const difficulty = inferDifficulty(title, product);
+    const skills = inferSkills(title, product);
+    const learningPathIds = inferLearningPathIds(title, product, role);
+    const projectId = inferProjectId(title);
+    const notes = raw['Notes'] ? String(raw['Notes']).trim() : '';
+    const series = raw['Series / Playlist'] ? String(raw['Series / Playlist']).trim() : '';
+    const liveStatus = raw['Live Status'] ? String(raw['Live Status']).trim() : '';
+    const evidenceClass = raw['Evidence Class'] ? String(raw['Evidence Class']).trim() : '';
+
+    const enrichmentStatus =
+      youtubeStatus === 'id_present' ? 'url_recovered' : 'enrichment_pending';
+
+    const tutorial = {
+      id,
+      catalogNumber: num,
+      youtubeId: youtubeId || `eet_pending_${String(num).padStart(3, '0')}`,
+      youtubeUrl,
+      youtubeStatus,
+      enrichmentStatus,
+      urlType,
+      title,
+      slug,
+      shortDescription: shortDescriptionFrom(title, series, notes),
+      fullSummary:
+        notes ||
+        `${title}. Recovered from the Educational Engineering Team Altium video audit (${evidenceClass || 'archive'}). Live status note: ${liveStatus || 'not independently re-verified at import time'}.`,
+      durationSeconds: 0,
+      durationFormatted: '—',
+      publishedDate,
+      product,
+      difficulty,
+      role,
+      skills,
+      projectId,
+      learningPathIds,
+      chapters: [],
+      transcript: undefined,
+      commands: undefined,
+      resources: undefined,
+      officialDocUrl: 'https://www.altium.com/documentation',
+      altiumTrialUrl:
+        'https://www.altium.com/free-trial?utm_source=eet_learning_hub&utm_medium=tutorial&utm_campaign=altium_develop_library',
+      featured: num <= 12 || (product === 'Altium Develop' && num >= 180),
+      series,
+      evidenceClass,
+      liveStatus,
+      sourceNotes: notes,
+      yearEra: raw['Year / Era'] ? String(raw['Year / Era']) : '',
+      month: raw['Month'] ? String(raw['Month']) : '',
+    };
+
+    const normTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
+    if (titleIndex.has(normTitle)) {
+      duplicates.push({ type: 'title', a: titleIndex.get(normTitle), b: id, title });
+    } else {
+      titleIndex.set(normTitle, id);
+    }
+    if (youtubeId) {
+      if (idIndex.has(youtubeId)) {
+        duplicates.push({ type: 'youtubeId', a: idIndex.get(youtubeId), b: id, youtubeId });
+      } else {
+        idIndex.set(youtubeId, id);
+      }
+    }
+
+    tutorials.push(tutorial);
+  }
+
+  return { tutorials, duplicates };
+}
+
+const source = resolveSource();
+console.log(`Reading ${source.kind.toUpperCase()}: ${source.path}`);
+console.log(
+  source.kind === 'csv'
+    ? 'Precedence: CSV (MD dump) wins over xlsx.'
+    : 'CSV absent — falling back to xlsx.'
+);
+
+const loaded = source.kind === 'csv' ? loadFromCsv(source.path) : loadFromXlsx(source.path);
+const { tutorials, duplicates } = loaded;
 ensureUniqueSlugs(tutorials);
 
 const withIds = tutorials.filter((t) => YT_ID_RE.test(t.youtubeId) && !t.youtubeId.startsWith('eet_'));
@@ -401,15 +602,20 @@ const stats = {
   invalid: tutorials.filter((t) => t.youtubeStatus === 'invalid').length,
   designer: tutorials.filter((t) => t.product === 'Altium Designer').length,
   develop: tutorials.filter((t) => t.product === 'Altium Develop').length,
+  otherAdjacent: tutorials.filter((t) => t.product === 'Other / Adjacent').length,
   duplicates,
   importedAt: new Date().toISOString(),
-  sourceFile: path.basename(XLSX_PATH),
+  sourceFile: path.basename(source.path),
+  sourceKind: source.kind,
+  sourcePrecedence: 'csv_over_xlsx',
   oembedSkipped: skipOembed,
 };
 
 const payload = {
   meta: {
-    source: path.basename(XLSX_PATH),
+    source: path.basename(source.path),
+    sourceKind: source.kind,
+    sourcePrecedence: 'When data/videos.csv exists it is primary; xlsx is fallback only.',
     importedAt: stats.importedAt,
     channelId: 'UCQfDCLyWEHMV3ERhD0au0Ug',
     channelUrl: 'https://www.youtube.com/channel/UCQfDCLyWEHMV3ERhD0au0Ug',

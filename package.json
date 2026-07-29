@@ -9,8 +9,10 @@
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
+    "md:to-csv": "node scripts/md-to-csv.mjs",
     "import:catalog": "node scripts/import-catalog.mjs",
     "import:catalog:fast": "node scripts/import-catalog.mjs --skip-oembed",
+    "import:videos:csv": "node scripts/import-videos-csv.mjs",
     "audit:youtube": "node scripts/audit-youtube-embeds.mjs",
     "audit:youtube:apply": "node scripts/audit-youtube-embeds.mjs --apply"
   },

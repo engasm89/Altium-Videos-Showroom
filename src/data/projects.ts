@@ -13,7 +13,7 @@ export const HARDWARE_PROJECTS: HardwareProject[] = [
     schematicStatus: '100% Completed',
     pcbStatus: '100% Completed',
     bomStatus: 'ActiveBOM Verified',
-    tutorialIds: ['cat-178', 'cat-180', 'cat-197', 'cat-186', 'cat-150'],
+    tutorialIds: ['cat-175', 'cat-074', 'cat-067', 'cat-214', 'cat-244'],
   },
   {
     id: 'proj-esp32',
@@ -27,7 +27,7 @@ export const HARDWARE_PROJECTS: HardwareProject[] = [
     schematicStatus: '100% Completed',
     pcbStatus: '100% Completed',
     bomStatus: 'ActiveBOM Verified',
-    tutorialIds: ['cat-036', 'cat-189', 'cat-191', 'cat-160', 'cat-047'],
+    tutorialIds: ['cat-001', 'cat-141', 'cat-215', 'cat-140', 'cat-002'],
   },
   {
     id: 'proj-buck',
@@ -55,7 +55,7 @@ export const HARDWARE_PROJECTS: HardwareProject[] = [
     schematicStatus: '100% Completed',
     pcbStatus: '100% Completed',
     bomStatus: 'ActiveBOM Verified',
-    tutorialIds: ['cat-036', 'cat-186'],
+    tutorialIds: ['cat-001', 'cat-214'],
   },
   {
     id: 'proj-professional-pcb',
@@ -69,7 +69,7 @@ export const HARDWARE_PROJECTS: HardwareProject[] = [
     schematicStatus: 'Curriculum-linked',
     pcbStatus: 'Curriculum-linked',
     bomStatus: 'See linked lessons',
-    tutorialIds: ['cat-028', 'cat-150'],
+    tutorialIds: ['cat-086', 'cat-244'],
   },
   {
     id: 'proj-develop-workspace',
@@ -83,6 +83,6 @@ export const HARDWARE_PROJECTS: HardwareProject[] = [
     schematicStatus: 'N/A (cloud)',
     pcbStatus: 'N/A (cloud)',
     bomStatus: 'Curriculum-linked',
-    tutorialIds: ['cat-188', 'cat-178', 'cat-161', 'cat-160'],
+    tutorialIds: ['cat-101', 'cat-175', 'cat-125', 'cat-140'],
   }
 ];

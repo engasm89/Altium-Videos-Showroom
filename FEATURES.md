@@ -3,7 +3,7 @@
 > **Who this is for:** Ashraf (and anyone joining the project) who needs a single, honest map of what the product *actually ships today* — not the aspirational brief alone.  
 > **Live URL:** [https://eet-electronics-product-dev-library.vercel.app](https://eet-electronics-product-dev-library.vercel.app)  
 > **Repo root file:** `FEATURES.md` (this document)  
-> **Numbers below** reflect the catalog after the Jul 29, 2026 import + YouTube embed audit (`catalogCounts` / `scripts/import-report.json`).
+> **Numbers below** reflect the catalog after the Jul 29, 2026 MD→CSV import + YouTube embed audit (`catalogCounts` / `scripts/import-report.json`). Primary source: `data/videos.csv` (wins over xlsx).
 
 ---
 
@@ -416,25 +416,29 @@ Without keys: `trackEvent` / `trackPageView` are safe no-ops.
 
 ## 15. Catalog import & YouTube audit pipeline
 
-### Source spreadsheet
+### Source of truth (precedence)
 
-`Educational_Engineering_Team_Altium_Video_Catalog.xlsx` at repo root.
+1. **`data/videos.csv`** (primary) — built from the channel Altium-search markdown dump via `data/parsed-from-md-report.json` / `npm run md:to-csv`. **Wins over xlsx** when present (Ashraf request).
+2. **`Educational_Engineering_Team_Altium_Video_Catalog.xlsx`** — fallback only if CSV is absent.
+
+Devil’s advocate: MD/CSV and xlsx overlap but are not identical (different row counts, ID numbering, some playlist-only xlsx rows). Do not merge silently — CSV from MD is authoritative for the live catalog.
 
 ### npm scripts (`package.json`)
 
 | Command | What it does |
 |---------|----------------|
-| `npm run import:catalog` | Parse xlsx → oEmbed-validate IDs → write generated catalog + report + sitemap |
-| `npm run import:catalog:fast` | Same, `--skip-oembed` (format-only, no network) |
-| `npm run audit:youtube` | Re-oEmbed every ID; write Markdown + JSON report (no write to catalog unless apply) |
-| `npm run audit:youtube:apply` | Audit + rewrite `catalog.generated.json` (retitle, product fix, demote weak matches) |
-| `npm run dev` | Vite on port 3000 |
-| `npm run build` | Production build |
+| `npm run md:to-csv` | Parse report (or MD) → `data/videos.csv` |
+| `npm run import:catalog` | Prefer CSV → oEmbed-validate → generated catalog + report + sitemap |
+| `npm run import:catalog:fast` | Same, `--skip-oembed` |
+| `npm run import:videos:csv` | Explicit CSV import (`import-catalog.mjs --csv`) |
+| `npm run audit:youtube` | Re-oEmbed every ID; write Markdown + JSON report |
+| `npm run audit:youtube:apply` | Audit + rewrite `catalog.generated.json` (retitle / demote weak matches) |
 | `npm run lint` | `tsc --noEmit` |
+| `npm run build` | Production build |
 
 ### Import outputs
 
-- `src/data/catalog.generated.json` — 201 rows + `meta`
+- `src/data/catalog.generated.json` — catalog rows + `meta` (sourceKind, stats)
 - `scripts/import-report.json` — counts + duplicate title pairs
 - `public/sitemap.xml`
 
@@ -453,38 +457,34 @@ Without keys: `trackEvent` / `trackPageView` are safe no-ops.
 ### Honesty rules the pipeline enforces
 
 - Format-valid IDs alone are **not** playable — UI requires `youtubeStatus === 'public'`
-- Prefer demoting a weak title/topic match over shipping the wrong lesson (`cat-104` demote list)
-- Prefer oEmbed title alignment over spreadsheet marketing titles
-- No synthetic view counts; no fake padding tutorials
+- Prefer demoting a weak title/topic match over shipping the wrong lesson
+- Prefer oEmbed title alignment over marketing titles
+- No synthetic view counts; no invented YouTube IDs; search-tail non-Altium uploads tagged `Other / Adjacent`
 
 ---
 
 ## 16. Catalog stats (current)
 
-Derived from `catalogCounts` / post-audit meta (Jul 29, 2026):
+Derived from `catalogCounts` / post-audit meta after MD→CSV import (Jul 29, 2026):
 
 | Metric | Count |
 |--------|------:|
-| Named catalog rows | **201** |
-| With some YouTube URL | 198 |
-| With direct YouTube ID | 165 |
-| **Playable embeds (`public`)** | **163** |
-| Unverified (embed withheld) | 2 |
-| Playlist-only | 33 |
-| Missing individual URL | 3 |
-| Invalid | 0 |
-| Altium Designer | 101 |
-| Altium Develop | 100 |
+| Named catalog rows | **333** |
+| With YouTube URL / ID | 333 |
+| **Playable embeds (`public`)** | **332** |
+| Unverified (embed withheld) | 1 |
+| Playlist-only | 0 |
+| Altium Designer | ~266 |
+| Altium Develop | ~55 |
+| Other / Adjacent (honest search-tail) | ~12 |
 | Hand-enriched overlays | 15 |
-| Enrichment goal | 201 |
-| Duplicate title pairs flagged in import | 3 pairs |
+| Enrichment goal | 333 |
 
 **Channel meta (import):** Educational Engineering Team · `UCQfDCLyWEHMV3ERhD0au0Ug`
 
-**Content hubs (not catalog rows):** 10 learning paths · 6 projects · 8 roles · ~55 skills · ~44 shortcuts.
+**Content hubs (not catalog rows):** 10 learning paths · 6 projects · 8 roles — tutorial IDs remapped to new `cat-*` via YouTube ID.
 
 ---
-
 ## 17. Design system & UX notes
 
 **Visual language**

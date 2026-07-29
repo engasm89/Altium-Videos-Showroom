@@ -1,0 +1,1007 @@
+{
+  "cat-001": {
+    "youtubeId": "eet_pending_001",
+    "title": "Introduction & Getting Started with Altium",
+    "slug": "introduction-getting-started-with-altium"
+  },
+  "cat-002": {
+    "youtubeId": "eet_pending_002",
+    "title": "Download and Installing Altium Designer",
+    "slug": "download-and-installing-altium-designer"
+  },
+  "cat-003": {
+    "youtubeId": "eet_pending_003",
+    "title": "Altium Designer Interface Introduction",
+    "slug": "altium-designer-interface-introduction"
+  },
+  "cat-004": {
+    "youtubeId": "ABsYVuiAEvI",
+    "title": "Create Component Libraries for Atmega Symbol & Add Pins",
+    "slug": "create-component-libraries-for-atmega-symbol-add-pins"
+  },
+  "cat-005": {
+    "youtubeId": "eet_pending_005",
+    "title": "Finishing the Schematic",
+    "slug": "finishing-the-schematic"
+  },
+  "cat-006": {
+    "youtubeId": "eet_pending_006",
+    "title": "Creating Your Components Symbol - Making",
+    "slug": "creating-your-components-symbol-making"
+  },
+  "cat-007": {
+    "youtubeId": "eet_pending_007",
+    "title": "Link footprint with Schematic Library",
+    "slug": "link-footprint-with-schematic-library"
+  },
+  "cat-008": {
+    "youtubeId": "eet_pending_008",
+    "title": "Adding the new Library File to your Design",
+    "slug": "adding-the-new-library-file-to-your-design"
+  },
+  "cat-009": {
+    "youtubeId": "eet_pending_009",
+    "title": "Creating the Atmega Component Symbol",
+    "slug": "creating-the-atmega-component-symbol"
+  },
+  "cat-010": {
+    "youtubeId": "eet_pending_010",
+    "title": "Creating the Atmega PCB Footprint",
+    "slug": "creating-the-atmega-pcb-footprint"
+  },
+  "cat-011": {
+    "youtubeId": "eet_pending_011",
+    "title": "Adding Components and Placing them on Schematic",
+    "slug": "adding-components-and-placing-them-on-schematic"
+  },
+  "cat-012": {
+    "youtubeId": "eet_pending_012",
+    "title": "Adding Components Libraries",
+    "slug": "adding-components-libraries"
+  },
+  "cat-013": {
+    "youtubeId": "eet_pending_013",
+    "title": "ATMEGA Schematic Connection",
+    "slug": "atmega-schematic-connection"
+  },
+  "cat-014": {
+    "youtubeId": "eet_pending_014",
+    "title": "USB Connector Schematic",
+    "slug": "usb-connector-schematic"
+  },
+  "cat-015": {
+    "youtubeId": "eet_pending_015",
+    "title": "Header Pins for Nano Board",
+    "slug": "header-pins-for-nano-board"
+  },
+  "cat-016": {
+    "youtubeId": "eet_pending_016",
+    "title": "Adding Resistors LED Indicators Voltage Regulator",
+    "slug": "adding-resistors-led-indicators-voltage-regulator"
+  },
+  "cat-017": {
+    "youtubeId": "eet_pending_017",
+    "title": "Annotating and Compiling Project",
+    "slug": "annotating-and-compiling-project"
+  },
+  "cat-018": {
+    "youtubeId": "eet_pending_018",
+    "title": "Getting Started with the PCB Design Solve Errors",
+    "slug": "getting-started-with-the-pcb-design-solve-errors"
+  },
+  "cat-019": {
+    "youtubeId": "eet_pending_019",
+    "title": "Drawing The Board Shape",
+    "slug": "drawing-the-board-shape"
+  },
+  "cat-020": {
+    "youtubeId": "eet_pending_020",
+    "title": "Placing PCB Items Atmega and Headers",
+    "slug": "placing-pcb-items-atmega-and-headers"
+  },
+  "cat-021": {
+    "youtubeId": "eet_pending_021",
+    "title": "ICSP SWITCH Resistor array crystal MicroUSB",
+    "slug": "icsp-switch-resistor-array-crystal-microusb"
+  },
+  "cat-022": {
+    "youtubeId": "eet_pending_022",
+    "title": "FTDI Regulator Capacitors",
+    "slug": "ftdi-regulator-capacitors"
+  },
+  "cat-023": {
+    "youtubeId": "eet_pending_023",
+    "title": "Manual Routing",
+    "slug": "manual-routing"
+  },
+  "cat-024": {
+    "youtubeId": "eet_pending_024",
+    "title": "AutoRouting",
+    "slug": "autorouting"
+  },
+  "cat-025": {
+    "youtubeId": "eet_pending_025",
+    "title": "How to make the auto-routing work for you",
+    "slug": "how-to-make-the-auto-routing-work-for-you"
+  },
+  "cat-026": {
+    "youtubeId": "eet_pending_026",
+    "title": "Improve AutoRouting Trial and Error",
+    "slug": "improve-autorouting-trial-and-error"
+  },
+  "cat-027": {
+    "youtubeId": "eet_pending_027",
+    "title": "Greber File and Bill of Material",
+    "slug": "greber-file-and-bill-of-material"
+  },
+  "cat-028": {
+    "youtubeId": "lPySXBru2DQ",
+    "title": "Professional PCB - Manufacture a Professional PCB",
+    "slug": "professional-pcb-manufacture-a-professional-pcb"
+  },
+  "cat-029": {
+    "youtubeId": "eet_pending_029",
+    "title": "Introduction to Altium User Interface",
+    "slug": "introduction-to-altium-user-interface"
+  },
+  "cat-030": {
+    "youtubeId": "eet_pending_030",
+    "title": "Download and Install Altium Designer",
+    "slug": "download-and-install-altium-designer"
+  },
+  "cat-031": {
+    "youtubeId": "eet_pending_031",
+    "title": "Create Component Symbol & Add Pins",
+    "slug": "create-component-symbol-add-pins"
+  },
+  "cat-032": {
+    "youtubeId": "eet_pending_032",
+    "title": "Finishing the Schematic",
+    "slug": "finishing-the-schematic-2"
+  },
+  "cat-033": {
+    "youtubeId": "eet_pending_033",
+    "title": "Making Footprint and PCB Layout",
+    "slug": "making-footprint-and-pcb-layout"
+  },
+  "cat-034": {
+    "youtubeId": "eet_pending_034",
+    "title": "Link footprint with Schematic Library",
+    "slug": "link-footprint-with-schematic-library-2"
+  },
+  "cat-035": {
+    "youtubeId": "eet_pending_035",
+    "title": "Adding the new Library File to your Design",
+    "slug": "adding-the-new-library-file-to-your-design-2"
+  },
+  "cat-036": {
+    "youtubeId": "MctyE99XnPA",
+    "title": "How to download and Install Altium 2022 - Altium Designer",
+    "slug": "how-to-download-and-install-altium-2022-altium-designer"
+  },
+  "cat-037": {
+    "youtubeId": "bmMsJ9U41sk",
+    "title": "How to switch UI Dark and Light theme - Altium Designer",
+    "slug": "how-to-switch-ui-dark-and-light-theme-altium-designer"
+  },
+  "cat-038": {
+    "youtubeId": "5Nus7vQMEog",
+    "title": "Modified Arduino UNO Schematic - Altium Designer",
+    "slug": "modified-arduino-uno-schematic-altium-designer"
+  },
+  "cat-039": {
+    "youtubeId": "XxjD7yUgMls",
+    "title": "Make 3D Viewer for PCB Smoother with Antialiasing Feature - Altium Designer",
+    "slug": "make-3d-viewer-for-pcb-smoother-with-antialiasing-feature-altium-designer"
+  },
+  "cat-040": {
+    "youtubeId": "XEhOmIe6iAE",
+    "title": "Speed Up Your PCB Design Process With Integrated Schematic Creation - Altium Designer",
+    "slug": "speed-up-your-pcb-design-process-with-integrated-schematic-creation-altium-desig"
+  },
+  "cat-041": {
+    "youtubeId": "7hCfGYnZQtE",
+    "title": "How To Place Capacitors In Altium Designer",
+    "slug": "placing-the-capacitors-in-altium-designer"
+  },
+  "cat-042": {
+    "youtubeId": "eet_pending_042",
+    "title": "Altium: Helping you search for what you need",
+    "slug": "altium-helping-you-search-for-what-you-need"
+  },
+  "cat-043": {
+    "youtubeId": "eet_pending_043",
+    "title": "How to configure the board shape and location of your Altium Designer circuit",
+    "slug": "how-to-configure-the-board-shape-and-location-of-your-altium-designer-circuit"
+  },
+  "cat-044": {
+    "youtubeId": "eet_pending_044",
+    "title": "Setting up the grid in Altium Designer",
+    "slug": "setting-up-the-grid-in-altium-designer"
+  },
+  "cat-045": {
+    "youtubeId": "3HaY1IQKNx0",
+    "title": "Voltage Sensor using Altium Desinger",
+    "slug": "voltage-sensor-using-altium-desinger"
+  },
+  "cat-046": {
+    "youtubeId": "NtBA3B24a7M",
+    "title": "Design Relay module PCB using Altium designer",
+    "slug": "design-relay-module-pcb-using-altium-designer"
+  },
+  "cat-047": {
+    "youtubeId": "c9fhAuKBSg0",
+    "title": "Design ESP32 with LCD PCB using Altium designer",
+    "slug": "design-esp32-with-lcd-pcb-using-altium-designer"
+  },
+  "cat-048": {
+    "youtubeId": "h7O2TjKy5Zw",
+    "title": "How to quickly and easily extract step files from Altium designer",
+    "slug": "how-to-quickly-and-easily-extract-step-files-from-altium-designer"
+  },
+  "cat-049": {
+    "youtubeId": "Mphb6qw1OLw",
+    "title": "Design Bluetooth module with Arduino nano using Altium designer",
+    "slug": "design-bluetooth-module-with-arduino-nano-using-altium-designer"
+  },
+  "cat-050": {
+    "youtubeId": "p8fiEBc6ye0",
+    "title": "Design Full bridge rectifier PCB using Altium designer",
+    "slug": "design-full-bridge-rectifier-pcb-using-altium-designer"
+  },
+  "cat-051": {
+    "youtubeId": "5Z0biRZTdJ0",
+    "title": "Lamp Dimmer using Altium Designer",
+    "slug": "lamp-dimmer-using-altium-designer"
+  },
+  "cat-052": {
+    "youtubeId": "XpNYfMPdOUw",
+    "title": "Design A Temperature Sensor With Pic16f877a Using Altium Designer",
+    "slug": "design-a-temperature-sensor-with-pic16f877a-using-altium-designer"
+  },
+  "cat-053": {
+    "youtubeId": "QYD8xXVN5kQ",
+    "title": "Design Motion Sensor with ESP32 using Altium designer",
+    "slug": "design-motion-sensor-with-esp32-using-altium-designer"
+  },
+  "cat-054": {
+    "youtubeId": "Mfyjzh9cW70",
+    "title": "Touch Sensor using Altium Designer",
+    "slug": "touch-sensor-using-altium-designer"
+  },
+  "cat-055": {
+    "youtubeId": "M32n1n3dXB0",
+    "title": "Design IR sensor PCB using Altium designer",
+    "slug": "design-ir-sensor-pcb-using-altium-designer"
+  },
+  "cat-056": {
+    "youtubeId": "krjf7XB1uR8",
+    "title": "Altium PCB Designer Feature that will make your life easier",
+    "slug": "altium-pcb-designer-feature-that-will-make-your-life-easier"
+  },
+  "cat-057": {
+    "youtubeId": "Qf7JK2hBIXg",
+    "title": "Download and Install Arduino Pro IDE 2.0.0 - Altium Designer",
+    "slug": "download-and-install-arduino-pro-ide-2-0-0-altium-designer"
+  },
+  "cat-058": {
+    "youtubeId": "lwoXP2GdRAU",
+    "title": "Fix for All of Your LabVIEW LINX and Raspberry Pi Problems - Altium Designer",
+    "slug": "fix-for-all-of-your-labview-linx-and-raspberry-pi-problems-altium-designer"
+  },
+  "cat-059": {
+    "youtubeId": "ghBvjUS1MSE",
+    "title": "Acceleration Sensing Alarm Using ADXL337",
+    "slug": "acceleration-sensing-alarm-using-adxl337"
+  },
+  "cat-060": {
+    "youtubeId": "StcwxiX4aco",
+    "title": "Mini Audio Amplifier Circuit",
+    "slug": "mini-audio-amplifier-circuit"
+  },
+  "cat-061": {
+    "youtubeId": "XkR5dt33wxs",
+    "title": "Current Sensor Switch",
+    "slug": "current-sensor-switch"
+  },
+  "cat-062": {
+    "youtubeId": "vjmWAXl5rBo",
+    "title": "Audio amplifier circuit using IC LM386",
+    "slug": "audio-amplifier-circuit-using-ic-lm386"
+  },
+  "cat-063": {
+    "youtubeId": "WLs8QpxUcM4",
+    "title": "Thief Door Alarm Using Transistor",
+    "slug": "thief-door-alarm-using-transistor"
+  },
+  "cat-064": {
+    "youtubeId": "pwLIlhC2xXM",
+    "title": "Cupboard Lighting Circuit",
+    "slug": "cupboard-lighting-circuit"
+  },
+  "cat-065": {
+    "youtubeId": "e1XZ9Dox7eI",
+    "title": "Automated Garage Door Lights Circuit",
+    "slug": "automated-garage-door-lights-circuit"
+  },
+  "cat-066": {
+    "youtubeId": "59bSVOnfwM4",
+    "title": "Pressure Sensor Circuit",
+    "slug": "pressure-sensor-circuit"
+  },
+  "cat-067": {
+    "youtubeId": "ZOiBOIBMx0s",
+    "title": "Air Flow Detector",
+    "slug": "air-flow-detector"
+  },
+  "cat-068": {
+    "youtubeId": "Udi3h349L3g",
+    "title": "Ultrasonic Sensor",
+    "slug": "ultrasonic-sensor"
+  },
+  "cat-069": {
+    "youtubeId": "PZ4BYCB_Hw0",
+    "title": "Light Sensor Triggers",
+    "slug": "light-sensor-triggers"
+  },
+  "cat-070": {
+    "youtubeId": "PZHPLcho98U",
+    "title": "water level Sensor",
+    "slug": "water-level-sensor"
+  },
+  "cat-071": {
+    "youtubeId": "Xo_6JoEwgbc",
+    "title": "smoke sensor",
+    "slug": "smoke-sensor"
+  },
+  "cat-072": {
+    "youtubeId": "XDaTqnhFwfw",
+    "title": "MQ3 Alcohol sensor",
+    "slug": "mq3-alcohol-sensor"
+  },
+  "cat-073": {
+    "youtubeId": "9EeCw4iHjW8",
+    "title": "DS1307 RTC Module",
+    "slug": "ds1307-rtc-module"
+  },
+  "cat-074": {
+    "youtubeId": "CwOTT-O4OMA",
+    "title": "I2C OLED",
+    "slug": "i2c-oled"
+  },
+  "cat-075": {
+    "youtubeId": "6Bh_Kw7laMI",
+    "title": "XY Joystick Control in Altium Designer",
+    "slug": "xy-joystick-control-in-altium-designer"
+  },
+  "cat-076": {
+    "youtubeId": "RXxcBgoWhJ0",
+    "title": "PIR Motion Sensor in Altium Designer",
+    "slug": "pir-motion-sensor-in-altium-designer"
+  },
+  "cat-077": {
+    "youtubeId": "sxFfsjY5kww",
+    "title": "Humidity Sensor in Altium Designer",
+    "slug": "humidity-sensor-in-altium-designer"
+  },
+  "cat-078": {
+    "youtubeId": "haXkezD6eKE",
+    "title": "Advanced 3D Design with Altium Designer",
+    "slug": "advanced-3d-design-with-altium-designer"
+  },
+  "cat-079": {
+    "youtubeId": "63josriN8kk",
+    "title": "Multi Board Assembly using Altium Designer",
+    "slug": "multi-board-assembly-using-altium-designer"
+  },
+  "cat-080": {
+    "youtubeId": "kyHoF9tjlMM",
+    "title": "Interactive Routing with altium designer",
+    "slug": "interactive-routing-with-altium-designer"
+  },
+  "cat-081": {
+    "youtubeId": "VqHovI5MOvg",
+    "title": "Electret Microphone Amplifier using Altium Designer",
+    "slug": "electret-microphone-amplifier-using-altium-designer"
+  },
+  "cat-082": {
+    "youtubeId": "-bAQN9V3pkg",
+    "title": "DS3231 Real Time Clock - Altium Designer",
+    "slug": "ds3231-real-time-clock-altium-designer"
+  },
+  "cat-083": {
+    "youtubeId": "iv0yuba7_8c",
+    "title": "TTP223 Touch Sensor using Altium Designer",
+    "slug": "ttp223-touch-sensor-using-altium-designer"
+  },
+  "cat-084": {
+    "youtubeId": "jbPrpB02J44",
+    "title": "Let’s Get Started in Arduino R4",
+    "slug": "let-s-get-started-in-arduino-r4"
+  },
+  "cat-085": {
+    "youtubeId": "W58AucWt5wE",
+    "title": "Arduino UNO R4 Unveiled: Exploring Features and Functionality",
+    "slug": "arduino-uno-r4-unveiled-exploring-features-and-functionality"
+  },
+  "cat-086": {
+    "youtubeId": "QEgmUVPk-yw",
+    "title": "Arduino UNO R4 Schematic Deep Dive: Exploring Every Circuitry Detail",
+    "slug": "arduino-uno-r4-schematic-deep-dive-exploring-every-circuitry-detail"
+  },
+  "cat-087": {
+    "youtubeId": "o-V6yCPvxt4",
+    "title": "Arduino UNO R4 Schematic & PCB Design Course",
+    "slug": "arduino-uno-r4-schematic-pcb-design-course"
+  },
+  "cat-088": {
+    "youtubeId": "ardin_BCbiA",
+    "title": "Deep Dive Exploring Every Circuitry Detail Arduino UNO R4 Schematic & PCB Design Course",
+    "slug": "deep-dive-exploring-every-circuitry-detail-arduino-uno-r4-schematic-pcb-design-c"
+  },
+  "cat-089": {
+    "youtubeId": "ZR0fi1geWAg",
+    "title": "Arduino UNO R4 Schematic Design Step by Step in Altium Designer",
+    "slug": "arduino-uno-r4-schematic-design-step-by-step-in-altium-designer"
+  },
+  "cat-090": {
+    "youtubeId": "0kITrEVkUcM",
+    "title": "Arduino R4 Component Placement Step by Step in Altium Designer",
+    "slug": "arduino-r4-component-placement-step-by-step-in-altium-designer"
+  },
+  "cat-091": {
+    "youtubeId": "Si2nl-dXsKw",
+    "title": "Arduino R4 PCB Layout Step-by-Step in Altium Designer",
+    "slug": "arduino-r4-pcb-layout-step-by-step-in-altium-designer"
+  },
+  "cat-092": {
+    "youtubeId": "DtT8gCZanM4",
+    "title": "Introduction to Altium Develop",
+    "slug": "introduction-to-altium-develop"
+  },
+  "cat-093": {
+    "youtubeId": "pCQqi-JrX1s",
+    "title": "Stop Guessing: Use Threading to Control Your Design Workflow",
+    "slug": "stop-guessing-use-threading-to-control-your-design-workflow"
+  },
+  "cat-094": {
+    "youtubeId": "YM8uoe5nTDM",
+    "title": "Hardware Version Control in Altium Develop",
+    "slug": "forget-version-control-headaches"
+  },
+  "cat-095": {
+    "youtubeId": "3iFDgmiZ-qE",
+    "title": "Engineering Guidelines Using Altium Develop Documents",
+    "slug": "engineering-guidelines-using-altium-develop-documents"
+  },
+  "cat-096": {
+    "youtubeId": "CnoEwyo-Zlw",
+    "title": "Managing PCB Project Workflows",
+    "slug": "managing-pcb-project-workflows"
+  },
+  "cat-097": {
+    "youtubeId": "nfPooIm7l64",
+    "title": "Tracking Design Progress in Altium Develop",
+    "slug": "tracking-design-progress-in-altium-develop"
+  },
+  "cat-098": {
+    "youtubeId": "JFeG_M6wmWA",
+    "title": "Collaboration on Hardware Project using Altium Develop",
+    "slug": "collaboration-on-hardware-project-using-altium-develop"
+  },
+  "cat-099": {
+    "youtubeId": "_s8vzgWQ_IA",
+    "title": "Showcasing Mechanical Collaboration",
+    "slug": "showcasing-mechanical-collaboration"
+  },
+  "cat-100": {
+    "youtubeId": "YlYz2IbLMX4",
+    "title": "Connecting ECAD, MCAD and Manufacturing – The Future of Unified Design",
+    "slug": "connecting-ecad-mcad-and-manufacturing-the-future-of-unified-design"
+  },
+  "cat-101": {
+    "youtubeId": "BO50EfxPMMc",
+    "title": "Inviting Unlimited External Stakeholders Safely",
+    "slug": "inviting-unlimited-external-stakeholders-safely"
+  },
+  "cat-102": {
+    "youtubeId": "K_rOP5C1yEs",
+    "title": "Getting Supplier Feedback in few minutes",
+    "slug": "getting-supplier-feedback-in-few-minutes"
+  },
+  "cat-103": {
+    "youtubeId": "65iSOk6u8Oo",
+    "title": "Best Practices for Managing Hardware Team Productivity",
+    "slug": "best-practices-for-managing-hardware-team-productivity"
+  },
+  "cat-104": {
+    "youtubeId": "jdH6LuHaJQA",
+    "title": "Shared Context to Eliminate Hidden Engineering Debt",
+    "slug": "shared-context-to-eliminate-hidden-engineering-debt"
+  },
+  "cat-105": {
+    "youtubeId": "IFfmJh1QBxY",
+    "title": "Boost Engineering Precision with AI-Assisted Requirements",
+    "slug": "boost-engineering-precision-with-ai-assisted-requirements"
+  },
+  "cat-106": {
+    "youtubeId": "vpN9w8elDg8",
+    "title": "Synchronization with firmware team",
+    "slug": "synchronization-with-firmware-team"
+  },
+  "cat-107": {
+    "youtubeId": "dgWlodLd7nQ",
+    "title": "Real time BOM risk forecasting",
+    "slug": "real-time-bom-risk-forecasting"
+  },
+  "cat-108": {
+    "youtubeId": "zJj8fUTas_E",
+    "title": "How Altium Develop enables Engineering Verification",
+    "slug": "how-altium-develop-enables-engineering-verification"
+  },
+  "cat-109": {
+    "youtubeId": "IFRiC4swlaY",
+    "title": "Common Issues with Modular Architectural Design",
+    "slug": "common-issues-with-modular-architectural-design"
+  },
+  "cat-110": {
+    "youtubeId": "gnLu-VR3WiU",
+    "title": "Live observability in Altium Develop",
+    "slug": "live-observability-in-altium-develop"
+  },
+  "cat-111": {
+    "youtubeId": "A9cILFH2wyA",
+    "title": "The Smart Path to Sustainable & Compliant Engineering",
+    "slug": "the-smart-path-to-sustainable-compliant-engineering"
+  },
+  "cat-112": {
+    "youtubeId": "R6Wh4qTMVUs",
+    "title": "Create Clear Data boundaries using RBAC",
+    "slug": "create-clear-data-boundaries-using-rbac"
+  },
+  "cat-113": {
+    "youtubeId": "WODdrxy0qMk",
+    "title": "How Managers Use Cross Discipline Signals",
+    "slug": "how-managers-use-cross-discipline-signals"
+  },
+  "cat-114": {
+    "youtubeId": "jvOglNrsaj8",
+    "title": "Constraint Intelligence: The Silent Partner",
+    "slug": "constraint-intelligence-the-silent-partner"
+  },
+  "cat-115": {
+    "youtubeId": "es2k5qVK7rQ",
+    "title": "Future of Collaborative Hardware Engineering",
+    "slug": "future-of-collaborative-hardware-engineering"
+  },
+  "cat-116": {
+    "youtubeId": "J3G-LU9X9EA",
+    "title": "Altium Develop for system level architects",
+    "slug": "altium-develop-for-system-level-architects"
+  },
+  "cat-117": {
+    "youtubeId": "BB0Qf0LCWh4",
+    "title": "Linking customer feedback to Altium Develop",
+    "slug": "linking-customer-feedback-to-altium-develop"
+  },
+  "cat-118": {
+    "youtubeId": "20cdd29fgO8",
+    "title": "Building bridge b/w Jira and Altium Develop",
+    "slug": "building-bridge-b-w-jira-and-altium-develop"
+  },
+  "cat-119": {
+    "youtubeId": "Y8YZcGbn0Ao",
+    "title": "Three Engineering Roles use the same workspace",
+    "slug": "three-engineering-roles-use-the-same-workspace"
+  },
+  "cat-120": {
+    "youtubeId": "53d_9yeZhqA",
+    "title": "Smarter Hardware Decisions with Supply Chain Insight",
+    "slug": "smarter-hardware-decisions-with-supply-chain-insight"
+  },
+  "cat-121": {
+    "youtubeId": "O5Pe1WgZFVc",
+    "title": "Sprint week entirely in Altium Develop",
+    "slug": "sprint-week-entirely-in-altium-develop"
+  },
+  "cat-122": {
+    "youtubeId": "nhCmPxAgXnU",
+    "title": "Altium Develop for post silicon iteration",
+    "slug": "altium-develop-for-post-silicon-iteration"
+  },
+  "cat-123": {
+    "youtubeId": "I1zJ7-96C1Q",
+    "title": "Building Strong Partner Ecosystems Using Altium Develop",
+    "slug": "partners-ecosystem-playbook"
+  },
+  "cat-124": {
+    "youtubeId": "y3bPH3zhqrg",
+    "title": "Life Cycle thinking in Hardware",
+    "slug": "life-cycle-thinking-in-hardware"
+  },
+  "cat-125": {
+    "youtubeId": "zOYEvtchKjA",
+    "title": "Coaching new hires with Altium Develop",
+    "slug": "coaching-new-hires-with-altium-develop"
+  },
+  "cat-126": {
+    "youtubeId": "RMXAX6n6jKo",
+    "title": "How reviewer can effectively review",
+    "slug": "how-reviewer-can-effectively-review"
+  },
+  "cat-127": {
+    "youtubeId": "5TIyURTBs-U",
+    "title": "How to effectively use History in Develop",
+    "slug": "how-to-effectively-use-history-in-develop"
+  },
+  "cat-128": {
+    "youtubeId": "y5xCtsT5he4",
+    "title": "Project setup in Altium Develop",
+    "slug": "project-setup-in-altium-develop"
+  },
+  "cat-129": {
+    "youtubeId": "2Hc_xpuXvGU",
+    "title": "Selecting the Right Buck IC & Topology - Altium Designer Tutorial",
+    "slug": "selecting-the-right-buck-ic-topology-altium-designer-tutorial"
+  },
+  "cat-130": {
+    "youtubeId": "iF-4iZYQrU0",
+    "title": "Capturing Design Intent Through Commenting - Altium Designer Tutorial",
+    "slug": "capturing-design-intent-through-commenting-altium-designer-tutorial"
+  },
+  "cat-131": {
+    "youtubeId": "my7_tfx9sJc",
+    "title": "Switching Regulator Design - Altium Designer Tutorial",
+    "slug": "switching-regulator-design-altium-designer-tutorial"
+  },
+  "cat-132": {
+    "youtubeId": "8o528JEp12Q",
+    "title": "Design Stack-Up and Design Rules - Altium Designer Tutorial",
+    "slug": "design-stack-up-and-design-rules-altium-designer-tutorial"
+  },
+  "cat-133": {
+    "youtubeId": "gm0wOh5HaLg",
+    "title": "Buck Converter PCB Layout - Altium Designer Tutorial",
+    "slug": "buck-converter-pcb-layout-altium-designer-tutorial"
+  },
+  "cat-134": {
+    "youtubeId": "79R5D6-AZfA",
+    "title": "A Day in the Life of a Hardware Team Using Altium Develop",
+    "slug": "a-day-in-the-life-of-a-hardware-team-using-altium-develop"
+  },
+  "cat-135": {
+    "youtubeId": "Ai28NEt26o4",
+    "title": "Altium Develop From Files to Peer-Powered Network",
+    "slug": "altium-develop-from-files-to-peer-powered-network"
+  },
+  "cat-136": {
+    "youtubeId": "Aib1e5VcVGE",
+    "title": "Working with External Partners in Altium Develop",
+    "slug": "working-with-external-partners-in-altium-develop"
+  },
+  "cat-137": {
+    "youtubeId": "h3TjL-bWdWo",
+    "title": "Cutting Re-Spins with Continuous Insight in Altium Develop",
+    "slug": "cutting-re-spins-with-continuous-insight-in-altium-develop"
+  },
+  "cat-138": {
+    "youtubeId": "YlZOezmm6bc",
+    "title": "Turning Past Projects into a Living Training Ground with Altium Develop",
+    "slug": "turning-past-projects-into-a-living-training-ground-with-altium-develop"
+  },
+  "cat-139": {
+    "youtubeId": "COUmuOEVSXg",
+    "title": "Why Multidisciplinary Teams Need Altium Develop",
+    "slug": "why-multidisciplinary-teams-need-altium-develop"
+  },
+  "cat-140": {
+    "youtubeId": "fRp3HBx_Dms",
+    "title": "Altium Develop Platform Tour",
+    "slug": "altium-develop-platform-tour"
+  },
+  "cat-141": {
+    "youtubeId": "t-8nE3k7xSs",
+    "title": "Creating Team Workspace in Altium Develop",
+    "slug": "creating-team-workspace-in-altium-develop"
+  },
+  "cat-142": {
+    "youtubeId": "oDkou7M0k3I",
+    "title": "Capturing Arduino UNO schematics",
+    "slug": "capturing-arduino-uno-schematics"
+  },
+  "cat-143": {
+    "youtubeId": "pQs1aXdbJpQ",
+    "title": "Managing Arduino UNO Parts in Altium Develop",
+    "slug": "managing-arduino-uno-parts-in-altium-develop"
+  },
+  "cat-144": {
+    "youtubeId": "QlxX9bAEsjo",
+    "title": "Schematics Review & Comments",
+    "slug": "schematics-review-comments"
+  },
+  "cat-145": {
+    "youtubeId": "0HzhGphBn6k",
+    "title": "Design Rules for Arduino UNO",
+    "slug": "design-rules-for-arduino-uno"
+  },
+  "cat-146": {
+    "youtubeId": "oy3y99JuCc0",
+    "title": "Placing & Routing Arduino UNO",
+    "slug": "placing-routing-arduino-uno"
+  },
+  "cat-147": {
+    "youtubeId": "VvHRmc21EXg",
+    "title": "MCAD Co-Designer Checks for Arduino UNO Explained",
+    "slug": "mcad-co-designer-checks-for-arduino-uno-in-develop"
+  },
+  "cat-148": {
+    "youtubeId": "vyiC7nD9Tdc",
+    "title": "BOM Management for Arduino UNO",
+    "slug": "bom-management-for-arduino-uno"
+  },
+  "cat-149": {
+    "youtubeId": "4rI8BLQ1PXk",
+    "title": "How to Release a Project in Altium Develop",
+    "slug": "releasing-project-in-altium-develop"
+  },
+  "cat-150": {
+    "youtubeId": "FQnj9FhfQ4U",
+    "title": "From Design to Production Arduino Outputs Guide",
+    "slug": "generating-manufacturing-outputs-for-arduino"
+  },
+  "cat-151": {
+    "youtubeId": "WT_bDQ6kMmU",
+    "title": "Team Handoff & Next steps",
+    "slug": "team-handoff-next-steps"
+  },
+  "cat-152": {
+    "youtubeId": "o-8e9wwzWdA",
+    "title": "Altium Develop in 5 Minutes: Complete Overview",
+    "slug": "altium-develop-in-5-minutes-complete-overview"
+  },
+  "cat-153": {
+    "youtubeId": "TnnJpUn2A_4",
+    "title": "Your First Team Workspace in Altium Develop",
+    "slug": "your-first-team-workspace-in-altium-develop"
+  },
+  "cat-154": {
+    "youtubeId": "96oGDMsqN3I",
+    "title": "From Schematic to PCB in Altium Develop",
+    "slug": "from-schematic-to-pcb-in-altium-develop"
+  },
+  "cat-155": {
+    "youtubeId": "_LOIj4NnUjg",
+    "title": "Design Rules and DRC the Simple Way in Altium Develop",
+    "slug": "design-rules-and-drc-the-simple-way-in-altium-develop"
+  },
+  "cat-156": {
+    "youtubeId": "DvvKglYegsM",
+    "title": "Comments, Reviews, and Design Intent in Altium Develop",
+    "slug": "comments-reviews-and-design-intent-in-altium-develop"
+  },
+  "cat-157": {
+    "youtubeId": "LUfHwtYxyLg",
+    "title": "Managing Hardware Project Workflow in Altium Develop",
+    "slug": "managing-hardware-project-workflow-in-altium-develop"
+  },
+  "cat-158": {
+    "youtubeId": "3jkBNnnJoNc",
+    "title": "Tracking Progress and Using History in Altium Develop",
+    "slug": "tracking-progress-and-using-history-in-altium-develop"
+  },
+  "cat-159": {
+    "youtubeId": "QW8Hw8e_li8",
+    "title": "Version Control in Altium Develop: No More Headaches",
+    "slug": "version-control-in-altium-develop-no-more-headaches"
+  },
+  "cat-160": {
+    "youtubeId": "5F_XsUPN8xk",
+    "title": "ECAD-MCAD Collaboration and External Stakeholders in Altium Develop",
+    "slug": "ecad-mcad-collaboration-and-external-stakeholders-in-altium-develop"
+  },
+  "cat-161": {
+    "youtubeId": "89igYeQXZ_o",
+    "title": "BOM, Supply Chain, and Fast Supplier Feedback in Altium Develop",
+    "slug": "bom-supply-chain-and-fast-supplier-feedback-in-altium-develop"
+  },
+  "cat-162": {
+    "youtubeId": "7jQW5RRFpsQ",
+    "title": "Working with Partners and Post Silicon Iteration in Altium Develop",
+    "slug": "working-with-partners-and-post-silicon-iteration-in-altium-develop"
+  },
+  "cat-163": {
+    "youtubeId": "PQPA30fd1NY",
+    "title": "Coaching Teams and Scaling Best Practices with Altium Develop",
+    "slug": "coaching-teams-and-scaling-best-practices-with-altium-develop"
+  },
+  "cat-164": {
+    "youtubeId": "H88Q08Lf4Kk",
+    "title": "Stop Guessing: Threaded Hardware Discussions in Altium Develop | PCB Team Communication",
+    "slug": "stop-guessing-threaded-hardware-discussions-in-altium-develop-pcb-team-communica"
+  },
+  "cat-165": {
+    "youtubeId": "3B-cI9xEx9Q",
+    "title": "One Day in a Hardware Team Workspace in Altium Develop | PCB Collaboration Workflow",
+    "slug": "one-day-in-a-hardware-team-workspace-in-altium-develop-pcb-collaboration-workflo"
+  },
+  "cat-166": {
+    "youtubeId": "JDBGNQylBg0",
+    "title": "Three Engineering Roles, One Workspace in Altium Develop | Unified PCB Team Platform",
+    "slug": "three-engineering-roles-one-workspace-in-altium-develop-unified-pcb-team-platfor"
+  },
+  "cat-167": {
+    "youtubeId": "MrvhQtXcGvw",
+    "title": "Run an Entire Hardware Sprint Week in Altium Develop | Agile PCB Engineering Workflow",
+    "slug": "run-an-entire-hardware-sprint-week-in-altium-develop-agile-pcb-engineering-workf"
+  },
+  "cat-168": {
+    "youtubeId": "CGnKWzMxyvg",
+    "title": "From Jira Ticket to Released PCB in Altium Develop",
+    "slug": "from-jira-ticket-to-released-pcb-in-altium-develop-complete-hardware-delivery-pi"
+  },
+  "cat-169": {
+    "youtubeId": "K8nQ2d6uJMg",
+    "title": "Manager Signals: See Hardware Health at a Glance in Altium Develop | Real-Time PCB Insights",
+    "slug": "manager-signals-see-hardware-health-at-a-glance-in-altium-develop-real-time-pcb-"
+  },
+  "cat-170": {
+    "youtubeId": "Noxk9jw-3rs",
+    "title": "AI-Assisted Requirements to Verified Hardware in Altium Develop | Future of PCB Design",
+    "slug": "ai-assisted-requirements-to-verified-hardware-in-altium-develop-future-of-pcb-de"
+  },
+  "cat-171": {
+    "youtubeId": "wxnWPUUdf9Q",
+    "title": "Modular Hardware Architecture Without Hidden Debt in Altium Develop | Scalable PCB Design",
+    "slug": "modular-hardware-architecture-without-hidden-debt-in-altium-develop-scalable-pcb"
+  },
+  "cat-172": {
+    "youtubeId": "-9-n8f1kxX8",
+    "title": "From Requirement to Test Point in Altium Develop | Complete PCB Verification Trail",
+    "slug": "from-requirement-to-test-point-in-altium-develop-complete-pcb-verification-trail"
+  },
+  "cat-173": {
+    "youtubeId": "Xm-WgUOWOlE",
+    "title": "Audit-Ready: Trace Every Hardware Change in Altium Develop | Full PCB Traceability",
+    "slug": "audit-ready-trace-every-hardware-change-in-altium-develop-full-pcb-traceability"
+  },
+  "cat-174": {
+    "youtubeId": "Vr_4rjEGPDs",
+    "title": "Post-Silicon Iteration Without Chaos in Altium Develop | Faster Hardware Revisions",
+    "slug": "post-silicon-iteration-without-chaos-in-altium-develop-faster-hardware-revisions"
+  },
+  "cat-175": {
+    "youtubeId": "n3b2QEzwst8",
+    "title": "Compliance & Sustainability Threads in Altium Develop | Hardware ESG & Regulatory Workflows",
+    "slug": "compliance-sustainability-threads-in-altium-develop-hardware-esg-regulatory-work"
+  },
+  "cat-176": {
+    "youtubeId": "4Zc_TVlqyWc",
+    "title": "Complete Hardware Team Workspace in Altium Develop",
+    "slug": "altium-develop-01-one-day-in-your-hardware-workspace"
+  },
+  "cat-177": {
+    "youtubeId": "d16MHZHkwsw",
+    "title": "Altium Develop 02 - Connected Stack Setup and Review",
+    "slug": "altium-develop-02-connected-stack-setup-and-review"
+  },
+  "cat-178": {
+    "youtubeId": "zFOiYNcBVEY",
+    "title": "Altium Develop 03 - New Project Setup for PCB Teams",
+    "slug": "altium-develop-03-new-project-setup-for-pcb-teams"
+  },
+  "cat-179": {
+    "youtubeId": "fdl7XDzjDxQ",
+    "title": "Altium Develop 04 - Managing Schematic Components in Develop",
+    "slug": "altium-develop-04-managing-schematic-components-in-develop"
+  },
+  "cat-180": {
+    "youtubeId": "SVGqGIxXhkY",
+    "title": "Altium Develop 05 - Schematic Wiring and Design Rules in Develop",
+    "slug": "altium-develop-05-schematic-wiring-and-design-rules-in-develop"
+  },
+  "cat-181": {
+    "youtubeId": "WM0GPuI4FPI",
+    "title": "Altium Develop 06 - Importing Designs to PCB in Develop",
+    "slug": "altium-develop-06-importing-designs-to-pcb-in-develop"
+  },
+  "cat-182": {
+    "youtubeId": "Z2HSuQYWrPs",
+    "title": "Altium Develop 07 - Board Planning Mode and Strategy in Develop",
+    "slug": "altium-develop-07-board-planning-mode-and-strategy-in-develop"
+  },
+  "cat-183": {
+    "youtubeId": "ZiwahuZ3JZI",
+    "title": "Altium Develop 08 - Grid Control and Board Shape in Develop",
+    "slug": "altium-develop-08-grid-control-and-board-shape-in-develop"
+  },
+  "cat-184": {
+    "youtubeId": "V50fZEJzalk",
+    "title": "Altium Develop 09 - PCB Layers, Graphics, and Views in Develop",
+    "slug": "altium-develop-09-pcb-layers-graphics-and-views-in-develop"
+  },
+  "cat-185": {
+    "youtubeId": "QtLncn3RYUI",
+    "title": "Altium Develop 10 - Intelligent Component Placement Workflow",
+    "slug": "altium-develop-10-intelligent-component-placement-workflow"
+  },
+  "cat-186": {
+    "youtubeId": "60VRmxI2HO4",
+    "title": "PCB Routing and Ground Plane Design for Reliable Boards in Altium Develop",
+    "slug": "altium-develop-11-routing-and-ground-planes-for-robust-pcbs"
+  },
+  "cat-187": {
+    "youtubeId": "3vKnKX_zffg",
+    "title": "PCB Project Templates and Design Reuse for Faster Hardware Development",
+    "slug": "altium-develop-12-template-projects-and-reuse-in-develop"
+  },
+  "cat-188": {
+    "youtubeId": "jv-m0xkAFck",
+    "title": "Getting Started with Altium Develop: Download, Setup & Navigation",
+    "slug": "getting-started-with-altium-develop-download-setup-navigation"
+  },
+  "cat-189": {
+    "youtubeId": "GybRq75o7g8",
+    "title": "Altium Develop Tutorial: Create ESP32 Symbol Step by Step",
+    "slug": "altium-develop-tutorial-create-esp32-symbol-step-by-step"
+  },
+  "cat-190": {
+    "youtubeId": "XkynOxsk8zs",
+    "title": "Discover How to Use Built-In Libraries in Altium Develop",
+    "slug": "discover-how-to-use-built-in-libraries-in-altium-develop"
+  },
+  "cat-191": {
+    "youtubeId": "t6ePVpeCLxw",
+    "title": "Create ESP32 PCB Footprint Library from Scratch",
+    "slug": "create-esp32-pcb-footprint-library-from-scratch"
+  },
+  "cat-192": {
+    "youtubeId": "x_k2w7JaqjU",
+    "title": "Link PCB Footprint to Schematic Components in Altium Develop",
+    "slug": "link-pcb-footprint-to-schematic-components-in-altium-develop"
+  },
+  "cat-193": {
+    "youtubeId": "by0Nqt7Bng4",
+    "title": "Create Schematic Documents and Templates in Altium Develop",
+    "slug": "create-schematic-documents-and-templates-in-altium-develop"
+  },
+  "cat-194": {
+    "youtubeId": "L80LQsII6F0",
+    "title": "Altium Annotation Tools: Assign Designators Correctly Every Time",
+    "slug": "altium-annotation-tools-assign-designators-correctly-every-time"
+  },
+  "cat-195": {
+    "youtubeId": "uxQ5BToKINI",
+    "title": "How to Add Wires, Net Labels & Power Ports in Altium Designer",
+    "slug": "altium-develop-workspace-tutorial-add-wires-net-labels-and-power-ports-to-your-s"
+  },
+  "cat-196": {
+    "youtubeId": "y3zuWMbFF20",
+    "title": "Altium Designer Schematic Validation and Error Reporting",
+    "slug": "altium-develop-workspace-tutorial-schematic-validation-and-error-reporting"
+  },
+  "cat-197": {
+    "youtubeId": "Ev50Iv42V18",
+    "title": "Altium Develop Workspace Tutorial: Import Design Changes & Create the Board Outline",
+    "slug": "altium-develop-workspace-tutorial-import-design-changes-create-the-board-outline"
+  },
+  "cat-198": {
+    "youtubeId": "UupvG-qL73k",
+    "title": "Altium Develop Workspace Tutorial: Component Placement Tools & Techniques",
+    "slug": "altium-develop-workspace-tutorial-component-placement-tools-techniques"
+  },
+  "cat-199": {
+    "youtubeId": "kG1dRfyjbcw",
+    "title": "Altium Designer Tutorial PCB Component Layout & Layer Setup",
+    "slug": "altium-develop-workspace-tutorial-pcb-component-layout-layer-configuration"
+  },
+  "cat-200": {
+    "youtubeId": "PbzuaVGsaEU",
+    "title": "Master Advanced Schematic Search Features in Altium Designer",
+    "slug": "altium-develop-workspace-tutorial-advanced-search-features-for-schematics"
+  },
+  "cat-201": {
+    "youtubeId": "QSIuvoAPV74",
+    "title": "Advanced Search Features for PCB Design in Altium Designer",
+    "slug": "altium-develop-workspace-tutorial-advanced-search-features-for-pcb-design"
+  }
+}

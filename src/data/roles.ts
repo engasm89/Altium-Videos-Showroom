@@ -21,7 +21,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'OutJob Release'
     ],
     recommendedPathId: 'path-001',
-    tutorialIds: ['cat-036', 'cat-178', 'cat-191', 'cat-197', 'cat-186', 'cat-133', 'cat-047'],
+    tutorialIds: ['cat-001', 'cat-175', 'cat-215', 'cat-067', 'cat-214', 'cat-133', 'cat-002'],
     iconName: 'Cpu'
   },
   {
@@ -43,7 +43,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'Alternate Part Number Assignment'
     ],
     recommendedPathId: 'path-008',
-    tutorialIds: ['cat-189', 'cat-161'],
+    tutorialIds: ['cat-141', 'cat-125'],
     iconName: 'ShoppingBag'
   },
   {
@@ -65,7 +65,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'ECAD-MCAD CoDesign'
     ],
     recommendedPathId: 'path-004',
-    tutorialIds: ['cat-191', 'cat-160', 'cat-150'],
+    tutorialIds: ['cat-215', 'cat-140', 'cat-244'],
     iconName: 'Wrench'
   },
   {
@@ -87,7 +87,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'Firmware Pin Header Export'
     ],
     recommendedPathId: 'path-004',
-    tutorialIds: ['cat-180', 'cat-047'],
+    tutorialIds: ['cat-074', 'cat-002'],
     iconName: 'Terminal'
   },
   {
@@ -109,7 +109,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'Release Approval Gates'
     ],
     recommendedPathId: 'path-010',
-    tutorialIds: ['cat-188', 'cat-170', 'cat-163'],
+    tutorialIds: ['cat-101', 'cat-090', 'cat-114'],
     iconName: 'Users'
   },
   {
@@ -130,7 +130,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'Environmental Compliance Verification'
     ],
     recommendedPathId: 'path-009',
-    tutorialIds: ['cat-170', 'cat-161'],
+    tutorialIds: ['cat-090', 'cat-125'],
     iconName: 'ShieldAlert'
   },
   {
@@ -152,7 +152,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'MPN Parameters'
     ],
     recommendedPathId: 'path-002',
-    tutorialIds: ['cat-189', 'cat-191', 'cat-004'],
+    tutorialIds: ['cat-141', 'cat-215', 'cat-015'],
     iconName: 'Boxes'
   },
   {
@@ -174,7 +174,7 @@ export const ENGINEERING_ROLES: EngineeringRole[] = [
       'Trial Enablement'
     ],
     recommendedPathId: 'path-006',
-    tutorialIds: ['cat-188', 'cat-178', 'cat-163'],
+    tutorialIds: ['cat-101', 'cat-175', 'cat-114'],
     iconName: 'Briefcase'
   }
 ];

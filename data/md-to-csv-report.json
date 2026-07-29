@@ -1,0 +1,11 @@
+{
+  "sourceMode": "parse_report",
+  "parseReport": "parsed-from-md-report.json",
+  "uniqueRows": 333,
+  "adjacentOrNonAltium": 12,
+  "designer": 266,
+  "develop": 55,
+  "precedence": "CSV built from MD parse wins over Educational_Engineering_Team_Altium_Video_Catalog.xlsx at import.",
+  "outCsv": "data/videos.csv",
+  "generatedAt": "2026-07-29T14:29:14.673Z"
+}

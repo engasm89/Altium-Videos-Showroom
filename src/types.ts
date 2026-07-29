@@ -1,4 +1,9 @@
-export type ProductType = 'Altium Designer' | 'Altium Develop' | 'Altium 365' | 'CircuitMaker';
+export type ProductType =
+  | 'Altium Designer'
+  | 'Altium Develop'
+  | 'Altium 365'
+  | 'CircuitMaker'
+  | 'Other / Adjacent';
 
 export type DifficultyLevel = 'Beginner' | 'Intermediate' | 'Advanced';
 

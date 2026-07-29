@@ -46,7 +46,7 @@ There is **no backend** in the current MVP. Progress, bookmarks, outbound click 
 | `src/main.tsx` | React root + `BrowserRouter` |
 | `src/App.tsx` | Shell: Navbar/Footer, `Routes`, tutorial modal, progress handlers |
 | `src/routes.ts` | Tab key ↔ public path map |
-| `src/data/catalog.ts` + `catalog.generated.json` | Imported 201-row audit + enrichment overlays + honest counts |
+| `src/data/catalog.ts` + `catalog.generated.json` | Imported MD→CSV catalog (333 rows) + enrichment overlays + honest counts |
 | `src/data/learningPaths.ts` / `roles.ts` / `projects.ts` / `shortcuts.ts` | Curriculum taxonomy |
 | `src/utils/youtube.ts` | Playable-ID gate (rejects `eet_*` synthetics) |
 | `src/utils/storage.ts` | localStorage progress + real-only logs |

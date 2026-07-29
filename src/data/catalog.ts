@@ -41,12 +41,12 @@ export type CatalogGeneratedRow = {
 
 /** Topic fallbacks for curated outline-only lessons (no verified YT ID). */
 const PENDING_TOPIC_TARGETS: Record<string, string> = {
-  'eet_pending_001': 'cat-036', // Install Altium 2022
+  'eet_pending_001': 'cat-001', // Install Altium 2022
   'eet_pending_008': 'cat-133', // Buck Converter PCB Layout
-  'eet_pending_011': 'cat-161', // BOM / supply chain in Develop
-  'eet_pending_012': 'cat-160', // ECAD-MCAD collaboration
-  'eet_pending_014': 'cat-047', // ESP32 PCB design
-  'eet_pending_015': 'cat-150', // Manufacturing outputs Arduino
+  'eet_pending_011': 'cat-125', // BOM / supply chain in Develop
+  'eet_pending_012': 'cat-140', // ECAD-MCAD collaboration
+  'eet_pending_014': 'cat-002', // ESP32 PCB design
+  'eet_pending_015': 'cat-244', // Manufacturing outputs Arduino
 };
 
 function rowToTutorial(row: CatalogGeneratedRow): Tutorial {
@@ -143,10 +143,10 @@ for (const overlay of CURATED_ENRICHMENT) {
   }
 }
 
-export const CATALOG_ENRICHMENT_GOAL = 201;
+export const CATALOG_ENRICHMENT_GOAL = 333;
 export const CATALOG_IMPORT_META = generated.meta;
 
-/** Full imported catalog (201 rows) with enrichment overlays where available. */
+/** Full imported catalog with enrichment overlays where available. */
 export const ALL_TUTORIALS: Tutorial[] = [...byId.values()].sort(
   (a, b) => (a.catalogNumber || 0) - (b.catalogNumber || 0)
 );
@@ -186,4 +186,5 @@ export const catalogCounts = {
   enrichmentGoal: CATALOG_ENRICHMENT_GOAL,
   designer: ALL_TUTORIALS.filter((t) => t.product === 'Altium Designer').length,
   develop: ALL_TUTORIALS.filter((t) => t.product === 'Altium Develop').length,
+  otherAdjacent: ALL_TUTORIALS.filter((t) => t.product === 'Other / Adjacent').length,
 };

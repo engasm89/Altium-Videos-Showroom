@@ -157,8 +157,9 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
           {catalogCounts.total} Named Tutorials
         </h2>
         <p className="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
-          Full recovered audit catalog — {catalogCounts.playable} oEmbed-public embeds, {catalogCounts.playlistOnly} playlist-only,
-          {catalogCounts.enriched} hand-enriched outlines. No synthetic YouTube padding.
+          Full MD→CSV catalog — {catalogCounts.playable} oEmbed-public embeds,
+          {catalogCounts.otherAdjacent} adjacent/search-tail,
+          {catalogCounts.enriched} hand-enriched outlines. CSV wins over xlsx; no invented YouTube IDs.
         </p>
       </div>
 
@@ -239,6 +240,11 @@ export const CatalogView: React.FC<CatalogViewProps> = ({
               <option value="All">All Products ({ALL_TUTORIALS.length})</option>
               <option value="Altium Designer">Altium Designer ({catalogCounts.designer})</option>
               <option value="Altium Develop">Altium Develop ({catalogCounts.develop})</option>
+              {catalogCounts.otherAdjacent > 0 && (
+                <option value="Other / Adjacent">
+                  Other / Adjacent ({catalogCounts.otherAdjacent})
+                </option>
+              )}
             </select>
           </div>
 

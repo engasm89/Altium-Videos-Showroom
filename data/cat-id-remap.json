@@ -1,0 +1,1048 @@
+{
+  "remap": {
+    "cat-004": {
+      "newId": "cat-015",
+      "youtubeId": "ABsYVuiAEvI",
+      "title": "Create Component Libraries for Atmega Symbol & Add Pins"
+    },
+    "cat-028": {
+      "newId": "cat-086",
+      "youtubeId": "lPySXBru2DQ",
+      "title": "Professional PCB - Manufacture a Professional PCB"
+    },
+    "cat-036": {
+      "newId": "cat-001",
+      "youtubeId": "MctyE99XnPA",
+      "title": "How to download and Install Altium 2022 - Altium Designer"
+    },
+    "cat-037": {
+      "newId": "cat-246",
+      "youtubeId": "bmMsJ9U41sk",
+      "title": "How to switch UI Dark and Light theme - Altium Designer"
+    },
+    "cat-038": {
+      "newId": "cat-282",
+      "youtubeId": "5Nus7vQMEog",
+      "title": "Modified Arduino UNO Schematic - Altium Designer"
+    },
+    "cat-039": {
+      "newId": "cat-075",
+      "youtubeId": "XxjD7yUgMls",
+      "title": "Make 3D Viewer for PCB Smoother with Antialiasing Feature - Altium Designer"
+    },
+    "cat-040": {
+      "newId": "cat-054",
+      "youtubeId": "XEhOmIe6iAE",
+      "title": "Speed Up Your PCB Design Process With Integrated Schematic Creation - Altium Designer"
+    },
+    "cat-041": {
+      "newId": "cat-135",
+      "youtubeId": "7hCfGYnZQtE",
+      "title": "How To Place Capacitors In Altium Designer"
+    },
+    "cat-045": {
+      "newId": "cat-032",
+      "youtubeId": "3HaY1IQKNx0",
+      "title": "Voltage Sensor using Altium Desinger"
+    },
+    "cat-049": {
+      "newId": "cat-018",
+      "youtubeId": "Mphb6qw1OLw",
+      "title": "Design Bluetooth module with Arduino nano using Altium designer"
+    },
+    "cat-050": {
+      "newId": "cat-012",
+      "youtubeId": "p8fiEBc6ye0",
+      "title": "Design Full bridge rectifier PCB using Altium designer"
+    },
+    "cat-051": {
+      "newId": "cat-040",
+      "youtubeId": "5Z0biRZTdJ0",
+      "title": "Lamp Dimmer using Altium Designer"
+    },
+    "cat-052": {
+      "newId": "cat-286",
+      "youtubeId": "XpNYfMPdOUw",
+      "title": "Design A Temperature Sensor With Pic16f877a Using Altium Designer"
+    },
+    "cat-053": {
+      "newId": "cat-002",
+      "youtubeId": "QYD8xXVN5kQ",
+      "title": "Design Motion Sensor with ESP32 using Altium designer"
+    },
+    "cat-054": {
+      "newId": "cat-112",
+      "youtubeId": "Mfyjzh9cW70",
+      "title": "Touch Sensor using Altium Designer"
+    },
+    "cat-057": {
+      "newId": "cat-327",
+      "youtubeId": "Qf7JK2hBIXg",
+      "title": "Download and Install Arduino Pro IDE 2.0.0 - Altium Designer"
+    },
+    "cat-059": {
+      "newId": "cat-121",
+      "youtubeId": "ghBvjUS1MSE",
+      "title": "Acceleration Sensing Alarm Using ADXL337"
+    },
+    "cat-060": {
+      "newId": "cat-260",
+      "youtubeId": "StcwxiX4aco",
+      "title": "Mini Audio Amplifier Circuit"
+    },
+    "cat-061": {
+      "newId": "cat-022",
+      "youtubeId": "XkR5dt33wxs",
+      "title": "Current Sensor Switch"
+    },
+    "cat-062": {
+      "newId": "cat-166",
+      "youtubeId": "vjmWAXl5rBo",
+      "title": "Audio amplifier circuit using IC LM386"
+    },
+    "cat-063": {
+      "newId": "cat-008",
+      "youtubeId": "WLs8QpxUcM4",
+      "title": "Thief Door Alarm Using Transistor"
+    },
+    "cat-064": {
+      "newId": "cat-173",
+      "youtubeId": "pwLIlhC2xXM",
+      "title": "Cupboard Lighting Circuit"
+    },
+    "cat-067": {
+      "newId": "cat-055",
+      "youtubeId": "ZOiBOIBMx0s",
+      "title": "Air Flow Detector"
+    },
+    "cat-068": {
+      "newId": "cat-226",
+      "youtubeId": "Udi3h349L3g",
+      "title": "Ultrasonic Sensor"
+    },
+    "cat-069": {
+      "newId": "cat-106",
+      "youtubeId": "PZ4BYCB_Hw0",
+      "title": "Light Sensor Triggers"
+    },
+    "cat-070": {
+      "newId": "cat-253",
+      "youtubeId": "PZHPLcho98U",
+      "title": "water level Sensor"
+    },
+    "cat-071": {
+      "newId": "cat-267",
+      "youtubeId": "Xo_6JoEwgbc",
+      "title": "smoke sensor"
+    },
+    "cat-072": {
+      "newId": "cat-050",
+      "youtubeId": "XDaTqnhFwfw",
+      "title": "MQ3 Alcohol sensor"
+    },
+    "cat-074": {
+      "newId": "cat-211",
+      "youtubeId": "CwOTT-O4OMA",
+      "title": "I2C OLED"
+    },
+    "cat-075": {
+      "newId": "cat-156",
+      "youtubeId": "6Bh_Kw7laMI",
+      "title": "XY Joystick Control in Altium Designer"
+    },
+    "cat-076": {
+      "newId": "cat-051",
+      "youtubeId": "RXxcBgoWhJ0",
+      "title": "PIR Motion Sensor in Altium Designer"
+    },
+    "cat-077": {
+      "newId": "cat-237",
+      "youtubeId": "sxFfsjY5kww",
+      "title": "Humidity Sensor in Altium Designer"
+    },
+    "cat-080": {
+      "newId": "cat-035",
+      "youtubeId": "kyHoF9tjlMM",
+      "title": "Interactive Routing with altium designer"
+    },
+    "cat-081": {
+      "newId": "cat-100",
+      "youtubeId": "VqHovI5MOvg",
+      "title": "Electret Microphone Amplifier using Altium Designer"
+    },
+    "cat-082": {
+      "newId": "cat-042",
+      "youtubeId": "-bAQN9V3pkg",
+      "title": "DS3231 Real Time Clock - Altium Designer"
+    },
+    "cat-085": {
+      "newId": "cat-290",
+      "youtubeId": "W58AucWt5wE",
+      "title": "Arduino UNO R4 Unveiled: Exploring Features and Functionality"
+    },
+    "cat-087": {
+      "newId": "cat-223",
+      "youtubeId": "o-V6yCPvxt4",
+      "title": "Arduino UNO R4 Schematic & PCB Design Course"
+    },
+    "cat-088": {
+      "newId": "cat-326",
+      "youtubeId": "ardin_BCbiA",
+      "title": "Deep Dive Exploring Every Circuitry Detail Arduino UNO R4 Schematic & PCB Design Course"
+    },
+    "cat-089": {
+      "newId": "cat-288",
+      "youtubeId": "ZR0fi1geWAg",
+      "title": "Arduino UNO R4 Schematic Design Step by Step in Altium Designer"
+    },
+    "cat-091": {
+      "newId": "cat-170",
+      "youtubeId": "Si2nl-dXsKw",
+      "title": "Arduino R4 PCB Layout Step-by-Step in Altium Designer"
+    },
+    "cat-092": {
+      "newId": "cat-123",
+      "youtubeId": "DtT8gCZanM4",
+      "title": "Introduction to Altium Develop"
+    },
+    "cat-093": {
+      "newId": "cat-158",
+      "youtubeId": "pCQqi-JrX1s",
+      "title": "Stop Guessing: Use Threading to Control Your Design Workflow"
+    },
+    "cat-094": {
+      "newId": "cat-181",
+      "youtubeId": "YM8uoe5nTDM",
+      "title": "Hardware Version Control in Altium Develop"
+    },
+    "cat-095": {
+      "newId": "cat-169",
+      "youtubeId": "3iFDgmiZ-qE",
+      "title": "Engineering Guidelines Using Altium Develop Documents"
+    },
+    "cat-096": {
+      "newId": "cat-130",
+      "youtubeId": "CnoEwyo-Zlw",
+      "title": "Managing PCB Project Workflows"
+    },
+    "cat-097": {
+      "newId": "cat-176",
+      "youtubeId": "nfPooIm7l64",
+      "title": "Tracking Design Progress in Altium Develop"
+    },
+    "cat-099": {
+      "newId": "cat-140",
+      "youtubeId": "_s8vzgWQ_IA",
+      "title": "Showcasing Mechanical Collaboration"
+    },
+    "cat-100": {
+      "newId": "cat-199",
+      "youtubeId": "YlYz2IbLMX4",
+      "title": "Connecting ECAD, MCAD and Manufacturing – The Future of Unified Design"
+    },
+    "cat-101": {
+      "newId": "cat-180",
+      "youtubeId": "BO50EfxPMMc",
+      "title": "Inviting Unlimited External Stakeholders Safely"
+    },
+    "cat-103": {
+      "newId": "cat-168",
+      "youtubeId": "65iSOk6u8Oo",
+      "title": "Best Practices for Managing Hardware Team Productivity"
+    },
+    "cat-105": {
+      "newId": "cat-250",
+      "youtubeId": "IFfmJh1QBxY",
+      "title": "Boost Engineering Precision with AI-Assisted Requirements"
+    },
+    "cat-106": {
+      "newId": "cat-232",
+      "youtubeId": "vpN9w8elDg8",
+      "title": "Synchronization with firmware team"
+    },
+    "cat-107": {
+      "newId": "cat-283",
+      "youtubeId": "dgWlodLd7nQ",
+      "title": "Real time BOM risk forecasting"
+    },
+    "cat-108": {
+      "newId": "cat-183",
+      "youtubeId": "zJj8fUTas_E",
+      "title": "How Altium Develop enables Engineering Verification"
+    },
+    "cat-109": {
+      "newId": "cat-222",
+      "youtubeId": "IFRiC4swlaY",
+      "title": "Common Issues with Modular Architectural Design"
+    },
+    "cat-112": {
+      "newId": "cat-218",
+      "youtubeId": "R6Wh4qTMVUs",
+      "title": "Create Clear Data boundaries using RBAC"
+    },
+    "cat-113": {
+      "newId": "cat-301",
+      "youtubeId": "WODdrxy0qMk",
+      "title": "How Managers Use Cross Discipline Signals"
+    },
+    "cat-114": {
+      "newId": "cat-251",
+      "youtubeId": "jvOglNrsaj8",
+      "title": "Constraint Intelligence: The Silent Partner"
+    },
+    "cat-116": {
+      "newId": "cat-184",
+      "youtubeId": "J3G-LU9X9EA",
+      "title": "Altium Develop for system level architects"
+    },
+    "cat-117": {
+      "newId": "cat-186",
+      "youtubeId": "BB0Qf0LCWh4",
+      "title": "Linking customer feedback to Altium Develop"
+    },
+    "cat-118": {
+      "newId": "cat-030",
+      "youtubeId": "20cdd29fgO8",
+      "title": "Building bridge b/w Jira and Altium Develop"
+    },
+    "cat-119": {
+      "newId": "cat-243",
+      "youtubeId": "Y8YZcGbn0Ao",
+      "title": "Three Engineering Roles use the same workspace"
+    },
+    "cat-120": {
+      "newId": "cat-258",
+      "youtubeId": "53d_9yeZhqA",
+      "title": "Smarter Hardware Decisions with Supply Chain Insight"
+    },
+    "cat-121": {
+      "newId": "cat-182",
+      "youtubeId": "O5Pe1WgZFVc",
+      "title": "Sprint week entirely in Altium Develop"
+    },
+    "cat-122": {
+      "newId": "cat-159",
+      "youtubeId": "nhCmPxAgXnU",
+      "title": "Altium Develop for post silicon iteration"
+    },
+    "cat-123": {
+      "newId": "cat-165",
+      "youtubeId": "I1zJ7-96C1Q",
+      "title": "Building Strong Partner Ecosystems Using Altium Develop"
+    },
+    "cat-124": {
+      "newId": "cat-299",
+      "youtubeId": "y3bPH3zhqrg",
+      "title": "Life Cycle thinking in Hardware"
+    },
+    "cat-125": {
+      "newId": "cat-128",
+      "youtubeId": "zOYEvtchKjA",
+      "title": "Coaching new hires with Altium Develop"
+    },
+    "cat-126": {
+      "newId": "cat-240",
+      "youtubeId": "RMXAX6n6jKo",
+      "title": "How reviewer can effectively review"
+    },
+    "cat-127": {
+      "newId": "cat-041",
+      "youtubeId": "5TIyURTBs-U",
+      "title": "How to effectively use History in Develop"
+    },
+    "cat-128": {
+      "newId": "cat-171",
+      "youtubeId": "y5xCtsT5he4",
+      "title": "Project setup in Altium Develop"
+    },
+    "cat-129": {
+      "newId": "cat-217",
+      "youtubeId": "2Hc_xpuXvGU",
+      "title": "Selecting the Right Buck IC & Topology - Altium Designer Tutorial"
+    },
+    "cat-131": {
+      "newId": "cat-016",
+      "youtubeId": "my7_tfx9sJc",
+      "title": "Switching Regulator Design - Altium Designer Tutorial"
+    },
+    "cat-132": {
+      "newId": "cat-039",
+      "youtubeId": "8o528JEp12Q",
+      "title": "Design Stack-Up and Design Rules - Altium Designer Tutorial"
+    },
+    "cat-133": {
+      "newId": "cat-133",
+      "youtubeId": "gm0wOh5HaLg",
+      "title": "Buck Converter PCB Layout - Altium Designer Tutorial"
+    },
+    "cat-135": {
+      "newId": "cat-102",
+      "youtubeId": "Ai28NEt26o4",
+      "title": "Altium Develop From Files to Peer-Powered Network"
+    },
+    "cat-136": {
+      "newId": "cat-143",
+      "youtubeId": "Aib1e5VcVGE",
+      "title": "Working with External Partners in Altium Develop"
+    },
+    "cat-137": {
+      "newId": "cat-225",
+      "youtubeId": "h3TjL-bWdWo",
+      "title": "Cutting Re-Spins with Continuous Insight in Altium Develop"
+    },
+    "cat-138": {
+      "newId": "cat-150",
+      "youtubeId": "YlZOezmm6bc",
+      "title": "Turning Past Projects into a Living Training Ground with Altium Develop"
+    },
+    "cat-139": {
+      "newId": "cat-167",
+      "youtubeId": "COUmuOEVSXg",
+      "title": "Why Multidisciplinary Teams Need Altium Develop"
+    },
+    "cat-140": {
+      "newId": "cat-179",
+      "youtubeId": "fRp3HBx_Dms",
+      "title": "Altium Develop Platform Tour"
+    },
+    "cat-141": {
+      "newId": "cat-161",
+      "youtubeId": "t-8nE3k7xSs",
+      "title": "Creating Team Workspace in Altium Develop"
+    },
+    "cat-142": {
+      "newId": "cat-202",
+      "youtubeId": "oDkou7M0k3I",
+      "title": "Capturing Arduino UNO schematics"
+    },
+    "cat-143": {
+      "newId": "cat-163",
+      "youtubeId": "pQs1aXdbJpQ",
+      "title": "Managing Arduino UNO Parts in Altium Develop"
+    },
+    "cat-144": {
+      "newId": "cat-188",
+      "youtubeId": "QlxX9bAEsjo",
+      "title": "Schematics Review & Comments"
+    },
+    "cat-146": {
+      "newId": "cat-205",
+      "youtubeId": "oy3y99JuCc0",
+      "title": "Placing & Routing Arduino UNO"
+    },
+    "cat-147": {
+      "newId": "cat-212",
+      "youtubeId": "VvHRmc21EXg",
+      "title": "MCAD Co-Designer Checks for Arduino UNO Explained"
+    },
+    "cat-148": {
+      "newId": "cat-274",
+      "youtubeId": "vyiC7nD9Tdc",
+      "title": "BOM Management for Arduino UNO"
+    },
+    "cat-149": {
+      "newId": "cat-058",
+      "youtubeId": "4rI8BLQ1PXk",
+      "title": "How to Release a Project in Altium Develop"
+    },
+    "cat-150": {
+      "newId": "cat-244",
+      "youtubeId": "FQnj9FhfQ4U",
+      "title": "From Design to Production Arduino Outputs Guide"
+    },
+    "cat-151": {
+      "newId": "cat-257",
+      "youtubeId": "WT_bDQ6kMmU",
+      "title": "Team Handoff & Next steps"
+    },
+    "cat-153": {
+      "newId": "cat-119",
+      "youtubeId": "TnnJpUn2A_4",
+      "title": "Your First Team Workspace in Altium Develop"
+    },
+    "cat-154": {
+      "newId": "cat-048",
+      "youtubeId": "96oGDMsqN3I",
+      "title": "From Schematic to PCB in Altium Develop"
+    },
+    "cat-155": {
+      "newId": "cat-084",
+      "youtubeId": "_LOIj4NnUjg",
+      "title": "Design Rules and DRC the Simple Way in Altium Develop"
+    },
+    "cat-156": {
+      "newId": "cat-117",
+      "youtubeId": "DvvKglYegsM",
+      "title": "Comments, Reviews, and Design Intent in Altium Develop"
+    },
+    "cat-158": {
+      "newId": "cat-162",
+      "youtubeId": "3jkBNnnJoNc",
+      "title": "Tracking Progress and Using History in Altium Develop"
+    },
+    "cat-161": {
+      "newId": "cat-125",
+      "youtubeId": "89igYeQXZ_o",
+      "title": "BOM, Supply Chain, and Fast Supplier Feedback in Altium Develop"
+    },
+    "cat-162": {
+      "newId": "cat-120",
+      "youtubeId": "7jQW5RRFpsQ",
+      "title": "Working with Partners and Post Silicon Iteration in Altium Develop"
+    },
+    "cat-163": {
+      "newId": "cat-114",
+      "youtubeId": "PQPA30fd1NY",
+      "title": "Coaching Teams and Scaling Best Practices with Altium Develop"
+    },
+    "cat-165": {
+      "newId": "cat-098",
+      "youtubeId": "3B-cI9xEx9Q",
+      "title": "One Day in a Hardware Team Workspace in Altium Develop | PCB Collaboration Workflow"
+    },
+    "cat-166": {
+      "newId": "cat-097",
+      "youtubeId": "JDBGNQylBg0",
+      "title": "Three Engineering Roles, One Workspace in Altium Develop | Unified PCB Team Platform"
+    },
+    "cat-168": {
+      "newId": "cat-187",
+      "youtubeId": "CGnKWzMxyvg",
+      "title": "From Jira Ticket to Released PCB in Altium Develop"
+    },
+    "cat-170": {
+      "newId": "cat-090",
+      "youtubeId": "Noxk9jw-3rs",
+      "title": "AI-Assisted Requirements to Verified Hardware in Altium Develop | Future of PCB Design"
+    },
+    "cat-171": {
+      "newId": "cat-066",
+      "youtubeId": "wxnWPUUdf9Q",
+      "title": "Modular Hardware Architecture Without Hidden Debt in Altium Develop | Scalable PCB Design"
+    },
+    "cat-172": {
+      "newId": "cat-190",
+      "youtubeId": "-9-n8f1kxX8",
+      "title": "From Requirement to Test Point in Altium Develop | Complete PCB Verification Trail"
+    },
+    "cat-173": {
+      "newId": "cat-096",
+      "youtubeId": "Xm-WgUOWOlE",
+      "title": "Audit-Ready: Trace Every Hardware Change in Altium Develop | Full PCB Traceability"
+    },
+    "cat-174": {
+      "newId": "cat-127",
+      "youtubeId": "Vr_4rjEGPDs",
+      "title": "Post-Silicon Iteration Without Chaos in Altium Develop | Faster Hardware Revisions"
+    },
+    "cat-175": {
+      "newId": "cat-157",
+      "youtubeId": "n3b2QEzwst8",
+      "title": "Compliance & Sustainability Threads in Altium Develop | Hardware ESG & Regulatory Workflows"
+    },
+    "cat-176": {
+      "newId": "cat-092",
+      "youtubeId": "4Zc_TVlqyWc",
+      "title": "Complete Hardware Team Workspace in Altium Develop"
+    },
+    "cat-177": {
+      "newId": "cat-177",
+      "youtubeId": "d16MHZHkwsw",
+      "title": "Altium Develop 02 - Connected Stack Setup and Review"
+    },
+    "cat-178": {
+      "newId": "cat-175",
+      "youtubeId": "zFOiYNcBVEY",
+      "title": "Altium Develop 03 - New Project Setup for PCB Teams"
+    },
+    "cat-179": {
+      "newId": "cat-185",
+      "youtubeId": "fdl7XDzjDxQ",
+      "title": "Altium Develop 04 - Managing Schematic Components in Develop"
+    },
+    "cat-180": {
+      "newId": "cat-074",
+      "youtubeId": "SVGqGIxXhkY",
+      "title": "Altium Develop 05 - Schematic Wiring and Design Rules in Develop"
+    },
+    "cat-181": {
+      "newId": "cat-172",
+      "youtubeId": "WM0GPuI4FPI",
+      "title": "Altium Develop 06 - Importing Designs to PCB in Develop"
+    },
+    "cat-182": {
+      "newId": "cat-064",
+      "youtubeId": "Z2HSuQYWrPs",
+      "title": "Altium Develop 07 - Board Planning Mode and Strategy in Develop"
+    },
+    "cat-183": {
+      "newId": "cat-295",
+      "youtubeId": "ZiwahuZ3JZI",
+      "title": "Altium Develop 08 - Grid Control and Board Shape in Develop"
+    },
+    "cat-184": {
+      "newId": "cat-280",
+      "youtubeId": "V50fZEJzalk",
+      "title": "Altium Develop 09 - PCB Layers, Graphics, and Views in Develop"
+    },
+    "cat-185": {
+      "newId": "cat-231",
+      "youtubeId": "QtLncn3RYUI",
+      "title": "Altium Develop 10 - Intelligent Component Placement Workflow"
+    },
+    "cat-186": {
+      "newId": "cat-214",
+      "youtubeId": "60VRmxI2HO4",
+      "title": "PCB Routing and Ground Plane Design for Reliable Boards in Altium Develop"
+    },
+    "cat-188": {
+      "newId": "cat-101",
+      "youtubeId": "jv-m0xkAFck",
+      "title": "Getting Started with Altium Develop: Download, Setup & Navigation"
+    },
+    "cat-189": {
+      "newId": "cat-141",
+      "youtubeId": "GybRq75o7g8",
+      "title": "Altium Develop Tutorial: Create ESP32 Symbol Step by Step"
+    },
+    "cat-191": {
+      "newId": "cat-215",
+      "youtubeId": "t6ePVpeCLxw",
+      "title": "Create ESP32 PCB Footprint Library from Scratch"
+    },
+    "cat-194": {
+      "newId": "cat-196",
+      "youtubeId": "L80LQsII6F0",
+      "title": "Altium Annotation Tools: Assign Designators Correctly Every Time"
+    },
+    "cat-195": {
+      "newId": "cat-061",
+      "youtubeId": "uxQ5BToKINI",
+      "title": "How to Add Wires, Net Labels & Power Ports in Altium Designer"
+    },
+    "cat-197": {
+      "newId": "cat-067",
+      "youtubeId": "Ev50Iv42V18",
+      "title": "Altium Develop Workspace Tutorial: Import Design Changes & Create the Board Outline"
+    },
+    "cat-198": {
+      "newId": "cat-113",
+      "youtubeId": "UupvG-qL73k",
+      "title": "Altium Develop Workspace Tutorial: Component Placement Tools & Techniques"
+    },
+    "cat-199": {
+      "newId": "cat-045",
+      "youtubeId": "kG1dRfyjbcw",
+      "title": "Altium Designer Tutorial PCB Component Layout & Layer Setup"
+    },
+    "cat-200": {
+      "newId": "cat-063",
+      "youtubeId": "PbzuaVGsaEU",
+      "title": "Master Advanced Schematic Search Features in Altium Designer"
+    },
+    "cat-201": {
+      "newId": "cat-073",
+      "youtubeId": "QSIuvoAPV74",
+      "title": "Advanced Search Features for PCB Design in Altium Designer"
+    }
+  },
+  "missing": [
+    {
+      "oldId": "cat-001",
+      "reason": "no_yt",
+      "yt": "eet_pending_001"
+    },
+    {
+      "oldId": "cat-002",
+      "reason": "no_yt",
+      "yt": "eet_pending_002"
+    },
+    {
+      "oldId": "cat-003",
+      "reason": "no_yt",
+      "yt": "eet_pending_003"
+    },
+    {
+      "oldId": "cat-005",
+      "reason": "no_yt",
+      "yt": "eet_pending_005"
+    },
+    {
+      "oldId": "cat-006",
+      "reason": "no_yt",
+      "yt": "eet_pending_006"
+    },
+    {
+      "oldId": "cat-007",
+      "reason": "no_yt",
+      "yt": "eet_pending_007"
+    },
+    {
+      "oldId": "cat-008",
+      "reason": "no_yt",
+      "yt": "eet_pending_008"
+    },
+    {
+      "oldId": "cat-009",
+      "reason": "no_yt",
+      "yt": "eet_pending_009"
+    },
+    {
+      "oldId": "cat-010",
+      "reason": "no_yt",
+      "yt": "eet_pending_010"
+    },
+    {
+      "oldId": "cat-011",
+      "reason": "no_yt",
+      "yt": "eet_pending_011"
+    },
+    {
+      "oldId": "cat-012",
+      "reason": "no_yt",
+      "yt": "eet_pending_012"
+    },
+    {
+      "oldId": "cat-013",
+      "reason": "no_yt",
+      "yt": "eet_pending_013"
+    },
+    {
+      "oldId": "cat-014",
+      "reason": "no_yt",
+      "yt": "eet_pending_014"
+    },
+    {
+      "oldId": "cat-015",
+      "reason": "no_yt",
+      "yt": "eet_pending_015"
+    },
+    {
+      "oldId": "cat-016",
+      "reason": "no_yt",
+      "yt": "eet_pending_016"
+    },
+    {
+      "oldId": "cat-017",
+      "reason": "no_yt",
+      "yt": "eet_pending_017"
+    },
+    {
+      "oldId": "cat-018",
+      "reason": "no_yt",
+      "yt": "eet_pending_018"
+    },
+    {
+      "oldId": "cat-019",
+      "reason": "no_yt",
+      "yt": "eet_pending_019"
+    },
+    {
+      "oldId": "cat-020",
+      "reason": "no_yt",
+      "yt": "eet_pending_020"
+    },
+    {
+      "oldId": "cat-021",
+      "reason": "no_yt",
+      "yt": "eet_pending_021"
+    },
+    {
+      "oldId": "cat-022",
+      "reason": "no_yt",
+      "yt": "eet_pending_022"
+    },
+    {
+      "oldId": "cat-023",
+      "reason": "no_yt",
+      "yt": "eet_pending_023"
+    },
+    {
+      "oldId": "cat-024",
+      "reason": "no_yt",
+      "yt": "eet_pending_024"
+    },
+    {
+      "oldId": "cat-025",
+      "reason": "no_yt",
+      "yt": "eet_pending_025"
+    },
+    {
+      "oldId": "cat-026",
+      "reason": "no_yt",
+      "yt": "eet_pending_026"
+    },
+    {
+      "oldId": "cat-027",
+      "reason": "no_yt",
+      "yt": "eet_pending_027"
+    },
+    {
+      "oldId": "cat-029",
+      "reason": "no_yt",
+      "yt": "eet_pending_029"
+    },
+    {
+      "oldId": "cat-030",
+      "reason": "no_yt",
+      "yt": "eet_pending_030"
+    },
+    {
+      "oldId": "cat-031",
+      "reason": "no_yt",
+      "yt": "eet_pending_031"
+    },
+    {
+      "oldId": "cat-032",
+      "reason": "no_yt",
+      "yt": "eet_pending_032"
+    },
+    {
+      "oldId": "cat-033",
+      "reason": "no_yt",
+      "yt": "eet_pending_033"
+    },
+    {
+      "oldId": "cat-034",
+      "reason": "no_yt",
+      "yt": "eet_pending_034"
+    },
+    {
+      "oldId": "cat-035",
+      "reason": "no_yt",
+      "yt": "eet_pending_035"
+    },
+    {
+      "oldId": "cat-042",
+      "reason": "no_yt",
+      "yt": "eet_pending_042"
+    },
+    {
+      "oldId": "cat-043",
+      "reason": "no_yt",
+      "yt": "eet_pending_043"
+    },
+    {
+      "oldId": "cat-044",
+      "reason": "no_yt",
+      "yt": "eet_pending_044"
+    },
+    {
+      "oldId": "cat-046",
+      "reason": "yt_not_in_md_csv",
+      "yt": "NtBA3B24a7M",
+      "title": "Design Relay module PCB using Altium designer"
+    },
+    {
+      "oldId": "cat-047",
+      "reason": "yt_not_in_md_csv",
+      "yt": "c9fhAuKBSg0",
+      "title": "Design ESP32 with LCD PCB using Altium designer"
+    },
+    {
+      "oldId": "cat-048",
+      "reason": "yt_not_in_md_csv",
+      "yt": "h7O2TjKy5Zw",
+      "title": "How to quickly and easily extract step files from Altium designer"
+    },
+    {
+      "oldId": "cat-055",
+      "reason": "yt_not_in_md_csv",
+      "yt": "M32n1n3dXB0",
+      "title": "Design IR sensor PCB using Altium designer"
+    },
+    {
+      "oldId": "cat-056",
+      "reason": "yt_not_in_md_csv",
+      "yt": "krjf7XB1uR8",
+      "title": "Altium PCB Designer Feature that will make your life easier"
+    },
+    {
+      "oldId": "cat-058",
+      "reason": "yt_not_in_md_csv",
+      "yt": "lwoXP2GdRAU",
+      "title": "Fix for All of Your LabVIEW LINX and Raspberry Pi Problems - Altium Designer"
+    },
+    {
+      "oldId": "cat-065",
+      "reason": "yt_not_in_md_csv",
+      "yt": "e1XZ9Dox7eI",
+      "title": "Automated Garage Door Lights Circuit"
+    },
+    {
+      "oldId": "cat-066",
+      "reason": "yt_not_in_md_csv",
+      "yt": "59bSVOnfwM4",
+      "title": "Pressure Sensor Circuit"
+    },
+    {
+      "oldId": "cat-073",
+      "reason": "yt_not_in_md_csv",
+      "yt": "9EeCw4iHjW8",
+      "title": "DS1307 RTC Module"
+    },
+    {
+      "oldId": "cat-078",
+      "reason": "yt_not_in_md_csv",
+      "yt": "haXkezD6eKE",
+      "title": "Advanced 3D Design with Altium Designer"
+    },
+    {
+      "oldId": "cat-079",
+      "reason": "yt_not_in_md_csv",
+      "yt": "63josriN8kk",
+      "title": "Multi Board Assembly using Altium Designer"
+    },
+    {
+      "oldId": "cat-083",
+      "reason": "yt_not_in_md_csv",
+      "yt": "iv0yuba7_8c",
+      "title": "TTP223 Touch Sensor using Altium Designer"
+    },
+    {
+      "oldId": "cat-084",
+      "reason": "yt_not_in_md_csv",
+      "yt": "jbPrpB02J44",
+      "title": "Let’s Get Started in Arduino R4"
+    },
+    {
+      "oldId": "cat-086",
+      "reason": "yt_not_in_md_csv",
+      "yt": "QEgmUVPk-yw",
+      "title": "Arduino UNO R4 Schematic Deep Dive: Exploring Every Circuitry Detail"
+    },
+    {
+      "oldId": "cat-090",
+      "reason": "yt_not_in_md_csv",
+      "yt": "0kITrEVkUcM",
+      "title": "Arduino R4 Component Placement Step by Step in Altium Designer"
+    },
+    {
+      "oldId": "cat-098",
+      "reason": "yt_not_in_md_csv",
+      "yt": "JFeG_M6wmWA",
+      "title": "Collaboration on Hardware Project using Altium Develop"
+    },
+    {
+      "oldId": "cat-102",
+      "reason": "yt_not_in_md_csv",
+      "yt": "K_rOP5C1yEs",
+      "title": "Getting Supplier Feedback in few minutes"
+    },
+    {
+      "oldId": "cat-104",
+      "reason": "yt_not_in_md_csv",
+      "yt": "jdH6LuHaJQA",
+      "title": "Shared Context to Eliminate Hidden Engineering Debt"
+    },
+    {
+      "oldId": "cat-110",
+      "reason": "yt_not_in_md_csv",
+      "yt": "gnLu-VR3WiU",
+      "title": "Live observability in Altium Develop"
+    },
+    {
+      "oldId": "cat-111",
+      "reason": "yt_not_in_md_csv",
+      "yt": "A9cILFH2wyA",
+      "title": "The Smart Path to Sustainable & Compliant Engineering"
+    },
+    {
+      "oldId": "cat-115",
+      "reason": "yt_not_in_md_csv",
+      "yt": "es2k5qVK7rQ",
+      "title": "Future of Collaborative Hardware Engineering"
+    },
+    {
+      "oldId": "cat-130",
+      "reason": "yt_not_in_md_csv",
+      "yt": "iF-4iZYQrU0",
+      "title": "Capturing Design Intent Through Commenting - Altium Designer Tutorial"
+    },
+    {
+      "oldId": "cat-134",
+      "reason": "yt_not_in_md_csv",
+      "yt": "79R5D6-AZfA",
+      "title": "A Day in the Life of a Hardware Team Using Altium Develop"
+    },
+    {
+      "oldId": "cat-145",
+      "reason": "yt_not_in_md_csv",
+      "yt": "0HzhGphBn6k",
+      "title": "Design Rules for Arduino UNO"
+    },
+    {
+      "oldId": "cat-152",
+      "reason": "yt_not_in_md_csv",
+      "yt": "o-8e9wwzWdA",
+      "title": "Altium Develop in 5 Minutes: Complete Overview"
+    },
+    {
+      "oldId": "cat-157",
+      "reason": "yt_not_in_md_csv",
+      "yt": "LUfHwtYxyLg",
+      "title": "Managing Hardware Project Workflow in Altium Develop"
+    },
+    {
+      "oldId": "cat-159",
+      "reason": "yt_not_in_md_csv",
+      "yt": "QW8Hw8e_li8",
+      "title": "Version Control in Altium Develop: No More Headaches"
+    },
+    {
+      "oldId": "cat-160",
+      "reason": "yt_not_in_md_csv",
+      "yt": "5F_XsUPN8xk",
+      "title": "ECAD-MCAD Collaboration and External Stakeholders in Altium Develop"
+    },
+    {
+      "oldId": "cat-164",
+      "reason": "yt_not_in_md_csv",
+      "yt": "H88Q08Lf4Kk",
+      "title": "Stop Guessing: Threaded Hardware Discussions in Altium Develop | PCB Team Communication"
+    },
+    {
+      "oldId": "cat-167",
+      "reason": "yt_not_in_md_csv",
+      "yt": "MrvhQtXcGvw",
+      "title": "Run an Entire Hardware Sprint Week in Altium Develop | Agile PCB Engineering Workflow"
+    },
+    {
+      "oldId": "cat-169",
+      "reason": "yt_not_in_md_csv",
+      "yt": "K8nQ2d6uJMg",
+      "title": "Manager Signals: See Hardware Health at a Glance in Altium Develop | Real-Time PCB Insights"
+    },
+    {
+      "oldId": "cat-187",
+      "reason": "yt_not_in_md_csv",
+      "yt": "3vKnKX_zffg",
+      "title": "PCB Project Templates and Design Reuse for Faster Hardware Development"
+    },
+    {
+      "oldId": "cat-190",
+      "reason": "yt_not_in_md_csv",
+      "yt": "XkynOxsk8zs",
+      "title": "Discover How to Use Built-In Libraries in Altium Develop"
+    },
+    {
+      "oldId": "cat-192",
+      "reason": "yt_not_in_md_csv",
+      "yt": "x_k2w7JaqjU",
+      "title": "Link PCB Footprint to Schematic Components in Altium Develop"
+    },
+    {
+      "oldId": "cat-193",
+      "reason": "yt_not_in_md_csv",
+      "yt": "by0Nqt7Bng4",
+      "title": "Create Schematic Documents and Templates in Altium Develop"
+    },
+    {
+      "oldId": "cat-196",
+      "reason": "yt_not_in_md_csv",
+      "yt": "y3zuWMbFF20",
+      "title": "Altium Designer Schematic Validation and Error Reporting"
+    }
+  ],
+  "generatedAt": "2026-07-29T14:29:26.184Z"
+}

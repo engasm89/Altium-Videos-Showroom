@@ -1,37 +1,27 @@
 {
-  "totalRows": 201,
-  "withYoutubeUrl": 198,
-  "withYoutubeId": 165,
-  "public": 163,
-  "unverified": 2,
+  "totalRows": 333,
+  "withYoutubeUrl": 333,
+  "withYoutubeId": 333,
+  "public": 333,
+  "unverified": 0,
   "unavailable": 0,
-  "playlistOnly": 33,
-  "missing": 3,
+  "playlistOnly": 0,
+  "missing": 0,
   "invalid": 0,
-  "designer": 101,
-  "develop": 100,
+  "designer": 266,
+  "develop": 55,
+  "otherAdjacent": 12,
   "duplicates": [
     {
       "type": "title",
-      "a": "cat-005",
-      "b": "cat-032",
-      "title": "Finishing the Schematic"
-    },
-    {
-      "type": "title",
-      "a": "cat-007",
-      "b": "cat-034",
-      "title": "Link footprint with Schematic Library"
-    },
-    {
-      "type": "title",
-      "a": "cat-008",
-      "b": "cat-035",
-      "title": "Adding the new Library File to your Design"
+      "a": "cat-137",
+      "b": "cat-207",
+      "title": "Link footprint with Schematic Library - Altium Designer"
     }
   ],
-  "importedAt": "2026-07-29T10:13:05.256Z",
-  "sourceFile": "Educational_Engineering_Team_Altium_Video_Catalog.xlsx",
-  "oembedSkipped": false,
-  "lastYoutubeAuditAt": "2026-07-29T10:47:30.910Z"
+  "importedAt": "2026-07-29T14:29:19.960Z",
+  "sourceFile": "videos.csv",
+  "sourceKind": "csv",
+  "sourcePrecedence": "csv_over_xlsx",
+  "oembedSkipped": false
 }
