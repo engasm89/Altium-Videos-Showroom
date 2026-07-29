@@ -169,7 +169,7 @@ Outputs:
 - 333 named videos (332 numbered + 1 CSV-only)
 - 333 direct YouTube IDs (no invented IDs; deduped by video_id)
 - 332 oEmbed-`public` embeds; 1 demoted unverified
-- Designer ~266 / Develop ~55 / Other·Adjacent ~12 (honest search-tail tags)
+- Designer **266** / Develop **55** / Other·Adjacent **12** (honest search-tail tags)
 - Learning paths / projects / roles remapped to new `cat-*` via YouTube ID
 
 **Honesty rules that still apply**
@@ -189,4 +189,4 @@ Re-run with `npm run audit:youtube` / `npm run audit:youtube:apply`. Report: `sc
 **Phase 2 (explicitly deferred)**
 - Supabase/Postgres — optional JSON schema types can mirror brief tables later; do not block Vite SPA.
 - Custom domain `learn.eduengteam.com` — still manual DNS + Vercel domain attach.
-- Full transcript/chapter enrichment for all 201 rows.
+- Full transcript/chapter enrichment for all 333 rows (15 hand-enriched today).

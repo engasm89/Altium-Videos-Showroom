@@ -195,7 +195,7 @@ Unverified / playlist-only / missing IDs never get a live embed, even if an ID s
 | `url_recovered_unverified` | Recovered but not trusted for embed |
 | `enrichment_pending` | Typically playlist-only / missing — no public embed |
 
-**Current depth (runtime):** ~15 hand-enriched (chapters), ~6 with transcripts, ~9 with command lists — out of 201 rows.
+**Current depth (runtime):** 15 hand-enriched (chapters), ~6 with transcripts, ~9 with command lists — out of **333** catalog rows (`CATALOG_ENRICHMENT_GOAL = 333`).
 
 ### CTAs & outbound
 
@@ -418,29 +418,65 @@ Without keys: `trackEvent` / `trackPageView` are safe no-ops.
 
 ### Source of truth (precedence)
 
-1. **`data/videos.csv`** (primary) — built from the channel Altium-search markdown dump via `data/parsed-from-md-report.json` / `npm run md:to-csv`. **Wins over xlsx** when present (Ashraf request).
-2. **`Educational_Engineering_Team_Altium_Video_Catalog.xlsx`** — fallback only if CSV is absent.
+1. **`data/videos.csv`** (primary) — **wins over xlsx** whenever the file exists (Ashraf request). Live catalog `meta.sourceKind` is `"csv"`.
+2. **`Educational_Engineering_Team_Altium_Video_Catalog.xlsx`** — **fallback only** if CSV is absent (`import-catalog.mjs`). Do not treat xlsx as the current inventory.
 
-Devil’s advocate: MD/CSV and xlsx overlap but are not identical (different row counts, ID numbering, some playlist-only xlsx rows). Do not merge silently — CSV from MD is authoritative for the live catalog.
+Devil’s advocate: MD/CSV and the older xlsx overlap but are not identical (different row counts, ID numbering, historical playlist-only / missing rows on xlsx). Do not merge silently — CSV from MD is authoritative for the live catalog.
+
+### MD → CSV → catalog flow
+
+```text
+get me each video title and link __in a list and c.md
+        │
+        ▼  (parse once → structured report)
+data/parsed-from-md-report.json     ← 333 unique YouTube IDs
+        │                              (MD claimed 332; +1 CSV-only title
+        │                               “Altium Designer Interface Introduction”)
+        ▼  npm run md:to-csv
+data/videos.csv                     ← primary import input
+data/md-to-csv-report.json          ← designer / develop / adjacent counts
+        │
+        ▼  npm run import:catalog   (or import:videos:csv)
+src/data/catalog.generated.json
+scripts/import-report.json
+public/sitemap.xml
+        │
+        ▼  npm run audit:youtube:apply   (optional honesty pass)
+catalog.generated.json rewritten    ← retitle / demote weak matches
+```
+
+**Product tagging in CSV build (`md-to-csv.mjs`):**
+
+| Product | How it is assigned |
+|---------|--------------------|
+| `Altium Designer` | Title / field inference (default for Altium-branded channel hits) |
+| `Altium Develop` | Title / field mentions Develop |
+| `Other / Adjacent` | Honest search-tail: non-Altium adjacent uploads kept, not sold as Designer/Develop lessons |
 
 ### npm scripts (`package.json`)
 
 | Command | What it does |
 |---------|----------------|
-| `npm run md:to-csv` | Parse report (or MD) → `data/videos.csv` |
-| `npm run import:catalog` | Prefer CSV → oEmbed-validate → generated catalog + report + sitemap |
+| `npm run md:to-csv` | Prefer `data/parsed-from-md-report.json` (else re-parse MD) → `data/videos.csv` + `data/md-to-csv-report.json` |
+| `npm run import:catalog` | **CSV-first** when `data/videos.csv` exists → oEmbed-validate → generated catalog + report + sitemap |
 | `npm run import:catalog:fast` | Same, `--skip-oembed` |
-| `npm run import:videos:csv` | Explicit CSV import (`import-catalog.mjs --csv`) |
-| `npm run audit:youtube` | Re-oEmbed every ID; write Markdown + JSON report |
-| `npm run audit:youtube:apply` | Audit + rewrite `catalog.generated.json` (retitle / demote weak matches) |
+| `npm run import:videos:csv` | Explicit CSV import (`import-catalog.mjs --csv`) — fails if CSV missing |
+| `npm run audit:youtube` | Re-oEmbed every ID; write Markdown + JSON report (no catalog rewrite) |
+| `npm run audit:youtube:apply` | Audit + rewrite `catalog.generated.json` (retitle / Develop→Designer fixes / demote weak matches) |
 | `npm run lint` | `tsc --noEmit` |
 | `npm run build` | Production build |
 
-### Import outputs
+### Import / parse artifacts
 
-- `src/data/catalog.generated.json` — catalog rows + `meta` (sourceKind, stats)
-- `scripts/import-report.json` — counts + duplicate title pairs
-- `public/sitemap.xml`
+| Path | Role |
+|------|------|
+| `get me each video title and link __in a list and c.md` | Human-facing channel Altium-search dump (source list) |
+| `data/parsed-from-md-report.json` | Deduped parse of that MD (333 unique IDs + edge-case notes) |
+| `data/videos.csv` | **Primary catalog source** for import |
+| `data/md-to-csv-report.json` | CSV build summary (product split, precedence note) |
+| `src/data/catalog.generated.json` | Runtime catalog rows + `meta` (`sourceKind`, post-audit public/unverified) |
+| `scripts/import-report.json` | Import-time counts + duplicate title pairs |
+| `public/sitemap.xml` | Regenerated from tutorial slugs |
 
 ### Audit outputs
 
@@ -465,20 +501,23 @@ Devil’s advocate: MD/CSV and xlsx overlap but are not identical (different row
 
 ## 16. Catalog stats (current)
 
-Derived from `catalogCounts` / post-audit meta after MD→CSV import (Jul 29, 2026):
+Derived from runtime `catalogCounts` after MD→CSV import + YouTube embed audit (Jul 29, 2026). Source of truth for numbers: `src/data/catalog.ts` over live `catalog.generated.json` (post-`audit:youtube:apply`).
 
 | Metric | Count |
 |--------|------:|
 | Named catalog rows | **333** |
 | With YouTube URL / ID | 333 |
 | **Playable embeds (`public`)** | **332** |
-| Unverified (embed withheld) | 1 |
+| Unverified (embed withheld) | **1** |
 | Playlist-only | 0 |
-| Altium Designer | ~266 |
-| Altium Develop | ~55 |
-| Other / Adjacent (honest search-tail) | ~12 |
+| Missing / invalid | 0 |
+| Altium Designer | **266** |
+| Altium Develop | **55** |
+| Other / Adjacent (honest search-tail) | **12** |
 | Hand-enriched overlays | 15 |
 | Enrichment goal | 333 |
+
+**Parse note:** MD document claimed 332; parse kept **333** unique IDs (extra: *Altium Designer Interface Introduction*, `V0X7poEedTs`) — see `data/parsed-from-md-report.json` → `count_vs_document_note`.
 
 **Channel meta (import):** Educational Engineering Team · `UCQfDCLyWEHMV3ERhD0au0Ug`
 
@@ -491,7 +530,7 @@ Derived from `catalogCounts` / post-audit meta after MD→CSV import (Jul 29, 20
 
 - Dark slate base (`slate-950` / `900`) with blue/cyan accents — “engineering console,” not light marketing SaaS.
 - Fonts: **Space Grotesk** (display), **Inter** (UI), **JetBrains Mono** (meta, statuses, filters).
-- Product badges: Designer = blue; Develop = cyan.
+- Product badges: Designer = blue; Develop = cyan; Other / Adjacent filtered distinctly in catalog (not sold as Designer/Develop).
 - Status honesty is a first-class UX pattern (amber enrichment banners, mono status chips).
 
 **Component primitives** (`src/components/ui/`): Button, Card, Input, SearchInput, Badge, Breadcrumbs.
@@ -516,8 +555,8 @@ Call these out so nobody confuses roadmap with shipping:
 | **Supabase / Postgres backend** | Not started — no multi-user progress or server analytics |
 | **Custom domain `learn.eduengteam.com`** | Branded in UI; DNS + Vercel attach still manual |
 | **PostHog / GA4 keys in production** | Code stubs exist; no-op until `VITE_*` env set |
-| **Full chapter/transcript enrichment for all 201** | Only ~15 hand-enriched |
-| **Recover 33 playlist-only + 3 missing URLs** | Catalog-honest placeholders only |
+| **Full chapter/transcript enrichment for all 333** | Only 15 hand-enriched overlays today |
+| **Resolve the 1 unverified embed** | Demoted by audit; re-audit / replace ID before promoting to `public` |
 | **SSR / prerender for SEO** | SPA rewrite only |
 | **Certificate issuance in path UX** | Component file present, not primary flow |
 | **Gemini / AI features** | `@google/genai` dependency + `.env.example` note — not productized |
@@ -526,19 +565,22 @@ Call these out so nobody confuses roadmap with shipping:
 | **Admin mutations / CMS** | Read-only status table |
 | **Official Altium partnership dashboard** | Local export JSON only |
 
+> **Historical note:** The old xlsx-era “33 playlist-only + 3 missing” recovery queue does **not** apply to the current MD→CSV catalog (0 playlist-only, 0 missing). Keep that language out of partnership decks.
+
 ---
 
 ## 19. Devil’s advocate — where trust can still break
 
-1. **“201 tutorials” on the homepage can still mislead** if a visitor equates named rows with playable lessons. The UI tries to say “163 playable,” but skimmers will miss it. Lead with playable in partnership decks.
+1. **“333 tutorials” on the homepage can still mislead** if a visitor equates named rows with playable lessons. The UI reports **332 playable** (+ 1 unverified), but skimmers will miss it. Lead with playable in partnership decks. Also: 12 rows are honestly tagged `Other / Adjacent` — not Designer/Develop curriculum.
 2. **Impact dashboard looks like growth metrics.** Without the amber disclaimer, a partner could screenshot localStorage numbers as platform KPIs. Treat export JSON as a *demo of instrumentation*, not proof of traffic.
 3. **Tools feel “live.”** ActiveBOM / DRC / stackup are excellent teaching UX — and dangerous if someone quotes sample stock or impedance as fab truth.
 4. **SPA SEO ceiling.** Sitemap + JSON-LD help, but Google mostly sees one shell. Custom domain + SSR is the real SEO unlock, not more meta tags.
 5. **Privacy copy vs future analytics.** Shipping GA/PostHog without updating Privacy is a self-inflicted trust bug.
 6. **Admin with empty password** is fine for local; catastrophic if that builds to prod. Always set `VITE_ADMIN_PASSWORD` on Vercel.
-7. **Enrichment asymmetry.** Hand-enriched lessons feel like a premium product; thin audit rows feel like a spreadsheet dump. The product story should be “honest inventory + deepening enrichment,” not “finished academy.”
+7. **Enrichment asymmetry.** 15 hand-enriched lessons feel like a premium product; the other ~318 thin audit rows feel like a spreadsheet dump. The product story should be “honest inventory + deepening enrichment,” not “finished academy.”
+8. **CSV vs xlsx confusion.** If someone re-imports from xlsx “because the spreadsheet is familiar,” they silently shrink / reshape the live catalog. Guardrail: keep `data/videos.csv` present; document CSV-first in every ops runbook.
 
-**Stronger long-term approach:** keep the honesty gates (status, oEmbed, demote-over-fake), instrument real analytics only when Privacy and Impact UI stop implying browser-local = global, and treat the 33+3 recovery queue as content ops with the same audit script — not as a frontend feature.
+**Stronger long-term approach:** keep the honesty gates (status, oEmbed, demote-over-fake), instrument real analytics only when Privacy and Impact UI stop implying browser-local = global, deepen enrichment toward the 333 goal as content ops (same audit script), and treat the single unverified ID as a content ticket — not a frontend feature.
 
 ---
 
@@ -548,14 +590,15 @@ Call these out so nobody confuses roadmap with shipping:
 |------|------|
 | Routes | `src/routes.ts`, `src/App.tsx` |
 | Catalog runtime | `src/data/catalog.ts`, `catalog.generated.json`, `curatedEnrichment.ts` |
+| Catalog source (primary) | `data/videos.csv` ← `npm run md:to-csv` ← `data/parsed-from-md-report.json` / MD list |
 | Paths / projects / roles | `src/data/learningPaths.ts`, `projects.ts`, `roles.ts` |
 | Storage | `src/utils/storage.ts` |
 | Search | `src/utils/search.ts` |
 | Analytics / UTM / JSON-LD | `src/utils/analytics.ts`, `outbound.ts`, `jsonld.ts` |
-| Import / audit | `scripts/import-catalog.mjs`, `scripts/audit-youtube-embeds.mjs` |
+| Import / audit | `scripts/md-to-csv.mjs`, `scripts/import-catalog.mjs`, `scripts/import-videos-csv.mjs`, `scripts/audit-youtube-embeds.mjs` |
 | Deploy | `vercel.json`, `.env.example` |
 | Narrative sister doc | `FORAshraf.md` |
 
 ---
 
-*Generated from the codebase as of the Jul 29, 2026 catalog import + YouTube embed audit. When inventory numbers change, re-run `npm run import:catalog` / `audit:youtube` and update §16.*
+*Generated from the codebase as of the Jul 29, 2026 MD→CSV catalog import + YouTube embed audit (`d53e62c` lineage). When inventory numbers change, re-run `npm run md:to-csv` → `import:catalog` → `audit:youtube:apply` and update §16.*
