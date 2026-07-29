@@ -30,8 +30,9 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAltiumLink }
               <span className="font-display font-bold text-base text-white">EET Library</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Independent electronics product development learning platform created by the Educational Engineering Team.
-              {' '}{totalTutorials} practical Altium Designer &amp; Altium Develop tutorials.
+              Independent Altium Designer &amp; Altium Develop tutorial library by the Educational Engineering Team.
+              {' '}{totalTutorials} catalog videos ({designerCount} Designer · {developCount} Develop).
+              Not an Altium product or generic electronics academy.
             </p>
             <p className="font-mono text-xs text-slate-400">
               learn.eduengteam.com

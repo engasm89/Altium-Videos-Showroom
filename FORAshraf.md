@@ -4,7 +4,9 @@
 
 Imagine you rebuilt a university library overnight, then discovered half the shelves were cardboard cutouts with "Book Goes Here" printed on the spine. That is the story of this repo in miniature.
 
-**EET Electronics Product Development Library** (`learn.eduengteam.com` intent) is an independent learning SPA for electronics product development workflows around Altium Designer and Altium Develop. It is *not* an Altium-branded product, *not* official documentation, and *not* a bare YouTube dump. The point is structured paths, roles, projects, and honest usage signals you can eventually take into a partnership conversation.
+**EET Electronics Product Development Library** (`learn.eduengteam.com`) is a **partnership-revival asset** for Altium: an independent, structured library of **Altium Designer** and **Altium Develop** tutorials that proves EET invests in Altium education — organized topic hubs, a handful of strong outcome paths, and honest measurable interest. It is *not* a generic electronics academy, LMS, marketplace, Altium-branded product, or official docs site.
+
+Correct scope (narrower than the big "learning platform for everyone" brief): Designer CAD topics + Develop collaboration topics + 5–7 primary paths + tutorial pages with tracked CTAs + My Activity (local only) / Insights (real analytics). Catalog truth comes from `data/videos.csv`.
 
 This file is the "coffee chat" version of how the system works, why we made the choices we did, and which landmines we already stepped on so you do not have to.
 

@@ -18,7 +18,7 @@ export const VERCEL_SITE_URL = VERCEL_FALLBACK_URL;
 export const SITE_NAME = 'EET Electronics Product Development Library';
 
 export const SITE_DESCRIPTION =
-  'An independent educational library of structured electronics product development tutorials, learning paths, and engineering role guides from the Educational Engineering Team (EET).';
+  'Independent Educational Engineering Team library of structured Altium Designer and Altium Develop tutorials, outcome learning paths, and role guides. Not an Altium product or generic electronics academy.';
 
 /** From package.json via Vite define; falls back for type-safe defaults. */
 export const APP_VERSION =

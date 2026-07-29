@@ -122,7 +122,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="font-display font-bold text-lg text-white tracking-tight">EET</span>
                 <span className="text-xs bg-blue-900/80 text-blue-300 px-1.5 py-0.5 rounded font-mono border border-blue-700">LIBRARY</span>
               </div>
-              <p className="text-xs text-slate-400 hidden sm:block">Electronics Product Development</p>
+              <p className="text-xs text-slate-400 hidden sm:block">Altium Designer &amp; Develop library</p>
             </div>
           </div>
 

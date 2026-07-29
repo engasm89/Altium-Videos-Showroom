@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { Cpu, Cloud, CheckCircle, ArrowRight } from 'lucide-react';
 import { ALL_TUTORIALS } from '../data/catalog';
+import { DESIGNER_TOPICS, DEVELOP_TOPICS } from '../data/topicTaxonomy';
 import { Tutorial } from '../types';
 
 interface ProductCatalogViewProps {
   onSelectTutorial: (tutorial: Tutorial) => void;
   onFilterProduct: (product: string) => void;
+  onFilterTopic?: (product: string, query: string) => void;
   initialProductSlug?: string;
 }
 
@@ -17,6 +19,7 @@ const PRODUCT_SLUGS: Record<string, string> = {
 export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
   onSelectTutorial: _onSelectTutorial,
   onFilterProduct,
+  onFilterTopic,
   initialProductSlug,
 }) => {
   const designerTutorials = ALL_TUTORIALS.filter(t => t.product === 'Altium Designer');
@@ -28,15 +31,22 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
     if (product) onFilterProduct(product);
   }, [initialProductSlug]); // intentionally omit onFilterProduct to avoid remount loops
 
+  const openTopic = (product: string, query: string) => {
+    if (onFilterTopic) onFilterTopic(product, query);
+    else onFilterProduct(product);
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-slate-100">
       
       <div className="space-y-3">
         <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Product Collections & Workflow Comparison
+          Altium Designer &amp; Altium Develop Collections
         </h2>
         <p className="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
-          Altium Designer focuses on core schematic capture, component footprints, and high-density PCB layout. Altium Develop connects electrical, mechanical, software, procurement, and management teams in a unified cloud environment.
+          Topic hubs map to filtered views of the catalog (<span className="font-mono text-slate-400">data/videos.csv</span>).
+          Designer covers schematic-to-fab CAD; Develop covers workspace collaboration, reviews, BOM, and multidisciplinary handoffs.
+          This is an independent EET library — not a generic hardware academy.
         </p>
       </div>
 
@@ -52,7 +62,7 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
                 <div>
                   <h3 className="text-xl font-bold text-white">Altium Designer</h3>
                   <span className="text-xs font-mono text-blue-400">
-                    {designerTutorials.length} Enriched Tutorials
+                    {designerTutorials.length} catalog tutorials
                   </span>
                 </div>
               </div>
@@ -62,7 +72,7 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
             </div>
 
             <p className="text-xs text-slate-300 leading-relaxed bg-slate-950 p-4 rounded-xl border border-slate-800">
-              Foundational CAD software for schematic entry, custom footprint creation, interactive trace routing, high-frequency design rules, thermal via placement, and Gerber/NC Drill manufacturing outputs.
+              Foundational CAD for schematic entry, libraries, footprints, interactive routing, design rules, and manufacturing outputs.
             </p>
 
             <ul className="space-y-2 text-xs text-slate-300">
@@ -104,7 +114,7 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
                 <div>
                   <h3 className="text-xl font-bold text-white">Altium Develop</h3>
                   <span className="text-xs font-mono text-cyan-400">
-                    {developTutorials.length} Enriched Tutorials
+                    {developTutorials.length} catalog tutorials
                   </span>
                 </div>
               </div>
@@ -114,7 +124,7 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
             </div>
 
             <p className="text-xs text-slate-300 leading-relaxed bg-slate-950 p-4 rounded-xl border border-slate-800">
-              Connected cloud platform uniting hardware engineers with non-CAD stakeholders. Features AI-driven PRD requirement parsing, live ActiveBOM distributor feeds, SolidWorks ECAD-MCAD sync, and executive review dashboards.
+              Connected cloud platform for reviews, version history, requirements, BOM risk, ECAD–MCAD, and engineering management visibility.
             </p>
 
             <ul className="space-y-2 text-xs text-slate-300">
@@ -150,35 +160,46 @@ export const ProductCatalogView: React.FC<ProductCatalogViewProps> = ({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
         <div className="space-y-3">
-          <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wider">Designer topic taxonomy</h3>
-          <div className="flex flex-wrap gap-2">
-            {['Schematic Capture', 'PCB Footprints', 'Interactive Routing', 'Design Rule Checks', 'Manufacturing Release', 'Power Electronics', 'RF Layout'].map((skill) => (
+          <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wider">
+            Designer topics ({DESIGNER_TOPICS.length})
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {DESIGNER_TOPICS.map((topic) => (
               <button
-                key={skill}
+                key={topic.id}
                 type="button"
-                onClick={() => onFilterProduct('Altium Designer')}
-                className="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-blue-300 hover:border-blue-600"
+                onClick={() => openTopic('Altium Designer', topic.query)}
+                className="text-left text-xs px-3 py-2.5 bg-slate-900 border border-slate-800 rounded-lg text-blue-300 hover:border-blue-600"
               >
-                {skill}
+                <div className="font-semibold text-blue-200">{topic.label}</div>
+                <div className="text-[11px] text-slate-500 mt-0.5">{topic.blurb}</div>
               </button>
             ))}
           </div>
-          <p className="text-[11px] text-slate-500">Opens Designer catalog — refine with skill filters on the tutorials page.</p>
+          <p className="text-[11px] text-slate-500">
+            Each topic opens <span className="font-mono">/tutorials?product=Altium Designer&amp;q=…</span>
+          </p>
         </div>
         <div className="space-y-3">
-          <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wider">Develop topic taxonomy</h3>
-          <div className="flex flex-wrap gap-2">
-            {['Cloud Collaboration', 'BOM & Supply Chain', 'ECAD-MCAD', 'Requirements Engineering', 'Engineering Management', 'Search & Navigation'].map((skill) => (
+          <h3 className="text-sm font-bold text-white font-mono uppercase tracking-wider">
+            Develop topics ({DEVELOP_TOPICS.length})
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {DEVELOP_TOPICS.map((topic) => (
               <button
-                key={skill}
+                key={topic.id}
                 type="button"
-                onClick={() => onFilterProduct('Altium Develop')}
-                className="text-xs px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-cyan-300 hover:border-cyan-600"
+                onClick={() => openTopic('Altium Develop', topic.query)}
+                className="text-left text-xs px-3 py-2.5 bg-slate-900 border border-slate-800 rounded-lg text-cyan-300 hover:border-cyan-600"
               >
-                {skill}
+                <div className="font-semibold text-cyan-200">{topic.label}</div>
+                <div className="text-[11px] text-slate-500 mt-0.5">{topic.blurb}</div>
               </button>
             ))}
           </div>
+          <p className="text-[11px] text-slate-500">
+            Partner narrative also lives at <span className="font-mono">/altium-develop</span>.
+          </p>
         </div>
       </div>
 

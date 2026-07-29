@@ -26,9 +26,11 @@ export const AboutView: React.FC<AboutViewProps> = ({ setActiveTab, onOpenAltium
           About the EET Electronics Product Development Library
         </h1>
         <p className="text-slate-300 leading-relaxed">
-          The Educational Engineering Team (EET) built this library to give electronics product development teams a
-          single, structured place to learn the practical workflows behind schematic capture, PCB layout, component
-          management, manufacturing release, and cross-discipline collaboration.
+          The Educational Engineering Team (EET) built this independent library to organize practical{' '}
+          <strong className="text-white font-semibold">Altium Designer</strong> and{' '}
+          <strong className="text-white font-semibold">Altium Develop</strong> tutorials — topic hubs, outcome paths,
+          and role guides that prove sustained investment in Altium education. It is not a generic electronics academy,
+          LMS, or marketplace.
         </p>
       </div>
 

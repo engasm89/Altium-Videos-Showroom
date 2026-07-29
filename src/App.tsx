@@ -145,6 +145,8 @@ function AppShell() {
     setProductFilterOverride(product || 'All');
     const skill = params.get('skill');
     setSkillFilterOverride(skill || 'All');
+    const q = params.get('q');
+    if (q !== null) setSearchQuery(q);
   }, [location.pathname, location.search]);
 
   const handleToggleCompleted = (e?: React.MouseEvent, id?: string) => {
@@ -229,8 +231,20 @@ function AppShell() {
 
   const handleFilterProductFromHero = (product: string) => {
     setProductFilterOverride(product);
+    setSearchQuery('');
     navigate(`/tutorials?product=${encodeURIComponent(product)}`);
   };
+
+  const handleFilterTopic = (product: string, query: string) => {
+    setProductFilterOverride(product);
+    setSearchQuery(query);
+    const params = new URLSearchParams();
+    params.set('product', product);
+    if (query) params.set('q', query);
+    navigate(`/tutorials?${params.toString()}`);
+  };
+
+  const featuredPaths = LEARNING_PATHS.filter((p) => p.featured).slice(0, 7);
 
   const handleSelectPathFromRole = (pathId: string) => {
     const path = LEARNING_PATHS.find((p) => p.id === pathId);
@@ -270,22 +284,23 @@ function AppShell() {
                   searchQuery={searchQuery}
                   setSearchQuery={setSearchQuery}
                   onFilterProduct={handleFilterProductFromHero}
+                  onFilterTopic={handleFilterTopic}
                 />
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 pb-16">
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-4 flex-wrap">
                       <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                        Featured Outcome Learning Paths
+                        Primary Learning Paths
                       </h2>
                       <button
                         onClick={() => setActiveTab('paths')}
                         className="text-xs text-blue-400 hover:underline font-mono"
                       >
-                        View All {LEARNING_PATHS.length} Paths →
+                        {featuredPaths.length} primary · more on Paths →
                       </button>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      {LEARNING_PATHS.slice(0, 3).map((path) => (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {featuredPaths.map((path) => (
                         <div
                           key={path.id}
                           onClick={() => navigate(`/learning-paths/${path.slug}`)}
@@ -479,6 +494,7 @@ function AppShell() {
               <ProductCatalogView
                 onSelectTutorial={handleSelectTutorial}
                 onFilterProduct={handleFilterProductFromHero}
+                onFilterTopic={handleFilterTopic}
                 initialProductSlug={undefined}
               />
             }
@@ -489,6 +505,7 @@ function AppShell() {
               <ProductCatalogView
                 onSelectTutorial={handleSelectTutorial}
                 onFilterProduct={handleFilterProductFromHero}
+                onFilterTopic={handleFilterTopic}
                 initialProductSlug={initialProductSlug}
               />
             }

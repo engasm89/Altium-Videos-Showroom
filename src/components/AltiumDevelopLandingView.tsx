@@ -15,6 +15,7 @@ import {
 import { ALL_TUTORIALS, catalogCounts } from '../data/catalog';
 import { LEARNING_PATHS } from '../data/learningPaths';
 import { PERSONA_JOURNEYS } from '../data/personas';
+import { DEVELOP_TOPICS } from '../data/topicTaxonomy';
 import { Tutorial, isPedagogicallyEnriched } from '../types';
 import { landingAltiumTrialUrl } from '../utils/outbound';
 import { ReportContentControl } from './ReportContentControl';
@@ -191,6 +192,27 @@ export const AltiumDevelopLandingView: React.FC<AltiumDevelopLandingViewProps> =
           onOpenAltiumLink={onOpenAltiumLink}
           initialStageSlug="concept"
         />
+
+        <section className="space-y-6">
+          <div className="space-y-2 max-w-2xl">
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Develop topic library</h2>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              Structured entry points into the Develop-tagged catalog — each opens a filtered tutorial view.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2">
+            {DEVELOP_TOPICS.map((topic) => (
+              <Link
+                key={topic.id}
+                to={`/tutorials?product=${encodeURIComponent('Altium Develop')}&q=${encodeURIComponent(topic.query)}`}
+                className="bg-slate-900 border border-slate-800 hover:border-cyan-700/70 rounded-xl p-3 space-y-1 transition-colors block"
+              >
+                <h3 className="text-xs font-semibold text-cyan-200">{topic.label}</h3>
+                <p className="text-[11px] text-slate-500 leading-snug line-clamp-2">{topic.blurb}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <section className="space-y-6">
           <div className="space-y-2 max-w-2xl">

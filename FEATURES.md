@@ -37,7 +37,7 @@
 
 ## 1. Overview & positioning
 
-**What it is:** An independent Educational Engineering Team (EET) learning hub for practical **Altium Designer** and **Altium Develop** electronics product-development workflows — tutorials, outcome paths, roles, projects, and lightweight CAD labs.
+**What it is:** An independent Educational Engineering Team (EET) **partnership-revival asset** — a structured library of **Altium Designer** and **Altium Develop** tutorials that proves sustained investment in Altium education, with organized topic hubs, 5–7 primary outcome paths, and honest local / Insights analytics. Not a generic electronics academy, LMS, or marketplace.
 
 **What it is not:** Not an Altium product, support channel, or official docs site. The UI and legal pages say this repeatedly (navbar strip, About, Footer).
 
@@ -128,7 +128,7 @@ Implemented in `Hero` + home route block in `App.tsx`.
 **Hero sections (top → bottom):**
 
 1. **Identity pill** — “Educational Engineering Team Catalog” with live counts (`{total} named videos · {playable} playable embeds`).
-2. **H1 + positioning copy** — “Master Modern Electronics Product Development”; independence + honesty about audit-derived counts.
+2. **H1 + positioning copy** — Altium Designer & Develop structured library (not “Master Modern Electronics”); independence notice; soft CTA to `/altium-develop`; Designer/Develop topic chips linking to filtered catalog.
 3. **Search** — jumps to catalog tab; popular chips (DRC, ESP32, ActiveBOM, SolidWorks).
 4. **Primary CTAs** — Start a Learning Path; Browse by Engineering Role; product filter chips (Designer / Develop with live counts).
 5. **Stat strip** — named videos, learning paths, project hubs, role hubs (all derived from data length, not hardcoded marketing numbers).
