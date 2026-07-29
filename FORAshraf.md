@@ -146,33 +146,23 @@ oEmbed proved **14/15** original catalog IDs dead or wrong — including `L_LUpn
 
 ---
 
-## Custom domain — Ashraf DNS checklist (`learn.eduengteam.com`)
+## Custom domain — LIVE (`learn.eduengteam.com`)
 
-The app is **code-ready** for the custom host. Agents cannot finish DNS without your Cloudflare access. Do this once:
+**Status (Jul 29, 2026):** DNS + Vercel domain + SSL are **LIVE**.
 
-1. **Vercel → Project → Settings → Domains**
-   - Add `learn.eduengteam.com` (and optionally `www.learn.eduengteam.com` → redirect to apex or vice versa).
-   - Copy the DNS records Vercel shows (usually a `CNAME` to `cname.vercel-dns.com`, or A records for apex).
+| Piece | Value |
+|-------|--------|
+| Live URL | https://learn.eduengteam.com |
+| Cloudflare zone | `eduengteam.com` |
+| DNS | CNAME `learn` → `cname.vercel-dns.com` (**DNS-only / grey cloud**) |
+| Ownership TXT | `_vercel` → `vc-domain-verify=learn.eduengteam.com,…` (alongside mentor verify) |
+| Vercel project | `eet-electronics-product-dev-library` — domain **verified** |
+| TLS | Let’s Encrypt via Vercel — `CN=learn.eduengteam.com` |
+| Env | Production `VITE_SITE_URL=https://learn.eduengteam.com` |
 
-2. **Cloudflare → DNS for `eduengteam.com`**
-   - Create the record Vercel requested for `learn` (CNAME or A/AAAA).
-   - **Proxy status:** start with **DNS only** (grey cloud) until the certificate issues; then you can try orange-cloud proxy if you want Cloudflare in front (may need SSL mode Full/Strict).
-   - Do **not** create conflicting `learn` records.
+Replaced the old A record `learn` → `34.235.6.209` (AWS/nginx leftover). Keep proxy **off** unless you intentionally put Cloudflare in front (then SSL mode Full/Strict).
 
-3. **Wait for TLS**
-   - Vercel Domains UI should flip to Valid once DNS propagates.
-   - Hit `https://learn.eduengteam.com` and confirm the SPA loads (deep link e.g. `/tutorials` after refresh).
-
-4. **Env (optional but clean)**
-   - In Vercel Production env: `VITE_SITE_URL=https://learn.eduengteam.com`
-   - Redeploy so client builds bake the same base (default already matches).
-
-5. **Post-cutover**
-   - `npm run seo:generate` (already points sitemap/robots at the canonical host).
-   - Submit `https://learn.eduengteam.com/sitemap.xml` in Google Search Console when you own the property.
-   - Keep the Vercel URL as a fallback; it can redirect to the custom domain later if desired.
-
-**Until DNS is done:** live traffic stays on `https://eet-electronics-product-dev-library.vercel.app`. Chrome already brands `learn.eduengteam.com`; OG/canonical tags already prefer that host — expect a short mismatch window until DNS resolves.
+**Share with Altium:** `https://learn.eduengteam.com/altium-develop` (not the homepage). Vercel alias remains a backup.
 
 ---
 
@@ -206,12 +196,7 @@ Code can ship without these — but the partner story is incomplete until you do
    Configure at least one: `FEEDBACK_WEBHOOK_URL`, or `RESEND_API_KEY` + `FEEDBACK_TO_EMAIL`, or `GITHUB_TOKEN` + `GITHUB_FEEDBACK_REPO`  
    Optional: `VITE_FEEDBACK_ENDPOINT`, `VITE_FEEDBACK_INBOX_URL`
 
-4. **Cloudflare DNS for `learn.eduengteam.com`**  
-   - Follow the DNS checklist above (parallel Cloudflare agent may still be running)  
-   - Attach domain in Vercel; confirm HTTPS + SPA deep links  
-   - After live: keep `VITE_SITE_URL=https://learn.eduengteam.com` (already the code default)
-
-**Share with Altium:** `https://learn.eduengteam.com/altium-develop` (or the Vercel `/altium-develop` URL until DNS resolves). Never lead with the general homepage.
+4. **Cloudflare DNS for `learn.eduengteam.com`** — **DONE (LIVE).** Optional follow-ups: Search Console property + sitemap submit; keep grey-cloud unless you want CF proxy.
 
 ---
 
@@ -225,7 +210,7 @@ Code can ship without these — but the partner story is incomplete until you do
 | 4 Analytics / My Activity | Pass code / Partial keys |
 | 5 Develop enrichment (29) | Pass |
 | 6 Central feedback | Pass code / Partial env |
-| 7 Domain + SEO | Pass code / Partial DNS |
+| 7 Domain + SEO | **Pass (LIVE)** |
 | 8 Security / a11y | Pass code (set admin password) |
 | Strong additions (case study / compare / freshness) | Pass |
 
@@ -236,7 +221,7 @@ Code can ship without these — but the partner story is incomplete until you do
 - Hand-enrich chapters/transcripts beyond the current ~29 Develop + prior curated overlay set.
 - Wire PostHog/GA4 keys in Vercel env (`VITE_POSTHOG_KEY` / `VITE_GA_ID`) — instrumentation is live but no-op without keys; aggregates live in those consoles, not `/my-activity`.
 - Set `VITE_ADMIN_PASSWORD` and feedback delivery secrets — see manual list above.
-- Custom domain `learn.eduengteam.com` — **Ashraf DNS steps above**; code/SEO prep is done.
+- Custom domain `learn.eduengteam.com` — **LIVE** (Cloudflare CNAME DNS-only + Vercel SSL).
 - Phase 2: Supabase/Postgres backend when partnership analytics need multi-user truth beyond PostHog/GA4.
 
 If you remember one sentence: **this library earns trust by refusing to pretend.**
@@ -288,6 +273,6 @@ Re-run with `npm run audit:youtube` / `npm run audit:youtube:apply`. Report: `sc
 
 **Phase 2 (explicitly deferred)**
 - Supabase/Postgres — optional JSON schema types can mirror brief tables later; do not block Vite SPA.
-- Custom domain DNS attach — checklist above; code defaults already use `learn.eduengteam.com`.
+- Custom domain `learn.eduengteam.com` — **LIVE** (see status table above).
 - Full transcript/chapter enrichment for all 333 rows (strategic Develop subset done; rest still thin).
 - User accounts, certificates-as-primary-UX, AI chat, Arabic, paid — do not block Altium review.

@@ -170,7 +170,7 @@ export const Hero: React.FC<HeroProps> = ({
 
         <p className="mt-4 text-[11px] text-slate-500 font-mono">
           Honest status: {playable} oEmbed-public embeds · {playlistOnly} playlist-only · {missing} missing individual URLs.
-          Canonical host: learn.eduengteam.com (Cloudflare DNS attach still required — see FORAshraf.md).
+          Canonical host: learn.eduengteam.com (LIVE).
         </p>
 
         {/* Wireframe: choose your goal */}

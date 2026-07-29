@@ -1,8 +1,8 @@
 # EET Electronics Product Development Library — Feature Inventory
 
 > **Who this is for:** Ashraf (and anyone joining the project) who needs a single, honest map of what the product *actually ships today* — not the aspirational brief alone.  
-> **Canonical URL:** [https://learn.eduengteam.com](https://learn.eduengteam.com) (DNS attach pending — see §18 / FORAshraf.md)  
-> **Live fallback (Vercel):** [https://eet-electronics-product-dev-library.vercel.app](https://eet-electronics-product-dev-library.vercel.app)  
+> **Live URL:** [https://learn.eduengteam.com](https://learn.eduengteam.com) (Cloudflare DNS + Vercel SSL **LIVE** as of Jul 29, 2026)  
+> **Vercel alias:** [https://eet-electronics-product-dev-library.vercel.app](https://eet-electronics-product-dev-library.vercel.app)  
 > **Repo root file:** `FEATURES.md` (this document)  
 > **Numbers below** reflect the catalog after the Jul 29, 2026 MD→CSV import + YouTube embed audit (`catalogCounts` / `scripts/import-report.json`). Primary source: `data/videos.csv` (wins over xlsx).
 
@@ -54,8 +54,8 @@
 | Tutorial feedback | Central (webhook / Resend / GitHub Issues / `VITE_FEEDBACK_ENDPOINT`) |
 
 **Canonical product name in UI / titles:** *EET Electronics Product Development Library*  
-**Canonical host (code default via `VITE_SITE_URL`):** `https://learn.eduengteam.com`  
-**Vercel fallback until Cloudflare DNS is attached:** `https://eet-electronics-product-dev-library.vercel.app`
+**Canonical host:** `https://learn.eduengteam.com` (LIVE — Cloudflare CNAME DNS-only → `cname.vercel-dns.com`; Let’s Encrypt via Vercel)  
+**Vercel alias (still valid):** `https://eet-electronics-product-dev-library.vercel.app`
 
 ---
 
@@ -130,7 +130,7 @@ Implemented in `Hero` + home route block in `App.tsx`.
 3. **Search** — jumps to catalog tab; popular chips (DRC, ESP32, ActiveBOM, SolidWorks).
 4. **Primary CTAs** — Start a Learning Path; Browse by Engineering Role; product filter chips (Designer / Develop with live counts).
 5. **Stat strip** — named videos, learning paths, project hubs, role hubs (all derived from data length, not hardcoded marketing numbers).
-6. **Honest status line** — playable / playlist-only / missing; notes custom domain still manual.
+6. **Honest status line** — playable / playlist-only / missing; branded host is live.
 7. **Choose your goal** — path / project / catalog.
 8. **Browse by role / product** teasers.
 9. **Projects + My Activity teasers.**
@@ -506,7 +506,7 @@ Site-wide aggregates: PostHog / GA4 consoles (see `/insights`). **Never** fabric
 | JSON-LD | Client-injected `VideoObject` for playable tutorials only |
 | SPA caveat | Vercel rewrites all paths to `index.html` — crawlers get the shell; rich per-URL HTML is limited without SSR |
 
-**Sitemap / robots base URL:** `https://learn.eduengteam.com` by default (override with `VITE_SITE_URL`). Vercel fallback for live traffic until DNS: `https://eet-electronics-product-dev-library.vercel.app`.
+**Sitemap / robots base URL:** `https://learn.eduengteam.com` (Production `VITE_SITE_URL` set on Vercel). Alias: `https://eet-electronics-product-dev-library.vercel.app`.
 
 ---
 
@@ -650,7 +650,7 @@ Call these out so nobody confuses roadmap with shipping:
 | Item | Status |
 |------|--------|
 | **Supabase / Postgres backend** | Not started — no multi-user progress or server analytics (tutorial feedback uses webhook/Resend/GitHub instead) |
-| **Custom domain `learn.eduengteam.com`** | **Code + SEO ready** (`VITE_SITE_URL` default). DNS + Cloudflare/Vercel attach still **manual (Ashraf)** — see FORAshraf.md |
+| **Custom domain `learn.eduengteam.com`** | **LIVE** — Cloudflare CNAME `learn` → `cname.vercel-dns.com` (DNS-only); Vercel domain verified; SSL Let’s Encrypt issued; Production `VITE_SITE_URL` set |
 | **PostHog / GA4 keys in production** | Code stubs exist; no-op until `VITE_*` env set |
 | **Full chapter/transcript enrichment for all 333** | ~39 pedagogically enriched today (incl. ~29 strategic Develop `enriched` overlays); rest still thin |
 | **Resolve the 1 unverified embed** | Done — `cat-104` re-verified (EET oEmbed author + title match); hard-demote list cleared |
@@ -684,7 +684,7 @@ Call these out so nobody confuses roadmap with shipping:
 ## 20. Partner launch gate (Jul 29, 2026)
 
 **Share URL with Altium (not the homepage):** `https://learn.eduengteam.com/altium-develop`  
-**Until Cloudflare DNS resolves:** `https://eet-electronics-product-dev-library.vercel.app/altium-develop`
+**Vercel alias (backup):** `https://eet-electronics-product-dev-library.vercel.app/altium-develop`
 
 | # | Gate item | Status | Evidence |
 |---|-----------|--------|----------|
@@ -694,7 +694,7 @@ Call these out so nobody confuses roadmap with shipping:
 | 4 | Real analytics + My Activity rename | **Pass (code) / Partial (keys)** | `/my-activity` = browser-local only; `/impact` → redirect; `/insights` refuses fake KPIs; events instrumented; needs `VITE_POSTHOG_KEY` / `VITE_GA_ID` |
 | 5 | 20–30 enriched Develop tutorials | **Pass** | 29 overlays in `developEnrichment.overlay.json` (`9effc07`) |
 | 6 | Central feedback collection | **Pass (code) / Partial (env)** | Tutorial Feedback → `api/feedback.ts` (webhook/Resend/GitHub); `/feedback-inbox` stub; needs server delivery env |
-| 7 | Custom domain + launch trust | **Pass (code) / Partial (DNS)** | Canonical/OG/sitemap/robots/favicons/Beta/`/changelog` (`efb6be7`); Cloudflare DNS still manual |
+| 7 | Custom domain + launch trust | **Pass** | Canonical/OG/sitemap/robots/favicons/Beta/`/changelog` (`efb6be7`); `learn.eduengteam.com` DNS+SSL **LIVE** (Jul 29, 2026) |
 | 8 | Security / a11y trust | **Pass (code)** | 333/333 playable; admin blocked without password in prod; modal a11y; ErrorBoundary; 404; report control; smoke deeplinks (`b5a2441`) — **Ashraf must set `VITE_ADMIN_PASSWORD`** |
 | — | Strong additions | **Pass** | ESP32 case study, compare-workflows, freshness chips (`92b0616`) |
 
